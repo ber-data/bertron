@@ -221,7 +221,8 @@
             "centroid_longitude",
           );
           const identifier = obj["package_id"];
-          const popupHtml = `ESS-Dive Package<br/>${identifier}`;
+          const url = `https://data.ess-dive.lbl.gov/view/${identifier}`;
+          const popupHtml = `ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package">${identifier}</a>`;
           const marker = L.marker(latLon).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
