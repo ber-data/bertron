@@ -203,7 +203,8 @@
         nmdcObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["biosample_id"];
-          const popupHtml = `NMDC Biosample<br/>${identifier}`;
+          const url = `https://data.microbiomedata.org/details/sample/${identifier}`;
+          const popupHtml = `NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
           const marker = L.marker(latLon).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
@@ -220,8 +221,8 @@
             "centroid_longitude",
           );
           const identifier = obj["package_id"];
-          const popupStr = `ESS-Dive Package<br/>${identifier}`;
-          const marker = L.marker(latLon).bindPopup(popupStr);
+          const popupHtml = `ESS-Dive Package<br/>${identifier}`;
+          const marker = L.marker(latLon).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${essDiveObjs.length} markers.`);
@@ -233,8 +234,8 @@
         jgiGoldBsmObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
-          const popupStr = `JGI GOLD Biosample<br/>${identifier}`;
-          const marker = L.marker(latLon).bindPopup(popupStr);
+          const popupHtml = `JGI GOLD Biosample<br/>${identifier}`;
+          const marker = L.marker(latLon).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${jgiGoldBsmObjs.length} markers.`);
@@ -246,8 +247,8 @@
         jgiGoldOrgObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
-          const popupStr = `JGI GOLD Organism<br/>${identifier}`;
-          const marker = L.marker(latLon).bindPopup(popupStr);
+          const popupHtml = `JGI GOLD Organism<br/>${identifier}`;
+          const marker = L.marker(latLon).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${jgiGoldOrgObjs.length} markers.`);
@@ -261,8 +262,8 @@
         emslObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = `P: ${obj["proposal_id"]}, S: ${obj["sampling_set"]}`;
-          const popupStr = `EMSL<br/>${identifier}`;
-          const marker = L.marker(latLon).bindPopup(popupStr);
+          const popupHtml = `EMSL<br/>${identifier}`;
+          const marker = L.marker(latLon).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${emslObjs.length} markers.`);
