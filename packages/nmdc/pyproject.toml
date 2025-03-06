@@ -1,0 +1,15 @@
+[project]
+name = "nmdc"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+     "nmdc-api-utilities>=0.3.1",
+]
+
+[build-system]
+requires = [
+  "setuptools >= 65.0",
+]
+build-backend = "setuptools.build_meta"

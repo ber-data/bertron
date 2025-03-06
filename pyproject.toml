@@ -1,0 +1,38 @@
+[project]
+name = "bertron"
+version = "0.1.0"
+authors = [
+  {name = "Chuck Parker", email = "ctparker@lbl.gov"},
+]
+description = " Cross-BER Data Integration"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
+  "emsl",
+  "ess-dive",
+  "jdp",
+  "nmdc",
+]
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+emsl = { workspace = true }
+ess-dive = { workspace = true }
+jdp = { workspace = true }
+nmdc = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.386",
+    "ruff>=0.9.9",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
