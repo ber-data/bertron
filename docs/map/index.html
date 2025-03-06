@@ -205,7 +205,7 @@
           const identifier = obj["biosample_id"];
           const url = `https://data.microbiomedata.org/details/sample/${identifier}`;
           const popupHtml = `NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/nmdc-100x100.png" });
+          const icon = L.icon({ iconUrl: "./img/nmdc-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
@@ -224,7 +224,7 @@
           const identifier = obj["package_id"];
           const url = `https://data.ess-dive.lbl.gov/view/${identifier}`;
           const popupHtml = `ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/ess-dive-100x100.png" });
+          const icon = L.icon({ iconUrl: "./img/ess-dive-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
@@ -237,8 +237,9 @@
         jgiGoldBsmObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
-          const popupHtml = `JGI GOLD Biosample<br/>${identifier}`;
-          const icon = L.icon({ iconUrl: "./img/gold-100x100.png" });
+          const url = `https://gold.jgi.doe.gov/biosample?id=${identifier}`;
+          const popupHtml = `JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
+          const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
@@ -251,8 +252,9 @@
         jgiGoldOrgObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
-          const popupHtml = `JGI GOLD Organism<br/>${identifier}`;
-          const icon = L.icon({ iconUrl: "./img/gold-100x100.png" });
+          const url = `https://gold.jgi.doe.gov/organism?id=${identifier}`;
+          const popupHtml = `JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism">${identifier}</a>`;
+          const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
@@ -266,9 +268,10 @@
         console.debug("Fetching and parsing finished.", { data: emslObjs });
         emslObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
-          const identifier = `P: ${obj["proposal_id"]}, S: ${obj["sampling_set"]}`;
-          const popupHtml = `EMSL<br/>${identifier}`;
-          const icon = L.icon({ iconUrl: "./img/emsl-100x100.png" });
+          const identifier = `Project: ${obj["proposal_id"]}, Sampling set: ${obj["sampling_set"]}`;
+          const url = `https://sc-data.emsl.pnnl.gov/?projectId=${obj["proposal_id"]}`;
+          const popupHtml = `EMSL<br/><a href="${url}" target="_blank" title="View project">${identifier}</a>`;
+          const icon = L.icon({ iconUrl: "./img/emsl-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
           markerClusterGroup.addLayer(marker);
         });
