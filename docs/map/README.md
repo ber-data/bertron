@@ -50,6 +50,4 @@ Here are some ideas I have for future development (in no particular order):
 
 - Allow the user to toggle all markers associated with a given data source
   (e.g. NMDC vs. ESS-Dive) on/off
-- Use the data source's logo instead of the generic marker image
-- Add hyperlinks (leading to more information about the sample) to the marker
-  popups
+- Add remaining hyperlinks to the marker popups
