@@ -190,8 +190,13 @@
         // Initialize the map.
         const map = initializeMap("map");
 
-        // Initialize the cluter group to which we will add markers.
-        const markerClusterGroup = L.markerClusterGroup();
+        // Initialize a cluster group for each data source and make it visible by default.
+        // Note: We will add markers to each of these cluster groups below.
+        const nmdcMarkerClusterGroup = L.markerClusterGroup().addTo(map);
+        const essDiveMarkerClusterGroup = L.markerClusterGroup().addTo(map);
+        const jgiGoldBsmMarkerClusterGroup = L.markerClusterGroup().addTo(map);
+        const jgiGoldOrgMarkerClusterGroup = L.markerClusterGroup().addTo(map);
+        const emslMarkerClusterGroup = L.markerClusterGroup().addTo(map);
 
         // Show a spinner because we are about to fetch some data.
         document.getElementById("spinner").removeAttribute("hidden");
@@ -207,7 +212,7 @@
           const popupHtml = `NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/nmdc-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          markerClusterGroup.addLayer(marker);
+          nmdcMarkerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${nmdcObjs.length} markers.`);
 
@@ -226,7 +231,7 @@
           const popupHtml = `ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/ess-dive-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          markerClusterGroup.addLayer(marker);
+          essDiveMarkerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${essDiveObjs.length} markers.`);
 
@@ -241,7 +246,7 @@
           const popupHtml = `JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          markerClusterGroup.addLayer(marker);
+          jgiGoldBsmMarkerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${jgiGoldBsmObjs.length} markers.`);
 
@@ -256,7 +261,7 @@
           const popupHtml = `JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          markerClusterGroup.addLayer(marker);
+          jgiGoldOrgMarkerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${jgiGoldOrgObjs.length} markers.`);
 
@@ -273,12 +278,21 @@
           const popupHtml = `EMSL<br/><a href="${url}" target="_blank" title="View project">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/emsl-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          markerClusterGroup.addLayer(marker);
+          emslMarkerClusterGroup.addLayer(marker);
         });
         console.debug(`Created ${emslObjs.length} markers.`);
 
-        // Add the marker cluster group to the map.
-        map.addLayer(markerClusterGroup);
+        // Define layers that the user will be able to toggle on/off via the layer control widget.
+        const toggleableLayerDescriptors = {
+          "NMDC": nmdcMarkerClusterGroup,
+          "ESS-Dive": essDiveMarkerClusterGroup,
+          "JGI GOLD Biosamples": jgiGoldBsmMarkerClusterGroup,
+          "JGI GOLD Organisms": jgiGoldOrgMarkerClusterGroup,
+          "EMSL": emslMarkerClusterGroup,        
+        };
+
+        // Add the layer control widget to the map.
+        L.control.layers(undefined, toggleableLayerDescriptors).addTo(map);
 
         // Set up the address-based search widget.
         // Reference: https://smeijer.github.io/leaflet-geosearch/
