@@ -10,7 +10,7 @@ class Query(object):
         if self.results is None:
             try:
                 self.results = self._request().json()["organisms"]
-            except:
+            except Exception as _:
                 print(self._request().json())
         for result in self.results:
             yield result
