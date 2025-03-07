@@ -1,0 +1,280 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: https://github.com/ber-data/bertron-schema/schema/bertron/linkml
+name: ber_data
+description: Schema for BERtron common data model.
+version: 0.0.1
+prefixes:
+  bioportal: https://bioportal.bioontology.org/ontologies/
+  biolink: https://w3id.org/biolink/vocab/
+  kbcms: https://kbase.github.io/credit_engine/
+  crcr: https://credit.niso.org/contributor-roles/
+  Crossref: https://crossref.org/
+  DataCite: https://purl.org/datacite/v4.4/
+  DOI: http://identifiers.org/doi/
+  gdmt: http://vocab.fairdatacollective.org/fdc-gdmt/en/page/
+  JGI: https://data.jgi.doe.gov/search/
+  linkml: https://w3id.org/linkml/
+  ORCID: http://identifiers.org/orcid/
+  OSTI.ARTICLE: https://www.osti.gov/biblio/
+  ROR: http://identifiers.org/ror/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
+imports:
+  - linkml:types
+default_range: string
+default_curi_maps:
+  - semweb_context
+default_prefix: bertron
+
+classes:
+
+  Entity:
+    tree_root: true
+    description: |
+      An object retrieved by BERtron from a BER data API.
+    attributes:
+      ber_data_source:
+        description: The BER member from whence the entity originated.
+        range: BERSourceType
+        required: true
+      coordinates:
+        description: The geographic coordinates associated with an entity. For entities with a bounding box, the centroid is used as the geographic references.
+        range: Coordinates
+        required: true
+      curie:
+        description: Compact URI for the entity.
+        range: curie
+        required: false
+      data_source_internal_identifier:
+        description: The unique ID used for the entity within the BER entity. It may not necessarily be resolvable.
+        identifier: true
+        range: string
+        required: true
+      data_type:
+        description: What kind of data this entity is -- e.g. sequence data; a soil core; a well; etc.
+        range: DataTypeTag
+        multivalued: true
+      description:
+        description: Textual description of the entity.
+        required: false
+      identifiers:
+        description: Fully-qualifier URL or CURIE used as an identifier for an entity.
+        range: uriorcurie
+        required: true
+        slot_uri: schema:identifier
+        examples:
+          - value: "NCBItaxon:172684329"
+          - value: "ISGN:1986497"
+      names:
+        description: Textual identifiers for an entity.
+        multivalued: true
+        range: Name
+        examples:
+        - value: "My first sequencing project"
+        - value: "Soil core WC-106"
+      proposal:
+        description: Administrative unit (e.g. project, campaign, whatever) that the entity was generated as part of. May also be called a project.
+        multivalued: true
+        range: Project
+        comments:
+          - Should this be FundingReference?
+      url:
+        description: Permanent resolvable URI for the entity at the data source.
+        range: uri
+
+  Coordinates:
+    attributes:
+      depth:
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: measurement value
+        description: The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.
+        title: depth
+        examples:
+          - value: 10 meter
+        from_schema: http://w3id.org/mixs/terms
+        aliases:
+          - depth
+        slot_uri: MIXS:0000018
+        range: QuantityValue
+        multivalued: false
+      elevation:
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: measurement value
+        description: Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.
+        title: elevation
+        examples:
+          - value: 100 meter
+        from_schema: http://w3id.org/mixs/terms
+        aliases:
+          - elevation
+        slot_uri: MIXS:0000093
+        range: float
+        multivalued: false
+      latitude:
+        range: decimal degree
+        description: latitude
+        slot_uri: wgs84:lat
+        examples:
+          - value: "-33.460524"
+        mappings:
+          - schema:latitude
+      longitude:
+        range: decimal degree
+        description: longitude
+        slot_uri: wgs84:long
+        examples:
+          - value: "150.168149"
+        mappings:
+          - schema:longitude
+    description: The coordinates defining the position associated with the entity.
+
+  Description:
+    description: Textual information about the resource being represented.
+    attributes:
+      description_text:
+        description: The text content of the informational element.
+        required: true
+        examples:
+        - value: This is the most interesting dataset ever to earn a DOI.
+
+      description_type:
+        description: The type of text being represented.
+        range: DescriptionType
+        examples:
+        - value: abstract
+        - value: description
+        - value: summary
+
+      language:
+        description: The language in which the description is written, using the appropriate IETF BCP-47 notation.
+        examples:
+        - value: ru-Cyrl
+        - value: fr
+
+  PermanentID:
+    description: |
+      Represents a persistent unique identifier for an entity and its relationship to some other entity.
+
+      The 'id' field and 'relationship_type' fields are required.
+
+      The values in the 'relationship_type' field come from controlled vocabularies maintained by DataCite and Crossref. See the documentation links below for more details.
+
+      DataCite relation types: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#12b-relationtype
+
+      Crossref relation types: https://www.crossref.org/documentation/schema-library/markup-guide-metadata-segments/relationships/
+
+    attributes:
+      id:
+        slot_uri: schema:identifier
+        description: Persistent unique ID for an entity. Should be in the format <database name>:<identifier within database>.
+        required: true
+        examples:
+        - value: DOI:10.46936/10.25585/60000745
+        - value: GO:0005456
+        - value: HGNC:7470
+        exact_mappings:
+        - DataCite:attributes.identifier.value
+        - DataCite:attributes.alternate_identifiers
+          # from: DataCite:attributes.alternate_identifiers[]
+          # via: f"{src.attributes.alternate_identifiers[].alternate_identifier_type}:{src.attributes.alternate_identifiers[].alternate_identifier}"
+        - DataCite:attributes.related_identifiers
+          # from: DataCite:attributes.related_identifiers[]
+          # via: f"{src.attributes.related_identifiers[].related_identifier_type}:{src.attributes.related_identifiers[].related_identifier}"
+        - DataCite:attributes.identifiers
+          # from: DataCite:attributes.identifiers[]
+          # via: f"{src.attributes.identifiers[].identifier_type}:{src.attributes.identifiers[].identifier}"
+        related_mappings:
+        - OSTI.ARTICLE:site_url
+        range: uriorcurie
+        pattern: "^[a-zA-Z0-9.-_]+:\\S"
+
+      description:
+        slot_uri: schema:description
+        description: Description of that entity.
+        exact_mappings:
+        - OSTI.ARTICLE:description
+        examples:
+        - value: Amaranthus hypochondriacus genome
+        - value: This data analysis workflow demonstrates how to process a metagenome to identify viruses using VirSorter. Then, provides taxonomic classification using vConTACT2.
+
+      relationship_type:
+        description: |
+          The relationship between the ID and some other entity.
+          For example, when a PermanentID class is used to represent objects in the CreditMetadata field 'related_identifiers', the 'relationship_type' field captures the relationship between the resource being registered and this ID.
+        range: RelationshipType
+        exact_mappings:
+        - DataCite:attributes.related_identifiers.relation_type
+
+  Proposal:
+    description: Administrative unit (e.g. project, campaign, whatever) that the entity was generated as part of. May also be called a project.
+    attributes:
+      title:
+        description: Project title.
+      id:
+        description: Identifier for the project.
+      url:
+        description: URL for the
+
+  QuantityValue:
+    class_uri: nmdc:QuantityValue
+    is_a: AttributeValue
+    description: A simple quantity, e.g. 2cm
+    slots:
+      - has_maximum_numeric_value
+      - has_minimum_numeric_value
+      - has_numeric_value
+      - has_unit
+    slot_usage:
+      has_raw_value:
+        description: Unnormalized atomic string representation, should in syntax {number} {unit}
+      has_unit:
+        description: The unit of the quantity
+      has_numeric_value:
+        description: The number part of the quantity
+    # range: double # MAM 2024-0405 I don't believe we have any data that requires this level of precision
+    mappings:
+      - schema:QuantityValue
+
+
+types:
+  decimal degree:
+    description: A decimal degree expresses latitude or longitude as decimal fractions.
+    uri: xsd:decimal
+    base: float
+    see_also:
+      - https://en.wikipedia.org/wiki/Decimal_degrees
+
+
+enums:
+
+  BERSourceType:
+    description: The BER data source from when the entity originated.
+    permissible_values:
+      EMSL:
+      ESS-DIVE:
+      JGI:
+      MONET:
+      NMDC:
+
+  DataTypeTagType:
+    description: Tags used to describe an entity.
+    permissible_values:
+      Sample:
+      Sequence:
+      Taxon:
+
+  DescriptionType:
+    description: The type of text being represented.
+    permissible_values:
+      abstract:
+        meaning: DataCite:abstract
+        description: A brief description of the resource and the context in which the resource was created.
+      description:
+        meaning: DataCite:descriptions.description.descriptionType
+      summary:
+        meaning: DataCite:summary
