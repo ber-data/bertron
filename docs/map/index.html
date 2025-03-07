@@ -302,7 +302,7 @@
           const identifier = obj["gold_id"];
           const url = `https://gold.jgi.doe.gov/biosample?id=${identifier}`;
           const popupHtml = `JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
+          const icon = L.icon({ iconUrl: "./img/jgi-20x20.png" });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           jgiGoldBsmMarkers.push(marker);
         });
@@ -319,7 +319,7 @@
           const identifier = obj["gold_id"];
           const url = `https://gold.jgi.doe.gov/organism?id=${identifier}`;
           const popupHtml = `JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
+          const icon = L.icon({ iconUrl: "./img/jgi-20x20.png" });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           jgiGoldOrgMarkers.push(marker);
         });
