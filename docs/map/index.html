@@ -53,7 +53,65 @@
   <body>
     <h1>Map</h1>
 
+    <!-- The map -->
     <div id="map"></div>
+
+    <!-- The marker visibility togglers -->
+    <div class="m-2 text-center">
+      <input
+        type="checkbox"
+        class="btn-check"
+        id="nmdc-markers-toggler"
+        checked
+      />
+      <label class="btn btn-outline-primary m-1" for="nmdc-markers-toggler"
+        >NMDC</label
+      >
+
+      <input
+        type="checkbox"
+        class="btn-check"
+        id="ess-dive-markers-toggler"
+        checked
+      />
+      <label class="btn btn-outline-primary m-1" for="ess-dive-markers-toggler"
+        >ESS-Dive</label
+      >
+
+      <input
+        type="checkbox"
+        class="btn-check"
+        id="jgi-gold-bsm-markers-toggler"
+        checked
+      />
+      <label
+        class="btn btn-outline-primary m-1"
+        for="jgi-gold-bsm-markers-toggler"
+        >JGI GOLD Biosamples</label
+      >
+
+      <input
+        type="checkbox"
+        class="btn-check"
+        id="jgi-gold-org-markers-toggler"
+        checked
+      />
+      <label
+        class="btn btn-outline-primary m-1"
+        for="jgi-gold-org-markers-toggler"
+        >JGI GOLD Organisms</label
+      >
+
+      <input
+        type="checkbox"
+        class="btn-check"
+        id="emsl-markers-toggler"
+        checked
+      />
+      <label class="btn btn-outline-primary m-1" for="emsl-markers-toggler"
+        >EMSL</label
+      >
+    </div>
 
     <!-- A spinner that indicates that we are loading data. -->
     <div id="spinner" hidden>
@@ -200,24 +258,24 @@
         const nmdcObjs = await fetchAndParseCsvFile(
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/nmdc/nmdc_biosample_geo_coordinates.csv",
         );
-        nmdcMarkersLayerGroup = L.layerGroup();
+        nmdcMarkers = [];
         nmdcObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["biosample_id"];
           const url = `https://data.microbiomedata.org/details/sample/${identifier}`;
           const popupHtml = `NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/nmdc-20x20.png" });
-          const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          nmdcMarkersLayerGroup.addLayer(marker);
+          const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
+          nmdcMarkers.push(marker);
         });
-        markerClusterGroup.addLayers(nmdcMarkersLayerGroup);
+        markerClusterGroup.addLayers(nmdcMarkers);
         console.debug(`Created ${nmdcObjs.length} markers.`);
 
         // Fetch the ESS-Dive Packages CSV file and create a marker for each row.
         const essDiveObjs = await fetchAndParseCsvFile(
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/ess-dive/ess_dive_packages.csv",
         );
-        essDiveMarkersLayerGroup = L.layerGroup();
+        essDiveMarkers = [];
         essDiveObjs.forEach((obj) => {
           const latLon = getLatLon(
             obj,
@@ -228,44 +286,44 @@
           const url = `https://data.ess-dive.lbl.gov/view/${identifier}`;
           const popupHtml = `ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/ess-dive-20x20.png" });
-          const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          essDiveMarkersLayerGroup.addLayer(marker);
+          const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
+          essDiveMarkers.push(marker);
         });
-        markerClusterGroup.addLayers(essDiveMarkersLayerGroup);
+        markerClusterGroup.addLayers(essDiveMarkers);
         console.debug(`Created ${essDiveObjs.length} markers.`);
 
         // Fetch the JGI GOLD Biosamples CSV file and create a marker for each row.
         const jgiGoldBsmObjs = await fetchAndParseCsvFile(
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/jgi/jgi_gold_biosample_geo.csv",
         );
-        const jgiGoldBsmMarkersLayerGroup = L.layerGroup();
+        const jgiGoldBsmMarkers = [];
         jgiGoldBsmObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
           const url = `https://gold.jgi.doe.gov/biosample?id=${identifier}`;
           const popupHtml = `JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
-          const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          jgiGoldBsmMarkersLayerGroup.addLayer(marker);
+          const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
+          jgiGoldBsmMarkers.push(marker);
         });
-        markerClusterGroup.addLayers(jgiGoldBsmMarkersLayerGroup);
+        markerClusterGroup.addLayers(jgiGoldBsmMarkers);
         console.debug(`Created ${jgiGoldBsmObjs.length} markers.`);
 
         // Fetch the JGI GOLD Organisms CSV file and create a marker for each row.
         const jgiGoldOrgObjs = await fetchAndParseCsvFile(
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/jgi/jgi_gold_organism_geo.csv",
         );
-        const jgiGoldOrgMarkersLayerGroup = L.layerGroup();
+        const jgiGoldOrgMarkers = [];
         jgiGoldOrgObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
           const url = `https://gold.jgi.doe.gov/organism?id=${identifier}`;
           const popupHtml = `JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
-          const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          jgiGoldOrgMarkersLayerGroup.addLayer(marker);
+          const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
+          jgiGoldOrgMarkers.push(marker);
         });
-        markerClusterGroup.addLayers(jgiGoldOrgMarkersLayerGroup);
+        markerClusterGroup.addLayers(jgiGoldOrgMarkers);
         console.debug(`Created ${jgiGoldOrgObjs.length} markers.`);
 
         // Fetch the EMSL JSON (not CSV) file and create a marker for each element of its top-level array.
@@ -273,7 +331,7 @@
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/emsl/latlon_project_ids.json",
         );
         const emslObjs = await response.json();
-        const emslMarkersLayerGroup = L.layerGroup();
+        const emslMarkers = [];
         console.debug("Fetching and parsing finished.", { data: emslObjs });
         emslObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
@@ -281,10 +339,10 @@
           const url = `https://sc-data.emsl.pnnl.gov/?projectId=${obj["proposal_id"]}`;
           const popupHtml = `EMSL<br/><a href="${url}" target="_blank" title="View project">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/emsl-20x20.png" });
-          const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          emslMarkersLayerGroup.addLayer(marker);
+          const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
+          emslMarkers.push(marker);
         });
-        markerClusterGroup.addLayers(emslMarkersLayerGroup);
+        markerClusterGroup.addLayers(emslMarkers);
         console.debug(`Created ${emslObjs.length} markers.`);
 
         // Set up the address-based search widget.
@@ -297,6 +355,65 @@
 
         // Hide the spinner.
         document.getElementById("spinner").setAttribute("hidden", "hidden");
+
+        // Handle the toggling of marker visibility.
+        //
+        // Note: Because we are using the `Leaflet.markercluster` plugin, we
+        //       take the approach shown in that plugin's documentation. When
+        //       we tried taking the approach shown in the Leaflet
+        //       documentation, we were able to hide layers of markers via a
+        //       widget at the upper right corner of the map, but the clusters
+        //       seemed to be layers-specific (i.e. NMDC markers were not being
+        //       clustered with ESS-Dive markers).
+        //
+        // Reference: https://github.com/Leaflet/Leaflet.markercluster?tab=readme-ov-file#bulk-adding-and-removing-markers
+        //
+        const markerTogglers = {
+          nmdc: {
+            togglerEl: document.getElementById("nmdc-markers-toggler"),
+            markers: nmdcMarkers,
+          },
+          essDive: {
+            togglerEl: document.getElementById("ess-dive-markers-toggler"),
+            markers: essDiveMarkers,
+          },
+          jgiGoldBsm: {
+            togglerEl: document.getElementById("jgi-gold-bsm-markers-toggler"),
+            markers: jgiGoldBsmMarkers,
+          },
+          jgiGoldOrg: {
+            togglerEl: document.getElementById("jgi-gold-org-markers-toggler"),
+            markers: jgiGoldOrgMarkers,
+          },
+          emsl: {
+            togglerEl: document.getElementById("emsl-markers-toggler"),
+            markers: emslMarkers,
+          },
+        };
+        // Attach an event listener to each toggler so that, whenever someone
+        // clicks the toggler, a callback function is invoked. The callback
+        // function will synchronize the marker visibility with the togglers.
+        Object.keys(markerTogglers).forEach((markerTogglerKey) => {
+          const markerTogglerEl = markerTogglers[markerTogglerKey].togglerEl;
+          const markerTogglerMarkers = markerTogglers[markerTogglerKey].markers;
+          markerTogglerEl.addEventListener("change", function (event) {
+            // Toggle the visibility of the markers associated with this toggler.
+            //
+            // Note: The `Leaflet.markercluster` plugin's documentation says it
+            //       "will almost definitely be better to" clear all layers,
+            //       and then re-add the ones we want to be visibile. However,
+            //       in our testing, that approach was slower (i.e. bogged down
+            //       the UI more) compared to the approach we are taking, which
+            //       is to only manipulate those markers that are associated
+            //       with the specific toggler that was "change"-ed.
+            //
+            if (event.target.checked) {
+              markerClusterGroup.addLayers(markerTogglerMarkers);
+            } else {
+              markerClusterGroup.removeLayers(markerTogglerMarkers);
+            }
+          });
+        });
       })();
     </script>
   </body>
