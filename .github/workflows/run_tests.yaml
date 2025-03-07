@@ -1,0 +1,55 @@
+name: Lint and Test
+
+on:
+    workflow_call:
+
+jobs:
+    run_linkml_tasks:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+
+        steps:
+            - name: Repo checkout
+              uses: actions/checkout@main
+
+            - name: Set up Python 3.12
+              uses: actions/setup-python@main
+              with:
+                  python-version: 3.12
+
+            # - name: Install dependencies
+            #   id: install_deps
+            #   run: pip install linkml check-jsonschema 'jsonschema[format]'
+
+            # - name: Lint linkml file
+            #   id: lint_linkml
+            #   run: |
+            #       linkml-lint ./schema/bertron/linkml/common_data_model.yaml --ignore-warnings
+            #   continue-on-error: true
+
+            # - name: Validate sample data against the schema
+            #   id: validate_sample_data
+            #   run: |
+            #       linkml-validate -s schema/bertron/linkml/common_data_model.yaml sample_data/**/*.json
+            #   continue-on-error: true
+
+            # - name: Validate sample data against JSONschema
+            #   id: validate_sample_data_against_jsonschema
+            #   run: |
+            #       check-jsonschema --schemafile schema/bertron/jsonschema/common_data_model.schema.json --verbose sample_data/**/*.json
+            #   continue-on-error: true
+
+            # - name: outcome failure
+            #   if: steps.lint_linkml.outcome != 'success' # || steps.validate_sample_data.outcome != 'success'
+            #   run: |
+            #       echo "linkml linting: ${{ steps.lint_linkml.outcome }}"
+            #       echo "sample data validation: ${{ steps.validate_sample_data.outcome }}"
+            #       exit 1
+
+            # - name: outcome success
+            #   if: steps.lint_linkml.outcome == 'success' # && steps.validate_sample_data.outcome == 'success'
+            #   run: |
+            #       echo "linkml linting: ${{ steps.lint_linkml.outcome }}"
+            #       echo "sample data validation: ${{ steps.validate_sample_data.outcome }}"
+            #       exit 0
