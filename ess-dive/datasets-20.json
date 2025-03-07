@@ -1,0 +1,2236 @@
+[
+    {
+        "id": "ess-dive-a66bd8e860fd5d2-20250307T000457833",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2524589",
+        "alternate_ids": "",
+        "name": "Model Scripts for \"Old-Aged Groundwater Contributes to Mountain Hillslope Hydrologic Dynamics\"",
+        "description": "The partitioning of water inputs between deep and shallow groundwater flow paths is a fundamental processes, yet is challenging to observe. Numerical models provide a valuable tool to further develop insights on these groundwater mixing processes. This repository contains scripts to run the ParFlow-CLM and EcoSLIM integrated hydrologic models along the Pumphouse Hillslope in the East River Watershed and associated python scripts to process model outputs. Files includes input decks for the associated models, python scripts, and text and css files to support the model runs and processing. The 2-D hillslope model simulates from 2000 to 2021 using transient forcing conditions from the publicly available NLDAS-2 dataset. We develop an ensemble of models with variable hydrogeologic and soil parameters. Model outputs from the ensemble of runs are compared to to water level observations at the PLM1 and PLM6 wells published at (https://data.ess-dive.lbl.gov/view/doi:10.15485/1866836) and groundwater mean ages published at (https://data.ess-dive.lbl.gov/datasets/doi:10.15485/1960042. The model results are used to evaluate hillslope water mass-balance transience and mixing dynamics between groundwater flow paths with young (<10 year) and old (>10 year) ages.",
+        "date_uploaded": "2025-03-07T00:04:58.444Z",
+        "award": "",
+        "citation": [
+            "Groundwater Age Analysis data package:Thiros N ; Siirila-Woodburn E ; Dennedy-Frank P J ; Williams K ; Gardner W P (2023): Constraining Bedrock Groundwater Residence Times in a Mountain System with Environmental Tracer Observations and Bayesian Uncertainty Quantification: Modeling and Data Package. Watershed Function SFA, ESS-DIVE repository. Dataset. doi:10.15485/1960042 accessed via https://data.ess-dive.lbl.gov/datasets/doi:10.15485/1960042 on 2024-03-27",
+            "Groundwater Level Observations:Faybishenko B ; Versteeg R ; Williams K ; Carroll R ; Dong W ; Tokunaga T ; O'Ryan D (2023): QA/QC-ed Groundwater Level Time Series in PLM-1 and PLM-6 Monitoring Wells, East River, Colorado (2016-2022). Watershed Function SFA, ESS-DIVE repository. Dataset. doi:10.15485/1866836 accessed via https://data.ess-dive.lbl.gov/datasets/doi:10.15485/1866836 on 2024-03-27",
+            "Additional metadata on specific locations within the watershed are provided in the following related data package:",
+            "Varadharajan C ; Burrus M ; O'Ryan D ; Kakalia Z ; Alper E ; Banfield J ; Berkelhammer M ; Beutler C ; Brodie E ; Brown W ; Carbone M S ; Carroll R ; Christianson D ; Chou C ; Crystal-Ornelas R ; Chadwick K D ; Christensen J ; Dafflon B ; de Boer G ; Elbashandy H ; Enquist B J ; Feldman D ; Fox P ; Gilbert B ; Gochis D ; Henderson M ; Johnson D ; Kueppers L ; Li L ; Matheus Carnevali P ; Newman A ; Powell T ; Singha K ; Sorensen P ; Sprenger M ; Tokunaga T ; Versteeg R ; Wilkins M ; Williams K ; Worsham M ; Wong C ; Wu Y ; Zhang D ; Agarwal D (2023): Location Identifiers, Metadata, and Map for Field Measurements at the East River Watershed, Colorado, USA (Version 3.1). Watershed Function SFA, ESS-DIVE repository. Dataset. doi:10.15485/1660962"
+        ],
+        "doi": "doi:10.15485/2524589",
+        "associated_researchers": [
+            {
+                "name": "Eoin Brodie",
+                "email": "elbrodie@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Nicholas Thiros",
+                "email": "nthiros@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Nicholas Thiros",
+                "email": "nthiros@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Erica Siirila-Woodburn",
+                "email": "erwoodburn@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Kenneth Williams",
+                "email": "khwilliams@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Matthias Sprenger",
+                "email": "msprenger@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Rosemary Carroll",
+                "email": "Rosemary.Carroll@dri.edu",
+                "affiliation": "Desert Research Institute",
+                "role": "Creator"
+            },
+            {
+                "name": "Payton Gardner",
+                "email": "payton.gardner@mso.umt.edu",
+                "affiliation": "University of Montana",
+                "role": "Creator"
+            },
+            {
+                "name": "James Dennedy-Frank",
+                "email": "pjdf@northeastern.edu",
+                "affiliation": "Northeastern University",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-b8764d466d15255-20250307T000152589",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2473235",
+        "alternate_ids": "",
+        "name": "Geochemistry and Strontium Isotopes for Coal Creek Watershed, Colorado, 2021-2022",
+        "description": "The geochemistry and strontium isotope data for Coal Creek Watershed, Colorado, consists of cation, anion, and 87Sr/87Sr isotope values from samples collected at 8 stream location along Coal Creek, samples from two groundwater springs within the watershed, and a shallow subsurface piezometer. All stream and spring samples were collected between June and October, 2021, and the shallow, near stream piezometer sample was collected in July of 2022. These data were collected to evaluate how groundwater contributions to Coal Creek originating from shallow vs deep flow paths respond seasonal drying. Understanding of groundwater-surface water interactions in montane systems in critical for the future of water availability in the Western US as groundwater contributions are expected to become more important for sustaining summer stream flows. This data package contains: (1) a csv of all cation samples; (2) a csv of all anion samples; (3) a csv of all 87Sr/87Sr isotope samples; and (4) a csv of locations for each sampling site. The dataset additionally includes a file-level metadata (flmd.csv) file that lists each file contained in the dataset with associated metadata; and a data dictionary (dd.csv) file that contains column/row headers used throughout the files along with a definition, units, and data type.",
+        "date_uploaded": "2025-03-07T00:01:53.346Z",
+        "award": [
+            "DE-AC02-05CH11231"
+        ],
+        "citation": [
+            "Johnson, K., Williams, K.H., Christensen, J.N., Carroll, R.W.H., Li, L., Beutler, C., Dong, W., Sullivan, P.L. (2025). Hidden features: how subsurface and anthropogenic features govern hydrologic connectivity and stream chemistry in a montane catchment. Hydrologic Processes. 10.1002/hyp.70085",
+            "Additional metadata on specific locations within the watershed are provided in the following related data package:",
+            "Varadharajan C ; Burrus M ; O'Ryan D ; Kakalia Z ; Alper E ; Banfield J ; Berkelhammer M ; Beutler C ; Brodie E ; Brown W ; Carbone M S ; Carroll R ; Christianson D ; Chou C ; Crystal-Ornelas R ; Chadwick K D ; Christensen J ; Dafflon B ; de Boer G ; Elbashandy H ; Enquist B J ; Feldman D ; Fox P ; Gilbert B ; Gochis D ; Henderson M ; Johnson D ; Kueppers L ; Li L ; Matheus Carnevali P ; Newman A ; Powell T ; Singha K ; Sorensen P ; Sprenger M ; Tokunaga T ; Versteeg R ; Wilkins M ; Williams K ; Worsham M ; Wong C ; Wu Y ; Zhang D ; Agarwal D (2023): Location Identifiers, Metadata, and Map for Field Measurements at the East River Watershed, Colorado, USA (Version 3.1). Watershed Function SFA, ESS-DIVE repository. Dataset. doi:10.15485/1660962"
+        ],
+        "doi": "doi:10.15485/2473235",
+        "associated_researchers": [
+            {
+                "name": "Eoin Brodie",
+                "email": "elbrodie@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Keira Johnson",
+                "email": "johnkeir@oregonstate.edu",
+                "affiliation": "Oregon State University",
+                "role": "Editor"
+            },
+            {
+                "name": "Keira Johnson",
+                "email": "johnkeir@oregonstate.edu",
+                "affiliation": "Oregon State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Kenneth Williams",
+                "email": "khwilliams@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "John Christensen",
+                "email": "JNChristensen@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Curtis Beutler",
+                "email": "cbeutler@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Wenming Dong",
+                "email": "wenmingdong@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Pamela Sullivan",
+                "email": "Pamela.Sullivan@oregonstate.edu",
+                "affiliation": "Oregon State University",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-3e3ca22cd60ddff-20250306T002220912",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2507279",
+        "alternate_ids": "",
+        "name": "Data from TropiRoot 1.0 database: tropical root characteristics across environments",
+        "description": "TropiRoot 1.0 is a new tropical root database with root characteristics across environment gradients. It has data extracted from 107 new sources, resulting in more than 8000 rows of data (either species or community data). Most of the data in TropiRoot 1.0 includes root characteristics such as root biomass, morphology, root dynamics, mass fraction, architecture, anatomy, physiology and root chemistry. This initiative represents an approximately 30% increase in the currently available data for tropical roots in the Fine Root Ecology Database (FRED). TropiRoot 1.0, contains root characteristics from 25 different countries where seven are located in Asia, six in South America, five in Central America and the Caribbean, four in Africa, two in North America, and 1 in Oceania. Due to the volume of data, when ancillary data was available, including soil data, these data was either extracted and included in the database or their availability was recorded in an additional column. Multiple contributors checked the entries for outliers during the collation process to ensure data quality. For text-based observations, we examined all cells to ensure that their content relates to their specific categories. For numerical observations, we ordered each numerical value from least to greatest and plotted the values, checking apparent outliers against the data in their respective sources and correcting or removing incorrect or impossible values. Some data (soil and aboveground) have different columns for the same variable presented in different units, including originally published units, but root characteristics data had units converted to match the ones reported in FRED. By filling a gap from global databases, TropiRoot 1.0 expands our knowledge of otherwise so far underrepresented regions, and our ability to assess global trends. This advancement can be used to improve tropical forest representation in vegetation models.",
+        "date_uploaded": "2025-03-06T00:22:22.541Z",
+        "award": [
+            "SC0025253"
+        ],
+        "citation": [
+            "REFERENCES - JOURNAL ARTICLE(S)",
+            "Cusack DF, Addo-Danso SD, Agee EA, Andersen KM, Arnaud M, Batterman SA, Brearley FQ, Ciochina MI, Cordeiro AL, Dallstream C, Diaz-Toribio MH, Dietterich LH, Fisher JB, Fleischer K, Fortunel C, Fuchslueger L, Guerrero-Ram\u00edrez NR, Kotowska MM, Lugli LF, Mar\u00edn C, McCulloch LA, Maeght J-L, Metcalfe D, Norby RJ, Oliveira RS, Powers JS, Reichert T, Smith SW, Smith-Martin CM, Soper FM, Toro L, Uma\u00f1a MN, Valverde-Barrantes O, Weemstra M, Werden LK, Wong M, Wright CL, Wright SJ, Yaffar D. 2021. Tradeoffs and Synergies in Tropical Forest Root Traits and Dynamics for Nutrient and Water Acquisition: Field and Modeling Advances. Frontiers in Forests and Global Change 4. https://doi.org/10.3389/ffgc.2021.704469",
+            "Cusack, D. F., B. Christoffersen, C. M. Smith-Martin, K. M. Andersen, A. L. Cordeiro, K. Fleischer, S. J. Wright, N. R. Guerrero-Ramirez, L. F. Lugli, L. A. McCulloch, M. Sanchez-Julia, S. A. Batterman, C. Dallstream, C. Fortunel, L. Toro, L. Fuchslueger, M. Y. Wong, D. Yaffar, J. B. Fisher, M. Arnaud, L. H. Dietterich, S. D. Addo-Danso, O. J. Valverde-Barrantes, M. Weemstra, J. C. Ng, and R. J. Norby. 2024. Toward a coordinated understanding of hydro-biogeochemical root functions in tropical forests for application in vegetation models. New Phytol. https://doi.org/10.1111/nph.19561",
+            "Iversen, C.M. and McCormack, M.L. (2021), Filling gaps in our understanding of belowground plant traits across the world: an introduction to a Virtual Issue. New Phytol, 231: 2097-2103. https://doi.org/10.1111/nph.17326",
+            "McCormack ML, Powell AS, Iversen CM. 2018. Better plant data at the root of ecosystem models. Eos 99. https://doi.org/10.1029/2018EO104093",
+            "Iversen CM, McCormack ML, Powell AS, Blackwood CB, Freschet GT, Kattge J, Roumet C, Stover DB, Soudzilovskaia NA, Valverde-Barrantes OJ, van Bodegom PM, Violle C. 2017. Viewpoints: A global Fine-Root Ecology Database to address belowground challenges in plant ecology. New Phytologist 215: 15-26. https://doi.org/10.1111/nph.14459",
+            "SOURCE DATA",
+            "This synthesis dataset compiles data from 104 related journal articles. More information describing the journal articles is provided in the TropiRoot_Database_1_0.csv dataset file."
+        ],
+        "doi": "doi:10.15485/2507279",
+        "associated_researchers": [
+            {
+                "name": "Jennifer Powers",
+                "email": "powers@umn.edu",
+                "affiliation": "University of Minnesota",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Amanda L. Cordeiro",
+                "email": "alonghicordeiro@gmail.com",
+                "affiliation": "University of Minnesota - St. Paul",
+                "role": "Editor"
+            },
+            {
+                "name": "Amanda L. Cordeiro",
+                "email": "alonghicordeiro@gmail.com",
+                "affiliation": "University of Minnesota - St. Paul",
+                "role": "Creator"
+            },
+            {
+                "name": "Daniela F. Cusack",
+                "email": "Daniela.Cusack@colostate.edu",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Nathaly Guerrero-Ram\u00edrez",
+                "email": "nathaly.guerrero-ramirez@forst.uni-goettingen.de",
+                "affiliation": "Biodiversity, Macroecology and Biogeography, Faculty of Forest Sciences and Forest Ecology, University of G\u00f6ttingen, G\u00f6ttingen, Germany; Centre of Biodiversity and Sustainable Land Use, University of G\u00f6ttingen, G\u00f6ttingen, Germany",
+                "role": "Creator"
+            },
+            {
+                "name": "Richard J. Norby",
+                "email": "rnorby@utk.edu",
+                "affiliation": "University of Tennessee",
+                "role": "Creator"
+            },
+            {
+                "name": "Laura Toro",
+                "email": "lauratg11@gmail.com",
+                "affiliation": "Science and Conservation Division, Missouri Botanical Garden, Saint Louis, MO, USA",
+                "role": "Creator"
+            },
+            {
+                "name": "Michelle Y. Wong",
+                "email": "michelle.y.wong@yale.edu",
+                "affiliation": "Yale University",
+                "role": "Creator"
+            },
+            {
+                "name": "S. Joseph Wright",
+                "email": "wrightj@si.edu",
+                "affiliation": "Smithsonian Tropical Research Institute",
+                "role": "Creator"
+            },
+            {
+                "name": "Kristine Grace M. Cabugao",
+                "email": "kristine.grace.cab@gmail.com",
+                "affiliation": "The Nature Conservancy",
+                "role": "Creator"
+            },
+            {
+                "name": "Kelly M. Andersen",
+                "email": "kelly.andersen.m@gmail.com",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Lucia Fuchslueger",
+                "email": "lucia.fuchslueger@univie.ac.at",
+                "affiliation": "Centre for Microbiology and Environmental Systems Science, University of Vienna, Djerassiplatz 1, 1030 Vienna, Austria (second affiliaton: Environment and Climate Hub, University of Vienna, Althanstrasse 2-6, 1090 Vienna, Austria)",
+                "role": "Creator"
+            },
+            {
+                "name": "Colleen M. Iversen",
+                "email": "iversencm@ornl.gov",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Fiona Soper",
+                "email": "fiona.soper@mcgill.ca",
+                "affiliation": "McGill University",
+                "role": "Creator"
+            },
+            {
+                "name": "Om Prakash Ghimire",
+                "email": "oghimir@g.clemson.edu",
+                "affiliation": "Clemson University",
+                "role": "Creator"
+            },
+            {
+                "name": "Laynara F. Lugli",
+                "email": "laynara.lugli@tum.de",
+                "affiliation": "Technical University of Munich",
+                "role": "Creator"
+            },
+            {
+                "name": "Ana Caroline Miron",
+                "email": "carol.miron0@gmail.com",
+                "affiliation": "University of Hamburg",
+                "role": "Creator"
+            },
+            {
+                "name": "Oscar Valverde-Barrantes",
+                "email": "os.valverde33@gmail.com",
+                "affiliation": "Department of Biological Sciences, Institute of Environment, International Center of Tropical Botany, Florida International University, Miami, FL 33199 USA.",
+                "role": "Creator"
+            },
+            {
+                "name": "Marie Arnaud",
+                "email": "m.arnaudd@gmail.com",
+                "affiliation": "CNRS, Sorbonne Universit\u00e9, INRAE, Institut of Ecology and Environmental Sciences (IEES), Paris, France",
+                "role": "Creator"
+            },
+            {
+                "name": "Sarah Batterman",
+                "email": "battermans@caryinstitute.org",
+                "affiliation": "Cary Institute of Ecosystem Studies, University of Leeds, Smithsonian Tropical Research Institute",
+                "role": "Creator"
+            },
+            {
+                "name": "Lee H. Dietterich",
+                "email": "lee.dietterich@gmail.com",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Ming Yang Lee",
+                "email": "leemingy001@e.ntu.edu.sg",
+                "affiliation": "Nanyang Technological University",
+                "role": "Creator"
+            },
+            {
+                "name": "Monique Weemstra",
+                "email": "moniqueweemstra@hotmail.com",
+                "affiliation": "University of Michigan",
+                "role": "Creator"
+            },
+            {
+                "name": "Daniela Yaffar",
+                "email": "danielayaffar@gmail.com",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Shalom D. Addo-Danso",
+                "email": "shalomdanso@gmail.com",
+                "affiliation": "CSIR-Forestry Research Institute of Ghana",
+                "role": "Creator"
+            },
+            {
+                "name": "Kerstin Pierick",
+                "email": "kerstin.pierick@uni-goettingen.de",
+                "affiliation": "University of G\u00f6ttingen",
+                "role": "Creator"
+            },
+            {
+                "name": "Ryan Bridges",
+                "email": "ryanbridges1045@gmail.com",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Carina Easton",
+                "email": "carinaeaston@gmail.com",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Isabella Felsing",
+                "email": "Isabella.Felsing@colostate.edu",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Nathan B. Gon\u00e7alves",
+                "email": "nathanborges@gmail.com",
+                "affiliation": "Michigan State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Riley Krudop",
+                "email": "Riley.Krudop@colostate.edu",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Mason R. McKinzie",
+                "email": "masonmckinzie14@gmail.com",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Julia Perbohner",
+                "email": "j.perbohner@gmail.com",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Alejandra N. Pozzoli-Oropeza",
+                "email": "alejandrapozzoli@gmail.com",
+                "affiliation": "Biodiversity, Macroecology and Biogeography, Faculty of Forest Sciences and Forest Ecology, University of G\u00f6ttingen, G\u00f6ttingen, Germany; Centre of Biodiversity and Sustainable Land Use, University of G\u00f6ttingen, G\u00f6ttingen, Germany",
+                "role": "Creator"
+            },
+            {
+                "name": "Mirna Samaniego",
+                "email": "SAMANIEM@si.edu",
+                "affiliation": "Smithsonian Tropical Research Institute",
+                "role": "Creator"
+            },
+            {
+                "name": "Alex W. Smilor",
+                "email": "alexws23@colostate.edu",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Ilana S. Vargas",
+                "email": "ilanasvargas@gmail.com",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Layna Webb",
+                "email": "Layna.Webb@colostate.edu",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Teddy Nikitin",
+                "email": "TNikitin@mortonarb.org",
+                "affiliation": "The Morton Arboretum",
+                "role": "Creator"
+            },
+            {
+                "name": "Jennifer S. Powers",
+                "email": "powers@umn.edu",
+                "affiliation": "University of Minnesota - St. Paul",
+                "role": "Creator"
+            },
+            {
+                "name": "M. Luke McCormack",
+                "email": "lmccormack@mortonarb.org",
+                "affiliation": "The Morton Arboretum",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-4d4964c3c447a6b-20250304T233919265",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2425968",
+        "alternate_ids": "",
+        "name": "Radiocarbon of soil CO2 efflux and soils with experimental soil warming and drying in lowland tropical forests in Panama",
+        "description": "In 2019, we measured the \u039414C and \u03b413C of soil respired carbon dioxide (CO2) in Panamanian forests that are subject to either in situ experimental soil warming (4C above ambient temperature to 1.2 m depth) or in situ experimental drying (50% throughfall exclusion). The warming site and one drying site are both within the Barro Colorado Nature Monument in nearby and similar forests on similar soils, enabling direct comparison of warming and drying effects on soil CO2 efflux. A second drying experiment is on the northern side of the Panama Isthmus on infertile soils where mean annual precipitation is greater, representative of a broad geographic area of the tropics. Given the seasonality of these forests, we performed measurements at stages of the seasonal cycle for which we expected the largest variation in CO2 efflux between control and experimental plots based on previous studies \u2013 the wet season (October-December) and dry season (March/April) or dry-to-wet season transition (May). This dataset includes \u039414C and \u03b413C of in situ soil surface CO2 flux as well as CO2 flux rates, volumetric soil moisture, soil temperature, and calculated partitioning of the fraction of total soil respiration from heterotrophs vs roots at the time of isotope sampling in AllSites_SoilResp_14C_data.xlsx. This dataset also includes \u039414C and \u03b413C of bulk soil, density fractions, and CO2 respired during laboratory incubations in AllSites_bulk_soil14C.xlsx. Datafiles are also available in csv format.",
+        "date_uploaded": "2025-03-04T23:39:24.643Z",
+        "award": [
+            "DE-AC52-07NA27344"
+        ],
+        "citation": [
+            "Karis McFarlane, Daniela Cusack, Lee Dietterich et al. Experimental Warming and Drying Increase the Age of Soil Respired Carbon in Lowland Tropical Forests, 24 October 2023, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-3409233/v1]"
+        ],
+        "doi": "doi:10.15485/2425968",
+        "associated_researchers": [
+            {
+                "name": "Karis McFarlane",
+                "email": "mcfarlane3@llnl.gov",
+                "affiliation": "Lawrence Livermore National Laboratory",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Karis McFarlane",
+                "email": "mcfarlane3@llnl.gov",
+                "affiliation": "",
+                "role": "Editor"
+            },
+            {
+                "name": "Karis McFarlane",
+                "email": "mcfarlane3@llnl.gov",
+                "affiliation": "Lawrence Livermore National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Daniela Cusack",
+                "email": "Daniela.Cusack@colostate.edu",
+                "affiliation": "Colorado State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Andrew Nottingham",
+                "email": "A.Nottingham@leeds.ac.uk",
+                "affiliation": "University of Leeds",
+                "role": "Creator"
+            },
+            {
+                "name": "Kari Finstad",
+                "email": "finstad1@llnl.gov",
+                "affiliation": "Lawrence Livermore National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Alexandra Hedgpeth",
+                "email": "",
+                "affiliation": "",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-5492d7b0cb4dc5f-20250304T214840948",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2479200",
+        "alternate_ids": "",
+        "name": "COMPASS-FME Terrestrial Ecosystem Manipulation to Probe the Effects of Storm Treatments (TEMPEST) Experiment Level 1 Sensor Data v1-2",
+        "description": "This is the version 1-2 Level 1 (L1) data release for COMPASS-FME environmental sensors located at our Terrestrial Ecosystem Manipulation to Probe the Effects of Storm Treatments (TEMPEST) experimental site. This manipulative, ecosystem-scale TEMPEST experiment addresses the potential for freshwater and estuarine-water disturbance events to alter tree function, species composition, and ecosystem processes in a deciduous coastal forest in MD, USA. The experiment uses a large-unit (2000 m2), un-replicated experimental design, with three 50 m\u2009\u00d7\u200940 m plots serving as control, freshwater, and estuarine-water treatments.\nL1 data are close to raw, but are units-transformed and have out-of-instrument-bounds and out-of-service flags added. Duplicates and missing data are removed but otherwise these data are not filtered, and have not been subject to any additional algorithmic or human QA/QC. Any scientific analyses of L1 data should be performed with care. **This dataset will be updated quarterly with new data for the duration of the project**\nThis dataset includes:\n- An overall dataset README file that describes the current version, gives citation and contact information, etc.\n- Site- and year-specific folders, each holding up to 12 CSV (comma separated value) data files for each site and plot in that year.\n- Metadata files within each site-year folder provide full information on data units, expected ranges, contact information, detailed flood times, as well as a general description of the site.\n- Environmental sensor types that appear in the data files include weather (ClimaVUE50, CS, RM Young, and LI instruments in the graphs below); soil conditions (TEROS12); soil redox state (Redox); groundwater variables (AquaTROLL200 and AquaTROLL600); open water sondes (Exo); tree sap velocity (Sapflow); and system voltage and state (Datalogger). Data are normally logged every 15 minutes.\nPlease see v1-2 TEMPEST L1 Sensor Package Quick Start.pdf for detailed information on data package structure, temporal coverage, and versioning.\nThe TEMPEST flood events occurred on the following dates. They lasted for ~10 hours each day and delivered ~80,000 gallons to each plot; many data streams are available at 1 or 5 minute frequency during these periods.\n* Tests: Aug 25 (fresh plot) and Sep 9 (salt plot), 2021\n* TEMPEST 1: June 22, 2022\n* TEMPEST 2: June 6-7, 2023\n* TEMPEST 3: June 11-13, 2024",
+        "date_uploaded": "2025-03-04T21:48:42.291Z",
+        "award": "",
+        "citation": "",
+        "doi": "doi:10.15485/2479200",
+        "associated_researchers": [
+            {
+                "name": "Vanessa Bailey",
+                "email": "Vanessa.Bailey@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Stephanie C. Pennington",
+                "email": "stephanie.pennington@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Editor"
+            },
+            {
+                "name": "Stephanie C. Pennington",
+                "email": "stephanie.pennington@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            },
+            {
+                "name": "Ben Bond-Lamberty",
+                "email": "BondLamberty@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            },
+            {
+                "name": "Roy Rich",
+                "email": "richr@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Selina Cheng",
+                "email": "Selina.Cheng@unh.edu",
+                "affiliation": "University of New Hampshire",
+                "role": "Creator"
+            },
+            {
+                "name": "Peter Regier",
+                "email": "peter.regier@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            },
+            {
+                "name": "Alice Stearns",
+                "email": "stearnsa@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Evans Phillips",
+                "email": "phillipse@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Drew Peresta",
+                "email": "perestaa@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "J. Patrick Megonigal",
+                "email": "megonigalp@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Vanessa Bailey",
+                "email": "vanessa.bailey@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-123affc5bf658e5-20250304T212031404",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2526685",
+        "alternate_ids": "",
+        "name": "PreSens Dissolved Oxygen and Temperature Data, Old Woman Creek National Estuarine Research Reserve, Huron, OH, 2022-07-06 to 2023-12-15",
+        "description": "This dataset contains collected dissolved oxygen (DO) and temperature measurements of the air, surface water, and underlying soil of a wetland at Old Woman Creek Estuarine Research Reserve in Huron, OH. Dissolved oxygen and temperature measurements were made in the first few centimeters of wetland sediment to assess how oxygen profiles changed over time with hydrological events.\u00a0Measurements taken outside of the sediment were taken as comparison. Measurements were taken by hand with a PreSens Fibox 4 transmitter, paired with an oxygen dipping probe and temperature sensor, at each field outing. Measurements were taken approximately every 2 weeks around 10 AM EST. The PreSens_DO_Temp_Datafile.csv contains the recorded measurements, and the PreSens_InstallationMethods.csv describes the deployment of the sensor.",
+        "date_uploaded": "2025-03-04T21:20:32.246Z",
+        "award": [
+            "DE-SC0022191"
+        ],
+        "citation": [
+            "Pope T ; Eberhard E ; Morin T ; Senko J ; Monty-Bromer C ; Bohrer G ; Kinsman-Costello L (2025): miniDOT Logger Dissolved Oxygen and Temperature Data of Wetland Surface Water, Old Woman Creek National Estuarine Research Reserve, Huron, OH, 2022-06-15 to 2023-12-15. Rewriting the Redox Paradigm: Dynamic hydrology shapes nutrient and element transformations in a Great Lakes Coastal Estuary, ESS-DIVE repository. Dataset. ess-dive-3875dc3779429d6-20250130T211338113 accessed via https://data.ess-dive.lbl.gov/datasets/ess-dive-3875dc3779429d6-20250130T211338113 (Contains depth measurements of the overlying surface water and further dissolved oxygen measurements in The Cove within the same time period)"
+        ],
+        "doi": "doi:10.15485/2526685",
+        "associated_researchers": [
+            {
+                "name": "Lauren Kinsman-Costello",
+                "email": "lkinsman@kent.edu",
+                "affiliation": "Kent State University",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Lauren Kinsman-Costello",
+                "email": "lkinsman@kent.edu",
+                "affiliation": "Kent State University",
+                "role": "Editor"
+            },
+            {
+                "name": "Erin Eberhard",
+                "email": "ekeberha@mtu.edu",
+                "affiliation": "Kent State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Talia Pope",
+                "email": "tpope8@kent.edu",
+                "affiliation": "Kent State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Timothy Morin",
+                "email": "thmorin@esf.edu",
+                "affiliation": "SUNY College of Environmental Science and Forestry",
+                "role": "Creator"
+            },
+            {
+                "name": "John Senko",
+                "email": "senko@uakron.edu",
+                "affiliation": "University of Akron",
+                "role": "Creator"
+            },
+            {
+                "name": "Chelsea Monty-Bromer",
+                "email": "c.montybromer@csuohio.edu",
+                "affiliation": "Cleveland State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Gil Bohrer",
+                "email": "bohrer.17@osu.edu",
+                "affiliation": "Ohio State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Lauren Kinsman-Costello",
+                "email": "lkinsman@kent.edu",
+                "affiliation": "Kent State University",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-01e8ab563a78be1-20250304T211352752",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2439400",
+        "alternate_ids": "",
+        "name": "COMPASS-FME Synoptic Sites Level 1 Sensor Data v1-2",
+        "description": "This is the version 1-2 Level 1 (L1) data release for COMPASS-FME environmental sensors located at our synoptic field sites. COMPASS-FME is studying sites in two distinct regions, the Chesapeake Bay and the Western Lake Erie Basin. We established the network at seven \"synoptic\" (observational) sites along the Chesapeake Bay and Lake Erie coastlines, collectively generating over three million observations per month, to track and comprehend environmental changes where land and water intersect. Additionally, the two regions provide an interesting contrast of saltwater and freshwater coasts that allow us to differentiate the impacts of inundation and coastal water chemistries in two nationally important coastal systems.\nL1 data are close to raw, but are units-transformed and have out-of-instrument-bounds and out-of-service flags added. Duplicates and missing data are removed but otherwise these data are not filtered, and have not been subject to any additional algorithmic or human QA/QC. Any scientific analyses of L1 data should be performed with care. **This dataset will be updated quarterly with new data for the duration of the project**\nThis dataset includes:\n- An overall dataset README file that describes the current version, gives citation and contact information, etc.\n- Site- and year-specific folders, each holding up to 12 CSV (comma separated value) data files for each site and plot in that year.\n- Metadata files within each site-year folder provide full information on data units, expected ranges, contact information, as well as a general description of the site.\n- Environmental sensor types that appear in the data files include weather (ClimaVUE50, CS, RM Young, and LI instruments in the graphs below); soil conditions (TEROS12); soil redox state (Redox); groundwater variables (AquaTROLL200 and AquaTROLL600); open water sondes (Exo); tree sap velocity (Sapflow); and system voltage and state (Datalogger). Data are normally logged every 15 minutes.\nPlease see v1-2 Synoptic L1 Sensor Package Quick Start.pdf for detailed information on data package structure, temporal coverage, and versioning.",
+        "date_uploaded": "2025-03-04T21:13:55.074Z",
+        "award": "",
+        "citation": [
+            "SITES IN THIS DATASET",
+            "There are a total of 7 sites associated with the dataset. More information on where to find site-specific information, including location, basic ecological context, contact information, and key publication(s) is within the v1-2 Synoptic L1 Sensor Package Quick Start.pdf dataset file.",
+            "REFERENCES - RELATED DATASET(S)",
+            "Pennington, S., et al. (2023) \u201cEXCHANGE Campaign 1: A Community-Driven Baseline Characterization of Soils, Sediments, and Water Across Coastal Gradients\u201d. ESS-DIVE. https://doi.org/10.15485/1960313",
+            "COMPASS Field, Measurements, and Experiments (COMPASS-FME) website, https://compass.pnnl.gov/FME/COMPASSFME"
+        ],
+        "doi": "doi:10.15485/2439400",
+        "associated_researchers": [
+            {
+                "name": "Vanessa Bailey",
+                "email": "Vanessa.Bailey@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Stephanie C. Pennington",
+                "email": "stephanie.pennington@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Editor"
+            },
+            {
+                "name": "Stephanie C. Pennington",
+                "email": "stephanie.pennington@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            },
+            {
+                "name": "Ben Bond-Lamberty",
+                "email": "BondLamberty@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            },
+            {
+                "name": "Roy Rich",
+                "email": "richr@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Selina Cheng",
+                "email": "Selina.Cheng@unh.edu",
+                "affiliation": "University of New Hampshire",
+                "role": "Creator"
+            },
+            {
+                "name": "Roberta Bittencourt Peixoto",
+                "email": "Roberta.BittencourtPeixoto@UToledo.Edu",
+                "affiliation": "University of Toledo",
+                "role": "Creator"
+            },
+            {
+                "name": "Lydia LaGorga",
+                "email": "LaGorgaL@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Fausto Machado-Silva",
+                "email": "fausto.silva@utoledo.edu",
+                "affiliation": "university of tole",
+                "role": "Creator"
+            },
+            {
+                "name": "Kurt Maier",
+                "email": "khm@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            },
+            {
+                "name": "Patrick Megonigal",
+                "email": "megonigalp@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Drew Peresta",
+                "email": "perestaa@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Evan Phillips",
+                "email": "phillipse@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Peter Regier",
+                "email": "peter.regier@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            },
+            {
+                "name": "Leticia Sandoval",
+                "email": "leticia.sandoval@rockets.utoledo.edu",
+                "affiliation": "University of Toledo",
+                "role": "Creator"
+            },
+            {
+                "name": "Alice Stearns",
+                "email": "stearnsa@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Nicholas D. Ward",
+                "email": "nicholas.ward@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            },
+            {
+                "name": "Michael Weintraub",
+                "email": "michael.weintraub@utoledo.edu",
+                "affiliation": "University of Toledo",
+                "role": "Creator"
+            },
+            {
+                "name": "Stephanie J. Wilson",
+                "email": "wilsonsj@si.edu",
+                "affiliation": "Smithsonian Environmental Research Center",
+                "role": "Creator"
+            },
+            {
+                "name": "Vanessa Bailey",
+                "email": "vanessa.bailey@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory (PNNL)",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-8375485eb34dd97-20250304T073447486",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2472942",
+        "alternate_ids": "",
+        "name": "Temperature, Humidity, and Time-Lapse Video Data from the East River Watershed, Water Year 2024",
+        "description": "This dataset contains timelapse videos and distributed measurements of air temperature, relative humidity, dewpoint, and soil temperature across the East River Basin from October 3rd, 2023 to August 12th, 2024. Instruments were deployed in 14 sites as part of the DOE Grant: Seasonal Cycles Unravel Mysteries of Missing Mountain Water organized by lead-PI Dr. Jessica Lundquist (University of Washington), and co-PIs Dr. Rosemary Carroll (Desert Research Institute) and Dr. Ethan Gutmann (National Center for Atmospheric Research). Data are made available for other projects interested in surface climate or hydrologic processes in complex terrain.\nMeasurements are taken with low cost data loggers strapped to trees or buried just below the soil surface. Timelapse videos are availabe from vantage points at three sites. Images from sites AP BONUS and AP5 provide insight into large-scale seasonal snow cover variability across nearby mountains. Images from site EL2 show smaller scale snow patterns across a nearby meadow.\nFiles contained in this dataset are named and organized by site and variable type (air measurements, ground measurements, or timelapse video). Air and ground measurements are packaged in LoggerData.zip, and timelapse videos are stored in TimelapseVideos.zip. File-level metadata contains details for each file included in the dataset. A data dictionary provides units and descriptions for column or row names in all files. Locations metadata describes site characteristics, locations, and associated GPS methods.\nDataset update 2025-03-03: Resolved header and datetime formatting inconsistencies within LoggerData.zip files KP1_Air, KP3_Air, KP3_Ground, KP6_Ground, AP3_Ground, AP4_Air, and AP6_Air.",
+        "date_uploaded": "2025-03-04T07:34:48.367Z",
+        "award": [
+            "DE-SC0024075"
+        ],
+        "citation": [
+            "Lundquist J ; Hallnan R ; Roche J ; Forester H ; Ammatelli J ; Cramblitt J ; Moore C ; Fong C ; Besso H ; Templeton J ; Perry G ; Henn B ; Cayan D ; Dettinger M (2024): Streamflow measurements from four sites on the Tuolumne River in Yosemite National Park from Water Years 2002 to 2021. Seasonal Cycles Unravel Mysteries of Missing Mountain Water, ESS-DIVE repository. Dataset. doi:10.15485/2324637 accessed via https://data.ess-dive.lbl.gov/datasets/doi:10.15485/2324637 on 2024-10-14",
+            "Carroll R ; Newman A ; Beutler C ; Williams K ; O'Ryan D (2023): Stream discharge and temperature data collected within the East River, Colorado for the Lawrence Berkeley National Laboratory Watershed Function Science Focus Area (water years 2019 to 2022). Watershed Function SFA, ESS-DIVE repository. Dataset. doi:10.15485/1779721 accessed via https://data.ess-dive.lbl.gov/datasets/doi:10.15485/1779721 on 2024-10-14"
+        ],
+        "doi": "doi:10.15485/2472942",
+        "associated_researchers": [
+            {
+                "name": "Jessica Lundquist",
+                "email": "jdlund@uw.edu",
+                "affiliation": "University of Washington",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Jessica Lundquist",
+                "email": "jdlund@uw.edu",
+                "affiliation": "University of Washington",
+                "role": "Editor"
+            },
+            {
+                "name": "Jessica Lundquist",
+                "email": "jdlund@uw.edu",
+                "affiliation": "University of Washington",
+                "role": "Creator"
+            },
+            {
+                "name": "Rosemary Carroll",
+                "email": "rosemary.carroll@dri.edu",
+                "affiliation": "Desert Research Institute",
+                "role": "Creator"
+            },
+            {
+                "name": "Ethan Gutmann",
+                "email": "gutmann@ucar.edu",
+                "affiliation": "National Center for Atmospheric Research (NCAR)",
+                "role": "Creator"
+            },
+            {
+                "name": "John Cramblitt",
+                "email": "jcramb@uw.edu",
+                "affiliation": "University of Washington",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-19e50064aae312c-20250304T004733888",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2526687",
+        "alternate_ids": [
+            "paf_374_374"
+        ],
+        "name": "Mineralogy of floodplain sediments from Meanders C, O, and Z in the East River Watershed, CO, USA",
+        "description": "This dataset includes bulk X-ray diffraction data from floodplain sediments collected as a part of the Watershed Function Scientific Focus Area (SFA) located in the Upper Colorado River Basin. The data were collected in order to investigate the role of biogeochemical cycling and other river corridor processes on riverine export of solutes. Sediment cores were collected from Meander C, Meander O, and Meander Z in July 2016 to September 2017 to depths of approximately 40-95 cm. Sample metadata including locations, depths, and sample dates are included in a csv file (\"sample_list_and_locations.csv\"). The file \"diffraction_data.csv\" contains raw diffraction data, and mineral quantification is in the file \"mineral_abundance.csv\". This dataset also includes a file-level metadata (flmd.csv) file that lists each file contained in the dataset with associated metadata and a data dictionary (dd.csv) file that contains column/row headers used throughout the files along with a definition, units, and data type.",
+        "date_uploaded": "2025-03-04T00:47:34.917Z",
+        "award": [
+            "DEAC0205CH11231 (Lawrence Berkeley National Laboratory)"
+        ],
+        "citation": [
+            "Additional metadata on specific locations within the watershed are provided in the following related data package:",
+            "Varadharajan C ; Burrus M ; O'Ryan D ; Kakalia Z ; Alper E ; Banfield J ; Berkelhammer M ; Beutler C ; Brodie E ; Brown W ; Carbone M S ; Carroll R ; Christianson D ; Chou C ; Crystal-Ornelas R ; Chadwick K D ; Christensen J ; Dafflon B ; de Boer G ; Elbashandy H ; Enquist B J ; Feldman D ; Fox P ; Gilbert B ; Gochis D ; Henderson M ; Johnson D ; Kueppers L ; Li L ; Matheus Carnevali P ; Newman A ; Powell T ; Singha K ; Sorensen P ; Sprenger M ; Tokunaga T ; Versteeg R ; Wilkins M ; Williams K ; Worsham M ; Wong C ; Wu Y ; Zhang D ; Agarwal D (2023): Location Identifiers, Metadata, and Map for Field Measurements at the East River Watershed, Colorado, USA (Version 3.1). Watershed Function SFA, ESS-DIVE repository. Dataset. doi:10.15485/1660962"
+        ],
+        "doi": "doi:10.15485/2526687",
+        "associated_researchers": [
+            {
+                "name": "Eoin Brodie",
+                "email": "elbrodie@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Principal Investigator"
+            },
+            {
+                "name": "Patricia Fox",
+                "email": "pmfox@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Sergio Carrero",
+                "email": "sergio.carrero@berkeley.edu",
+                "affiliation": "University of California, Berkeley",
+                "role": "Creator"
+            },
+            {
+                "name": "Patricia Fox",
+                "email": "pmfox@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Peter Nico",
+                "email": "psnico@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-939db401757e797-20250303T155212496",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.5440/1558782",
+        "alternate_ids": [
+            "https://doi.org/10.5440/1558782",
+            "NGA177"
+        ],
+        "name": "NGEE Arctic Tram: Overview of Tram-mounted Instruments, Co-located Data, Measurement Position, Elevation and Polygon Characterization, Utqiagvik (Barrow), Alaska, 2014-2018",
+        "description": "The NGEE-Arctic Tram operated from 2014 - 2018. It was installed on the Barrow Environmental Observatory in Barrow, Alaska in late May of 2014 and operated through mid-November 2014. The subsequent 2015 through 2018 years followed a similar schedule, but with different deployment dates and data gaps, with the goal always to capture the surface dynamics of the snow melt, growing, and freeze-up seasons. This Tram overview dataset has three objectives: (1) provide new data users with a brief description of the Tram system and its research purposes; (2) provide generally useful Tram site characterization details, including measurement position ground surface elevation, characteristics of the Arctic polygonal tundra under the Tram, vegetation community composition (future), and derived image products; and (3) reference all of the data products and archived datasets that were collected with the Tram-mounted sensors and co-located instruments. This dataset contains two csv files, two zipped files, one tif file, and one pdf file.\nThe Next-Generation Ecosystem Experiments: Arctic (NGEE Arctic), was a research effort to reduce uncertainty in Earth System Models by developing a predictive understanding of carbon-rich Arctic ecosystems and feedbacks to climate. NGEE Arctic was supported by the Department of Energy's Office of Biological and Environmental Research. The NGEE Arctic project had two field research sites: 1) located within the Arctic polygonal tundra coastal region on the Barrow Environmental Observatory (BEO) and the North Slope near Utqiagvik (Barrow), Alaska and 2) multiple areas on the discontinuous permafrost region of the Seward Peninsula north of Nome, Alaska. Through observations, experiments, and synthesis with existing datasets, NGEE Arctic provided an enhanced knowledge base for multi-scale modeling and contributed to improved process representation at global pan-Arctic scales within the Department of Energy's Earth system Model (the Energy Exascale Earth System Model, or E3SM), and specifically within the E3SM Land Model component (ELM).",
+        "date_uploaded": "2025-03-03T15:52:14.141Z",
+        "award": [
+            "DE-AC05-00OR22725"
+        ],
+        "citation": "",
+        "doi": "doi:10.5440/1558782",
+        "associated_researchers": [
+            {
+                "name": "Colleen Iversen",
+                "email": "iversencm@ornl.gov",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "Principal Investigator"
+            },
+            {
+                "name": "Margaret Torn",
+                "email": "MSTorn@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Margaret Torn",
+                "email": "mstorn@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Baptiste Dafflon",
+                "email": "bdafflon@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Sigrid Dengel",
+                "email": "sdengel@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Bryan Curtis",
+                "email": "Curtis@colorado.edu",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Oriana Chafe",
+                "email": "oechafe@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Andrew Moyes",
+                "email": "abmoyes@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Shawn Serbin",
+                "email": "sserbin@bnl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Keith Lewin",
+                "email": "lewin@bnl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Amy Breen",
+                "email": "albreen@alaska.edu",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Terri Velliquette",
+                "email": "velliquettet@ornl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Les Hook",
+                "email": "hookla@ornl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Stan Wullschleger",
+                "email": "wullschlegsd@ornl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-5d67cc07bc39073-20250228T161607740",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2526684",
+        "alternate_ids": "",
+        "name": "Porewater and Surface Water Chemistry of Wetland, Old Woman Creek National Estuarine Research Reserve, Huron, OH, 2022-07-06 to 2023-12-15",
+        "description": "This dataset contains the chemistry data of surface water and porewater samples collected from a wetland, referred to as The Cove, at Old Woman Creek Estuarine Research Reserve in Huron, OH. Surface and pore water samples were taken to analyze what nutrient and/or metal constituents were present at different depths in the wetland at different times and to compare to redox potential values. Porewater was collected by constructed sippers and deployed into the underlying soil of the wetland, and they were samples approximately every 2 weeks (when groundwater was present) in 2023. Surface water was collected approximately 1 inch below the surface of the water column (if available) via a syringe. Unfiltered and 0.45 micron filtered samples were collected. Samples were analyzed for various chemistry and is reported in the SWChem (surface water chemistry) and PWChem (porewater chemistry) .csv datafiles. Collection information about the samples can be found within the PWChem_SWChem_SampleMetdata.csv file. All files associated with this dataset are listed in the PWChem_SWChem_FLMD.csv file.",
+        "date_uploaded": "2025-02-28T16:16:01.354Z",
+        "award": [
+            "DE-SC0022191"
+        ],
+        "citation": [
+            "Eberhard E ; Smith C ; Morin T ; Senko J ; Monty-Bromer C ; Bohrer G ; Kinsman-Costello L (2025): Redox Potential of Intermittently Wet Soil, Old Woman Creek National Estuarine Research Reserve, Huron, OH, 2023-05-10 to 2023-12-15. Rewriting the Redox Paradigm: Dynamic hydrology shapes nutrient and element transformations in a Great Lakes Coastal Estuary, ESS-DIVE repository. Dataset. doi:10.15485/2524058 accessed via https://data.ess-dive.lbl.gov/datasets/doi:10.15485/2524058 (Contains redox potential data collected from the same sub-sites within The Cove)",
+            "Eberhard E ; Pope T ; Morin T ; Senko J ; Monty-Bromer C ; Bohrer G ; Kinsman-Costello L (2025): Soil Core Chemistry of Wetland, Old Woman Creek National Estuarine Research Reserve, Huron, OH, 2023-10-24 to 2024-05-20. Rewriting the Redox Paradigm: Dynamic hydrology shapes nutrient and element transformations in a Great Lakes Coastal Estuary, ESS-DIVE repository. Dataset. ess-dive-8885a35d9caff0c-20250210T155234466 accessed via https://data.ess-dive.lbl.gov/datasets/ess-dive-8885a35d9caff0c-20250210T155234466 (Contains soil chemistry data collected from the same sub-sites within The Cove)",
+            "Pope T ; Eberhard E ; Morin T ; Senko J ; Monty-Bromer C ; Bohrer G ; Kinsman-Costello L (2025): miniDOT Logger Dissolved Oxygen and Temperature Data of Wetland Surface Water, Old Woman Creek National Estuarine Research Reserve, Huron, OH, 2022-06-15 to 2023-12-15. Rewriting the Redox Paradigm: Dynamic hydrology shapes nutrient and element transformations in a Great Lakes Coastal Estuary, ESS-DIVE repository. Dataset. ess-dive-39910c0637eaccb-20250210T160805165 accessed via https://data.ess-dive.lbl.gov/datasets/ess-dive-39910c0637eaccb-20250210T160805165 (Contains surface water depth data of The Cove)."
+        ],
+        "doi": "doi:10.15485/2526684",
+        "associated_researchers": [
+            {
+                "name": "Lauren Kinsman-Costello",
+                "email": "lkinsman@kent.edu",
+                "affiliation": "Kent State University",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Lauren Kinsman-Costello",
+                "email": "lkinsman@kent.edu",
+                "affiliation": "Kent State University",
+                "role": "Editor"
+            },
+            {
+                "name": "Erin Eberhard",
+                "email": "ekeberha@mtu.edu",
+                "affiliation": "Kent State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Talia Pope",
+                "email": "tpope8@kent.edu",
+                "affiliation": "Kent State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Timothy Morin",
+                "email": "thmorin@esf.edu",
+                "affiliation": "SUNY College of Environmental Science and Forestry",
+                "role": "Creator"
+            },
+            {
+                "name": "John Senko",
+                "email": "senko@uakron.edu",
+                "affiliation": "University of Akron",
+                "role": "Creator"
+            },
+            {
+                "name": "Chelsea Monty-Bromer",
+                "email": "c.montybromer@csuohio.edu",
+                "affiliation": "Cleveland State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Gil Bohrer",
+                "email": "bohrer.17@osu.edu",
+                "affiliation": "Ohio State University",
+                "role": "Creator"
+            },
+            {
+                "name": "Lauren Kinsman-Costello",
+                "email": "lkinsman@kent.edu",
+                "affiliation": "Kent State University",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-f7b4f8a695ba8e3-20250227T225501084",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2523672",
+        "alternate_ids": "",
+        "name": "Reproductive and leaf litterfall fluxes in forest ecosystem sites globally (1950-2022)",
+        "description": "Forest allocation of net primary productivity (NPP) to reproduction is poorly quantified globally, despite its critical role in forest regeneration and a well-supported trade-off with allocation to growth. Although field measurements of total NPP are rare, our work finds that a proxy for reproductive carbon allocation constructed from leaf (L) and reproductive (R) litterfall fluxes, R/(R+L), is strongly correlated with R/NPP, facilitating analysis across a wide range of sites where biometric estimates of NPP are not available (R\u00b2 = 0.85; Hanbury-Brown et al., 2022, Ward et al., in prep). To investigate relationships between ecosystem-scale reproductive allocation (RA) and climate, soil fertility, and stand age gradients, we conducted a literature search and synthesized 824 observations of annual average leaf and reproductive litterfall fluxes across forest sites globally. The zip file includes\n1) a folder Data/ containing one data (\"GlobalForestRA_data.csv\") and one metadata (\"GlobalForestRA_metadata.doc\") file.\nThe data file includes geographic coordinates, long-term mean annual temperature and precipitation (1970-2000, extracted from WorldClim2.1), leaf and reproductive litterfall fluxes, sampling interval and protocols, forest characteristics (dominant leaf morphology, information pertaining to forest age and successional stage, and disturbance history) and soil properties (% sand, %silt, %clay, total phosphorus (P), nitrogen (N), cation exchange capacity (CEC) and pH) extracted from SoilGrids250 and from on-site measurements, where available. The metadata file contains information about each variable reported in the data file, including data sources, processing methods, and all references.\n2) a folder Scripts/ which contains R scripts and functions used to produce results, figures, and tables in the manuscript Ward et al. (2025)\n3) a README file describing how the Data/ and Scripts/ can be used to reproduce statistical results, figures, and tables found in the manuscript. Ward et al. (2025)\nThe code used to carry out the analysis and generate all figures and tables can also be found at: https://github.com/r-ward/Global_Analysis_ForestRA.\nHanbury-Brown, A.R., Ward, R.E. & Kueppers, L.M. (2022). Forest regeneration within Earth system models: current process representations and ways forward. New Phytol., 235, 20\u201340.\nWard et al. (2025), Forest age rivals climate to explain reproductive allocation patterns in forest ecosystems globally, in prep.",
+        "date_uploaded": "2025-02-27T22:55:01.596Z",
+        "award": "",
+        "citation": [
+            "Ward et al. (2025), Forest age rivals climate to explain reproductive allocation patterns in forest ecosystems globally, in prep."
+        ],
+        "doi": "doi:10.15485/2523672",
+        "associated_researchers": [
+            {
+                "name": "Jeffrey Chambers",
+                "email": "jchambers@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Rachel Ward",
+                "email": "r.ward@berkeley.edu",
+                "affiliation": "Next Generation Ec",
+                "role": "Editor"
+            },
+            {
+                "name": "Rachel Ward",
+                "email": "r.ward@berkeley.edu",
+                "affiliation": "University of California Berkeley, USA",
+                "role": "Creator"
+            },
+            {
+                "name": "Huanyuan Zhang-Zheng",
+                "email": "huanyuan.zhang@ouce.ox.ac.uk",
+                "affiliation": "University of Oxford, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Katharine Abernethy",
+                "email": "k.a.abernethy@stir.ac.uk",
+                "affiliation": "University of Stirling, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Adu-Bredu Stephen",
+                "email": "sabredu@csir-forig.org.gh",
+                "affiliation": "Forest Research Institude of Ghana, Ghana",
+                "role": "Creator"
+            },
+            {
+                "name": "Luzmilla Arroyo",
+                "email": "larroyo@museonoelkempff.org",
+                "affiliation": "Museo de Historia Natural Noel Kempff Mercado, Bolivia",
+                "role": "Creator"
+            },
+            {
+                "name": "Andrew Bailey",
+                "email": "andrew.bailey@ouce.ox.ac.uk",
+                "affiliation": "University of Oxford, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Jos Barlow",
+                "email": "josbarlow@gmail.com",
+                "affiliation": "Lancaster University, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Erika Berenguer",
+                "email": "erikaberenguer@gmail.com",
+                "affiliation": "University of Oxford, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Liana Chesini-Rossi",
+                "email": "lianachesinibio@gmail.com",
+                "affiliation": "Rio de Janeiro Botanical Garden Research Institute, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Percival Cho",
+                "email": "cho.percival@gmail.com",
+                "affiliation": "Science for Sustainability Ltd, Belize",
+                "role": "Creator"
+            },
+            {
+                "name": "Cecilia Dahlsj\u00f6",
+                "email": "cecilia.dahlsjo@ouce.ox.ac.uk",
+                "affiliation": "University of Oxford, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Eder Carvalho das Neves",
+                "email": "ecarvalho625@gmail.com",
+                "affiliation": "Universidade do Estado de Mato Grosso, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Bianca de Oliveira Sales",
+                "email": "biancadeoliveira89@gmail.com",
+                "affiliation": "Universidade do Estado de Mato Grosso, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "William Farfan-Rios",
+                "email": "wfarfan@gmail.com",
+                "affiliation": "Wake Forest University, USA",
+                "role": "Creator"
+            },
+            {
+                "name": "Renata Freitag",
+                "email": "renatafreitagrh@gmail.com",
+                "affiliation": "Universidade do Estado de Mato Grosso, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Joice Nunes Ferreira",
+                "email": "joice.ferreira@embrapa.br",
+                "affiliation": "Embrapa Amaz\u00f4nia Oriental, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "C\u00e9cile Girardin",
+                "email": "cecilegirardin@gmail.com",
+                "affiliation": "University of Oxford, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Walter Huaraca Huasco",
+                "email": "stwamayr@gmail.com",
+                "affiliation": "University of Oxford, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Carlos A. Joly",
+                "email": "cjoly@unicamp.br",
+                "affiliation": "University of Campinas, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Yadvinder Malhi",
+                "email": "yadvinder.malhi@ouce.ox.ac.uk",
+                "affiliation": "University of Oxford, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Beatriz Marimon",
+                "email": "biamarimon@unemat.br",
+                "affiliation": "Universidade do Estado de Mato Grosso, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Ben Hur Marimon Junior",
+                "email": "bhmjunior@gmail.com",
+                "affiliation": "Universidade do Estado de Mato Grosso, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Alexandra C. Morel",
+                "email": "AMorel001@dundee.ac.uk",
+                "affiliation": "University of Dundee, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Karine Peixoto",
+                "email": "karinepeixotobio@gmail.com",
+                "affiliation": "Universidade do Estado de Mato Grosso, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Simone Reis",
+                "email": "simonematiasreis@gmail.com",
+                "affiliation": "Universidade do Estado de Mato Grosso, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Terhi Riutta",
+                "email": "terriu@ceh.ac.uk",
+                "affiliation": "University of Oxford, UK",
+                "role": "Creator"
+            },
+            {
+                "name": "Norma Salinas",
+                "email": "nsalinasr@pucp.pe",
+                "affiliation": "Pontifical Catholic University of Peru, Peru",
+                "role": "Creator"
+            },
+            {
+                "name": "Marina Seixas",
+                "email": "marina.seixas@gmail.com",
+                "affiliation": "Embrapa Amaz\u00f4nia Oriental, Brazil",
+                "role": "Creator"
+            },
+            {
+                "name": "Miles Silman",
+                "email": "silmanmr@wfu.edu",
+                "affiliation": "Wake Forest University, USA",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-f265f7af37e0107-20250227T224411589",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.5440/1410679",
+        "alternate_ids": [
+            "https://doi.org/10.5440/1410679",
+            "NGA129"
+        ],
+        "name": "NGEE Arctic Tram: Radiation and Environmental Measurements over Low- and High-Centered Polygon Vegetation Communities, Barrow, Alaska, 2014-2017",
+        "description": "These data were generated from an observational platform (Tram), an automated cart carrying a suite of radiation and remote sensing instruments running on 68 meters of elevated track 1 to 1.5 meters above the surface of the vegetation communities of low- and high-centered polygon ground. The Tram is in the footprint of the NGEE Arctic/AmeriFlux eddy covariance flux tower (US-NGB) at the Barrow Environmental Observatory, Barrow, Alaska, and operated before, during, and after the growing seasons of 2014-2017. Dataset includes one user guide (*.pdf) with final and raw *.csv data files.\nThe Next-Generation Ecosystem Experiments: Arctic (NGEE Arctic), was a research effort to reduce uncertainty in Earth System Models by developing a predictive understanding of carbon-rich Arctic ecosystems and feedbacks to climate. NGEE Arctic was supported by the Department of Energy's Office of Biological and Environmental Research.\nThe NGEE Arctic project had two field research sites: 1) located within the Arctic polygonal tundra coastal region on the Barrow Environmental Observatory (BEO) and the North Slope near Utqiagvik (Barrow), Alaska and 2) multiple areas on the discontinuous permafrost region of the Seward Peninsula north of Nome, Alaska.\nThrough observations, experiments, and synthesis with existing datasets, NGEE Arctic provided an enhanced knowledge base for multi-scale modeling and contributed to improved process representation at global pan-Arctic scales within the Department of Energy's Earth system Model (the Energy Exascale Earth System Model, or E3SM), and specifically within the E3SM Land Model component (ELM).",
+        "date_uploaded": "2025-02-27T22:44:13.083Z",
+        "award": [
+            "DE-AC05-00OR22725"
+        ],
+        "citation": [
+            "Margaret Torn, Baptiste Dafflon, Sigrid Dengel, Bryan Curtis, Oriana Chafe, Andrew Moyes, Shawn Serbin, Keith Lewin, Amy Breen, Terri Velliquette, Les Hook, Stan Wullschleger. 2019. NGEE Arctic Tram: Overview of Tram-mounted Instruments, Co-located Data, Measurement Position, Elevation and Polygon Characterization, Utqiagvik (Barrow), Alaska, 2014-2018. https://doi.org/10.5440/1558782",
+            "Margaret Torn, Sigrid Dengel (2023), AmeriFlux BASE US-NGB NGEE Arctic Barrow, Ver. 5-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1436326",
+            "Margaret Torn, Sigrid Dengel (2021), AmeriFlux FLUXNET-1F US-NGB NGEE Arctic Barrow, Ver. 3-5, AmeriFlux AMP, (Dataset). https://doi.org/10.17190/AMF/1832162"
+        ],
+        "doi": "doi:10.5440/1410679",
+        "associated_researchers": [
+            {
+                "name": "Colleen Iversen",
+                "email": "iversencm@ornl.gov",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "Principal Investigator"
+            },
+            {
+                "name": "Margaret Torn",
+                "email": "mstorn@lbl.gov",
+                "affiliation": "LBNL",
+                "role": "Editor"
+            },
+            {
+                "name": "Bryan Curtis",
+                "email": "John.Curtis@colorado.edu",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Sigrid Dengel",
+                "email": "sdengel@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Andrew Moyes",
+                "email": "abmoyes@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Shawn Serbin",
+                "email": "sserbin@bnl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Oriana Chafe",
+                "email": "oechafe@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Keith Lewin",
+                "email": "lewin@bnl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Paul Cook",
+                "email": "pjcook@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Melanie Hahn",
+                "email": "mshahn@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Margaret Torn",
+                "email": "mstorn@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-39f4b4f961f5e3a-20250227T223242161",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.5440/1482177",
+        "alternate_ids": [
+            "https://doi.org/10.5440/1482177",
+            "NGA167"
+        ],
+        "name": "NGEE Arctic Tram: Periodic Soil Moisture, Temperature, and Thaw Depth Measurements across Polygonal Tundra, Utqiagvik (Barrow), Alaska, 2014-2015",
+        "description": "Manual measurements of soil moisture, temperature, and thaw depth were collected in the footprint of the NGEE Arctic Tram starting 2014-07-20 and continuing through 2015-07-16. There were 10 periodic sampling events with measurements in one *.csv file. These measurements were collected under the Tram observational platform. Probes were inserted into ground beneath the track closest to Tram sensors measurement locations at each Tram measurement position (Position # marked on the tracks). A MiniTrase Time Domain Reflectometry (TDR) instrument was used to measure volumetric water content (VWC; units = m3/m3). Soil temperature was measured with a thermocouple probe. Depth of thawed soil was measured from the top of the moss layer or top of soil. See user guide for more information *.pdf.\nThe Next-Generation Ecosystem Experiments: Arctic (NGEE Arctic), was a research effort to reduce uncertainty in Earth System Models by developing a predictive understanding of carbon-rich Arctic ecosystems and feedbacks to climate. NGEE Arctic was supported by the Department of Energy's Office of Biological and Environmental Research.\nThe NGEE Arctic project had two field research sites: 1) located within the Arctic polygonal tundra coastal region on the Barrow Environmental Observatory (BEO) and the North Slope near Utqiagvik (Barrow), Alaska and 2) multiple areas on the discontinuous permafrost region of the Seward Peninsula north of Nome, Alaska.\nThrough observations, experiments, and synthesis with existing datasets, NGEE Arctic provided an enhanced knowledge base for multi-scale modeling and contributed to improved process representation at global pan-Arctic scales within the Department of Energy's Earth system Model (the Energy Exascale Earth System Model, or E3SM), and specifically within the E3SM Land Model component (ELM).",
+        "date_uploaded": "2025-02-27T22:32:44.500Z",
+        "award": [
+            "DE-AC05-00OR22725"
+        ],
+        "citation": [
+            "Margaret Torn, Baptiste Dafflon, Sigrid Dengel, Bryan Curtis, Oriana Chafe, Andrew Moyes, Shawn Serbin, Keith Lewin, Amy Breen, Terri Velliquette, Les Hook, Stan Wullschleger. 2019. NGEE Arctic Tram: Overview of Tram-mounted Instruments, Co-located Data, Measurement Position, Elevation and Polygon Characterization, Utqiagvik (Barrow), Alaska, 2014-2018. https://doi.org/10.5440/1558782"
+        ],
+        "doi": "doi:10.5440/1482177",
+        "associated_researchers": [
+            {
+                "name": "Colleen Iversen",
+                "email": "iversencm@ornl.gov",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "Principal Investigator"
+            },
+            {
+                "name": "Margaret Torn",
+                "email": "MSTorn@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Bryan Curtis",
+                "email": "John.Curtis@colorado.edu",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Oriana Chafe",
+                "email": "oechafe@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "John Peterson",
+                "email": "jepeterson@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Margaret Torn",
+                "email": "mstorn@lbl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-aaa4e94dbaf22d1-20250227T184220226478",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15486/NGT/1560859",
+        "alternate_ids": [
+            "http://dx.doi.org/10.15486/ngt/1560859",
+            "NGT0101"
+        ],
+        "name": "Leaf gas exchange raw data, 2015 - 2017, at Manaus, Brazil",
+        "description": "This data package contains raw leaf gas exchange data from the NGEE Tropics K34 tower site on a plateau near Manaus, Brazil. Data was collected using sensor and leaf sample measurements. Leaves on a target tree were chosen by accessing a branch near the tower. In some cases, the branch was naturally positioned near the tower and in other cases, a small rope was used to pull the branch closer to the tower for better access to leaves. Mature leaves were targeted in nearly all cases. The gas exchange system was hauled with a climbing rope to the level of the branch on the tower and the sensor head/leaf enclosure was installed near the branch of interest using a magic arm. We measured leaf gas exchange from 5:00 AM to 5:00 PM, randomly cycling through the approximately 20 leaves in the targeted branch(es). Data were collected over two time periods, detailed within the files. The attached data files contain raw data, sensor manuals, and PDFs with detailed methods and procedures separated into multiple folders. Data is in Excel file format. See data references for data package containing related metadata. This dataset replaces the leaf gas exchange data of two retired packages, http://dx.doi.org/10.15486/ngt/1507764 and http://dx.doi.org/10.15486/ngt/1507767.\nThis dataset was originally published on the NGEE Tropics Archive and is being mirrored on ESS-DIVE for long-term archival\nAcknowledgement: This material is based upon work supported as part of the Next Generation Ecosystem Experiments-Tropics (NGEE-Tropics) funded by the U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research through contract No. DE-AC02-05CH11231 to LBNL, as part of DOE's Terrestrial Ecosystem Science Program. Additional funding for this research was provided by the Brazilian Conselho Nacional de Desenvolvimento Cient\u00edfico e Tecnol\u00f3gico (CNPq). Logistical and scientific support is acknowledged by the Forest Management (MF), Climate and Environment (CLIAMB), and Large Scale Biosphere-Atmosphere (LBA) programs at the National Institute for Amazon Research (INPA).",
+        "date_uploaded": "2025-02-27T18:42:24.813Z",
+        "award": [
+            "DE-AC02-05CH11231"
+        ],
+        "citation": [
+            "Jardine K; Gimenez B; Christianson D; Varadharajan C; Robles E (2021): E-Field_Log Metadata, BR-Ma2: Manaus, 2016 - 2017. 1.0. NGEE Tropics Data Collection. (dataset). http://dx.doi.org/10.15486/ngt/1556938",
+            "Additional information about citations:",
+            "The referenced dataset contains an E-Field_Log metadata file for this data package."
+        ],
+        "doi": "doi:10.15486/NGT/1560859",
+        "associated_researchers": [
+            {
+                "name": "Jeffrey Chambers",
+                "email": "jchambers@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Principal Investigator"
+            },
+            {
+                "name": "Kolby Jardine",
+                "email": "kjjardine@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Kolby Jardine",
+                "email": "kjjardine@lbl.gov",
+                "affiliation": "Lawrence Berkeley National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Raquel Fernandes de Araujo",
+                "email": "lotraquelu@gmail.com",
+                "affiliation": "Smithsonian Tropical Research Institute",
+                "role": "Creator"
+            },
+            {
+                "name": "Luani Rosa",
+                "email": "luanipiva@yahoo.com.br",
+                "affiliation": "",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-b2d3f6f16e89545-20250226T143322810527",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.5440/1884818",
+        "alternate_ids": [
+            "https://doi.org/10.5440/1884818",
+            "NGA292"
+        ],
+        "name": "Current and Projected Future Distribution of Plant Community Types for the Southern Seward Peninsula, Alaska",
+        "description": "Landscape scale maps of plant community distribution at 5 m resolution were developed for southern Seward Peninsula. A Random Forest based environmental niche model was developed using topographic and climate data sets. Models were trained for the 2010-2019 period and applied to develop plant community distributions for contemporary (2010-2019) period. Trained model was applied to project the plant community distributions under future climate. Using downscaled projections for RCP8.5 scenario from five climate models (CCSM4, GFDL-CM3, GISS-E2-R, IPSL-CM5A-LR, MRI-CGCM3) and multi-model mean, a six member ensemble of plant community distribution were developed for current decade (2010-2019) and for future decades (2020-2029, 2030-2039, 2040-2049, 2050-2059). Contains *.tif and *.sh files.\nThe Next-Generation Ecosystem Experiments: Arctic (NGEE Arctic), was a research effort to reduce uncertainty in Earth System Models by developing a predictive understanding of carbon-rich Arctic ecosystems and feedbacks to climate. NGEE Arctic was supported by the Department of Energy's Office of Biological and Environmental Research.\nThe NGEE Arctic project had two field research sites: 1) located within the Arctic polygonal tundra coastal region on the Barrow Environmental Observatory (BEO) and the North Slope near Utqiagvik (Barrow), Alaska and 2) multiple areas on the discontinuous permafrost region of the Seward Peninsula north of Nome, Alaska.\nThrough observations, experiments, and synthesis with existing datasets, NGEE Arctic provided an enhanced knowledge base for multi-scale modeling and contributed to improved process representation at global pan-Arctic scales within the Department of Energy's Earth system Model (the Energy Exascale Earth System Model, or E3SM), and specifically within the E3SM Land Model component (ELM).",
+        "date_uploaded": "2025-02-26T22:33:25.899Z",
+        "award": [
+            "DE-AC05-00OR22725"
+        ],
+        "citation": "",
+        "doi": "doi:10.5440/1884818",
+        "associated_researchers": [
+            {
+                "name": "Colleen Iversen",
+                "email": "iversencm@ornl.gov",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "Principal Investigator"
+            },
+            {
+                "name": "Jitendra Kumar",
+                "email": "kumarj@ornl.gov",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Venkata Konduri",
+                "email": "kvshashank92@gmail.com",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Amy Breen",
+                "email": "albreen@alaska.edu",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "William Hargrove",
+                "email": "hnw@geobabble.org",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Forrest Hoffman",
+                "email": "forrest@climatemodeling.org",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Verity Salmon",
+                "email": "salmonvg@ornl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Colleen Iversen",
+                "email": "iversencm@ornl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Auroop Ganguly",
+                "email": "ganguly@northeastern.edu",
+                "affiliation": "",
+                "role": "Creator"
+            },
+            {
+                "name": "Jitendra Kumar",
+                "email": "kumarj@ornl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-0ca64974c5b9ef0-20250224T230909587",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2519690",
+        "alternate_ids": [
+            "NGA559"
+        ],
+        "name": "Reference Shapefiles and Pre-trained Random Forest Classification Models for Detecting Aufeis on the North Slope of Alaska in Landsat Imagery",
+        "description": "This dataset provides shapefiles and trained machine learning models used for aufeis detection at four sites on the North Slope of Alaska. It includes reference data for evaluating Landsat-based detection methods, supporting research on remote sensing approaches for identifying aufeis. The ReferenceData folder contains ArcGIS shapefiles of semi-automated land cover classifications for 217 Landsat Collection 2 images, categorizing pixels into six classes: aufeis, snow, ground, none, water, and cloud. The SiteBuffers.zip file includes 10-kilometer buffer shapefiles defining regions of interest around four aufeis fields (Canning21, FH1, Firth, and Kuparuk), used to test three detection techniques. Additionally, the TrainedRFModels folder contains six pre-trained Scikit-Learn Random Forest classifiers (100 trees, max depth = 30) designed to predict aufeis presence in Landsat Collection 2 Surface Reflectance images using Red, Blue, SWIR2, NDVI, and NDWI bands. This dataset supports the development and validation of remote sensing methods for mapping aufeis in Arctic environments.\nThe Next-Generation Ecosystem Experiments: Arctic (NGEE Arctic), was a research effort to reduce uncertainty in Earth System Models by developing a predictive understanding of carbon-rich Arctic ecosystems and feedbacks to climate. NGEE Arctic was supported by the Department of Energy's Office of Biological and Environmental Research.\nThe NGEE Arctic project had two field research sites: 1) located within the Arctic polygonal tundra coastal region on the Barrow Environmental Observatory (BEO) and the North Slope near Utqiagvik (Barrow), Alaska and 2) multiple areas on the discontinuous permafrost region of the Seward Peninsula north of Nome, Alaska.\nThrough observations, experiments, and synthesis with existing datasets, NGEE Arctic provided an enhanced knowledge base for multi-scale modeling and contributed to improved process representation at global pan-Arctic scales within the Department of Energy's Earth system Model (the Energy Exascale Earth System Model, or E3SM), and specifically within the E3SM Land Model component (ELM).",
+        "date_uploaded": "2025-02-24T23:09:12.768Z",
+        "award": "",
+        "citation": [
+            "Dann, J. et al. (2025 In Review): Evaluating Aufeis Detection Methods Using Landsat Imagery: Comparative Assessment and Recommendations, Science of Remote Sensing."
+        ],
+        "doi": "doi:10.15485/2519690",
+        "associated_researchers": [
+            {
+                "name": "Colleen Iversen",
+                "email": "iversencm@ornl.gov",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "Julian Dann",
+                "email": "julian.dann4@gmail.com",
+                "affiliation": "University of Alaska Fairbanks",
+                "role": "Editor"
+            },
+            {
+                "name": "Julian Dann",
+                "email": "julian.dann4@gmail.com",
+                "affiliation": "University of Alaska Fairbanks",
+                "role": "Creator"
+            },
+            {
+                "name": "Simon Zwieback",
+                "email": "szwieback@alaska.edu",
+                "affiliation": "University of Alaska Fairbanks",
+                "role": "Creator"
+            },
+            {
+                "name": "Bob Bolton",
+                "email": "boltonwr@ornl.gov",
+                "affiliation": "Oak Ridge National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Paul Leonard",
+                "email": "paul_leonard@fws.gov",
+                "affiliation": "U.S. Fish and Wildlife Service",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-e976198fe417dbb-20250224T215718432",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/1923689",
+        "alternate_ids": "",
+        "name": "WHONDRS River Corridor Dissolved Oxygen, Temperature, Sediment Aerobic Respiration, Grain Size, and Water Chemistry from Machine-Learning-Informed Sites across the Contiguous United States (v4)",
+        "description": "This dataset supports a broader study examining hyporheic zone respiration rates to improve predictive models at a contiguous United States (CONUS) scale. The CONUS-Scale Model-Sample Study (CM) was designed following ICON (integrated, coordinated, open, and networked) principles to facilitate a model-experiment (ModEx) iteration approach, leveraging crowdsourced sampling across the CONUS. New machine learning models were created every month to guide sampling locations. Data from the resulting samples were used to test and rebuild the machine learning models for the next round of sampling guidance. Sampling began in April 2022 and ended in October 2023. In addition to the widely distributed CONUS sites, a more spatially focused sampling occurred in the Yakima River Basin, WA in summer 2022. Data from this more spatially intensive sampling occurred under the label \u201cSecond Spatial Study (SSS)\u201d and were also included in the machine learning models. Other data types collected from SSS that were not part of CM were published in a separate data package\nThis dataset is comprised of two folders with field photos and videos and one main data folder containing (1) file-level metadata; (2) data dictionary; (3) field metadata; (4) readme; (5) international generic sample number (IGSN) mapping file; (6) field protocols; (7) a subfolder with sample data; and (8) a subfolder with sensor data. The sample data subfolder contains (1) dissolved organic carbon (DOC, measured as non-purgeable organic carbon, NPOC) data and averages; (2) total nitrogen data and averages; (3) surface water major cations and anions and averages; (4) sediment grain size data; (5) sediment iron (II) data and averages; (6) wet sediment mass, dry sediment mass, water mass, and wet sediment volume in incubation vial; (7) sediment incubation respiration rate data and averages; (8) normalized respiration rate data and averages; (9) methods codes; (10) sediment specific surface area; (11) sediment percent carbon and nitrogen; (12) sediment gravimetric moisture and averages; (15) sediment X-ray diffraction (XRD) data; (16) sediment adenosine triphosphate (ATP) and averages; and (17) a subfolder with sediment incubation respiration data, scripts, and plots. The sensor data subfolder contains (1) a subfolder with miniDOT dissolved oxygen and temperature data and plots; (2) miniDOT dissolved oxygen and temperature summary data; and (3) miniDOT installation methods. All files are .csv, .pdf, .R, .jpg, .jpeg, .png, .mov, or .mp4.\nThis data package was originally published in February 2023. It was updated in June 2023 (v2; new and modified files); December 2023 (v3; new and modified files); and June 2024 (v4; new and modified files). See the change history section in the readme for more details.\nWe thank the United States Forest Service, Washington Department of Fish and Wildlife, Washington Department of Natural Resources, Cowiche Canyon Conservatory, Washington State Parks and Recreation Commission (Scientific Research Permit #210901), and the Confederated Tribes and Bands of the Yakama Nation for access to field locations where the SSS samples were collected. We also thank the Yakama Nation Tribal Council and Yakama Nation Fisheries for working with us to facilitate sample collection and optimization of data usage according to their values and worldview.",
+        "date_uploaded": "2025-02-24T21:57:19.323Z",
+        "award": [
+            "DOE Award #54737"
+        ],
+        "citation": [
+            "SITES IN THIS DATASET",
+            "Globally unique identifier (IGSN) for sites associated with dataset. There are a total of 145 sites associated with the dataset. More information describing these sites is provided in igsn_metadata_sites_for_samples.csv dataset file (within ESS_DIVE_Infrastructure_ONLY.zip).",
+            "SAMPLES WITHIN THIS DATASET",
+            "Globally unique identifier (IGSN) for physical sample associated with dataset. There are a total of 479 individual samples associated with the dataset, which consist of 161 Liquid>aqueous samples, 157 Sediment samples, and 161 other (filter) samples. More information describing the samples is provided in the v3_CM_SSS_Metadata_IGSN-Mapping.csv dataset file (within v4_CM_SSS_Data_Package.zip) or igsn_metadata_samples.csv dataset file (within ESS_DIVE_Infrastructure_ONLY.zip).",
+            "REFERENCES - RELATED DATASET(S)",
+            "Damerow et al., (2020) \"Sample Identifiers and Metadata Reporting Format for Environmental Systems Science\". ESS-DIVE. https://doi.org/10.15485/1660470",
+            "Velliquette et al., (2021) \"ESS-DIVE Reporting Format for Comma-separated Values File Structure\". ESS-DIVE. https://doi.org/10.15485/1734841",
+            "Velliquette et al., (2021) \"ESS-DIVE Reporting Format for File-level Metadata\". ESS-DIVE. https://doi.org/10.15485/1734840",
+            "Boye et al., (2022) \u201cESS-DIVE Reporting Format for Sample-based Water and Soil Chemistry Measurements\u201d. ESS-DIVE. https://doi.org/10.15485/1865731",
+            "Crystal-Ornelas et al., (2022) \u201cESS-DIVE Reporting Format for Location Metadata\u201d. ESS-DIVE. https://doi.org/10.15485/1865730",
+            "Goldman et al., (2021) \u201cESS-DIVE Reporting Format for Hydrologic Monitoring Data and Metadata\u201d. ESS-DIVE. https://doi.org/10.15485/1822940",
+            "Goldman et al., (2020) \u201cWHONDRS Summer 2019 Sampling Campaign: Global River Corridor Sediment FTICR-MS, Dissolved Organic Carbon, Aerobic Respiration, Elemental Composition, Grain Size, Total Nitrogen and Organic Carbon Content, and Bacterial Abundance\u201d. ESS-DIVE. https://doi.org/10.15485/1729719",
+            "Delgado et al., (2023) \u201cSpatial Study 2022: Surface Water Samples, Cotton Strip Degradation, and Hydrologic Sensor Data across the Yakima River Basin, Washington, USA\u201d. ESS-DIVE. https://doi.org/10.15485/1969566",
+            "REFERENCES - JOURNAL ARTICLE(S)",
+            "Tuller & Or (2005) \u201cWater films and scaling of soil characteristic curves at low water contents\u201d https://doi.org/10.1029/2005WR004142",
+            "Yukselen & Kaya (2006) \u201cComparison of Methods for Determining Specific Surface Area of Soils\u201d https://doi.org/10.1061/(ASCE)1090-0241(2006)132:7(931)",
+            "Brodie et al., (2011) \u201cEvidence for bias in C and N concentrations and \u03b413C composition of terrestrial and aquatic organic materials due to pre-analysis acid preparation methods\u201d https://doi.org/10.1016/j.chemgeo.2011.01.007",
+            "Harris et al., (2001) \u201cAcid fumigation of soils to remove carbonates prior to total organic carbon or carbon\u201013 isotopic analysis\u201d https://doi.org/10.2136/sssaj2001.1853",
+            "Gary et al., (2024) \u201cPrediction of Distributed River Sediment Respiration Rates Using Community-Generated Data and Machine Learning\u201d https://doi.org/10.1029/2024JH000199",
+            "SOURCE DATA",
+            "Environmental Molecular Sciences Laboratory (EMSL) Award \"River Corridor Hydrobiogeochemistry from Reaction to Basin Scale\" https://doi.org/10.46936/cpcy.proj.2022.60624/60008706",
+            "Environmental Molecular Sciences Laboratory (EMSL) Award \"River Corridor Hydrobiogeochemistry from Reaction to Basin Scale\" https://doi.org/10.46936/cont.proj.2023.61025/60012324"
+        ],
+        "doi": "doi:10.15485/1923689",
+        "associated_researchers": [
+            {
+                "name": "Timothy Scheibe",
+                "email": "tim.scheibe@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Principal Investigator"
+            },
+            {
+                "name": "James C. Stegen",
+                "email": "James.Stegen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Brieanne Forbes",
+                "email": "brieanne.forbes@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Morgan Barnes",
+                "email": "morgan.barnes@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Brandon T. Boehnke",
+                "email": "brandon.boehnke@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Xingyuan Chen",
+                "email": "Xingyuan.Chen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Kali Cornwell",
+                "email": "kali.cornwell@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Dillman Delgado",
+                "email": "dillman.delgadoparedes@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Stephanie G. Fulton",
+                "email": "stephanie.fulton@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Vanessa A. Garayburu-Caruso",
+                "email": "vanessa.garayburu-caruso@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Stefan Gary",
+                "email": "sfgary@parallelworks.com",
+                "affiliation": "Parallel Works",
+                "role": "Creator"
+            },
+            {
+                "name": "Amy E. Goldman",
+                "email": "amy.goldman@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Brianna I. Gonzalez",
+                "email": "brianna.gonzalez@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Samantha Grieger",
+                "email": "samantha.grieger@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Glenn E. Hammond",
+                "email": "glenn.hammond@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Peishi Jiang",
+                "email": "peishi.jiang@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Matthew H. Kaufman",
+                "email": "matthew.kaufman@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Maggi Laan",
+                "email": "maggi.laan@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Bing Li",
+                "email": "bing.li@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Zhi Li",
+                "email": "zhi.li@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Sophia A. McKever",
+                "email": "sophia.mckever@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Maruti K. Mudunuru",
+                "email": "maruti@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Katherine A. Muller",
+                "email": "katherine.muller@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Allison Myers-Pigg",
+                "email": "allison.myers-pigg@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Opal Otenburg",
+                "email": "opal.otenburg@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Aaron Pelly",
+                "email": "aaron.pelly@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Kelsey Peta",
+                "email": "KELSEY.PETA@GRAMNORTHWEST.COM",
+                "affiliation": "Gram Northwest",
+                "role": "Creator"
+            },
+            {
+                "name": "Beck Powers-McCormack",
+                "email": "bibi.powers-mccormack@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Peter Regier",
+                "email": "peter.regier@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Lupita Renteria",
+                "email": "lupita.renteria@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Alan Roebuck",
+                "email": "alan.roebuck@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Timothy D. Scheibe",
+                "email": "tim.scheibe@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Kyongho Son",
+                "email": "kyongho.son@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Joshua M. Torgeson",
+                "email": "joshua.torgeson@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "James C. Stegen",
+                "email": "James.Stegen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "The WHONDRS Consortium",
+                "email": "WHONDRS@pnnl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-0c4579ec3e4bbad-20250224T215353274",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2428003",
+        "alternate_ids": "",
+        "name": "Laboratory time series moisture manipulative experiment from sediment across the contiguous US: time series aerobic respiration and geochemistry",
+        "description": "This dataset supports a broader study examining the effects of wetting and drying on hyporheic zone respiration across the contiguous United States (CONUS). The dataset provides data generated from a laboratory moisture manipulation experiment. The contents include time series aerobic respiration and moisture; dissolved oxygen; sediment geochemistry data; and field metadata (including qualitative information on instream and river corridor characteristics).\nSamples were collected as part of the WHONDRS CONUS-Scale Model-Sample Study (CM). This study was designed following ICON (integrated, coordinated, open, and networked) principles to facilitate a model-experiment (ModEx) iteration approach, leveraging crowdsourced sampling across the CONUS. The data package associated with the CM study is available at\nThis dataset is comprised of one main data folder containing (1) file-level metadata; (2) data dictionary; (3) field metadata; (4) readme; (5) field protocol; and a (6) a subfolder with sediment sample data from the incubation experiment. The sample data subfolder contains (1) dissolved organic carbon (DOC, measured as non-purgeable organic carbon, NPOC); (2) total nitrogen (TN); (3) adenosine triphosphate (ATP); (4) percent carbon and nitrogen; (5) effect size; (6) iron (II); (7) gravimetric moisture; (8) respiration rates and raw dissolved oxygen values; (9) specific conductance; (10) pH; (11) temperature; (12) a summary containing median values of each data type for each treatment (wet and dry); (13) methods codes; (14) Fourier transform ion cyclotron resonance mass spectrometry (FTICR-MS) methods; and (15) a subfolder of 9 Tesla FTICR-MS. This folder contains two subfolders, one containing the .xml data files and the other containing instructions for using Formularity (https://omics.pnl.gov/software/formularity) and an R script to process the data based on the user's specific needs. All files are .csv, .pdf, .R, .ref, or .xml.",
+        "date_uploaded": "2025-02-24T21:53:53.927Z",
+        "award": [
+            "DOE Award #74193"
+        ],
+        "citation": [
+            "Boye, K., Crystal-Ornelas, R., O'Ryan, D., Goldman, A. E., Damerow, J., Varadharajan, C., & Agarwal, D. (2022). ESS-DIVE Reporting Format for Sample-based Water and Soil Chemistry Measurements. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE), ESS-DIVE repository. https://doi.org/10.15485/1865731",
+            "Crystal-Ornelas R; O'Ryan D; Christianson D; Hendrix V C; Agarwal D; Varadharajan C (2022): ESS-DIVE Reporting Format for Location Metadata. ESS-DIVE repository. Dataset. doi: 10.15485/1865730",
+            "Damerow J ; Varadharajan C ; Boye K ; Brodie E ; Burrus M ; Chadwick D ; Cholia S ; Crystal-Ornelas R ; Elbashandy H ; Eloy Alves R ; Ely K ; Goldman A ; Hendrix V ; Jones C ; Jones M ; Kakalia Z ; Kemner K ; Kersting A ; Maher K ; Merino N ; O'Brien F ; Perzan Z ; Robles E ; Snavely C ; Sorensen P ; Stegen J ; Weisenhorn P ; Whitenack K ; Zavarin M ; Agarwal D (2020): Sample Identifiers and Metadata Reporting Format for Environmental Systems Science. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE), ESS-DIVE repository. Dataset. doi:10.15485/1660470",
+            "Forbes B ; Barnes M ; Boehnke B T ; Chen X ; Cornwell K ; Delgado D ; Fulton S G ; Garayburu-Caruso V A ; Gary S ; Goldman A E ; Gonzalez B I ; Grieger S ; Hammond G E ; Jiang P ; Kaufman M H ; Laan M ; Li B ; Li Z ; McKever S A ; Mudunuru M K ; Muller K A ; Myers-Pigg A ; Otenburg O ; Pelly A ; Peta K ; Powers-McCormack B ; Regier P ; Renteria L ; Roebuck A ; Scheibe T D ; Son K ; Torgeson J M ; Stegen J C ; WHONDRS Consortium T (2023): WHONDRS River Corridor Dissolved Oxygen, Temperature, Sediment Aerobic Respiration, Grain Size, and Water Chemistry from Machine-Learning-Informed Sites across the Contiguous United States (v4). River Corridor and Watershed Biogeochemistry SFA, ESS-DIVE repository. Dataset. doi:10.15485/1923689 accessed via https://data.ess-dive.lbl.gov/datasets/doi:10.15485/1923689 on 2024-08-01",
+            "Velliquette T ; Welch J ; Crow M ; Devarakonda R ; Heinz S ; Crystal-Ornelas R (2021): ESS-DIVE Reporting Format for Comma-separated Values (CSV) File Structure. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem, ESS-DIVE repository. Dataset. doi:10.15485/1734841",
+            "Velliquette T ; Welch J ; Crow M ; Devarakonda R ; Heinz S ; Crystal-Ornelas R (2021): ESS-DIVE Reporting Format for File-level Metadata. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem, ESS-DIVE repository. Dataset. doi:10.15485/1734840",
+            "Huang, W., & Hall, S. J. (2017). Optimized high-throughput methods for quantifying iron biogeochemical dynamics in soil. Geoderma, 306, 67-72.",
+            "Kaufman MH, Torgeson J, Stegen JC (2023) Metabolic multireactor: Practical considerations for using simple oxygen sensing optodes for high-throughput batch reactor metabolism experiments. PLoS ONE 18(7): e0284256. https://doi.org/10.1371/journal.pone.0284256",
+            "Larsen M, Borisov SM, Grunwald B, Klimant I, Glud RN. A simple and inexpensive high resolution color ratiometric planar optode imaging approach: application to oxygen and pH sensing. Limnology and Oceanography-Methods. https://doi.org/10.4319/lom.2011.9.348"
+        ],
+        "doi": "doi:10.15485/2428003",
+        "associated_researchers": [
+            {
+                "name": "James Stegen",
+                "email": "james.stegen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "principalInvestigator"
+            },
+            {
+                "name": "James C. Stegen",
+                "email": "james.stegen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Maggi Laan",
+                "email": "maggi.laan@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Dillman Delgado",
+                "email": "dillman.delgadoparedes@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Brieanne Forbes",
+                "email": "brieanne.forbes@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Vanessa A. Garayburu-Caruso",
+                "email": "vanessa.garayburu-caruso@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Amy E. Goldman",
+                "email": "amy.goldman@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Brianna I. Gonzalez",
+                "email": "brianna.gonzalez@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Matthew H. Kaufman",
+                "email": "matthew.kaufman@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Sophia A. McKever",
+                "email": "sophia.mckever@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Cooper Norris",
+                "email": "cooper.norris@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Juan Alberto Ocejo",
+                "email": "albocejo@arizona.edu",
+                "affiliation": "University of Arizona",
+                "role": "Creator"
+            },
+            {
+                "name": "Beck Powers-McCormack",
+                "email": "bibi.powers-mccormack@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Lupita Renteria",
+                "email": "lupita.renteria@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Kenton A. Rod",
+                "email": "kenton.rod@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Timothy D. Scheibe",
+                "email": "tim.scheibe@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Malak M. Tfaily",
+                "email": "tfaily@email.arizona.edu",
+                "affiliation": "University of Arizona/Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "James C. Stegen",
+                "email": "James.Stegen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "The WHONDRS Consortium",
+                "email": "WHONDRS@pnnl.gov",
+                "affiliation": "",
+                "role": "Creator"
+            }
+        ]
+    },
+    {
+        "id": "ess-dive-3531f1661cd538c-20250224T213650787",
+        "data_source": "ESS-DIVE",
+        "url": "https://data.ess-dive.lbl.gov/view/doi:10.15485/1969566",
+        "alternate_ids": "",
+        "name": "Spatial Study 2022: Surface Water Samples, Cotton Strip Degradation, and Hydrologic Sensor Data across the Yakima River Basin, Washington, USA (v3)",
+        "description": "This dataset supports a broader study examining the drivers of spatial variability in sediment respiration rates in the Yakima River Basin. The dataset provides data and photos generated from sample collection during the same one-week period at 48 sites within multiple rivers throughout the Yakima River Basin in Washington, USA. The contents include surface water geochemistry data; river substrate grain size photos; stream depth data; manual chamber open channel respiration data; and field metadata (including qualitative information on instream and river corridor characteristics). Grain size photos can be used to improve estimates of channel substrate D50 data. The dataset also includes tensile strength and photos from cotton strip field degradation experiments; five-week sensor time series temperature, dissolved oxygen, pressure, pH, specific conductance, chlorophyll A, and turbidity data; plots of the sensor data; and R scripts used to generate the plots.\nSamples collected during this study were labeled as \u201cSecond Spatial Study\u201d or \u201cSSS.\u201d A subset of data from the SSS samples were published in the contiguous United States (CONUS)-Scale Model-Sample (CM) study data package available at https://data.ess-dive.lbl.gov/view/doi:10.15485/1923689 that presents data from across the CONUS. SSS data published in the CM data package were not included in this data package. They include dissolved organic carbon (DOC, measured as non-purgeable organic carbon, NPOC), total nitrogen (TN), grain size, aerobic sediment respiration, dissolved oxygen (DO), and temperature. Parent IDs and Site IDs are consistent between the SSS and CM data packages, and they can be mapped directly so data across packages can be used together. Additionally, sensor data from a similar 2021 spatial study can be found at https://data.ess-dive.lbl.gov/view/doi:10.15485/1892052 and 2021 sample data can be found at https://data.ess-dive.lbl.gov/view/doi:10.15485/1898914. The 2021 spatial study had some sites in common with this 2022 spatial study.\nThis dataset is comprised of three photo folders and one main data folder with six subfolders. The photo folders contain photographs and videos of cotton strip retrieval and sediment quadrats. The main data folder consists of (1) file-level metadata; (2) data dictionary; (3) field metadata; (4) total suspended solids (TSS) data and cotton strip tensile strength data and averages; (5) field protocol; (6) readme; (7) methods codes; (8) international generic sample number (IGSN) mapping file; (9) sensor installation methods summary; (10) stream depth and averages; and (11) Ultrameter data and averages. The Sonar subfolder consists of Sonar time-series depth data and a processing script. The BarotrollAtm, DepthHOBO, MantaRiver, miniDOT, and miniDOTManualChamber subfolders contain time-series data, plots, and summary files. All files are .csv, .pdf, .txt, .R, .Rmd, .jpg, .jpeg, .AVI, .mp4, or .mov.\nThe data package was originally published in April 2023. It was updated in August 2023 (v2; modified files) and September 2024 (v3; modified files). See the change history section in the readme for details.",
+        "date_uploaded": "2025-02-24T21:36:52.640Z",
+        "award": [
+            "DOE Award #54737"
+        ],
+        "citation": [
+            "Agarwal, D., Cholia, S., Hendrix, V. C., Crystal-Ornelas, R., Snavely, C., Damerow, J., & Varadharajan. (2022). ESS-DIVE Reporting Format for Dataset Metadata. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE), ESS-DIVE repository. https://doi.org/10.15485/1866026",
+            "Boye, K., Crystal-Ornelas, R., O'Ryan, D., Goldman, A. E., Damerow, J., Varadharajan, C., & Agarwal, D. (2022). ESS-DIVE Reporting Format for Sample-based Water and Soil Chemistry Measurements. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE), ESS-DIVE repository. https://doi.org/10.15485/1865731",
+            "Crystal-Ornelas R; O'Ryan D; Christianson D; Hendrix V C; Agarwal D; Varadharajan C (2022): ESS-DIVE Reporting Format for Location Metadata. ESS-DIVE repository. Dataset. doi: 10.15485/1865730",
+            "Damerow J ; Varadharajan C ; Boye K ; Brodie E ; Burrus M ; Chadwick D ; Cholia S ; Crystal-Ornelas R ; Elbashandy H ; Eloy Alves R ; Ely K ; Goldman A ; Hendrix V ; Jones C ; Jones M ; Kakalia Z ; Kemner K ; Kersting A ; Maher K ; Merino N ; O'Brien F ; Perzan Z ; Robles E ; Snavely C ; Sorensen P ; Stegen J ; Weisenhorn P ; Whitenack K ; Zavarin M ; Agarwal D (2020): Sample Identifiers and Metadata Reporting Format for Environmental Systems Science. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE), ESS-DIVE repository. Dataset. doi:10.15485/1660470",
+            "Forbes B ; Barnes M ; Boehnke B T ; Chen X ; Cornwell K ; Delgado D ; Fulton S G ; Garayburu-Caruso V A ; Gary S ; Goldman A E ; Gonzalez B I ; Grieger S ; Hammond G E ; Jiang P ; Kaufman M H ; Laan M ; Li B ; Li Z ; McKever S A ; Mudunuru M K ; Muller K A ; Myers-Pigg A ; Otenburg O ; Pelly A ; Peta K ; Regier P ; Renteria L ; Roebuck A ; Scheibe T D ; Son K ; Torgeson J M ; Stegen J C ; WHONDRS Consortium T (2023): WHONDRS River Corridor Dissolved Oxygen, Temperature, Sediment Aerobic Respiration, Grain Size, and Water Chemistry from Machine-Learning-Informed Sites across the Contiguous United States. River Corridor and Watershed Biogeochemistry SFA, ESS-DIVE repository. Dataset. doi:10.15485/1923689",
+            "Fulton S G ; Barnes M ; Borton M A ; Chen X ; Farris Y ; Forbes B ; Garayburu-Caruso V A ; Goldman A E ; Grieger S ; Kaufman M H ; Lin X ; McKever S A ; Myers-Pigg A ; Otenburg O ; Pelly A ; Ren H ; Renteria L ; Scheibe T D ; Son K ; Torgeson J M ; Stegen J C (2022): Spatial Study 2021: Sensor-Based Time Series of Surface Water Temperature, Specific Conductance, Total Dissolved Solids, Turbidity, pH, and Dissolved Oxygen from across Multiple Watersheds in the Yakima River Basin, Washington, USA. River Corridor and Watershed Biogeochemistry SFA, ESS-DIVE repository. Dataset. doi:10.15485/1892052",
+            "Goldman A E ; Ren H ; Torgeson J ; Zhou H (2021): ESS-DIVE Reporting Format for Hydrologic Monitoring Data and Metadata. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem (ESS-DIVE). doi:10.15485/1822940",
+            "Grieger S ; Barnes M ; Borton M A ; Chen X ; Chu R ; Farris Y ; Forbes B ; Fulton S G ; Garayburu-Caruso V A ; Goldman A E ; Gonzalez B I ; Kaufman M H ; McKever S A ; Myers-Pigg A ; Otenburg O ; Pelly A ; Renteria L ; Scheibe T D ; Son K ; Torgeson J M ; Toyoda J G ; Stegen J C (2022): Spatial Study 2021: Sample-Based Surface Water Chemistry and Organic Matter Characterization across Watersheds in the Yakima River Basin, Washington, USA. River Corridor and Watershed Biogeochemistry SFA, ESS-DIVE repository. Dataset. doi:10.15485/1898914",
+            "Tiegs, S. D., Clapcott, J. E., Griffiths, N. A., & Boulton, A. J. (2013). A standardized cotton-strip assay for measuring organic-matter decomposition in streams. Ecological indicators, 32, 131-139.",
+            "Tiegs, S. D., Costello, D. M., Isken, M. W., Woodward, G., McIntyre, P. B., Gessner, M. O., ... & Yule, C. M. (2019). Global patterns and drivers of ecosystem functioning in rivers and riparian zones. Science Advances, 5(1), eaav0486.",
+            "Mancuso, J., Messick, E., & Tiegs, S. D. (2022). Parsing spatial and temporal variation in stream ecosystem functioning. Ecosphere, 13(8), e4202.",
+            "Velliquette T ; Welch J ; Crow M ; Devarakonda R ; Heinz S ; Crystal-Ornelas R (2021): ESS-DIVE Reporting Format for Comma-separated Values (CSV) File Structure. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem, ESS-DIVE repository. Dataset. doi:10.15485/1734841",
+            "Velliquette T ; Welch J ; Crow M ; Devarakonda R ; Heinz S ; Crystal-Ornelas R (2021): ESS-DIVE Reporting Format for File-level Metadata. Environmental Systems Science Data Infrastructure for a Virtual Ecosystem, ESS-DIVE repository. Dataset. doi:10.15485/1734840"
+        ],
+        "doi": "doi:10.15485/1969566",
+        "associated_researchers": [
+            {
+                "name": "Timothy D. Scheibe",
+                "email": "tim.scheibe@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Principal Investigator"
+            },
+            {
+                "name": "James C. Stegen",
+                "email": "James.Stegen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Editor"
+            },
+            {
+                "name": "Dillman Delgado",
+                "email": "dillman.delgadoparedes@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Morgan Barnes",
+                "email": "morgan.barnes@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Brandon T. Boehnke",
+                "email": "brandon.boehnke@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Xingyuan Chen",
+                "email": "Xingyuan.Chen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Yunxiang Chen",
+                "email": "yunxiang.chen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Kali Cornwell",
+                "email": "kali.cornwell@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Brieanne Forbes",
+                "email": "brieanne.forbes@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Stephanie G. Fulton",
+                "email": "stephanie.fulton@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Vanessa A. Garayburu-Caruso",
+                "email": "vanessa.garayburu-caruso@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Amy E. Goldman",
+                "email": "amy.goldman@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Brianna I. Gonzalez",
+                "email": "brianna.gonzalez@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Samantha Grieger",
+                "email": "samantha.grieger@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Glenn E. Hammond",
+                "email": "glenn.hammond@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Peishi Jiang",
+                "email": "peishi.jiang@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Matthew H. Kaufman",
+                "email": "matthew.kaufman@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Maggi Laan",
+                "email": "maggi.laan@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Bing Li",
+                "email": "bing.li@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Zhi Li",
+                "email": "zhi.li@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Xinming Lin",
+                "email": "xinming.lin@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Sophia A. McKever",
+                "email": "sophia.mckever@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Maruti K. Mudunuru",
+                "email": "maruti@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Katherine A. Muller",
+                "email": "katherine.muller@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Allison Myers-Pigg",
+                "email": "allison.myers-pigg@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Opal Otenburg",
+                "email": "opal.otenburg@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Aaron Pelly",
+                "email": "aaron.pelly@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Kelsey Peta",
+                "email": "KELSEY.PETA@GRAMNORTHWEST.COM",
+                "affiliation": "Gram Northwest",
+                "role": "Creator"
+            },
+            {
+                "name": "Beck Powers-McCormack",
+                "email": "bibi.powers-mccormack@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Peter Regier",
+                "email": "peter.regier@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Lupita Renteria",
+                "email": "lupita.renteria@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Alan Roebuck",
+                "email": "alan.roebuck@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Timothy D. Scheibe",
+                "email": "tim.scheibe@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Kyongho Son",
+                "email": "kyongho.son@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Joshua M. Torgeson",
+                "email": "joshua.torgeson@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "Jianqiu Zheng",
+                "email": "jianqiu.zheng@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            },
+            {
+                "name": "James C. Stegen",
+                "email": "James.Stegen@pnnl.gov",
+                "affiliation": "Pacific Northwest National Laboratory",
+                "role": "Creator"
+            }
+        ]
+    }
+]
