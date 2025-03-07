@@ -76,7 +76,7 @@
     <div id="map"></div>
 
     <!-- The marker visibility togglers -->
-    <div class="m-2 text-center">
+    <div id="marker-visibility-togglers" class="m-2 text-center" hidden>
       <input
         type="checkbox"
         class="btn-check"
@@ -451,6 +451,9 @@
             }
           });
         });
+
+        // Reveal the marker visibility togglers.
+        document.getElementById("marker-visibility-togglers").removeAttribute("hidden");
       })();
     </script>
   </body>
