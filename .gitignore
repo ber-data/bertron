@@ -1,4 +1,4 @@
 # Ignore IDE configuration files created by JetBrains IDEs (e.g., PyCharm).
 /.idea
-
+.venv
 **/*.egg-info/

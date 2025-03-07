@@ -1,0 +1,2095 @@
+{
+    "projects": [
+        {
+            "title": "Soil mineralogy control on SOC stability in soils",
+            "project_type": "MONet",
+            "id": "60880",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60880",
+            "abstract": "Soil Organic Carbon (SOC) pools and stability are influenced by interactions between climate, management, and soil properties. Numerous studies have determined the size and stability of SOC pools by incubation and other analytical methods. Few studies have linked the stability of SOC pools to soil clay mineralogy. However, these studies have not directly linked the stability of the SOC pools to the interactions between the SOC and soil mineralogy at molecular and structural configurations. Understanding these interactions at such scales offers not only a fundamental understanding of factors controlling SOC stability but means to upscale the stability of SOC pools to field, regional and continental scales by utilizing the spatial distribution of major soil minerals (smectite, kaolinite and mixed mineralogy) and climate gradient. \nThe objectives of this research are to (i) investigate the soil mineralogy control on SOC stability in soils at a molecular scale and (ii) elucidate on the potential to map the SOC stability using spatial distribution of soil mineralogy and other soil properties, that are currently available for the U.S. In the best-case scenario soil cores with low and high OC and clay representing three major soil mineralogy classes for a total of 12 samples will be analyzed. Alternatively, 6 cores representing three major mineralogy classes with low and high OC will be analyzed. Priority will be given to sites associated with research network stations such as Long-Term Agro-Ecosystem Research (LTAR). The proposed research project will benefit from the MONet soil program that offers state of the art measurement methods and database facilities to support multiscale approaches for assessing the SOC stability. The research is a multipurpose collaborative effort that includes several partners such as DOI-BER, USDA-ARS, and DOE-PNNL.         \n",
+            "project_members": [
+                {
+                    "orcid": "0000-0002-3258-5379",
+                    "role": "co_pi",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Nikolla Qafoku"
+                },
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0003-4489-3691",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Qian Zhao"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": "0000-0003-2092-3366",
+                    "role": "principal_investigator",
+                    "org": "United States Department of Agriculture - Agricultural Research Service",
+                    "name": "Zamir Libohova"
+                },
+                {
+                    "orcid": "0000-0002-0059-6831",
+                    "role": "active_member",
+                    "org": "United States Department of Agriculture - Agricultural Research Service",
+                    "name": "Joshua Blackstock"
+                },
+                {
+                    "orcid": null,
+                    "role": "active_member",
+                    "org": "United States Department of Agriculture - Agricultural Research Service",
+                    "name": "Phillip Owens"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60880/60008846"
+        },
+        {
+            "title": "Characterization of soil functions following forest conversion",
+            "project_type": "MONet",
+            "id": "60846",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60846",
+            "abstract": "The objective of this proposal is to characterize changes in soil functions associated conversion of the forest cover type from loblolly pine (Pinus taeda) to longleaf pine (Pinus palustris).  This treatment is a major goal in the southeastern U.S to restore millions of hectares of longleaf pine forest communities.  This watershed-scale experiment is being conducted on the Santee Experimental Forest (SEF), which is representative of the lower SE Atlantic coastal plain.  A paired watershed approach is being employed.  The reference watershed (WS-80) is unmanaged (60+ years), the treatment watershed (WS-77) was loblolly pine and managed using traditional silviculture and prescribed fire.  WS-77 was harvested in 2022 and planted to longleaf pine in 2023.  This long-term, watershed-scale experiment is designed to address questions about the effects of conversion to longleaf pine on water and carbon balance, and the associated ecosystem services.  The experiment is part of the Southern Research Stations long-term monitoring and assessment, which provides hydrologic, meteorological, vegetation and soil monitoring.  Each of the watershed have been instrumented with eddy-covariance towers.  Detailed field-based measurements of the soil water storage are being used to validate remote sensing data (via a NASA project).  Baseline data and samples exist for major milestones during the stand conversion process. \nThe watersheds have been monitored for over 60 years with respect to ecohydrology and vegetation. Recent work as focused on the effects of prescribed fire on DOC export, as well as the interactions with MeHg production.  WS-77 has lower DOC export than WS-80, but there\u2019s higher concentration of MeHg in aquatic biota on WS-77 as compared to WS-80.   Ongoing work supported by DOE-ESS is considering the effects of the altered hydrologic regime on MeHg production following harvesting.  Wetlands in each of the watershed are hot-spots for greenhouse gas emissions.  Accordingly, the plan is to sample both upland and wetland soils.\nParticipation in the MONET Soil Function will add a new and warranted dimension to the soil functional analyses.  It will enhance insights into endpoints into current measurements of soil properties and processes.   All monitoring and measurement data from the SEF are available.\n\n",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0002-8960-2926",
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Vanessa Paurus"
+                },
+                {
+                    "orcid": "0000-0001-7441-8934",
+                    "role": "active_member",
+                    "org": "The Chinese University of Hong Kong",
+                    "name": "Alex Chow"
+                },
+                {
+                    "orcid": "0000-0001-7441-8934",
+                    "role": "active_member",
+                    "org": "The Chinese University of Hong Kong",
+                    "name": "Alex Chow"
+                },
+                {
+                    "orcid": "0000-0003-4489-3691",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Qian Zhao"
+                },
+                {
+                    "orcid": "0000-0003-0279-7191",
+                    "role": "principal_investigator",
+                    "org": "United States Department of Agriculture - Forest Service",
+                    "name": "Carl Trettin"
+                },
+                {
+                    "orcid": "0000-0003-0279-7191",
+                    "role": "principal_investigator",
+                    "org": "United States Department of Agriculture - Forest Service",
+                    "name": "Carl Trettin"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0002-6943-0063",
+                    "role": "poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Rey Huachambe"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": "0009-0003-0446-6844",
+                    "role": "active_member",
+                    "org": "UNC Charlotte",
+                    "name": "Craig Allan"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0009-0002-9571-7954",
+                    "role": "active_member",
+                    "org": "USDA Forest Service Southern research station",
+                    "name": "Hope Fillingim"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60846/60008845"
+        },
+        {
+            "title": "Automating the data analysis workflow for relative quantitation of isomeric proteoforms based on fragment-ion intensities in top-down LC-MS/MS analyses",
+            "project_type": "Intramural S&T",
+            "id": "60149",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60149",
+            "abstract": "We will develop a software tool for relative quantitation of isomeric proteoforms based on fragment-ion intensities in liquid chromatography-tandem mass spectrometry (LC-MS/MS) data from top-down measurements. Our tool will automate the current laborious manual data analysis process and enable research experiments with large sample sizes for EMSL users, providing results in a robust, reproducible and much faster fashion. Previously analyzed data will be used to test the automated process, and the collaborators (EMSL users) will provide software usability testing. This automation will enable ~200GB of LC-MS/MS data to be processed unattended within hours, rather than manually over weeks.",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-7749-0077",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Mary Lipton"
+                },
+                {
+                    "orcid": "0000-0003-3817-4391",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Justin Teeguarden"
+                },
+                {
+                    "orcid": "0000-0003-3817-4391",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Justin Teeguarden"
+                },
+                {
+                    "orcid": "0000-0003-4456-517x",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Lee Ann McCue"
+                },
+                {
+                    "orcid": "0000-0003-3575-3224",
+                    "role": "active_member",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Mowei Zhou"
+                },
+                {
+                    "orcid": "0000-0003-1147-7165",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Haylie Kimball"
+                },
+                {
+                    "orcid": "0000-0003-2985-8249",
+                    "role": "principal_investigator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Aivett Bilbao Pena"
+                },
+                {
+                    "orcid": "0000-0001-5737-7173",
+                    "role": "active_member",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "David Degnan"
+                }
+            ],
+            "doi": "10.46936/intm.proj.2021.60149/60000429"
+        },
+        {
+            "title": "Waldbauer MONet Request",
+            "project_type": "MONet",
+            "id": "60920",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60920",
+            "abstract": "The Arctic is warming twice as fast as the rest of the planet, and Arctic soils currently store twice as much carbon as the entire atmosphere. These two facts make understanding how Arctic soil microbial communities are responding to climate change \u2014 particularly with regard to the potential respiration of the enormous reservoir of stored organic carbon \u2014 urgent for robust predictions of global environmental change in the coming decades. Greening of vegetation cover across the Arctic landscape \u2014 notably the shift from tussock/sedge-dominated tundra to a tundra more covered by taller, higher-biomass woody shrubs \u2014 is one of the most prominent climate-driven shifts in Arctic terrestrial ecology, with consequences for the soil microbial community that are only beginning to be understood. \n\nIn this project, we are using metaproteomics to document the microbial metabolism that underlies soil carbon and nutrient cycling processes in an Arctic tundra landscape undergoing warming-induced greening. Sampling focuses on the Toolik Lake area in the northern foothills of the Brooks Range, North Slope region of Alaska, site of 30+ years of longitudinal ecological research. In order to generate a deep and comprehensive view of protein expression across the soil microbial community, we are employing high-precision quantitative metaproteomics by in vitro peptide isotope tagging (diDO-IPTL). We will also use a proteomic nitrogen isotope tracking approach, developed in our group, to directly assay the incorporation and biosynthetic routing of 15N-labeled substrates by specific members of the community, which will provide new insights into critical nutrient dynamics of these N-limited soils. These new measurements will enable us to address key open questions in Arctic soil biogeochemistry, including:\n\n\u2022\tHow are metabolic functions partitioned between and among bacterial and fungal communities in \u2018baseline\u2019 (tussock/sedge) versus \u2018greened\u2019 (shrub) tundra?\n\u2022\tWhich metabolic processes are most limited by nitrogen scarcity in Arctic soil microbial communities throughout the deepening active layer, and how does vegetation influence the belowground N economy?\n\u2022\tHow will nitrogen availability modulate the capacity or tendency of active-layer microbial communities to access long-stored organic carbon as thaw depth increases?\n\nWe propose to sample 12 locations in the Toolik area for analysis by the MONet program. These will allow us to span the vegetation cover types (wet and dry sedge, tussock and upland and waterway shrub tundras) on the two different glacial land-surface ages (~60kyr and ~20kyr) present in the area. The MONet data will hugely enrich our ability to interpret our metaproteomic data in terms of the local microbial communities and edaphic properties. The metagenomic sequencing from closely-paired samples will enable more comprehensive peptide identification from our metaproteomic mass spectral data, especially for undersampled community constituents such as fungi. The molecular characterization of water-extractable organic matter will illuminate the solutes exchanged among the microbial communities and with root systems in the different tundra environments. Other measured soil parameters, notably the pore network structure and mineral-associated organic matter, have rarely been directly paired with community metaproteomic data and will likely reveal new kinds of biogeochemical interactions.",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0003-4489-3691",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Qian Zhao"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": "0000-0002-0338-6143",
+                    "role": "principal_investigator",
+                    "org": "University of Chicago",
+                    "name": "Jacob Waldbauer"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": null,
+                    "role": "active_member",
+                    "org": "University of Chicago",
+                    "name": "Raechel Hearth"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60920/60008848"
+        },
+        {
+            "title": "Biogeochemical controls on dissolved organic carbon production and degradation in tidal marshes",
+            "project_type": "MONet",
+            "id": "60932",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60932",
+            "abstract": "The overarching objective of our ongoing research is to determine environmental (biotic and abiotic) controls on organic matter (OM) production and decomposition in tidal marsh soils along an estuarine salinity gradient. The proposed field locations represent tidal marsh systems that vary in elevation, hydrology, salinity, plant and microbial communities, soil characteristics, and biogeochemistry. This presents an ideal opportunity to measure and identify variables that may be responsible for OM production and decomposition. \n\nTidal marshes are important components of the coastal carbon cycle due to their high productivity and carbon storage potential as well as their role in OM processing and export to adjacent waters. Most work to-date has focused on marsh surface waters even though belowground environments may be as equally important for OM processing and export. However, constraining the role of belowground OM in the coastal carbon cycle and in coastal carbon budgets has been difficult due to spatiotemporal differences in OM source and chemical composition, microbial community composition and function, and interactions between OM and microbial communities in soils and their porewaters. \n\nTo address our objectives, a coupled geochemical-microbiological approach is necessary to assess the metabolic processes and functional groups responsible for OM production and decomposition in relation to OM characteristics and other biogeochemical parameters. Data obtained from the MONet soil program would support our goals to couple these approaches by providing high resolution data on soil properties (e.g., composition, geochemistry, C and N) as well as information about the microbial community (e.g., metagenomics, biomass, potential enzyme activity). These data would also complement existing bulk measurements related to dissolved OM concentration, source, and composition in tidal marsh porewaters. \n\nThe proposed field locations and the subsequent data collected will provide information for the predictive understanding of soil processes that can be integrated into Earth system models and compared against other land types. This is especially critical along estuarine salinity gradients where soil processes are also traditionally thought to occur along a gradient (e.g., methane production decreases from freshwater to saltwater systems). However, gradients in salinity may not necessarily correlate to gradients in biogeochemical processes.",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0002-8960-2926",
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Vanessa Paurus"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0002-6645-7025",
+                    "role": "principal_investigator",
+                    "org": "College of William and Mary",
+                    "name": "Bongkeun Song"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": "0000-0001-8356-1548",
+                    "role": "active_member",
+                    "org": "Virginia Institute of Marine Science",
+                    "name": "Derek Detweiler"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": "0009-0009-4004-0916",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Caroline Simonsen"
+                },
+                {
+                    "orcid": "0000-0003-2108-1965",
+                    "role": "active_member",
+                    "org": "Virginia Institute of Marine Science",
+                    "name": "Novia Mann"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2024.60932/60012484"
+        },
+        {
+            "title": "Linking biotic drivers of soil structure to solute flows through soil profiles",
+            "project_type": "MONet",
+            "id": "60933",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60933",
+            "abstract": "Recent work highlights the powerful role that biota (here, roots and the microbes that surround them) play in governing soil structure over timescales much shorter than previously assumed. If robust across ecosystems, this observation suggests that the rapid response of biota to anthropogenic forcings (e.g., land use change, climate change) may impose yet-faster changes to soil structure in the Anthropocene. Such changes have great import for flows of water, nutrients, and dissolved organic carbon through soil profiles, and thus for ecosystem productivity and soil carbon fates. As part of a suite of projects at multiple sites in the U.S. funded by the NSF and the USDA, we seek participation in EMSL\u2019s MONet project to provide detailed descriptions of soil properties in select locations and thus aid in hypothesis testing (see below). We propose to collect cores for MONet analyses at two established research sites: Coal Creek in Colorado\u2019s Rocky Mountains, and Reynolds Creek in Idaho. At these sites, we already have quantified rooting depth distributions every 1 cm to the base of the accessible profile. At Coal Creek, ongoing research quantifies soil [CO2] and [O2], soil moisture and temperature, and sapflux from canopy dominants. The graduate student who will benefit from MONet data has a funded project at Coal Creek exploring the role of transpiration-induced soil water movement in governing spatial heterogeneity of dissolved organic carbon; MONet data will aid in his data interpretation. At Reynolds Creek, ongoing research is probing the role of juniper encroachment into sagebrush stands in modifying soil water and carbon dynamics. There, we are currently generating the same rooting depth distributions already obtained for Coal Creek, and soil pits will be instrumented in late May 2023. The graduate student who will benefit from MONet data is quantifying the rates of aggregate formation and collapse in a lab setting; MONet data will help her expand her work to a field setting. At both places, basic soil chemistry and physical attributes have been quantified and assays to quantify aggregate size distributions are in process. We seek to augment our understanding of biotic influences on soil attributes via MONet data. Specifically, we hypothesize that because high relative abundances of roots and microbes are linked to relatively plentiful dissolved organic C and microbial necromass, in these locations we see promotion of relatively large soil aggregates and greater microporosity. We further hypothesize that these structural features are linked to greater hydrologic flow from surface horizons down-profile, resulting in greater depth distribution of surface horizon dissolved organic C. We therefore predict that MONet-provided soil hydraulic properties will exhibit a greater propensity for water flow where mean aggregate diameters (which we will quantify) are larger, that these tendencies will be exhibited more so where roots and microbes (and possibly FTICR and amino sugar estimates of necromass) are more abundant, and that organic matter characteristics will reveal a greater abundance of material similar in characteristics to surface material at depth than where flow rates are more tempered by smaller pores. Probing these hypotheses depends on controlling for soil texture and depth. At each site, we will sample soil cores representing a gradient of rooting types: at Coal Creek, from forest into meadow, and at Reynolds Creek from juniper-dominated into sagebrush-dominated. If our hypotheses appear valid, we will have demonstrated the importance of root and microbial abundances to soil structure for governing water and solute flows, features that until now have been studied in disparate fields. An alternative hypothesis is that root and associated microbial turnover results in pore clogging to a greater extent than macroporosity generation. With either outcome, the work will advance our ability to project how well-documented, human modification of ecosystem rooting depths, and thus of the depth distributions of rhizosphere microbial communities, can alter soil structural characteristics critical for ecosystem water, nutrient, and carbon flows. Please note that this abstract contains more information than the research proposal itself due to word limitations.",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0003-4489-3691",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Qian Zhao"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": "0000-0001-8780-8501",
+                    "role": "co_pi",
+                    "org": "Oregon State University",
+                    "name": "Pamela Sullivan"
+                },
+                {
+                    "orcid": "0000-0003-1611-526x",
+                    "role": "principal_investigator",
+                    "org": "University of Kansas",
+                    "name": "Sharon Billings"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0000-0002-5201-2308",
+                    "role": "active_member",
+                    "org": "University of Kansas",
+                    "name": "Micah Unruh"
+                },
+                {
+                    "orcid": "0000-0001-8922-3689",
+                    "role": "active_member",
+                    "org": "University of Kansas",
+                    "name": "Lola Klamm"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60933/60008945"
+        },
+        {
+            "title": "Becklin MONet Request",
+            "project_type": "MONet",
+            "id": "60940",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60940",
+            "abstract": "Climate change is altering the timing of important developmental events, such as when plants emerge, flower, and senesce during the growing season. These phenological events determine the timing of peak plant productivity which can scale to influence carbon fluxes and inputs into the soil. Most plant phenological studies have focused on aboveground traits that are easy to observe. However, belowground phenology, especially the timing of root and microbial activity, likely plays a pivotal role in determining overall carbon dynamics and responses to climate change. \n\nWarming temperatures typically cause accelerated plant phenology. This may only be possible if the activity of soil microbes involved in decomposition, nutrient cycling, and nutrient uptake is also accelerated, resulting in a flux of nutrients to support earlier plant growth under warmer conditions. However, soils are somewhat buffered from temperature fluctuations, especially in snow-covered ecosystems, which could lead to asynchronous responses between above- and belowground organisms. In these systems, stimulation of root exudation by perennial plants following snowmelt may be an important mechanism driving accelerated soil microbial activity and leading to positive feedbacks on plant growth and development. \n\nPhenological responses to climate change likely vary across plant populations due to differences in historical climate conditions that have selected for different plant traits, environmental factors (e.g., soil moisture, nutrients) that constrain organismal responses to temperature, and shifts in microbial community composition that affect key soil processes and plant-microbe interactions. The proposed study will leverage populations of Ligusticum porteri, a common subalpine plant species in the Rocky Mountains. Twenty populations distributed across a natural climate gradient have been studied as part of a long-term project on flowering phenology and plant-insect interactions. These populations vary in their aboveground phenological sensitivity to snowmelt date. We hypothesize that the timing of root and microbial activity after snowmelt contributes to variable phenological responses in this system. \n\nTo test this hypothesis and assess alignment between above- and belowground phenology we will combine surveys of aboveground traits (emergence, flowering, senescence) and plant productivity with detailed molecular and chemical measures of soil functional traits as outlined in the Molecular Observation Network protocol. Initial studies will focus on three L. porteri populations that differ in the timing of snowmelt and average summer temperature. We will sample two locations at each population at three time points: immediately after snowmelt, start of flowering, and senescence. Temporal sampling within multiple populations will be essential to quantifying variation in above- and belowground phenology, a necessary parameter for modeling climate responses, and for characterizing microbial mechanisms driving these responses. Future projects will expand sampling to include additional populations from the long-term study. \n\nIn summary, this work will allow us to (1) assess the alignment of responses to snowmelt between above- and belowground phenology, (2) quantify variation in phenological responses among populations across a snowmelt gradient, and (3) link phenological responses to microbial functions involved in soil carbon and nutrient cycling. ",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0003-3173-3357",
+                    "role": "principal_investigator",
+                    "org": "Syracuse University",
+                    "name": "Katie Becklin"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0000-0003-3699-5284",
+                    "role": "active_member",
+                    "org": "University of Colorado at Colorado Springs",
+                    "name": "Emily Mooney"
+                },
+                {
+                    "orcid": "0000-0003-4455-0920",
+                    "role": "active_member",
+                    "org": "Colorado College",
+                    "name": "Shane  Heschel"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0009-0009-4004-0916",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Caroline Simonsen"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60940/60008888"
+        },
+        {
+            "title": "PI Goemann MONet Request",
+            "project_type": "MONet",
+            "id": "60929",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60929",
+            "abstract": "Just as humans rely on a healthy gut microbiome for resilience to illness, plants rely on a healthy root microbiome for resilience to environmental abiotic stress (heat, drought). To achieve a healthy root microbiome, plants release carbon (C)-rich compounds as root exudates to stimulate microbial activity and increase local nutrient mineralization. However, the enhanced performance comes at a cost: up to 44% of a plant\u2019s C can be lost to root exudates, diverting C from plant growth and respiration. Critical knowledge gaps include how the \u2018C cost\u2019 is managed and how root exudates alter the microbiome under different environmental conditions. In addition, historical climate conditions, particularly mean annual precipitation, is known to shape local soil microbiomes and alter their sensitivity to drought. Therefore, studies that better characterize the plant-microbe responses to environmental stress will aid in efforts to harness the microbiome to improve crop resilience. However, current knowledge gaps make it challenging to engineer beneficial plant-microbe interactions to improve plant productivity in agricultural systems and to predict how increased climate variability will alter terrestrial C fluxes and climate feedbacks.\nTo fill this knowledge gap our research group at Montana State University \u2013 Bozeman is currently studying blue grama (Bouteloua gracilis), a prairie grass native across the Northern Great Plains, as a model for drought tolerance. Our goal is to investigate the above- and belowground responses of blue grama to drought and heat stress to improve our understanding of stress-induced carbon allocation and plant-microbe interactions. Most recently, we investigated the influence of climate history on the blue grama drought response. We collected soil from three blue grama-dominated sites (those proposed to sample here) across a 150 mm mean annual precipitation gradient in SW Montana, USA, to use as inoculum for a greenhouse drought experiment. Preliminary results indicate that soil climate history has a strong influence on the blue grama physiological response to drought as well as on the chemical composition of root exudates and rhizosphere microbiome composition. Metabarcoding data from this experiment is scheduled to be submitted to public databases within the next year. Having in-depth analyses of the soil biogeochemistry and metagenomic composition through the MONet project at each of the field sites associated with this experiment will allow us to link underlying ecological processes with observed patterns of plant growth and productivity at each site. In addition, we plan to utilize the MONet database for future meta-analyses to compare the genomic and biogeochemical signatures of our field sites to others across a wider precipitation gradient throughout the native range of blue grama. This will further provide critical insights into the mechanisms that drive ecosystem functioning and resilience to drought stress.\n",
+            "project_members": [
+                {
+                    "orcid": "0000-0003-0033-0651",
+                    "role": "co_pi",
+                    "org": "Montana State University",
+                    "name": "Brent Peyton"
+                },
+                {
+                    "orcid": "0000-0002-5492-866x",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Tamas Varga"
+                },
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0002-2367-4193",
+                    "role": "co_pi",
+                    "org": "Montana State University",
+                    "name": "Danielle Ulrich"
+                },
+                {
+                    "orcid": "0000-0001-7724-5100",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Anil Krishna Battu"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0003-2254-399x",
+                    "role": "co_pi",
+                    "org": "United States Department of Agriculture - Agricultural Research Service",
+                    "name": "Rebecca Mueller"
+                },
+                {
+                    "orcid": "0000-0003-2254-399x",
+                    "role": "co_pi",
+                    "org": "United States Department of Agriculture - Agricultural Research Service",
+                    "name": "Rebecca Mueller"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-9802-5625",
+                    "role": "principal_investigator",
+                    "org": "Montana State University",
+                    "name": "Hannah Goemann"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0000-0003-0580-1600",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Young Song"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60929/60008856"
+        },
+        {
+            "title": "NEON Contract FY24",
+            "project_type": "MONet",
+            "id": "61049",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=61049",
+            "abstract": "MONet has an ILA in place to obtain the services of BCO who operates the National Ecological Observatory Network (NEON) for a soil sampling effort of terrestrial field sites. BCO will obtain soil cores samples from 24 field sites in FY24.",
+            "project_members": [
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "principal_investigator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.61049/60012315"
+        },
+        {
+            "title": "Ward Jones MONet Request",
+            "project_type": "MONet",
+            "id": "60942",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60942",
+            "abstract": "Climate warming is benefitting high latitude agriculture by increasing air temperatures and the growing season length. However, permafrost (perennially frozen ground) thaw is accelerating and causing cascading effects to ecosystems and communities. Cultivating on permafrost-affected soils with high ground-ice content can lead to field abandonment as melting ground ice causes the land surface to collapse, also known as subsidence.  Permafrost Grown is a transdisciplinary project co-producing with Alaskan farmers to understand the interactions between agricultural practices and permafrost. We are focusing on current in-the-ground farming, as well as assessing the legacy effects of cultivated fields that were abandoned due to permafrost thaw and the socioeconomic trade-offs of cultivating on permafrost-affected soils. \n     Our project methods include sensor networks, characterizing permafrost conditions using geophysics and borehole sampling, agricultural experiments and cultivar testing, surveys, interviews, economic risk modelling, and unmanned arial vehicle (UAV) based remote sensing to monitor plant health throughout the growing season as well as to monitor ground surface subsidence and snow depth. Our project goals include creating decision-making tools for farmers, including best-practice guides and management strategy resources for cultivating on permafrost-affected soils to support sustainable agriculture in high-altitude regions.\n     For the MONet program we propose to collect three to five samples within the active layer (thawed layer above permafrost) at five farms, four in Fairbanks and one in Two Rivers, Alaska, to address the following research questions:\n(1) How do active layer soil properties change with varying land clearing histories (1950s to 2021), cultivation activities and underlying permafrost soil conditions?\n(2) How does subsidence change soil properties that limit further farming practices?\n(3) How do permafrost management strategies change soil properties? \n\tAll sites will have a sample collected within forested areas adjacent to farming activities. We will also collect six samples dedicated to cultivation types chosen to represent historically important Alaskan products: potato crop (replicated at two farms), peonies (two different ages at one farm), and brome hay (replicated at two farms). Three samples related to land clearing, one that was cleared in 2001 but never cultivated and the forest is regrowing, two for an area cleared in 2021, one sample will be collected in an area that is subsiding and the other in a non-subsiding area. Three samples collected in areas abandoned due to subsidence and four samples related to subsidence management, two in areas that subsided and were subsequently graded and infilled with soil and the other experimentally testing an asparagus crop (established in 2022) planted in an area that was always cultivated (previously potatoes) and extending the row in an area that was previously abandoned due to subsidence. \n      Participating in the MONet program will provide new data for our project that complements current and planned data collection. Abandoning whole or parts of fields is one of the most common problems related to permafrost thaw facing farmers participating in the Permafrost Grown Project. We are particularly interested in using the MONet data to help us understand how subsidence causes cultivation abandonment and begin to evaluate management strategies.",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0003-4489-3691",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Qian Zhao"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0000-0002-3401-2515",
+                    "role": "principal_investigator",
+                    "org": "University of Alaska Fairbanks",
+                    "name": "Melissa Ward Jones"
+                },
+                {
+                    "orcid": "0000-0001-6635-6737",
+                    "role": "active_member",
+                    "org": "University of Alaska Fairbanks",
+                    "name": "Glenna Gannon"
+                },
+                {
+                    "orcid": null,
+                    "role": "active_member",
+                    "org": "University of Alaska Fairbanks",
+                    "name": "Chien-Lu Ping"
+                },
+                {
+                    "orcid": "0000-0002-1517-4711",
+                    "role": "active_member",
+                    "org": "University of Alaska Fairbanks",
+                    "name": "Benjamin Jones"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60942/60008902"
+        },
+        {
+            "title": "Baggs MONet Request: The effects of agricultural nitrogen fertilization regimes on soil geochemistry ",
+            "project_type": "MONet",
+            "id": "60886",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60886",
+            "abstract": "Agriculture impacts the environment through several biogeochemical cycles that are relevant at local to global scales. To efficiently obtain high yielding harvests farmers are required to use management practices such as the input of synthetic fertilizers. However, synthetic fertilizers are not sustainable due to the high CO2 cost of production, requirements for non-renewable resources and unintended ecological impacts (eutrophication, water pollution). Understanding the complex environmental and resource outcomes of agricultural management decisions is extremely challenging due to the plethora of interacting factors. At Sound Agriculture we are developing science driven solutions for sustainable crop production. Our central question of interest is how does a proprietary chemical microbial activator and commercial practice synthetic Nitrogen fertilization regimens affect soil geochemistry over a field season.\n\nWe would plan to sample several plots from a single field at the start of the season before sowing and then again after harvest. One of three different treatments will be applied to each plot; 1. commercial practice N fertilization (150-220lb N/acre) , 2. 25lb/ac less than commercial practice N fertilization 3. 25lb/ac less than commercial practice N fertilization with microbial stimulants. Our proposal for the MONET call would be to have 3 collection events in May and then a further 3 collection events in September at the point of harvest. At each time point one collection event will be taken at each of the three fertilization treatments being studied. From our selected sites we will be working with farmers to gather additional data including AMF colonization of roots, shoot and root Nitrogen and Phosphorous stress marker gene expression and yield. Combined with the data from MONet this should help us to begin to unravel how management practices are affecting soil biogeochemistry and microbiome structures. Of particular interest is how the microbiome and the nutrients that they exchange with plants are affected by the fertilization regime through an agricultural field season. For instance we would like to understand how activating the microbiome compares to synthetic nitrogen in altering the flux of soil organic carbon, Nitrogen, Phosphorus and other rare minerals. Our field sample qPCR and microscopy data will allow us to see whether the differences in soil geochemistry and microbiome are visible in planta transcriptional reprogramming. Further understanding of soil chemistry and plant-microbe interactions will help us to fine tune how to promote plant growth whilst maintaining a healthy ecosystem. Through understanding the differences in nutrient flux overtime and between treatments we hope to gain a better understanding of what factors vary on this time scale and can be markers of healthy soils. We can additionally use yield data from our sites to see if there are any correlations between microbial or biogeochemical factors and yield. Finally we would like to query how management practices and the soil microbiome affect Mineral Associated Organic Matter and whether differences are perceptible over a crop season. Such information will help to inform future strategies for the integration of carbon credits into the agricultural economy. ",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0003-4489-3691",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Qian Zhao"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": "0000-0003-3076-9489",
+                    "role": "principal_investigator",
+                    "org": "Sound Agriculture",
+                    "name": "Erin Baggs"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0000-0003-0400-7114",
+                    "role": "active_member",
+                    "org": "Sound Agriculture",
+                    "name": "Shannon King-Miller"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60886/60008903"
+        },
+        {
+            "title": "Midgley MONet Request",
+            "project_type": "MONet",
+            "id": "60938",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60938",
+            "abstract": "Using a series of mature, mono-specific forestry plots, our collaborative team here at The Morton Arboretum together with our partners outside the Arboretum are addressing interdisciplinary questions regarding tree responses to climate change; relationships among leaf, stem, root and mycorrhizal phenology; forest carbon and nutrient dynamics; and the connections among tree traits, soil invertebrate and microbial communities, and soil biogeochemistry. The specific sites used in our study were intentionally selected to include wide phylogenetic and functional diversity among tree species ensuring relevance of our findings to ecosystem processes across northern hemisphere temperate forests and ready incorporation into terrestrial biosphere models (e.g., Wang et al. 2023). To address our questions, we developed a comprehensive platform for long-term monitoring of leaf, stem, and root growth; growth of mycorrhizal fungi and repeated sampling of mycorrhizal communities; soil respiration; and stem and sap flow. We then couple these observations with ongoing monitoring of abiotic conditions including soil moisture, temperature, electrical conductivity, and standard meteorological measurements. We have also conducted intensive sampling campaigns assessing invertebrate communities, root exudation rates, tree demography, ecosystem nutrient budgets, and specific soil properties associated with individual species (Midgley and Sims 2020).\n\nFor our proposed sampling with the Molecular Observation Network (MONet), we will focus on a series of 11 mono-specific sites, all under the same climate conditions within the 690-hectare Arboretum grounds. The 11 sites are roughly evenly split between angiosperms and gymnosperms and within each group, split between both arbuscular and ectomycorrhizal associating species, with additional stratification across our two dominant soil types, Alfisols and Mollisols. MONet therefore provides an opportunity for us to better link tree species effects to soil and ecosystem properties. We are particularly interested in gaining greater insights into the organic matter fractions among our sites as well as detailed soil hydraulic properties and pore network structure. Furthermore, we expect the metagenomics data and enzyme activity will closely complement our planned sampling and analysis of mycorrhizal fungal communities among our sites. We further propose to repeat our sampling at two time points. The first sampling will take place during the typical growing season (June/July). The second sampling will be outside of the typical growing season after fall leaf senescence occurs in deciduous species (October/November). We are selecting this second date as our previous observations indicate this to be an important period of growth for both roots and mycorrhizal fungi across our sites. We therefore expect changes in many of the properties assessed by MONet, especially metagenomics, enzyme activity, and respiration.\n",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0000-0002-1195-1608",
+                    "role": "principal_investigator",
+                    "org": "The Morton Arboretum",
+                    "name": "Meghan Midgley"
+                },
+                {
+                    "orcid": "0000-0002-8300-5215",
+                    "role": "co_pi",
+                    "org": "The Morton Arboretum",
+                    "name": "Michael McCormack"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60938/60012299"
+        },
+        {
+            "title": "Redlins MONet Request",
+            "project_type": "MONet",
+            "id": "60921",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60921",
+            "abstract": "Hydraulic redistribution (HR) is the passive movement of water within the soil profile via biological pathways (namely roots and fungal hyphae) from wetter areas to drier areas. The translocation of water from deep soil to the upper soil horizons may have important implications on root morphology, soil-biologic activity, solute transport, carbon stability dynamics, and soil physical and structural properties, especially in water-limited environments such as that found on the western slopes of the Oregon Cascade Mountains. This region is typical of a Mediterranean climate wherein nearly all of its precipitation falls as rain throughout the winter which is contrasted by an extended summer dry period when little to no precipitation occurs. We seek to elucidate how hydraulic redistribution may alter soil physical and biological properties, as well as nutrient dynamics, in what would otherwise be two very similar hillslopes. To explore this, we have chosen sites on two adjacent hillslopes within the HJ Andrews Experimental Forest which have been shown, through previous study, to experience two contrasting hydraulic redistribution regimes: high HR activity, and little to no HR activity. Watersheds within HJ Andrews are typical representations of low-elevation, mixed-use catchments found throughout the western Cascades of Oregon. The hillslopes selected within the Andrews Forest are defined less by differences in surface vegetation, land-use history, and underlying lithology, but are believed to be more defined by differences in water accessibility and near-surface hydrologic variability throughout the summer dry season. It is hypothesized that differences in the relative magnitude of HR, even within high- and low-HR plots, are a result of variation in groundwater accessibility to surface vegetation, and to trees in particular. As such, two sites on each hillslope, one on the toe-slope and one on the mid-slope (4 sites total), have been selected for this project to best capture both inter- and intra-plot variation in groundwater accessibility, and 3 sampling events have been chosen to highlight changes that occur at each site across an entire period of seasonal drought. The MONet soil program will allow us to analyze changes in soil physical properties, carbon dynamics, and biologic activity associated with the near surface soils that are most impacted by the influx of redistributed water. Core and sample collection for the MONet soil program will occur alongside existing efforts at each site to map the magnitude, location, geometry, and flow paths of near surface water using state-of-the-art geophysical techniques. Combined, the MONet soil program and existing research efforts at the sites will provide important insight into the dynamic soil processes associated with variable water accessibility under drought conditions. Furthermore, the national focus of the MONet soil program will allow for exploration into the scalability of our findings. ",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0002-8960-2926",
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Vanessa Paurus"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": "0009-0009-3320-2032",
+                    "role": "principal_investigator",
+                    "org": "Oregon State University",
+                    "name": "Alexander Takver"
+                },
+                {
+                    "orcid": "0009-0009-3320-2032",
+                    "role": "principal_investigator",
+                    "org": "Oregon State University",
+                    "name": "Alexander Takver"
+                },
+                {
+                    "orcid": "0000-0001-8780-8501",
+                    "role": "active_member",
+                    "org": "Oregon State University",
+                    "name": "Pamela Sullivan"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60921/60008849"
+        },
+        {
+            "title": "Ricketts MONet Request",
+            "project_type": "MONet",
+            "id": "60923",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60923",
+            "abstract": "Switchgrass is a potential bioenergy feedstock and has adapted to a wide range of environments by exhibiting a variety of trait combinations that has resulted in multiple ecotypes across its range. The most divergent ecotypes are the uplands and lowlands, locally adapted to the northern and southern plains, respectively. Morphological trait differences between upland and lowland ecotypes exist and contribute to survivability in a range of environments. Aboveground, uplands typically produce relatively higher numbers of short, thin stems with higher nitrogen concentrations, while lowlands produce fewer, taller, thicker stems with lower nitrogen concentrations. Belowground, uplands have more fibrous, finer root structure compared to lowlands which have courser, thicker roots. Additionally, our recent publication (Ricketts et al. 2023, GCB Bioenergy) shows that the soil environment is equally, if not more, important than climate in determining switchgrass biomass yield. Therefore, to better understand (1) how variations in the soil environment affect switchgrass growth, and (2) the effects of switchgrass production on soil health and sustainability, we aim to quantify the differences in soil structural, physical, chemical, and biological characteristics resulting from the growth of two divergently locally adapted switchgrass ecotypes grown across their native range in the United States.\n\nWe propose to collect soil samples from 3 sites across a latitudinal gradient from Illinois to Texas where 6mx6m plots of switchgrass have been established for ~7 years. The soil types differ substantially among the sites, where the Mundelein silt loam at Fermilab, IL is a somewhat poorly drained mollisol, the Mexico silt loam in Columbia, MO is a poorly drained alfisol (with a relatively shallow claypan), and the Houston Black clay in Temple, TX is a moderately well-drained, slowly permeable vertisol that exhibits notable cracking during dry periods. We will collect 7 \u201cevents\u201d at each site (>10m distance from one another); 3 from the upland Blackwell cultivar, 3 from the lowland Kanlow cultivar, and 1 from a plant-free control zone. All samples will be collected during peak plant growth relative to each site. \n\nThe data obtained from the MONet soil program will provide us with information relevant for understanding the relationships between edaphic factors, belowground plant traits, and aboveground biomass yield in different environments. Additionally, it will provide crucial belowground context for various data collections obtained throughout the first 7 years of this project. For instance, X-ray Computed Tomography will help us to understand if/how differences in root traits affect soil pore network structure; FT-ICR-MS will help to identify potential differences in soil carbon inputs from the two ecotypes; microbial biomass data will enable us to better interpret 16S rRNA amplicon relative abundance data between sites; and the metagenomics and soil enzyme data from these root-associated bulk soil samples will supplement previously collected rhizosphere samples taken from these same plots to analyze microbial functional capacity. Overall, this data will provide us with a broader contextual framework for understanding plant-soil-microbial interactions in switchgrass and inform how genotype-by-environment (GxE) interactions might affect soil carbon dynamics/sequestration potential.",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0002-8960-2926",
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Vanessa Paurus"
+                },
+                {
+                    "orcid": "0000-0001-5552-9807",
+                    "role": "co_pi",
+                    "org": "Argonne National Laboratory",
+                    "name": "Roser Matamala"
+                },
+                {
+                    "orcid": "0000-0001-7069-4560",
+                    "role": "co_pi",
+                    "org": "Argonne National Laboratory",
+                    "name": "Julie Jastrow"
+                },
+                {
+                    "orcid": "0000-0001-9550-9288",
+                    "role": "co_pi",
+                    "org": "University of Texas at Austin",
+                    "name": "Thomas Juenger"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": "0000-0002-5588-9340",
+                    "role": "principal_investigator",
+                    "org": "Argonne National Laboratory",
+                    "name": "Michael Ricketts"
+                },
+                {
+                    "orcid": "0000-0003-0825-6855",
+                    "role": "active_member",
+                    "org": "University of Missouri - Columbia",
+                    "name": "Felix Fritschi"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60923/60008850"
+        },
+        {
+            "title": "Soil Function Across Variably Inundated Environments - Tidal Systems",
+            "project_type": "MONet",
+            "id": "60946",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60946",
+            "abstract": "We aim to generate knowledge, data, and models that are transferable across Earth\u2019s variably inundated ecosystems. We are focused on the integrated hydro-biogeochemistry of soils in these diverse systems. Of particular interest is understanding how inundation history shapes the physical, chemical, and biological environment and how those components jointly lead to emergent biogeochemical fluxes, including shifts in fluxes in response to altered inundation states. In this proposal we are targeting sites that experience variable inundation due to tides. The objective is to generate a foundational dataset for comparative analyses of the physical-chemical-biological environment and how that integrated environment is related to fluxes (e.g., CO2 production). We further aim to leverage the large number of MONet samples across soil environments that may not be variably inundated. By merging data from systems that are and are not variably inundated we can evaluate the hypothesis that the physical-chemical-biological environment of all variably inundated systems clusters near soil systems from wet/humid regions (and away from arid soils). This is a starting hypothesis and characterization effort ultimately aimed at generating refined hypotheses to guide follow-on sampling and modeling efforts. In addition, our collective team plans to submit additional MONet proposals to cover other types of variably inundated environments. These will include hillslopes with surface runoff, non-perennial streams, temporary ponds, wetlands, floodplains, coastal systems inundated due to storms, and soil systems engineered to enable specific/controlled inundation regimes.",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0001-9135-7424",
+                    "role": "co_pi",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "James Stegen"
+                },
+                {
+                    "orcid": "0000-0001-6174-5581",
+                    "role": "active_member",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Nicholas Ward"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0002-8375-1314",
+                    "role": "principal_investigator",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Peter Regier"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": null,
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Beata Meluch"
+                },
+                {
+                    "orcid": "0000-0002-0712-4378",
+                    "role": "co_pi",
+                    "org": "Woods Hole Oceanographic Institution",
+                    "name": "Julia Guimond"
+                },
+                {
+                    "orcid": "0009-0007-6946-9404",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "William Petersen"
+                },
+                {
+                    "orcid": null,
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Saige Smith"
+                },
+                {
+                    "orcid": "0009-0006-8594-6648",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Natalie Moore"
+                },
+                {
+                    "orcid": "0009-0009-4004-0916",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Caroline Simonsen"
+                },
+                {
+                    "orcid": "0009-0007-2935-6878",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Maria Perez"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60946/60008981"
+        },
+        {
+            "title": "Grazing Impacts on Soil Organic Carbon Chemistry and Microbial Community Structure and Functions in a Mixed-Grass Ecosystem",
+            "project_type": "MONet",
+            "id": "60881",
+            "uri": "https://sc-data.emsl.pnnl.gov/?projectId=60881",
+            "abstract": "Grasslands cover approximately 40% of the Earth's land surface and represent about 70% of the agricultural area. They contain about 10% of terrestrial biomass and contribute about 20\u201330% of the global soil organic carbon (SOC). Grasslands have some potential to sequester atmospheric CO2 as stable soil carbon (C) and hence could contribute to mitigation of climate change. However, the accumulation and storage of C in grasslands is strongly influenced by livestock grazing. Under dry climate conditions, grazing tended to increase SOC stocks but generally decreased the stocks under moist climate conditions. High grazing intensity increased SOC for C4-dominated grassland compared to C3 dominated and C3-C4 mixed grasslands, and increased total nitrogen and soil bulk density as well. However, the micro- and molecular-scale processes underpinning these changes have not been characterized, limiting our understanding of the grazing impacts on ecosystem processes and services. Thus, the goal of the proposed project is to characterize the molecular composition of soil organic matter (water extractable), the structure and composition of soil microbial communities, and the soil micropore network structure under grazing, in addition to characterizing those basic soil properties.\n\nThis study is part of an ongoing field experiment undertaken at the USDA-ARS High Plains Grasslands Research Station near Cheyenne, WY, to investigate the long-term influence of different grazing rates on a northern mixed-grass prairie ecosystem under a cool dry climate. Stocking rate treatments were established in 1982 with two replicate blocks (pastures) for each of the three stocking rates. The three treatments are ungrazed exclosures, and pastures grazed at a light and heavy stocking rates. Two articles have resulted from the 1993 and 2003 soil sampling events (Ingram et al., Soil Sci. Soc. Am. J., 2008; Schuman et al., Ecol. Appl., 1999), and a third from the 2013 sampling is drafted. Grazing increased SOC and N stocks in surface soils due to plant community changes from a C3 to a C4 plant dominated community. The SOC was partially lost due to a drought period (2000 \u2013 2002) occurring prior to the 2003 spring sampling. We propose to collect soils in May 2023, the 40th year since the sites were established. A 50-m permanent transect has been established in each block on nearly level sites. Soils will be sampled at 0, 10, 20, and 40 m along each 50-m transect, generating 24 samples totally.\n\nMONet is a great platform for the proposed project. It houses suitable instruments for the proposed analyses, and its mission is in line with this long-term USDA agroecosystem research.\n",
+            "project_members": [
+                {
+                    "orcid": "0000-0001-6299-2146",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Jason Toyoda"
+                },
+                {
+                    "orcid": "0000-0002-8960-2926",
+                    "role": "metadata_poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Vanessa Paurus"
+                },
+                {
+                    "orcid": "0000-0003-1739-1055",
+                    "role": "principal_investigator",
+                    "org": "University of Maryland, College Park",
+                    "name": "Mengqiang Zhu"
+                },
+                {
+                    "orcid": "0000-0003-1739-1055",
+                    "role": "principal_investigator",
+                    "org": "University of Maryland, College Park",
+                    "name": "Mengqiang Zhu"
+                },
+                {
+                    "orcid": "0000-0003-1739-1055",
+                    "role": "principal_investigator",
+                    "org": "University of Maryland, College Park",
+                    "name": "Mengqiang Zhu"
+                },
+                {
+                    "orcid": "0000-0003-4489-3691",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Qian Zhao"
+                },
+                {
+                    "orcid": "0000-0002-9609-9126",
+                    "role": "project_manager",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Sarah Leichty"
+                },
+                {
+                    "orcid": "0000-0001-9303-4901",
+                    "role": "science_lead",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "John Bargar"
+                },
+                {
+                    "orcid": "0000-0002-6943-0063",
+                    "role": "poc",
+                    "org": "Pacific Northwest National Laboratory",
+                    "name": "Rey Huachambe"
+                },
+                {
+                    "orcid": "0000-0001-7002-2318",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Andrew Townsend"
+                },
+                {
+                    "orcid": "0000-0002-1634-0451",
+                    "role": "poc",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Izabel Stohel"
+                },
+                {
+                    "orcid": null,
+                    "role": "active_member",
+                    "org": "USDA-ARS Rangeland Resources and Systems Research Unit ",
+                    "name": "Justin Derner"
+                },
+                {
+                    "orcid": "0009-0006-7390-7094",
+                    "role": "active_member",
+                    "org": "University of Maryland, College Park",
+                    "name": "Jung-Chen Liu"
+                },
+                {
+                    "orcid": "0009-0006-8594-6648",
+                    "role": "administrative_coordinator",
+                    "org": "Environmental Molecular Sciences Laboratory",
+                    "name": "Natalie Moore"
+                }
+            ],
+            "doi": "10.46936/mone.proj.2023.60881/60008847"
+        }
+    ],
+    "samples": [
+        {
+            "id": "EMSL:60920_7",
+            "latitude": "68.633578",
+            "longitude": "-149.632826",
+            "dataset_id": "60920",
+            "date_added": "2023-08-08 00:00:00"
+        },
+        {
+            "id": "EMSL:60940_6",
+            "latitude": "38.95499",
+            "longitude": "-106.98326",
+            "dataset_id": "60940",
+            "date_added": "2023-07-25 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_14",
+            "latitude": "39.0854756",
+            "longitude": "-96.5849706",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_6",
+            "latitude": "31.04512",
+            "longitude": "-97.34808",
+            "dataset_id": "60923",
+            "date_added": "2023-11-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60946_1",
+            "latitude": "46.90522",
+            "longitude": "-123.9803",
+            "dataset_id": "60946",
+            "date_added": "2023-11-07 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_4",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60846_7",
+            "latitude": "33.15022",
+            "longitude": "-79.789144",
+            "dataset_id": "60846",
+            "date_added": "2023-08-22 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_17",
+            "latitude": "41.836794",
+            "longitude": "-88.239561",
+            "dataset_id": "60923",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_10",
+            "latitude": "68.635669",
+            "longitude": "-149.586768",
+            "dataset_id": "60920",
+            "date_added": "2023-08-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_19",
+            "latitude": "41.836775",
+            "longitude": "-88.239856",
+            "dataset_id": "60923",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_9",
+            "latitude": "38.9",
+            "longitude": "-92.214",
+            "dataset_id": "60923",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60932_5",
+            "latitude": "37.5687",
+            "longitude": "-76.8966",
+            "dataset_id": "60932",
+            "date_added": "2023-10-30 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_14",
+            "latitude": "38.9",
+            "longitude": "-92.214",
+            "dataset_id": "60923",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60938_1",
+            "latitude": "41.815902",
+            "longitude": "-88.057667",
+            "dataset_id": "60938",
+            "date_added": "2023-10-16 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_17",
+            "latitude": "39.0855345",
+            "longitude": "-96.5846642",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_2",
+            "latitude": "31.04512",
+            "longitude": "-97.34808",
+            "dataset_id": "60923",
+            "date_added": "2023-11-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_16",
+            "latitude": "39.0855345",
+            "longitude": "-96.5847223",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60886_6",
+            "latitude": "38.80342",
+            "longitude": "-94.0436",
+            "dataset_id": "60886",
+            "date_added": "2023-09-18 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_1",
+            "latitude": "31.04512",
+            "longitude": "-97.34808",
+            "dataset_id": "60923",
+            "date_added": "2023-11-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_5",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_1",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_9",
+            "latitude": "68.623214",
+            "longitude": "-149.61081",
+            "dataset_id": "60920",
+            "date_added": "2023-08-08 00:00:00"
+        },
+        {
+            "id": "EMSL:60880_1",
+            "latitude": "30.01347",
+            "longitude": "-94.500935",
+            "dataset_id": "60880",
+            "date_added": "2023-11-08 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_13",
+            "latitude": "39.0854756",
+            "longitude": "-96.5849125",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60940_3",
+            "latitude": "38.87309",
+            "longitude": "-107.10684",
+            "dataset_id": "60940",
+            "date_added": "2023-07-24 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_11",
+            "latitude": "39.0854756",
+            "longitude": "-96.5847964",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_4",
+            "latitude": "68.609694",
+            "longitude": "-149.313567",
+            "dataset_id": "60920",
+            "date_added": "2023-08-07 00:00:00"
+        },
+        {
+            "id": "EMSL:60940_5",
+            "latitude": "38.95499",
+            "longitude": "-106.98326",
+            "dataset_id": "60940",
+            "date_added": "2023-07-25 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_10",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-14 00:00:00"
+        },
+        {
+            "id": "EMSL:60886_4",
+            "latitude": "38.80342",
+            "longitude": "-94.0436",
+            "dataset_id": "60886",
+            "date_added": "2023-09-18 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_7",
+            "latitude": "31.04512",
+            "longitude": "-97.34808",
+            "dataset_id": "60923",
+            "date_added": "2023-11-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_12",
+            "latitude": "39.0854756",
+            "longitude": "-96.5848545",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_10",
+            "latitude": "38.9",
+            "longitude": "-92.214",
+            "dataset_id": "60923",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_11",
+            "latitude": "38.9",
+            "longitude": "-92.214",
+            "dataset_id": "60923",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_15",
+            "latitude": "41.836706",
+            "longitude": "-88.23945",
+            "dataset_id": "60923",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60932_4",
+            "latitude": "37.5665",
+            "longitude": "-76.8972",
+            "dataset_id": "60932",
+            "date_added": "2023-10-30 00:00:00"
+        },
+        {
+            "id": "EMSL:60921_3",
+            "latitude": "44.2175",
+            "longitude": "-120.261",
+            "dataset_id": "60921",
+            "date_added": "2023-12-10 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_18",
+            "latitude": "39.0855345",
+            "longitude": "-96.5846061",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60881_5",
+            "latitude": "41.213068",
+            "longitude": "-104.852175",
+            "dataset_id": "60881",
+            "date_added": "2023-06-26 00:00:00"
+        },
+        {
+            "id": "EMSL:60942_1",
+            "latitude": "64.91562",
+            "longitude": "-147.485333333333",
+            "dataset_id": "60942",
+            "date_added": "2023-09-10 00:00:00"
+        },
+        {
+            "id": "EMSL:60886_2",
+            "latitude": "38.80342",
+            "longitude": "-94.0436",
+            "dataset_id": "60886",
+            "date_added": "2023-09-18 00:00:00"
+        },
+        {
+            "id": "EMSL:60946_2",
+            "latitude": "38.874395",
+            "longitude": "-76.551203",
+            "dataset_id": "60946",
+            "date_added": "2023-10-31 00:00:00"
+        },
+        {
+            "id": "EMSL:60921_2",
+            "latitude": "44.2175",
+            "longitude": "-120.2613",
+            "dataset_id": "60921",
+            "date_added": "2023-06-26 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_20",
+            "latitude": "39.0855345",
+            "longitude": "-96.58449",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_2",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60886_5",
+            "latitude": "38.80342",
+            "longitude": "-94.0436",
+            "dataset_id": "60886",
+            "date_added": "2023-09-18 00:00:00"
+        },
+        {
+            "id": "EMSL:60880_2",
+            "latitude": "31.486141",
+            "longitude": "-96.893469",
+            "dataset_id": "60880",
+            "date_added": "2023-11-07 00:00:00"
+        },
+        {
+            "id": "EMSL:60932_1",
+            "latitude": "37.2189",
+            "longitude": "-76.41",
+            "dataset_id": "60932",
+            "date_added": "2023-10-30 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_2",
+            "latitude": "68.609793",
+            "longitude": "-149.312092",
+            "dataset_id": "60920",
+            "date_added": "2023-08-07 00:00:00"
+        },
+        {
+            "id": "EMSL:60932_6",
+            "latitude": "37.571",
+            "longitude": "-76.8954",
+            "dataset_id": "60932",
+            "date_added": "2023-10-30 00:00:00"
+        },
+        {
+            "id": "EMSL:60929_3",
+            "latitude": "45.6212",
+            "longitude": "-111.5687",
+            "dataset_id": "60929",
+            "date_added": "2023-06-20 00:00:00"
+        },
+        {
+            "id": "EMSL:60938_5",
+            "latitude": "41.815216",
+            "longitude": "-88.0842",
+            "dataset_id": "60938",
+            "date_added": "2023-10-16 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_6",
+            "latitude": "68.634455",
+            "longitude": "-149.643096",
+            "dataset_id": "60920",
+            "date_added": "2023-08-08 00:00:00"
+        },
+        {
+            "id": "EMSL:60881_4",
+            "latitude": "41.212779",
+            "longitude": "-104.851983",
+            "dataset_id": "60881",
+            "date_added": "2023-06-26 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_19",
+            "latitude": "39.0855345",
+            "longitude": "-96.584548",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60940_4",
+            "latitude": "38.87309",
+            "longitude": "-107.10684",
+            "dataset_id": "60940",
+            "date_added": "2023-07-24 00:00:00"
+        },
+        {
+            "id": "EMSL:60881_1",
+            "latitude": "41.209743",
+            "longitude": "-104.863373",
+            "dataset_id": "60881",
+            "date_added": "2023-06-26 00:00:00"
+        },
+        {
+            "id": "EMSL:60846_12",
+            "latitude": "33.145468",
+            "longitude": "-79.790309",
+            "dataset_id": "60846",
+            "date_added": "2023-08-22 00:00:00"
+        },
+        {
+            "id": "EMSL:60880_3",
+            "latitude": "34.048588",
+            "longitude": "-93.103395",
+            "dataset_id": "60880",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60940_2",
+            "latitude": "38.89484",
+            "longitude": "-106.88611",
+            "dataset_id": "60940",
+            "date_added": "2023-07-24 00:00:00"
+        },
+        {
+            "id": "EMSL:60921_1",
+            "latitude": "44.2175",
+            "longitude": "-120.261",
+            "dataset_id": "60921",
+            "date_added": "2023-06-26 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_12",
+            "latitude": "38.9",
+            "longitude": "-92.214",
+            "dataset_id": "60923",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_3",
+            "latitude": "31.04512",
+            "longitude": "-97.34808",
+            "dataset_id": "60923",
+            "date_added": "2023-11-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_15",
+            "latitude": "39.0854756",
+            "longitude": "-96.5850287",
+            "dataset_id": "60933",
+            "date_added": "2023-10-23 00:00:00"
+        },
+        {
+            "id": "EMSL:60881_2",
+            "latitude": "41.209583",
+            "longitude": "-104.863633",
+            "dataset_id": "60881",
+            "date_added": "2023-06-26 00:00:00"
+        },
+        {
+            "id": "EMSL:60881_6",
+            "latitude": "41.213216",
+            "longitude": "-104.852338",
+            "dataset_id": "60881",
+            "date_added": "2023-06-26 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_5",
+            "latitude": "31.04512",
+            "longitude": "-97.34808",
+            "dataset_id": "60923",
+            "date_added": "2023-11-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60942_5",
+            "latitude": "64.926232",
+            "longitude": "-147.923643",
+            "dataset_id": "60942",
+            "date_added": "2023-09-05 00:00:00"
+        },
+        {
+            "id": "EMSL:60942_6",
+            "latitude": "64.926292",
+            "longitude": "-147.924623",
+            "dataset_id": "60942",
+            "date_added": "2023-09-05 00:00:00"
+        },
+        {
+            "id": "EMSL:60846_2",
+            "latitude": "33.13983",
+            "longitude": "-79.776366",
+            "dataset_id": "60846",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_8",
+            "latitude": "38.9",
+            "longitude": "-92.214",
+            "dataset_id": "60923",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_16",
+            "latitude": "41.836594",
+            "longitude": "-88.239497",
+            "dataset_id": "60923",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_9",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-14 00:00:00"
+        },
+        {
+            "id": "EMSL:60932_3",
+            "latitude": "37.2191",
+            "longitude": "-76.4085",
+            "dataset_id": "60932",
+            "date_added": "2023-10-30 00:00:00"
+        },
+        {
+            "id": "EMSL:60846_5",
+            "latitude": "33.140151",
+            "longitude": "-79.778759",
+            "dataset_id": "60846",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60886_1",
+            "latitude": "38.80342",
+            "longitude": "-94.0436",
+            "dataset_id": "60886",
+            "date_added": "2023-09-18 00:00:00"
+        },
+        {
+            "id": "EMSL:60942_4",
+            "latitude": "64.926232",
+            "longitude": "-147.923722",
+            "dataset_id": "60942",
+            "date_added": "2023-09-05 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_7",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-14 00:00:00"
+        },
+        {
+            "id": "EMSL:60929_1",
+            "latitude": "45.447774",
+            "longitude": "-112.583836",
+            "dataset_id": "60929",
+            "date_added": "2023-06-20 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_18",
+            "latitude": "41.836531",
+            "longitude": "-88.239572",
+            "dataset_id": "60923",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_4",
+            "latitude": "31.04512",
+            "longitude": "-97.34808",
+            "dataset_id": "60923",
+            "date_added": "2023-11-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_3",
+            "latitude": "68.60975",
+            "longitude": "-149.312466",
+            "dataset_id": "60920",
+            "date_added": "2023-08-07 00:00:00"
+        },
+        {
+            "id": "EMSL:60881_3",
+            "latitude": "41.209674",
+            "longitude": "-104.863978",
+            "dataset_id": "60881",
+            "date_added": "2023-06-26 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_3",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60938_2",
+            "latitude": "41.816414",
+            "longitude": "-88.056687",
+            "dataset_id": "60938",
+            "date_added": "2023-10-16 00:00:00"
+        },
+        {
+            "id": "EMSL:60942_3",
+            "latitude": "64.9146",
+            "longitude": "-147.485831666667",
+            "dataset_id": "60942",
+            "date_added": "2023-09-10 00:00:00"
+        },
+        {
+            "id": "EMSL:60938_4",
+            "latitude": "41.818385",
+            "longitude": "-88.075336",
+            "dataset_id": "60938",
+            "date_added": "2023-10-16 00:00:00"
+        },
+        {
+            "id": "EMSL:60921_4",
+            "latitude": "44.2175",
+            "longitude": "-120.2613",
+            "dataset_id": "60921",
+            "date_added": "2023-12-10 00:00:00"
+        },
+        {
+            "id": "EMSL:60938_3",
+            "latitude": "41.816304",
+            "longitude": "-88.075011",
+            "dataset_id": "60938",
+            "date_added": "2023-10-16 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_20",
+            "latitude": "41.836494",
+            "longitude": "-88.2399",
+            "dataset_id": "60923",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60846_17",
+            "latitude": "33.140155",
+            "longitude": "-79.778762",
+            "dataset_id": "60846",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_8",
+            "latitude": "68.623355",
+            "longitude": "-149.610853",
+            "dataset_id": "60920",
+            "date_added": "2023-08-08 00:00:00"
+        },
+        {
+            "id": "EMSL:60938_6",
+            "latitude": "41.811629",
+            "longitude": "-88.083488",
+            "dataset_id": "60938",
+            "date_added": "2023-10-17 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_13",
+            "latitude": "38.9",
+            "longitude": "-92.214",
+            "dataset_id": "60923",
+            "date_added": "2023-08-21 00:00:00"
+        },
+        {
+            "id": "EMSL:60942_2",
+            "latitude": "64.9163133333333",
+            "longitude": "-147.485656666667",
+            "dataset_id": "60942",
+            "date_added": "2023-09-10 00:00:00"
+        },
+        {
+            "id": "EMSL:60923_21",
+            "latitude": "41.836736",
+            "longitude": "-88.239856",
+            "dataset_id": "60923",
+            "date_added": "2023-09-12 00:00:00"
+        },
+        {
+            "id": "EMSL:60929_2",
+            "latitude": "45.2255",
+            "longitude": "-112.1156",
+            "dataset_id": "60929",
+            "date_added": "2023-06-20 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_11",
+            "latitude": "68.624885",
+            "longitude": "-149.601333",
+            "dataset_id": "60920",
+            "date_added": "2023-08-09 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_1",
+            "latitude": "68.609803",
+            "longitude": "-149.312192",
+            "dataset_id": "60920",
+            "date_added": "2023-08-07 00:00:00"
+        },
+        {
+            "id": "EMSL:60932_2",
+            "latitude": "37.2191",
+            "longitude": "-76.4092",
+            "dataset_id": "60932",
+            "date_added": "2023-10-30 00:00:00"
+        },
+        {
+            "id": "EMSL:60886_3",
+            "latitude": "38.80342",
+            "longitude": "-94.0436",
+            "dataset_id": "60886",
+            "date_added": "2023-09-18 00:00:00"
+        },
+        {
+            "id": "EMSL:60940_1",
+            "latitude": "38.89484",
+            "longitude": "-106.88611",
+            "dataset_id": "60940",
+            "date_added": "2023-07-24 00:00:00"
+        },
+        {
+            "id": "EMSL:60880_4",
+            "latitude": "32.264645",
+            "longitude": "-85.995647",
+            "dataset_id": "60880",
+            "date_added": "2023-12-11 00:00:00"
+        },
+        {
+            "id": "EMSL:60933_8",
+            "latitude": "38.85361111",
+            "longitude": "-107.06638889",
+            "dataset_id": "60933",
+            "date_added": "2023-09-14 00:00:00"
+        },
+        {
+            "id": "EMSL:60920_5",
+            "latitude": "68.617239",
+            "longitude": "-149.317372",
+            "dataset_id": "60920",
+            "date_added": "2023-08-07 00:00:00"
+        }
+    ]
+}
