@@ -33,7 +33,10 @@ This web page is built upon the following technologies:
 We use Prettier to format the code in this directory. You can format it by running:
 
 ```shell
-# Run from this directory.
+# Go to the directory containing this file.
+cd docs/map/
+
+# Format the files in this directory.
 npx prettier . --write
 ```
 
