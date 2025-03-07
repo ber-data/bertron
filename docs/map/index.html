@@ -190,13 +190,8 @@
         // Initialize the map.
         const map = initializeMap("map");
 
-        // Initialize a cluster group for each data source and make it visible by default.
-        // Note: We will add markers to each of these cluster groups below.
-        const nmdcMarkerClusterGroup = L.markerClusterGroup().addTo(map);
-        const essDiveMarkerClusterGroup = L.markerClusterGroup().addTo(map);
-        const jgiGoldBsmMarkerClusterGroup = L.markerClusterGroup().addTo(map);
-        const jgiGoldOrgMarkerClusterGroup = L.markerClusterGroup().addTo(map);
-        const emslMarkerClusterGroup = L.markerClusterGroup().addTo(map);
+        // Initialize a cluster group to which we can add markers and make it visible by default.
+        const markerClusterGroup = L.markerClusterGroup().addTo(map);
 
         // Show a spinner because we are about to fetch some data.
         document.getElementById("spinner").removeAttribute("hidden");
@@ -205,6 +200,7 @@
         const nmdcObjs = await fetchAndParseCsvFile(
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/nmdc/nmdc_biosample_geo_coordinates.csv",
         );
+        nmdcMarkers = [];
         nmdcObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["biosample_id"];
@@ -212,14 +208,16 @@
           const popupHtml = `NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/nmdc-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          nmdcMarkerClusterGroup.addLayer(marker);
+          nmdcMarkers.push(marker);
         });
+        markerClusterGroup.addLayers(nmdcMarkers);
         console.debug(`Created ${nmdcObjs.length} markers.`);
 
         // Fetch the ESS-Dive Packages CSV file and create a marker for each row.
         const essDiveObjs = await fetchAndParseCsvFile(
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/ess-dive/ess_dive_packages.csv",
         );
+        essDiveMarkers = [];
         essDiveObjs.forEach((obj) => {
           const latLon = getLatLon(
             obj,
@@ -231,14 +229,16 @@
           const popupHtml = `ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/ess-dive-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          essDiveMarkerClusterGroup.addLayer(marker);
+          essDiveMarkers.push(marker);
         });
+        markerClusterGroup.addLayers(essDiveMarkers);
         console.debug(`Created ${essDiveObjs.length} markers.`);
 
         // Fetch the JGI GOLD Biosamples CSV file and create a marker for each row.
         const jgiGoldBsmObjs = await fetchAndParseCsvFile(
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/jgi/jgi_gold_biosample_geo.csv",
         );
+        const jgiGoldBsmMarkers = [];
         jgiGoldBsmObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
@@ -246,14 +246,16 @@
           const popupHtml = `JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          jgiGoldBsmMarkerClusterGroup.addLayer(marker);
+          jgiGoldBsmMarkers.push(marker);
         });
+        markerClusterGroup.addLayers(jgiGoldBsmMarkers);
         console.debug(`Created ${jgiGoldBsmObjs.length} markers.`);
 
         // Fetch the JGI GOLD Organisms CSV file and create a marker for each row.
         const jgiGoldOrgObjs = await fetchAndParseCsvFile(
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/jgi/jgi_gold_organism_geo.csv",
         );
+        const jgiGoldOrgMarkers = [];
         jgiGoldOrgObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
@@ -261,8 +263,9 @@
           const popupHtml = `JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          jgiGoldOrgMarkerClusterGroup.addLayer(marker);
+          jgiGoldOrgMarkers.push(marker);
         });
+        markerClusterGroup.addLayers(jgiGoldOrgMarkers);
         console.debug(`Created ${jgiGoldOrgObjs.length} markers.`);
 
         // Fetch the EMSL JSON (not CSV) file and create a marker for each element of its top-level array.
@@ -270,6 +273,7 @@
           "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/emsl/latlon_project_ids.json",
         );
         const emslObjs = await response.json();
+        const emslMarkers = [];
         console.debug("Fetching and parsing finished.", { data: emslObjs });
         emslObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
@@ -278,21 +282,10 @@
           const popupHtml = `EMSL<br/><a href="${url}" target="_blank" title="View project">${identifier}</a>`;
           const icon = L.icon({ iconUrl: "./img/emsl-20x20.png" });
           const marker = L.marker(latLon, {icon: icon}).bindPopup(popupHtml);
-          emslMarkerClusterGroup.addLayer(marker);
+          emslMarkers.push(marker);
         });
+        markerClusterGroup.addLayers(emslMarkers);
         console.debug(`Created ${emslObjs.length} markers.`);
-
-        // Define layers that the user will be able to toggle on/off via the layer control widget.
-        const toggleableLayerDescriptors = {
-          "NMDC": nmdcMarkerClusterGroup,
-          "ESS-Dive": essDiveMarkerClusterGroup,
-          "JGI GOLD Biosamples": jgiGoldBsmMarkerClusterGroup,
-          "JGI GOLD Organisms": jgiGoldOrgMarkerClusterGroup,
-          "EMSL": emslMarkerClusterGroup,        
-        };
-
-        // Add the layer control widget to the map.
-        L.control.layers(undefined, toggleableLayerDescriptors).addTo(map);
 
         // Set up the address-based search widget.
         // Reference: https://smeijer.github.io/leaflet-geosearch/
