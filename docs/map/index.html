@@ -46,6 +46,25 @@
       #spinner {
         text-align: right;
       }
+      .marker-popup img {
+        max-width: 40px;
+      }
+      .marker-popup .identifier {
+        word-break: break-word;
+      }
+      .nmdc-marker-icon {
+        filter: hue-rotate(0deg);
+      }
+      .ess-dive-marker-icon {
+        filter: hue-rotate(90deg);
+      }
+      .jgi-gold-bsm-marker-icon,
+      .jgi-gold-org-marker-icon {
+        filter: hue-rotate(180deg);
+      }
+      .emsl-marker-icon {
+        filter: hue-rotate(270deg);
+      }
     </style>
 
     <title>Map</title>
@@ -57,7 +76,7 @@
     <div id="map"></div>
 
     <!-- The marker visibility togglers -->
-    <div class="m-2 text-center">
+    <div id="marker-visibility-togglers" class="m-2 text-center" hidden>
       <input
         type="checkbox"
         class="btn-check"
@@ -151,6 +170,9 @@
     <!-- Custom JS -->
     <script>
       (async function () {
+        // Specify the path to our local copy of the default Leaflet marker icon.
+        const defaultMarkerIconUrl = "./img/leaflet-default-marker-icon.png";
+
         /**
          * Fetch and parse the CSV file at the specified URL.
          *
@@ -263,8 +285,11 @@
           const latLon = getLatLon(obj);
           const identifier = obj["biosample_id"];
           const url = `https://data.microbiomedata.org/details/sample/${identifier}`;
-          const popupHtml = `NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/nmdc-20x20.png" });
+          const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/nmdc-100x100.png" alt="Logo"/><div>NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample" class="identifier">${identifier}</a></div></div>`;
+          const icon = L.icon({
+            iconUrl: defaultMarkerIconUrl,
+            className: "nmdc-marker-icon",
+          });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           nmdcMarkers.push(marker);
         });
@@ -284,8 +309,11 @@
           );
           const identifier = obj["package_id"];
           const url = `https://data.ess-dive.lbl.gov/view/${identifier}`;
-          const popupHtml = `ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/ess-dive-20x20.png" });
+          const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/ess-dive-100x100.png" alt="Logo"/><div>ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package" class="identifier">${identifier}</a></div></div>`;
+          const icon = L.icon({
+            iconUrl: defaultMarkerIconUrl,
+            className: "ess-dive-marker-icon",
+          });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           essDiveMarkers.push(marker);
         });
@@ -301,8 +329,11 @@
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
           const url = `https://gold.jgi.doe.gov/biosample?id=${identifier}`;
-          const popupHtml = `JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
+          const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/jgi-100x100.png" alt="Logo"/><div>JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample" class="identifier">${identifier}</a></div></div>`;
+          const icon = L.icon({
+            iconUrl: defaultMarkerIconUrl,
+            className: "jgi-gold-bsm-marker-icon",
+          });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           jgiGoldBsmMarkers.push(marker);
         });
@@ -318,8 +349,11 @@
           const latLon = getLatLon(obj);
           const identifier = obj["gold_id"];
           const url = `https://gold.jgi.doe.gov/organism?id=${identifier}`;
-          const popupHtml = `JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/gold-20x20.png" });
+          const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/jgi-100x100.png" alt="Logo"/><div>JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism" class="identifier">${identifier}</a></div></div>`;
+          const icon = L.icon({
+            iconUrl: defaultMarkerIconUrl,
+            className: "jgi-gold-org-marker-icon",
+          });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           jgiGoldOrgMarkers.push(marker);
         });
@@ -337,8 +371,11 @@
           const latLon = getLatLon(obj);
           const identifier = `Project: ${obj["proposal_id"]}, Sampling set: ${obj["sampling_set"]}`;
           const url = `https://sc-data.emsl.pnnl.gov/?projectId=${obj["proposal_id"]}`;
-          const popupHtml = `EMSL<br/><a href="${url}" target="_blank" title="View project">${identifier}</a>`;
-          const icon = L.icon({ iconUrl: "./img/emsl-20x20.png" });
+          const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL Project<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
+          const icon = L.icon({
+            iconUrl: defaultMarkerIconUrl,
+            className: "emsl-marker-icon",
+          });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           emslMarkers.push(marker);
         });
@@ -414,6 +451,9 @@
             }
           });
         });
+
+        // Reveal the marker visibility togglers.
+        document.getElementById("marker-visibility-togglers").removeAttribute("hidden");
       })();
     </script>
   </body>
