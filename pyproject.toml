@@ -1,0 +1,31 @@
+[build-system]
+requires = [
+  "setuptools >= 65.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bertron"
+version = "0.1.0"
+authors = [
+  {name = "Chuck Parker", email = "ctparker@lbl.gov"},
+]
+description = " Cross-BER Data Integration"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
+  "nmdc-api-utilities>=0.3.1",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.1.0",
+    "pyright>=1.1.386",
+    "pytest>=8.3.5",
+    "ruff>=0.9.9",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
