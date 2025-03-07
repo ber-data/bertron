@@ -1,5 +1,6 @@
 env
 emsl_datasets.json
-emsl_projects.json
+emsl_samples.json
+emsl_samples.json.zip
 all_tkv.csv
 dois.csv
