@@ -29,5 +29,5 @@ jobs:
       - name: Linting
         run: uv run ruff check -- src/
 
-      #- name: Run tests
-      #  run: uv run pytest tests
+      - name: Run tests
+        run: uv run pytest tests
