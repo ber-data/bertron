@@ -1,0 +1,737 @@
+[
+    {
+        "id": "EMSL:60920_7",
+        "latitude": "68.633578",
+        "longitude": "-149.632826",
+        "dataset_id": "60920",
+        "date_added": "2023-08-08 00:00:00"
+    },
+    {
+        "id": "EMSL:60940_6",
+        "latitude": "38.95499",
+        "longitude": "-106.98326",
+        "dataset_id": "60940",
+        "date_added": "2023-07-25 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_14",
+        "latitude": "39.0854756",
+        "longitude": "-96.5849706",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_6",
+        "latitude": "31.04512",
+        "longitude": "-97.34808",
+        "dataset_id": "60923",
+        "date_added": "2023-11-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60946_1",
+        "latitude": "46.90522",
+        "longitude": "-123.9803",
+        "dataset_id": "60946",
+        "date_added": "2023-11-07 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_4",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60846_7",
+        "latitude": "33.15022",
+        "longitude": "-79.789144",
+        "dataset_id": "60846",
+        "date_added": "2023-08-22 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_17",
+        "latitude": "41.836794",
+        "longitude": "-88.239561",
+        "dataset_id": "60923",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_10",
+        "latitude": "68.635669",
+        "longitude": "-149.586768",
+        "dataset_id": "60920",
+        "date_added": "2023-08-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_19",
+        "latitude": "41.836775",
+        "longitude": "-88.239856",
+        "dataset_id": "60923",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_9",
+        "latitude": "38.9",
+        "longitude": "-92.214",
+        "dataset_id": "60923",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60932_5",
+        "latitude": "37.5687",
+        "longitude": "-76.8966",
+        "dataset_id": "60932",
+        "date_added": "2023-10-30 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_14",
+        "latitude": "38.9",
+        "longitude": "-92.214",
+        "dataset_id": "60923",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60938_1",
+        "latitude": "41.815902",
+        "longitude": "-88.057667",
+        "dataset_id": "60938",
+        "date_added": "2023-10-16 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_17",
+        "latitude": "39.0855345",
+        "longitude": "-96.5846642",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_2",
+        "latitude": "31.04512",
+        "longitude": "-97.34808",
+        "dataset_id": "60923",
+        "date_added": "2023-11-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_16",
+        "latitude": "39.0855345",
+        "longitude": "-96.5847223",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60886_6",
+        "latitude": "38.80342",
+        "longitude": "-94.0436",
+        "dataset_id": "60886",
+        "date_added": "2023-09-18 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_1",
+        "latitude": "31.04512",
+        "longitude": "-97.34808",
+        "dataset_id": "60923",
+        "date_added": "2023-11-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_5",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_1",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_9",
+        "latitude": "68.623214",
+        "longitude": "-149.61081",
+        "dataset_id": "60920",
+        "date_added": "2023-08-08 00:00:00"
+    },
+    {
+        "id": "EMSL:60880_1",
+        "latitude": "30.01347",
+        "longitude": "-94.500935",
+        "dataset_id": "60880",
+        "date_added": "2023-11-08 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_13",
+        "latitude": "39.0854756",
+        "longitude": "-96.5849125",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60940_3",
+        "latitude": "38.87309",
+        "longitude": "-107.10684",
+        "dataset_id": "60940",
+        "date_added": "2023-07-24 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_11",
+        "latitude": "39.0854756",
+        "longitude": "-96.5847964",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_4",
+        "latitude": "68.609694",
+        "longitude": "-149.313567",
+        "dataset_id": "60920",
+        "date_added": "2023-08-07 00:00:00"
+    },
+    {
+        "id": "EMSL:60940_5",
+        "latitude": "38.95499",
+        "longitude": "-106.98326",
+        "dataset_id": "60940",
+        "date_added": "2023-07-25 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_10",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-14 00:00:00"
+    },
+    {
+        "id": "EMSL:60886_4",
+        "latitude": "38.80342",
+        "longitude": "-94.0436",
+        "dataset_id": "60886",
+        "date_added": "2023-09-18 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_7",
+        "latitude": "31.04512",
+        "longitude": "-97.34808",
+        "dataset_id": "60923",
+        "date_added": "2023-11-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_12",
+        "latitude": "39.0854756",
+        "longitude": "-96.5848545",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_10",
+        "latitude": "38.9",
+        "longitude": "-92.214",
+        "dataset_id": "60923",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_11",
+        "latitude": "38.9",
+        "longitude": "-92.214",
+        "dataset_id": "60923",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_15",
+        "latitude": "41.836706",
+        "longitude": "-88.23945",
+        "dataset_id": "60923",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60932_4",
+        "latitude": "37.5665",
+        "longitude": "-76.8972",
+        "dataset_id": "60932",
+        "date_added": "2023-10-30 00:00:00"
+    },
+    {
+        "id": "EMSL:60921_3",
+        "latitude": "44.2175",
+        "longitude": "-120.261",
+        "dataset_id": "60921",
+        "date_added": "2023-12-10 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_18",
+        "latitude": "39.0855345",
+        "longitude": "-96.5846061",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60881_5",
+        "latitude": "41.213068",
+        "longitude": "-104.852175",
+        "dataset_id": "60881",
+        "date_added": "2023-06-26 00:00:00"
+    },
+    {
+        "id": "EMSL:60942_1",
+        "latitude": "64.91562",
+        "longitude": "-147.485333333333",
+        "dataset_id": "60942",
+        "date_added": "2023-09-10 00:00:00"
+    },
+    {
+        "id": "EMSL:60886_2",
+        "latitude": "38.80342",
+        "longitude": "-94.0436",
+        "dataset_id": "60886",
+        "date_added": "2023-09-18 00:00:00"
+    },
+    {
+        "id": "EMSL:60946_2",
+        "latitude": "38.874395",
+        "longitude": "-76.551203",
+        "dataset_id": "60946",
+        "date_added": "2023-10-31 00:00:00"
+    },
+    {
+        "id": "EMSL:60921_2",
+        "latitude": "44.2175",
+        "longitude": "-120.2613",
+        "dataset_id": "60921",
+        "date_added": "2023-06-26 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_20",
+        "latitude": "39.0855345",
+        "longitude": "-96.58449",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_2",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60886_5",
+        "latitude": "38.80342",
+        "longitude": "-94.0436",
+        "dataset_id": "60886",
+        "date_added": "2023-09-18 00:00:00"
+    },
+    {
+        "id": "EMSL:60880_2",
+        "latitude": "31.486141",
+        "longitude": "-96.893469",
+        "dataset_id": "60880",
+        "date_added": "2023-11-07 00:00:00"
+    },
+    {
+        "id": "EMSL:60932_1",
+        "latitude": "37.2189",
+        "longitude": "-76.41",
+        "dataset_id": "60932",
+        "date_added": "2023-10-30 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_2",
+        "latitude": "68.609793",
+        "longitude": "-149.312092",
+        "dataset_id": "60920",
+        "date_added": "2023-08-07 00:00:00"
+    },
+    {
+        "id": "EMSL:60932_6",
+        "latitude": "37.571",
+        "longitude": "-76.8954",
+        "dataset_id": "60932",
+        "date_added": "2023-10-30 00:00:00"
+    },
+    {
+        "id": "EMSL:60929_3",
+        "latitude": "45.6212",
+        "longitude": "-111.5687",
+        "dataset_id": "60929",
+        "date_added": "2023-06-20 00:00:00"
+    },
+    {
+        "id": "EMSL:60938_5",
+        "latitude": "41.815216",
+        "longitude": "-88.0842",
+        "dataset_id": "60938",
+        "date_added": "2023-10-16 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_6",
+        "latitude": "68.634455",
+        "longitude": "-149.643096",
+        "dataset_id": "60920",
+        "date_added": "2023-08-08 00:00:00"
+    },
+    {
+        "id": "EMSL:60881_4",
+        "latitude": "41.212779",
+        "longitude": "-104.851983",
+        "dataset_id": "60881",
+        "date_added": "2023-06-26 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_19",
+        "latitude": "39.0855345",
+        "longitude": "-96.584548",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60940_4",
+        "latitude": "38.87309",
+        "longitude": "-107.10684",
+        "dataset_id": "60940",
+        "date_added": "2023-07-24 00:00:00"
+    },
+    {
+        "id": "EMSL:60881_1",
+        "latitude": "41.209743",
+        "longitude": "-104.863373",
+        "dataset_id": "60881",
+        "date_added": "2023-06-26 00:00:00"
+    },
+    {
+        "id": "EMSL:60846_12",
+        "latitude": "33.145468",
+        "longitude": "-79.790309",
+        "dataset_id": "60846",
+        "date_added": "2023-08-22 00:00:00"
+    },
+    {
+        "id": "EMSL:60880_3",
+        "latitude": "34.048588",
+        "longitude": "-93.103395",
+        "dataset_id": "60880",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60940_2",
+        "latitude": "38.89484",
+        "longitude": "-106.88611",
+        "dataset_id": "60940",
+        "date_added": "2023-07-24 00:00:00"
+    },
+    {
+        "id": "EMSL:60921_1",
+        "latitude": "44.2175",
+        "longitude": "-120.261",
+        "dataset_id": "60921",
+        "date_added": "2023-06-26 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_12",
+        "latitude": "38.9",
+        "longitude": "-92.214",
+        "dataset_id": "60923",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_3",
+        "latitude": "31.04512",
+        "longitude": "-97.34808",
+        "dataset_id": "60923",
+        "date_added": "2023-11-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_15",
+        "latitude": "39.0854756",
+        "longitude": "-96.5850287",
+        "dataset_id": "60933",
+        "date_added": "2023-10-23 00:00:00"
+    },
+    {
+        "id": "EMSL:60881_2",
+        "latitude": "41.209583",
+        "longitude": "-104.863633",
+        "dataset_id": "60881",
+        "date_added": "2023-06-26 00:00:00"
+    },
+    {
+        "id": "EMSL:60881_6",
+        "latitude": "41.213216",
+        "longitude": "-104.852338",
+        "dataset_id": "60881",
+        "date_added": "2023-06-26 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_5",
+        "latitude": "31.04512",
+        "longitude": "-97.34808",
+        "dataset_id": "60923",
+        "date_added": "2023-11-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60942_5",
+        "latitude": "64.926232",
+        "longitude": "-147.923643",
+        "dataset_id": "60942",
+        "date_added": "2023-09-05 00:00:00"
+    },
+    {
+        "id": "EMSL:60942_6",
+        "latitude": "64.926292",
+        "longitude": "-147.924623",
+        "dataset_id": "60942",
+        "date_added": "2023-09-05 00:00:00"
+    },
+    {
+        "id": "EMSL:60846_2",
+        "latitude": "33.13983",
+        "longitude": "-79.776366",
+        "dataset_id": "60846",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_8",
+        "latitude": "38.9",
+        "longitude": "-92.214",
+        "dataset_id": "60923",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_16",
+        "latitude": "41.836594",
+        "longitude": "-88.239497",
+        "dataset_id": "60923",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_9",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-14 00:00:00"
+    },
+    {
+        "id": "EMSL:60932_3",
+        "latitude": "37.2191",
+        "longitude": "-76.4085",
+        "dataset_id": "60932",
+        "date_added": "2023-10-30 00:00:00"
+    },
+    {
+        "id": "EMSL:60846_5",
+        "latitude": "33.140151",
+        "longitude": "-79.778759",
+        "dataset_id": "60846",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60886_1",
+        "latitude": "38.80342",
+        "longitude": "-94.0436",
+        "dataset_id": "60886",
+        "date_added": "2023-09-18 00:00:00"
+    },
+    {
+        "id": "EMSL:60942_4",
+        "latitude": "64.926232",
+        "longitude": "-147.923722",
+        "dataset_id": "60942",
+        "date_added": "2023-09-05 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_7",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-14 00:00:00"
+    },
+    {
+        "id": "EMSL:60929_1",
+        "latitude": "45.447774",
+        "longitude": "-112.583836",
+        "dataset_id": "60929",
+        "date_added": "2023-06-20 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_18",
+        "latitude": "41.836531",
+        "longitude": "-88.239572",
+        "dataset_id": "60923",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_4",
+        "latitude": "31.04512",
+        "longitude": "-97.34808",
+        "dataset_id": "60923",
+        "date_added": "2023-11-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_3",
+        "latitude": "68.60975",
+        "longitude": "-149.312466",
+        "dataset_id": "60920",
+        "date_added": "2023-08-07 00:00:00"
+    },
+    {
+        "id": "EMSL:60881_3",
+        "latitude": "41.209674",
+        "longitude": "-104.863978",
+        "dataset_id": "60881",
+        "date_added": "2023-06-26 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_3",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60938_2",
+        "latitude": "41.816414",
+        "longitude": "-88.056687",
+        "dataset_id": "60938",
+        "date_added": "2023-10-16 00:00:00"
+    },
+    {
+        "id": "EMSL:60942_3",
+        "latitude": "64.9146",
+        "longitude": "-147.485831666667",
+        "dataset_id": "60942",
+        "date_added": "2023-09-10 00:00:00"
+    },
+    {
+        "id": "EMSL:60938_4",
+        "latitude": "41.818385",
+        "longitude": "-88.075336",
+        "dataset_id": "60938",
+        "date_added": "2023-10-16 00:00:00"
+    },
+    {
+        "id": "EMSL:60921_4",
+        "latitude": "44.2175",
+        "longitude": "-120.2613",
+        "dataset_id": "60921",
+        "date_added": "2023-12-10 00:00:00"
+    },
+    {
+        "id": "EMSL:60938_3",
+        "latitude": "41.816304",
+        "longitude": "-88.075011",
+        "dataset_id": "60938",
+        "date_added": "2023-10-16 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_20",
+        "latitude": "41.836494",
+        "longitude": "-88.2399",
+        "dataset_id": "60923",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60846_17",
+        "latitude": "33.140155",
+        "longitude": "-79.778762",
+        "dataset_id": "60846",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_8",
+        "latitude": "68.623355",
+        "longitude": "-149.610853",
+        "dataset_id": "60920",
+        "date_added": "2023-08-08 00:00:00"
+    },
+    {
+        "id": "EMSL:60938_6",
+        "latitude": "41.811629",
+        "longitude": "-88.083488",
+        "dataset_id": "60938",
+        "date_added": "2023-10-17 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_13",
+        "latitude": "38.9",
+        "longitude": "-92.214",
+        "dataset_id": "60923",
+        "date_added": "2023-08-21 00:00:00"
+    },
+    {
+        "id": "EMSL:60942_2",
+        "latitude": "64.9163133333333",
+        "longitude": "-147.485656666667",
+        "dataset_id": "60942",
+        "date_added": "2023-09-10 00:00:00"
+    },
+    {
+        "id": "EMSL:60923_21",
+        "latitude": "41.836736",
+        "longitude": "-88.239856",
+        "dataset_id": "60923",
+        "date_added": "2023-09-12 00:00:00"
+    },
+    {
+        "id": "EMSL:60929_2",
+        "latitude": "45.2255",
+        "longitude": "-112.1156",
+        "dataset_id": "60929",
+        "date_added": "2023-06-20 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_11",
+        "latitude": "68.624885",
+        "longitude": "-149.601333",
+        "dataset_id": "60920",
+        "date_added": "2023-08-09 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_1",
+        "latitude": "68.609803",
+        "longitude": "-149.312192",
+        "dataset_id": "60920",
+        "date_added": "2023-08-07 00:00:00"
+    },
+    {
+        "id": "EMSL:60932_2",
+        "latitude": "37.2191",
+        "longitude": "-76.4092",
+        "dataset_id": "60932",
+        "date_added": "2023-10-30 00:00:00"
+    },
+    {
+        "id": "EMSL:60886_3",
+        "latitude": "38.80342",
+        "longitude": "-94.0436",
+        "dataset_id": "60886",
+        "date_added": "2023-09-18 00:00:00"
+    },
+    {
+        "id": "EMSL:60940_1",
+        "latitude": "38.89484",
+        "longitude": "-106.88611",
+        "dataset_id": "60940",
+        "date_added": "2023-07-24 00:00:00"
+    },
+    {
+        "id": "EMSL:60880_4",
+        "latitude": "32.264645",
+        "longitude": "-85.995647",
+        "dataset_id": "60880",
+        "date_added": "2023-12-11 00:00:00"
+    },
+    {
+        "id": "EMSL:60933_8",
+        "latitude": "38.85361111",
+        "longitude": "-107.06638889",
+        "dataset_id": "60933",
+        "date_added": "2023-09-14 00:00:00"
+    },
+    {
+        "id": "EMSL:60920_5",
+        "latitude": "68.617239",
+        "longitude": "-149.317372",
+        "dataset_id": "60920",
+        "date_added": "2023-08-07 00:00:00"
+    }
+]
