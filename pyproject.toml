@@ -1,3 +1,9 @@
+[build-system]
+requires = [
+  "setuptools >= 65.0",
+]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "bertron"
 version = "0.1.0"
@@ -9,23 +15,8 @@ readme = "README.md"
 requires-python = ">=3.12,<3.14"
 dependencies = [
   "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
-  "emsl",
-  "ess-dive",
-  "jdp",
-  "nmdc",
+  "nmdc-api-utilities>=0.3.1",
 ]
-
-[tool.uv.workspace]
-members = ["packages/*"]
-
-[tool.uv]
-package = false
-
-[tool.uv.sources]
-emsl = { workspace = true }
-ess-dive = { workspace = true }
-jdp = { workspace = true }
-nmdc = { workspace = true }
 
 [dependency-groups]
 dev = [
