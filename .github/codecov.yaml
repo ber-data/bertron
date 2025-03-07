@@ -1,0 +1,12 @@
+coverage:
+  status:
+    project:
+      default:
+        informational: true
+        target: 80%
+        # this allows a 5% drop from the previous base commit coverage
+        threshold: 5%
+    patch:
+      default:
+        target: 90%
+        informational: true
