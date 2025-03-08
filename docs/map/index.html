@@ -312,6 +312,7 @@
           const icon = L.icon({
             iconUrl: "./img/nmdc-marker.png",
             shadowUrl: defaultMarkerShadowUrl,
+            iconAnchor: [12, 40], // aligns icon with any spider lines involved
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           nmdcMarkers.push(marker);
@@ -336,6 +337,7 @@
           const icon = L.icon({
             iconUrl: "./img/ess-dive-marker.png",
             shadowUrl: defaultMarkerShadowUrl,
+            iconAnchor: [12, 40], // aligns icon with any spider lines involved
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           essDiveMarkers.push(marker);
@@ -356,6 +358,7 @@
           const icon = L.icon({
             iconUrl: "./img/jgi-marker.png",
             shadowUrl: defaultMarkerShadowUrl,
+            iconAnchor: [12, 40], // aligns icon with any spider lines involved
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           jgiGoldBsmMarkers.push(marker);
@@ -376,6 +379,7 @@
           const icon = L.icon({
             iconUrl: "./img/jgi-marker.png",
             shadowUrl: defaultMarkerShadowUrl,
+            iconAnchor: [12, 40], // aligns icon with any spider lines involved
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           jgiGoldOrgMarkers.push(marker);
@@ -398,6 +402,7 @@
           const icon = L.icon({
             iconUrl: "./img/emsl-marker.png",
             shadowUrl: defaultMarkerShadowUrl,
+            iconAnchor: [12, 40], // aligns icon with any spider lines involved
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           emslMarkers.push(marker);
