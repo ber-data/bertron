@@ -42,7 +42,6 @@
         height: 100vh;
       }
       #map {
-        flex-grow: 1;
         border-top: 1px solid var(--bs-gray);
         border-bottom: 1px solid var(--bs-gray);
       }
@@ -67,7 +66,12 @@
       </nav>
 
       <!-- The map -->
-      <div id="map"></div>
+      <div id="map" class="flex-grow-1 align-content-center">
+        <!-- A spinner, which the Leaflet map—once drawn—will cover -->
+        <span class="spinner d-flex justify-content-center">
+          <span class="spinner-border spinner-border-lg mx-1"></span>
+        </span>
+      </div>
 
       <!-- The marker visibility togglers -->
       <div class="m-2 text-center">
@@ -231,16 +235,15 @@
         }
 
         /**
-         * Draw a map on the HTML element having the specified `id` value
-         * and return the Leaflet map object.
+         * Draw a Leaflet map on the specified HTML element and return the map object.
          *
          * Reference: https://leafletjs.com/examples/quick-start/
          *
-         * @param {string} elementId The `id` of the HTML element
+         * @param {HTMLElement} element The HTML element
          */
-        function initializeMap(elementId) {
+        function initializeMap(element) {
           // Create a map where, by default, the whole world is in view.
-          const map = L.map(elementId).fitWorld().zoomIn();
+          const map = L.map(element).fitWorld().zoomIn();
 
           // Customize the prefix of the attribution message in the corner.
           map.attributionControl.setPrefix(
@@ -291,12 +294,6 @@
 
           return [lat, lon];
         }
-
-        // Initialize the map.
-        const map = initializeMap("map");
-
-        // Initialize a cluster group to which we can add markers and make it visible by default.
-        const markerClusterGroup = L.markerClusterGroup().addTo(map);
 
         // Fetch the NMDC Biosamples CSV file and create a marker for each row.
         const nmdcObjs = await fetchAndParseCsvFile(
@@ -408,6 +405,13 @@
           emslMarkers.push(marker);
         });
         console.debug(`Created ${emslObjs.length} markers.`);
+
+        // Initialize the map.
+        const mapEl = document.getElementById("map");
+        const map = initializeMap(mapEl);
+
+        // Initialize a cluster group to which we can add markers and make it visible by default.
+        const markerClusterGroup = L.markerClusterGroup().addTo(map);
 
         // Add all markers to the cluster group.
         //
