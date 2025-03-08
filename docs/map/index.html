@@ -188,8 +188,8 @@
 
         // Specify the paths to our local copies of the default Leaflet marker icon
         // and its shadow image.
-        const defaultMarkerIconUrl = "./img/leaflet-default-marker-icon.png";
-        const defaultMarkerShadowUrl = "./img/leaflet-default-marker-shadow.png";
+        const defaultMarkerShadowUrl =
+          "./img/leaflet-default-marker-shadow.png";
 
         /**
          * Fetch and parse the CSV file at the specified URL.
@@ -239,6 +239,11 @@
         function initializeMap(elementId) {
           // Create a map where, by default, the whole world is in view.
           const map = L.map(elementId).fitWorld().zoomIn();
+
+          // Customize the prefix of the attribution message in the corner.
+          map.attributionControl.setPrefix(
+            `<a href="https://leafletjs.com/">Leaflet</a>`,
+          );
 
           // Add a layer of tiles provided by OpenStreetMap.
           const tileUrlTemplate =
