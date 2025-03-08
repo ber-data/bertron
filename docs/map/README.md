@@ -28,6 +28,32 @@ This web page is built upon the following technologies:
 
 ## Development
 
+### Development server
+
+Given that (a) reloading the page can happen frequently during development and (b) the
+web page fetches 1.5 MB of data from GitHub's servers each time it loads; in an attempt
+to—while developing locally—avoid hitting any rate limits that GitHub's servers may impose,
+we have implemented a "development mode" of the web page. You can activate that mode by
+running the following commands and visiting: http://localhost:4000/docs/map/index.html
+
+```shell
+# Go to the directory containing this file.
+cd docs/map/
+
+# Start a web server that will serve the root directory of this repository.
+npx light-server --port 4000 --serve ../../
+```
+
+> Note: Although the port number that the server listens on can be customized, the web page,
+> itself, will only go into "development mode" when the port number is `4000`.
+
+That web server will serve the entire contents of the repository, which includes the data
+files that the web page can fetch. When in "development mode," the web page will
+fetch the files from that web server instead of from GitHub's web servers.
+
+> This is a temporary solution, which we will replace when we switch from building something
+> for the short term, to building something for the long term.
+
 ### Code format
 
 We use Prettier to format the code in this directory. You can format it by running:

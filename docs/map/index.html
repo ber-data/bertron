@@ -170,6 +170,15 @@
     <!-- Custom JS -->
     <script>
       (async function () {
+        // Detect whether this web page is being served at our special local development address.
+        // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Location
+        const IS_DEV =
+          window.location.hostname === "localhost" &&
+          window.location.port === "4000";
+        const baseUrlForData = IS_DEV
+          ? "http://localhost:4000"
+          : "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main";
+
         // Specify the path to our local copy of the default Leaflet marker icon.
         const defaultMarkerIconUrl = "./img/leaflet-default-marker-icon.png";
 
@@ -278,7 +287,7 @@
 
         // Fetch the NMDC Biosamples CSV file and create a marker for each row.
         const nmdcObjs = await fetchAndParseCsvFile(
-          "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/nmdc/nmdc_biosample_geo_coordinates.csv",
+          `${baseUrlForData}/nmdc/nmdc_biosample_geo_coordinates.csv`,
         );
         nmdcMarkers = [];
         nmdcObjs.forEach((obj) => {
@@ -298,7 +307,7 @@
 
         // Fetch the ESS-Dive Packages CSV file and create a marker for each row.
         const essDiveObjs = await fetchAndParseCsvFile(
-          "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/ess-dive/ess_dive_packages.csv",
+          `${baseUrlForData}/ess-dive/ess_dive_packages.csv`,
         );
         essDiveMarkers = [];
         essDiveObjs.forEach((obj) => {
@@ -322,7 +331,7 @@
 
         // Fetch the JGI GOLD Biosamples CSV file and create a marker for each row.
         const jgiGoldBsmObjs = await fetchAndParseCsvFile(
-          "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/jgi/jgi_gold_biosample_geo.csv",
+          `${baseUrlForData}/jgi/jgi_gold_biosample_geo.csv`,
         );
         const jgiGoldBsmMarkers = [];
         jgiGoldBsmObjs.forEach((obj) => {
@@ -342,7 +351,7 @@
 
         // Fetch the JGI GOLD Organisms CSV file and create a marker for each row.
         const jgiGoldOrgObjs = await fetchAndParseCsvFile(
-          "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/jgi/jgi_gold_organism_geo.csv",
+          `${baseUrlForData}/jgi/jgi_gold_organism_geo.csv`,
         );
         const jgiGoldOrgMarkers = [];
         jgiGoldOrgObjs.forEach((obj) => {
@@ -362,7 +371,7 @@
 
         // Fetch the EMSL JSON (not CSV) file and create a marker for each element of its top-level array.
         const response = await fetch(
-          "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main/emsl/latlon_project_ids.json",
+          `${baseUrlForData}/emsl/latlon_project_ids.json`,
         );
         const emslObjs = await response.json();
         const emslMarkers = [];
@@ -453,7 +462,9 @@
         });
 
         // Reveal the marker visibility togglers.
-        document.getElementById("marker-visibility-togglers").removeAttribute("hidden");
+        document
+          .getElementById("marker-visibility-togglers")
+          .removeAttribute("hidden");
       })();
     </script>
   </body>
