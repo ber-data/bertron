@@ -184,10 +184,14 @@
           ? "http://localhost:4000"
           : "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main";
 
-        // Specify the paths to our local copies of the default Leaflet marker icon
-        // and its shadow image.
-        const defaultMarkerShadowUrl =
-          "./img/leaflet-default-marker-shadow.png";
+        // Specify the URL of the image we want to use as our marker shadow. In this case,
+        // it's our local copy of the default Leaflet marker shadow image.
+        const shadowUrl = "./img/leaflet-default-marker-shadow.png";
+
+        // Define reusable variables related to marker icon and popup alignment.
+        // Reference: https://stackoverflow.com/a/21344874 (RE: icon and popup alignment)
+        const iconAnchor = L.point(12, 40); // aligns icon with any "spiderfication" lines
+        const popupAnchor = L.point(0, -40); // horizontally aligns popup with icon
 
         /**
          * Fetch and parse the CSV file at the specified URL.
@@ -306,8 +310,9 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/nmdc-100x100.png" alt="Logo"/><div>NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: "./img/nmdc-marker.png",
-            shadowUrl: defaultMarkerShadowUrl,
-            iconAnchor: [12, 40], // aligns icon with any spider lines involved
+            shadowUrl,
+            iconAnchor,
+            popupAnchor,
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           nmdcMarkers.push(marker);
@@ -331,8 +336,9 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/ess-dive-100x100.png" alt="Logo"/><div>ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: "./img/ess-dive-marker.png",
-            shadowUrl: defaultMarkerShadowUrl,
-            iconAnchor: [12, 40], // aligns icon with any spider lines involved
+            shadowUrl,
+            iconAnchor,
+            popupAnchor,
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           essDiveMarkers.push(marker);
@@ -352,8 +358,9 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/jgi-100x100.png" alt="Logo"/><div>JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: "./img/jgi-marker.png",
-            shadowUrl: defaultMarkerShadowUrl,
-            iconAnchor: [12, 40], // aligns icon with any spider lines involved
+            shadowUrl,
+            iconAnchor,
+            popupAnchor,
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           jgiGoldBsmMarkers.push(marker);
@@ -373,8 +380,9 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/jgi-100x100.png" alt="Logo"/><div>JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: "./img/jgi-marker.png",
-            shadowUrl: defaultMarkerShadowUrl,
-            iconAnchor: [12, 40], // aligns icon with any spider lines involved
+            shadowUrl,
+            iconAnchor,
+            popupAnchor,
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           jgiGoldOrgMarkers.push(marker);
@@ -396,8 +404,9 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL Project<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: "./img/emsl-marker.png",
-            shadowUrl: defaultMarkerShadowUrl,
-            iconAnchor: [12, 40], // aligns icon with any spider lines involved
+            shadowUrl,
+            iconAnchor,
+            popupAnchor,
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
           emslMarkers.push(marker);
