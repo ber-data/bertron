@@ -38,8 +38,11 @@
 
     <!-- Custom CSS -->
     <style>
+      .full-viewport-height {
+        height: 100vh;
+      }
       #map {
-        height: 66vh;
+        flex-grow: 1;
         border-top: 1px solid var(--bs-gray);
         border-bottom: 1px solid var(--bs-gray);
       }
@@ -71,84 +74,92 @@
     <title>BERtron Map</title>
   </head>
   <body class="bg-body-secondary">
-    <!-- Horizontal navigation bar -->
-    <nav class="navbar bg-body-secondary">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">BERtron Map</span>
+    <div class="full-viewport-height vstack">
+      <!-- Horizontal navigation bar -->
+      <nav class="navbar bg-body-secondary">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">BERtron Map</span>
+        </div>
+      </nav>
+
+      <!-- The map -->
+      <div id="map"></div>
+
+      <!-- The marker visibility togglers -->
+      <div
+        id="marker-visibility-togglers"
+        class="m-2 btn-group"
+        role="group"
+        aria-label="Marker visibility togglers"
+        hidden
+      >
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="nmdc-markers-toggler"
+          checked
+        />
+        <label class="btn btn-outline-primary" for="nmdc-markers-toggler">
+          <span>NMDC</span>
+          <span class="badge rounded-pill text-bg-light"></span>
+        </label>
+
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="ess-dive-markers-toggler"
+          checked
+        />
+        <label class="btn btn-outline-primary" for="ess-dive-markers-toggler">
+          <span>ESS-Dive</span>
+          <span class="badge rounded-pill text-bg-light"></span>
+        </label>
+
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="jgi-gold-bsm-markers-toggler"
+          checked
+        />
+        <label
+          class="btn btn-outline-primary"
+          for="jgi-gold-bsm-markers-toggler"
+        >
+          <span>JGI GOLD Biosamples</span>
+          <span class="badge rounded-pill text-bg-light"></span>
+        </label>
+
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="jgi-gold-org-markers-toggler"
+          checked
+        />
+        <label
+          class="btn btn-outline-primary"
+          for="jgi-gold-org-markers-toggler"
+        >
+          <span>JGI GOLD Organisms</span>
+          <span class="badge rounded-pill text-bg-light"></span>
+        </label>
+
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="emsl-markers-toggler"
+          checked
+        />
+        <label class="btn btn-outline-primary" for="emsl-markers-toggler">
+          <span>EMSL</span>
+          <span class="badge rounded-pill text-bg-light"></span>
+        </label>
       </div>
-    </nav>
 
-    <!-- The map -->
-    <div id="map"></div>
-
-    <!-- The marker visibility togglers -->
-    <div
-      id="marker-visibility-togglers"
-      class="m-2 btn-group"
-      role="group"
-      aria-label="Marker visibility togglers"
-      hidden
-    >
-      <input
-        type="checkbox"
-        class="btn-check"
-        id="nmdc-markers-toggler"
-        checked
-      />
-      <label class="btn btn-outline-primary" for="nmdc-markers-toggler">
-        <span>NMDC</span>
-        <span class="badge rounded-pill text-bg-light"></span>
-      </label>
-
-      <input
-        type="checkbox"
-        class="btn-check"
-        id="ess-dive-markers-toggler"
-        checked
-      />
-      <label class="btn btn-outline-primary" for="ess-dive-markers-toggler">
-        <span>ESS-Dive</span>
-        <span class="badge rounded-pill text-bg-light"></span>
-      </label>
-
-      <input
-        type="checkbox"
-        class="btn-check"
-        id="jgi-gold-bsm-markers-toggler"
-        checked
-      />
-      <label class="btn btn-outline-primary" for="jgi-gold-bsm-markers-toggler">
-        <span>JGI GOLD Biosamples</span>
-        <span class="badge rounded-pill text-bg-light"></span>
-      </label>
-
-      <input
-        type="checkbox"
-        class="btn-check"
-        id="jgi-gold-org-markers-toggler"
-        checked
-      />
-      <label class="btn btn-outline-primary" for="jgi-gold-org-markers-toggler">
-        <span>JGI GOLD Organisms</span>
-        <span class="badge rounded-pill text-bg-light"></span>
-      </label>
-
-      <input
-        type="checkbox"
-        class="btn-check"
-        id="emsl-markers-toggler"
-        checked
-      />
-      <label class="btn btn-outline-primary" for="emsl-markers-toggler">
-        <span>EMSL</span>
-        <span class="badge rounded-pill text-bg-light"></span>
-      </label>
-    </div>
-
-    <!-- A spinner that indicates that we are loading data. -->
-    <div id="spinner" hidden>
-      <div class="spinner-border spinner-border-sm m-1" role="status">
-        <span class="visually-hidden">Loading data...</span>
+      <!-- A spinner that indicates that we are loading data. -->
+      <div id="spinner" hidden>
+        <div class="spinner-border spinner-border-sm m-1" role="status">
+          <span class="visually-hidden">Loading data...</span>
+        </div>
       </div>
     </div>
 
