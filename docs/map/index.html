@@ -63,13 +63,6 @@
       <nav class="navbar bg-body-secondary">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">BERtron Map</span>
-
-          <!-- A spinner that indicates that we are loading data. -->
-          <div id="spinner" hidden>
-            <div class="spinner-border spinner-border-sm mx-1" role="status">
-              <span class="visually-hidden">Loading data...</span>
-            </div>
-          </div>
         </div>
       </nav>
 
@@ -89,6 +82,7 @@
           <label class="form-check-label" for="nmdc-markers-toggler">
             <span>NMDC</span>
             <span class="badge rounded-pill text-bg-light"></span>
+            <span class="spinner spinner-border spinner-border-sm mx-1"></span>
           </label>
         </div>
         <div class="form-check form-switch form-check-inline">
@@ -102,6 +96,7 @@
           <label class="form-check-label" for="ess-dive-markers-toggler">
             <span>ESS-Dive</span>
             <span class="badge rounded-pill text-bg-light"></span>
+            <span class="spinner spinner-border spinner-border-sm mx-1"></span>
           </label>
         </div>
         <div class="form-check form-switch form-check-inline">
@@ -115,6 +110,7 @@
           <label class="form-check-label" for="jgi-gold-bsm-markers-toggler">
             <span>JGI GOLD Biosamples</span>
             <span class="badge rounded-pill text-bg-light"></span>
+            <span class="spinner spinner-border spinner-border-sm mx-1"></span>
           </label>
         </div>
         <div class="form-check form-switch form-check-inline">
@@ -128,6 +124,7 @@
           <label class="form-check-label" for="jgi-gold-org-markers-toggler">
             <span>JGI GOLD Organisms</span>
             <span class="badge rounded-pill text-bg-light"></span>
+            <span class="spinner spinner-border spinner-border-sm mx-1"></span>
           </label>
         </div>
         <div class="form-check form-switch form-check-inline">
@@ -141,6 +138,7 @@
           <label class="form-check-label" for="emsl-markers-toggler">
             <span>EMSL</span>
             <span class="badge rounded-pill text-bg-light"></span>
+            <span class="spinner spinner-border spinner-border-sm mx-1"></span>
           </label>
         </div>
       </div>
@@ -296,9 +294,6 @@
         // Initialize a cluster group to which we can add markers and make it visible by default.
         const markerClusterGroup = L.markerClusterGroup().addTo(map);
 
-        // Show a spinner because we are about to fetch some data.
-        document.getElementById("spinner").removeAttribute("hidden");
-
         // Fetch the NMDC Biosamples CSV file and create a marker for each row.
         const nmdcObjs = await fetchAndParseCsvFile(
           `${baseUrlForData}/nmdc/nmdc_biosample_geo_coordinates.csv`,
@@ -418,9 +413,6 @@
         });
         map.addControl(search);
 
-        // Hide the spinner.
-        document.getElementById("spinner").setAttribute("hidden", "hidden");
-
         // Handle the toggling of marker visibility.
         //
         // Note: Because we are using the `Leaflet.markercluster` plugin, we
@@ -495,6 +487,9 @@
               markerClusterGroup.removeLayers(markers);
             }
           });
+
+          // Hide the spinner on this toggler.
+          labelEl.querySelector(".spinner").setAttribute("hidden", "hidden");
 
           // Populate the badge on this toggler to indicate how many
           // markers the toggler would toggle the visibility of.
