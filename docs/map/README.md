@@ -25,6 +25,7 @@ This web page is built upon the following technologies:
 - [PapaParse](https://github.com/mholt/PapaParse) - to fetch and parse CSV files ([MIT license](https://github.com/mholt/PapaParse/blob/master/LICENSE))
 - [Prettier](https://prettier.io) - to format our source code ([MIT license](https://github.com/prettier/prettier/blob/main/LICENSE))
 - [Bootstrap 5](https://getbootstrap.com/) - to style the web page elements other than the map ([MIT license](https://github.com/twbs/bootstrap/blob/main/LICENSE))
+- [Fonticon](https://gauger.io/fonticon/) - to generate a favicon from a [Font Awesome](https://fontawesome.com/v4/license/) icon
 
 ## Development
 
