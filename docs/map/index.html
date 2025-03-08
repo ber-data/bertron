@@ -199,8 +199,10 @@
           ? "http://localhost:4000"
           : "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main";
 
-        // Specify the path to our local copy of the default Leaflet marker icon.
+        // Specify the paths to our local copies of the default Leaflet marker icon
+        // and its shadow image.
         const defaultMarkerIconUrl = "./img/leaflet-default-marker-icon.png";
+        const defaultMarkerShadowUrl = "./img/leaflet-default-marker-shadow.png";
 
         /**
          * Fetch and parse the CSV file at the specified URL.
@@ -317,6 +319,7 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/nmdc-100x100.png" alt="Logo"/><div>NMDC Biosample<br/><a href="${url}" target="_blank" title="View biosample" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: defaultMarkerIconUrl,
+            shadowUrl: defaultMarkerShadowUrl,
             className: "nmdc-marker-icon",
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
@@ -341,6 +344,7 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/ess-dive-100x100.png" alt="Logo"/><div>ESS-Dive Package<br/><a href="${url}" target="_blank" title="View package" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: defaultMarkerIconUrl,
+            shadowUrl: defaultMarkerShadowUrl,
             className: "ess-dive-marker-icon",
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
@@ -361,6 +365,7 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/jgi-100x100.png" alt="Logo"/><div>JGI GOLD Biosample<br/><a href="${url}" target="_blank" title="View biosample" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: defaultMarkerIconUrl,
+            shadowUrl: defaultMarkerShadowUrl,
             className: "jgi-gold-bsm-marker-icon",
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
@@ -381,6 +386,7 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/jgi-100x100.png" alt="Logo"/><div>JGI GOLD Organism<br/><a href="${url}" target="_blank" title="View organism" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: defaultMarkerIconUrl,
+            shadowUrl: defaultMarkerShadowUrl,
             className: "jgi-gold-org-marker-icon",
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
@@ -403,6 +409,7 @@
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL Project<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: defaultMarkerIconUrl,
+            shadowUrl: defaultMarkerShadowUrl,
             className: "emsl-marker-icon",
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
