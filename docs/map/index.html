@@ -79,6 +79,13 @@
       <nav class="navbar bg-body-secondary">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">BERtron Map</span>
+
+          <!-- A spinner that indicates that we are loading data. -->
+          <div id="spinner" hidden>
+            <div class="spinner-border spinner-border-sm mx-1" role="status">
+              <span class="visually-hidden">Loading data...</span>
+            </div>
+          </div>
         </div>
       </nav>
 
@@ -91,13 +98,13 @@
         class="m-2 btn-group"
         role="group"
         aria-label="Marker visibility togglers"
-        hidden
       >
         <input
           type="checkbox"
           class="btn-check"
           id="nmdc-markers-toggler"
           checked
+          disabled
         />
         <label class="btn btn-outline-primary" for="nmdc-markers-toggler">
           <span>NMDC</span>
@@ -109,6 +116,7 @@
           class="btn-check"
           id="ess-dive-markers-toggler"
           checked
+          disabled
         />
         <label class="btn btn-outline-primary" for="ess-dive-markers-toggler">
           <span>ESS-Dive</span>
@@ -120,6 +128,7 @@
           class="btn-check"
           id="jgi-gold-bsm-markers-toggler"
           checked
+          disabled
         />
         <label
           class="btn btn-outline-primary"
@@ -134,6 +143,7 @@
           class="btn-check"
           id="jgi-gold-org-markers-toggler"
           checked
+          disabled
         />
         <label
           class="btn btn-outline-primary"
@@ -148,18 +158,12 @@
           class="btn-check"
           id="emsl-markers-toggler"
           checked
+          disabled
         />
         <label class="btn btn-outline-primary" for="emsl-markers-toggler">
           <span>EMSL</span>
           <span class="badge rounded-pill text-bg-light"></span>
         </label>
-      </div>
-
-      <!-- A spinner that indicates that we are loading data. -->
-      <div id="spinner" hidden>
-        <div class="spinner-border spinner-border-sm m-1" role="status">
-          <span class="visually-hidden">Loading data...</span>
-        </div>
       </div>
     </div>
 
@@ -505,12 +509,11 @@
           // markers the toggler would toggle the visibility of.
           const badgeEl = labelEl.querySelector(".badge");
           badgeEl.innerHTML = markers.length;
-        });
 
-        // Reveal the marker visibility togglers.
-        document
-          .getElementById("marker-visibility-togglers")
-          .removeAttribute("hidden");
+          // Now that the event listener is set up and the badge has been
+          // populated, enable the toggler so the user can interact with it.
+          togglerEl.removeAttribute("disabled");
+        });
       })();
     </script>
   </body>
