@@ -19,15 +19,19 @@ an additional 1.5 MB of gzipped resources from GitHub (about 8.5 MB when unzippe
 
 This web page is built upon the following technologies:
 
+- [Bootstrap 5](https://getbootstrap.com/) - to style the web page elements other than the map ([MIT license](https://github.com/twbs/bootstrap/blob/main/LICENSE))
 - [Leaflet](https://leafletjs.com/) - to show the map ([BSD 2-Clause "Simplified" license](https://github.com/Leaflet/Leaflet/blob/main/LICENSE))
-- [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) - to show map markers as clusters ([MIT license](https://github.com/Leaflet/Leaflet.markercluster/blob/master/MIT-LICENCE.txt))
+- [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) - to group map markers into clusters ([MIT license](https://github.com/Leaflet/Leaflet.markercluster/blob/master/MIT-LICENCE.txt))
 - [leaflet-geosearch](https://smeijer.github.io/leaflet-geosearch/#using-a-cdn) - to add a geolocation search widget ([MIT license](https://github.com/smeijer/leaflet-geosearch/blob/main/LICENSE))
 - [PapaParse](https://github.com/mholt/PapaParse) - to fetch and parse CSV files ([MIT license](https://github.com/mholt/PapaParse/blob/master/LICENSE))
-- [Prettier](https://prettier.io) - to format our source code ([MIT license](https://github.com/prettier/prettier/blob/main/LICENSE))
-- [Bootstrap 5](https://getbootstrap.com/) - to style the web page elements other than the map ([MIT license](https://github.com/twbs/bootstrap/blob/main/LICENSE))
-- [Fonticon](https://gauger.io/fonticon/) - to generate a favicon from a [Font Awesome](https://fontawesome.com/v4/license/) icon
 
 ## Development
+
+### Development tools
+
+- [Fonticon](https://gauger.io/fonticon/) - to generate a favicon from a [Font Awesome](https://fontawesome.com/v4/license/) icon
+- [Prettier](https://prettier.io) - to format source code ([MIT license](https://github.com/prettier/prettier/blob/main/LICENSE))
+- [Vite](https://vite.dev/guide/cli.html#dev-server) - to serve data locally during development ([MIT license](https://github.com/vitejs/vite/blob/main/LICENSE))
 
 ### Development server
 
@@ -35,14 +39,14 @@ Given that (a) reloading the page can happen frequently during development and (
 web page fetches 1.5 MB of data from GitHub's servers each time it loads; in an attempt
 to—while developing locally—avoid hitting any rate limits that GitHub's servers may impose,
 we have implemented a "development mode" of the web page. You can activate that mode by
-running the following commands and visiting: http://localhost:4000/docs/map/index.html
+running the following commands, then visiting: http://localhost:4000/docs/map/index.html
 
 ```shell
-# Go to the directory containing this file.
-cd docs/map/
+# Go to the root directory of the repository (an ancestor of the data files).
+cd ./
 
 # Start a web server that will serve the root directory of this repository.
-npx light-server --port 4000 --serve ../../
+npx vite serve --port 4000
 ```
 
 > Note: Although the port number that the server listens on can be customized, the web page,
@@ -72,4 +76,5 @@ npx prettier . --write
 I opted to keep the HTML, CSS, and JavaScript in a single file to facilitate
 rapid early prototyping. Before developing this beyond the prototype stage,
 I'd recommend extracting the JavaScript into a separate file(s), using a
-package manager such as NPM to manage JavaScript dependencies, etc.
+package manager such as NPM to manage JavaScript dependencies, a build tool
+such as Vite to transpile code from TypeScript to JavaScript, etc.
