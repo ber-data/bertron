@@ -83,9 +83,10 @@
         id="nmdc-markers-toggler"
         checked
       />
-      <label class="btn btn-outline-primary m-1" for="nmdc-markers-toggler"
-        >NMDC</label
-      >
+      <label class="btn btn-outline-primary m-1" for="nmdc-markers-toggler">
+        <span>NMDC</span>
+        <span class="badge rounded-pill text-bg-light"></span>
+      </label>
 
       <input
         type="checkbox"
@@ -93,9 +94,10 @@
         id="ess-dive-markers-toggler"
         checked
       />
-      <label class="btn btn-outline-primary m-1" for="ess-dive-markers-toggler"
-        >ESS-Dive</label
-      >
+      <label class="btn btn-outline-primary m-1" for="ess-dive-markers-toggler">
+        <span>ESS-Dive</span>
+        <span class="badge rounded-pill text-bg-light"></span>
+      </label>
 
       <input
         type="checkbox"
@@ -106,8 +108,10 @@
       <label
         class="btn btn-outline-primary m-1"
         for="jgi-gold-bsm-markers-toggler"
-        >JGI GOLD Biosamples</label
       >
+        <span>JGI GOLD Biosamples</span>
+        <span class="badge rounded-pill text-bg-light"></span>
+      </label>
 
       <input
         type="checkbox"
@@ -118,8 +122,10 @@
       <label
         class="btn btn-outline-primary m-1"
         for="jgi-gold-org-markers-toggler"
-        >JGI GOLD Organisms</label
       >
+        <span>JGI GOLD Organisms</span>
+        <span class="badge rounded-pill text-bg-light"></span>
+      </label>
 
       <input
         type="checkbox"
@@ -127,9 +133,10 @@
         id="emsl-markers-toggler"
         checked
       />
-      <label class="btn btn-outline-primary m-1" for="emsl-markers-toggler"
-        >EMSL</label
-      >
+      <label class="btn btn-outline-primary m-1" for="emsl-markers-toggler">
+        <span>EMSL</span>
+        <span class="badge rounded-pill text-bg-light"></span>
+      </label>
     </div>
 
     <!-- A spinner that indicates that we are loading data. -->
@@ -417,48 +424,70 @@
         const markerTogglers = {
           nmdc: {
             togglerEl: document.getElementById("nmdc-markers-toggler"),
+            labelEl: document.querySelector(
+              "label[for='nmdc-markers-toggler']",
+            ),
             markers: nmdcMarkers,
           },
           essDive: {
             togglerEl: document.getElementById("ess-dive-markers-toggler"),
+            labelEl: document.querySelector(
+              "label[for='ess-dive-markers-toggler']",
+            ),
             markers: essDiveMarkers,
           },
           jgiGoldBsm: {
             togglerEl: document.getElementById("jgi-gold-bsm-markers-toggler"),
+            labelEl: document.querySelector(
+              "label[for='jgi-gold-bsm-markers-toggler']",
+            ),
             markers: jgiGoldBsmMarkers,
           },
           jgiGoldOrg: {
             togglerEl: document.getElementById("jgi-gold-org-markers-toggler"),
+            labelEl: document.querySelector(
+              "label[for='jgi-gold-org-markers-toggler']",
+            ),
             markers: jgiGoldOrgMarkers,
           },
           emsl: {
             togglerEl: document.getElementById("emsl-markers-toggler"),
+            labelEl: document.querySelector(
+              "label[for='emsl-markers-toggler']",
+            ),
             markers: emslMarkers,
           },
         };
-        // Attach an event listener to each toggler so that, whenever someone
-        // clicks the toggler, a callback function is invoked. The callback
-        // function will synchronize the marker visibility with the togglers.
+        // Initialize each marker toggler.
         Object.keys(markerTogglers).forEach((markerTogglerKey) => {
-          const markerTogglerEl = markerTogglers[markerTogglerKey].togglerEl;
-          const markerTogglerMarkers = markerTogglers[markerTogglerKey].markers;
-          markerTogglerEl.addEventListener("change", function (event) {
+          const togglerEl = markerTogglers[markerTogglerKey].togglerEl;
+          const labelEl = markerTogglers[markerTogglerKey].labelEl;
+          const markers = markerTogglers[markerTogglerKey].markers;
+
+          // Attach an event listener to the toggler so that, whenever someone
+          // clicks the toggler, the following callback function is invoked.
+          togglerEl.addEventListener("change", function (event) {
             // Toggle the visibility of the markers associated with this toggler.
             //
             // Note: The `Leaflet.markercluster` plugin's documentation says it
             //       "will almost definitely be better to" clear all layers,
-            //       and then re-add the ones we want to be visibile. However,
+            //       and then re-add the ones we want to be visible. However,
             //       in our testing, that approach was slower (i.e. bogged down
             //       the UI more) compared to the approach we are taking, which
             //       is to only manipulate those markers that are associated
             //       with the specific toggler that was "change"-ed.
             //
             if (event.target.checked) {
-              markerClusterGroup.addLayers(markerTogglerMarkers);
+              markerClusterGroup.addLayers(markers);
             } else {
-              markerClusterGroup.removeLayers(markerTogglerMarkers);
+              markerClusterGroup.removeLayers(markers);
             }
           });
+
+          // Populate the badge on this toggler to indicate how many
+          // markers the toggler would toggle the visibility of.
+          const badgeEl = labelEl.querySelector(".badge");
+          badgeEl.innerHTML = markers.length;
         });
 
         // Reveal the marker visibility togglers.
