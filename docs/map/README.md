@@ -46,11 +46,3 @@ I opted to keep the HTML, CSS, and JavaScript in a single file to facilitate
 rapid early prototyping. Before developing this beyond the prototype stage,
 I'd recommend extracting the JavaScript into a separate file(s), using a
 package manager such as NPM to manage JavaScript dependencies, etc.
-
-## Roadmap (draft)
-
-Here are some ideas I have for future development (in no particular order):
-
-- Allow the user to toggle all markers associated with a given data source
-  (e.g. NMDC vs. ESS-Dive) on/off
-- Add remaining hyperlinks to the marker popups
