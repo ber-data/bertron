@@ -422,13 +422,13 @@
         const mapEl = document.getElementById("map");
         const map = initializeMap(mapEl);
 
-        // Initialize a cluster group to which we can add markers and make it visible by default.
+        // Initialize a cluster group to which we can add markers.
         const markerClusterGroup = L.markerClusterGroup().addTo(map);
 
         // Add all markers to the cluster group.
         //
         // Note: When we first add markers to the cluster group, we add all of
-        //       them at once (here) instead of adding one batch after we've
+        //       them at once (here) instead of adding each batch after we've
         //       prepared it. We do that in an attempt to avoid enticing users
         //       to begin interacting with the map while some markers have not
         //       been added yet.
@@ -441,7 +441,7 @@
           ...emslMarkers,
         ]);
 
-        // Set up the address-based search widget.
+        // Set up the geolocation (i.e. address-based) search widget.
         // Reference: https://smeijer.github.io/leaflet-geosearch/
         const search = new GeoSearch.GeoSearchControl({
           provider: new GeoSearch.OpenStreetMapProvider(),
@@ -504,8 +504,8 @@
           const labelEl = markerTogglers[markerTogglerKey].labelEl;
           const markers = markerTogglers[markerTogglerKey].markers;
 
-          // Attach an event listener to the toggler so that, whenever someone
-          // clicks the toggler, the following callback function is invoked.
+          // Attach an event listener to the marker toggler so that, whenever
+          // someone clicks it, the following callback function is invoked.
           togglerEl.addEventListener("change", function (event) {
             // Toggle the visibility of the markers associated with this toggler.
             //
@@ -527,13 +527,12 @@
           // Hide the spinner on this toggler.
           labelEl.querySelector(".spinner").setAttribute("hidden", "hidden");
 
-          // Populate the badge on this toggler to indicate how many
-          // markers the toggler would toggle the visibility of.
+          // Populate the badge on this toggler so it shows how many
+          // markers this toggler would toggle the visibility of.
           const badgeEl = labelEl.querySelector(".badge");
           badgeEl.innerHTML = markers.length;
 
-          // Now that the event listener is set up and the badge has been
-          // populated, enable the toggler so the user can interact with it.
+          // Enable this toggler so the user can interact with it.
           togglerEl.removeAttribute("disabled");
         });
       })();
