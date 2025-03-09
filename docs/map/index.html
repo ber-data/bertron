@@ -74,90 +74,6 @@
           ></span>
         </span>
       </div>
-
-      <!-- The marker visibility togglers -->
-      <div class="m-2 text-center">
-        <div class="form-check form-switch form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="nmdc-markers-toggler"
-            checked
-            disabled
-          />
-          <label class="form-check-label" for="nmdc-markers-toggler">
-            <span>NMDC</span>
-            <span class="badge rounded-pill text-bg-light"></span>
-            <span
-              class="spinner spinner-border text-secondary spinner-border-sm mx-1"
-            ></span>
-          </label>
-        </div>
-        <div class="form-check form-switch form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="ess-dive-markers-toggler"
-            checked
-            disabled
-          />
-          <label class="form-check-label" for="ess-dive-markers-toggler">
-            <span>ESS-Dive</span>
-            <span class="badge rounded-pill text-bg-light"></span>
-            <span
-              class="spinner spinner-border text-secondary spinner-border-sm mx-1"
-            ></span>
-          </label>
-        </div>
-        <div class="form-check form-switch form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="jgi-gold-bsm-markers-toggler"
-            checked
-            disabled
-          />
-          <label class="form-check-label" for="jgi-gold-bsm-markers-toggler">
-            <span>JGI GOLD Biosamples</span>
-            <span class="badge rounded-pill text-bg-light"></span>
-            <span
-              class="spinner spinner-border text-secondary spinner-border-sm mx-1"
-            ></span>
-          </label>
-        </div>
-        <div class="form-check form-switch form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="jgi-gold-org-markers-toggler"
-            checked
-            disabled
-          />
-          <label class="form-check-label" for="jgi-gold-org-markers-toggler">
-            <span>JGI GOLD Organisms</span>
-            <span class="badge rounded-pill text-bg-light"></span>
-            <span
-              class="spinner spinner-border text-secondary spinner-border-sm mx-1"
-            ></span>
-          </label>
-        </div>
-        <div class="form-check form-switch form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="emsl-markers-toggler"
-            checked
-            disabled
-          />
-          <label class="form-check-label" for="emsl-markers-toggler">
-            <span>EMSL</span>
-            <span class="badge rounded-pill text-bg-light"></span>
-            <span
-              class="spinner spinner-border text-secondary spinner-border-sm mx-1"
-            ></span>
-          </label>
-        </div>
-      </div>
     </div>
 
     <!-- Bootstrap and Popper JS -->
@@ -181,6 +97,9 @@
 
     <!-- Leaflet.markercluster JS -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <!--  Leaflet.FeatureGroup.SubGroup JS-->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.featuregroup.subgroup@1.0.2/dist/leaflet.featuregroup.subgroup.js"></script>
 
     <!-- leaflet-geosearch JS -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet-geosearch@4.2.0/dist/bundle.min.js"></script>
@@ -425,21 +344,31 @@
         // Initialize a cluster group to which we can add markers.
         const markerClusterGroup = L.markerClusterGroup().addTo(map);
 
-        // Add all markers to the cluster group.
+        // Create a subgroup for each data source's markers, within the cluster group.
         //
-        // Note: When we first add markers to the cluster group, we add all of
-        //       them at once (here) instead of adding each batch after we've
-        //       prepared it. We do that in an attempt to avoid enticing users
-        //       to begin interacting with the map while some markers have not
-        //       been added yet.
+        // Note: This will make it so (a) a single cluster can contain markers
+        //       associated with multiple data sources, and (b) the visibility
+        //       of the markers associated with a single data source can be
+        //       toggled without affecting other data sources' markers.
         //
-        markerClusterGroup.addLayers([
-          ...nmdcMarkers,
-          ...essDiveMarkers,
-          ...jgiGoldBsmMarkers,
-          ...jgiGoldOrgMarkers,
-          ...emslMarkers,
-        ]);
+        // Note: Invoking `.addTo(map)` on each subgroup makes it so the
+        //       markers in that subgroup are visible by default.
+        //
+        // References:
+        // - https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup
+        // - https://leafletjs.com/examples/layers-control/
+        //
+        // TODO: Consider using `Number.prototype.toLocaleString()` to format `12345` as `12,345` (etc.).
+        //
+        const overlayMaps = {};
+        overlayMaps[`NMDC (${nmdcMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, nmdcMarkers).addTo(map);
+        overlayMaps[`ESS-Dive (${essDiveMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, essDiveMarkers).addTo(map);
+        overlayMaps[`JGI GOLD Biosamples (${jgiGoldBsmMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, jgiGoldBsmMarkers).addTo(map);
+        overlayMaps[`JGI GOLD Organisms (${jgiGoldOrgMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, jgiGoldOrgMarkers).addTo(map);
+        overlayMaps[`EMSL (${emslMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, emslMarkers).addTo(map);
+
+        // Add a layer visibility toggler widget to the upper right corner of the map.
+        L.control.layers(undefined, overlayMaps).addTo(map);
 
         // Set up the geolocation (i.e. address-based) search widget.
         // Reference: https://smeijer.github.io/leaflet-geosearch/
@@ -448,93 +377,6 @@
           style: "button", // other option is: "bar"
         });
         map.addControl(search);
-
-        // Handle the toggling of marker visibility.
-        //
-        // Note: Because we are using the `Leaflet.markercluster` plugin, we
-        //       take the approach shown in that plugin's documentation. When
-        //       we tried taking the approach shown in the Leaflet
-        //       documentation, we were able to hide layers of markers via a
-        //       widget at the upper right corner of the map, but the clusters
-        //       seemed to be layer-specific (i.e. NMDC markers were not being
-        //       clustered with ESS-Dive markers).
-        //
-        // Reference: https://github.com/Leaflet/Leaflet.markercluster?tab=readme-ov-file#bulk-adding-and-removing-markers
-        //
-        const markerTogglers = {
-          nmdc: {
-            togglerEl: document.getElementById("nmdc-markers-toggler"),
-            labelEl: document.querySelector(
-              "label[for='nmdc-markers-toggler']",
-            ),
-            markers: nmdcMarkers,
-          },
-          essDive: {
-            togglerEl: document.getElementById("ess-dive-markers-toggler"),
-            labelEl: document.querySelector(
-              "label[for='ess-dive-markers-toggler']",
-            ),
-            markers: essDiveMarkers,
-          },
-          jgiGoldBsm: {
-            togglerEl: document.getElementById("jgi-gold-bsm-markers-toggler"),
-            labelEl: document.querySelector(
-              "label[for='jgi-gold-bsm-markers-toggler']",
-            ),
-            markers: jgiGoldBsmMarkers,
-          },
-          jgiGoldOrg: {
-            togglerEl: document.getElementById("jgi-gold-org-markers-toggler"),
-            labelEl: document.querySelector(
-              "label[for='jgi-gold-org-markers-toggler']",
-            ),
-            markers: jgiGoldOrgMarkers,
-          },
-          emsl: {
-            togglerEl: document.getElementById("emsl-markers-toggler"),
-            labelEl: document.querySelector(
-              "label[for='emsl-markers-toggler']",
-            ),
-            markers: emslMarkers,
-          },
-        };
-        // Initialize each marker toggler.
-        Object.keys(markerTogglers).forEach((markerTogglerKey) => {
-          const togglerEl = markerTogglers[markerTogglerKey].togglerEl;
-          const labelEl = markerTogglers[markerTogglerKey].labelEl;
-          const markers = markerTogglers[markerTogglerKey].markers;
-
-          // Attach an event listener to the marker toggler so that, whenever
-          // someone clicks it, the following callback function is invoked.
-          togglerEl.addEventListener("change", function (event) {
-            // Toggle the visibility of the markers associated with this toggler.
-            //
-            // Note: The `Leaflet.markercluster` plugin's documentation says it
-            //       "will almost definitely be better to" clear all layers,
-            //       and then re-add the ones we want to be visible. However,
-            //       in our testing, that approach was slower (i.e. bogged down
-            //       the UI more) compared to the approach we are taking, which
-            //       is to only manipulate those markers that are associated
-            //       with the specific toggler that was "change"-ed.
-            //
-            if (event.target.checked) {
-              markerClusterGroup.addLayers(markers);
-            } else {
-              markerClusterGroup.removeLayers(markers);
-            }
-          });
-
-          // Hide the spinner on this toggler.
-          labelEl.querySelector(".spinner").setAttribute("hidden", "hidden");
-
-          // Populate the badge on this toggler so it shows how many
-          // markers this toggler would toggle the visibility of.
-          const badgeEl = labelEl.querySelector(".badge");
-          badgeEl.innerHTML = markers.length;
-
-          // Enable this toggler so the user can interact with it.
-          togglerEl.removeAttribute("disabled");
-        });
       })();
     </script>
   </body>
