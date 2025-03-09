@@ -361,11 +361,23 @@
         // TODO: Consider using `Number.prototype.toLocaleString()` to format `12345` as `12,345` (etc.).
         //
         const overlayMaps = {};
-        overlayMaps[`NMDC (${nmdcMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, nmdcMarkers).addTo(map);
-        overlayMaps[`ESS-Dive (${essDiveMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, essDiveMarkers).addTo(map);
-        overlayMaps[`JGI GOLD Biosamples (${jgiGoldBsmMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, jgiGoldBsmMarkers).addTo(map);
-        overlayMaps[`JGI GOLD Organisms (${jgiGoldOrgMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, jgiGoldOrgMarkers).addTo(map);
-        overlayMaps[`EMSL (${emslMarkers.length.toLocaleString()})`] = L.featureGroup.subGroup(markerClusterGroup, emslMarkers).addTo(map);
+        overlayMaps[`NMDC (${nmdcMarkers.length})`] = L.featureGroup
+          .subGroup(markerClusterGroup, nmdcMarkers)
+          .addTo(map);
+        overlayMaps[`ESS-Dive (${essDiveMarkers.length})`] = L.featureGroup
+          .subGroup(markerClusterGroup, essDiveMarkers)
+          .addTo(map);
+        overlayMaps[`JGI GOLD Biosamples (${jgiGoldBsmMarkers.length})`] =
+          L.featureGroup
+            .subGroup(markerClusterGroup, jgiGoldBsmMarkers)
+            .addTo(map);
+        overlayMaps[`JGI GOLD Organisms (${jgiGoldOrgMarkers.length})`] =
+          L.featureGroup
+            .subGroup(markerClusterGroup, jgiGoldOrgMarkers)
+            .addTo(map);
+        overlayMaps[`EMSL (${emslMarkers.length})`] = L.featureGroup
+          .subGroup(markerClusterGroup, emslMarkers)
+          .addTo(map);
 
         // Add a layer visibility toggler widget to the upper right corner of the map.
         L.control.layers(undefined, overlayMaps).addTo(map);
