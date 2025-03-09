@@ -1,8 +1,8 @@
-# Map
+# BERtron map
 
 ## Overview
 
-This web page displays all samples from all projects on a single map.
+This web page displays all samples from all data sources on a single map.
 
 By default, the entire world map is visible. You can click the `+`/`-` buttons
 on the map to zoom in/out. You can click the magnifying glass button to search
@@ -35,29 +35,33 @@ This web page is built upon the following technologies:
 
 ### Development server
 
-Given that (a) reloading the page can happen frequently during development and (b) the
-web page fetches 1.5 MB of data from GitHub's servers each time it loads; in an attempt
-to—while developing locally—avoid hitting any rate limits that GitHub's servers may impose,
-we have implemented a "development mode" of the web page. You can activate that mode by
-running the following commands, then visiting: http://localhost:4000/docs/map/index.html
+This web page uses assets that reside in this repository.
+
+When this web page is being served by GitHub Pages, the web page fetches
+those assets from the GitHub repository—meaning it is subject to any rate
+limiting GitHub might have in place (I don't know whether it has any).
+
+In order to eliminate the possibility of hitting any rate limits while
+developing the web page locally, you can put the web page into its
+"development mode," in which it will fetch those assets from a local
+web server serving the contents of this repository.
+
+You can activate "development mode" by running the following commands,
+then visiting: http://localhost:4000/docs/map/index.html
 
 ```shell
-# Go to the root directory of the repository (an ancestor of the data files).
-cd ./
+# Go to the directory containing this file.
+cd docs/map/
 
 # Start a web server that will serve the root directory of this repository.
-npx vite serve --port 4000
+npx vite serve --port 4000 ../../
 ```
 
 > Note: Although the port number that the server listens on can be customized, the web page,
 > itself, will only go into "development mode" when the port number is `4000`.
 
-That web server will serve the entire contents of the repository, which includes the data
-files that the web page can fetch. When in "development mode," the web page will
-fetch the files from that web server instead of from GitHub's web servers.
-
-> This is a temporary solution, which we will replace when we switch from building something
-> for the short term, to building something for the long term.
+That web server will serve the entire contents of the repository, which includes the assets
+(i.e. CSV/JSON data files) that the web page fetches.
 
 ### Code format
 
@@ -73,8 +77,10 @@ npx prettier . --write
 
 ### Directory structure
 
-I opted to keep the HTML, CSS, and JavaScript in a single file to facilitate
-rapid early prototyping. Before developing this beyond the prototype stage,
-I'd recommend extracting the JavaScript into a separate file(s), using a
-package manager such as NPM to manage JavaScript dependencies, a build tool
-such as Vite to transpile code from TypeScript to JavaScript, etc.
+We opted to keep the HTML, CSS, and JavaScript in a single file to facilitate
+rapid early prototyping.
+
+Before developing this beyond the prototype stage, we'd recommend extracting the
+JavaScript code into a separate file(s), switching from JavaScript to TypeScript,
+using a package manager such as NPM to manage JavaScript dependencies, using a
+build tool such as Vite to transpile code from TypeScript to JavaScript, etc.
