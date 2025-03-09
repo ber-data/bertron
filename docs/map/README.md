@@ -8,12 +8,13 @@ By default, the entire world map is visible. You can click the `+`/`-` buttons
 on the map to zoom in/out. You can click the magnifying glass button to search
 by address.
 
-Samples are grouped into clusters, where the color of the cluster indicates
-whether there is a small, medium, or large number of samples in that region.
+Samples are grouped into clusters based upon their geolocation, regardless of
+the data source. The color of the cluster indicates whether there is a small,
+medium, or large number of samples in that region.
 
-The `index.html` file, itself, is about 10 KB in size. When a web browser loads
-the file and runs the JavaScript scripts within it, the web browser will fetch
-an additional 1.5 MB of gzipped resources from GitHub (about 8.5 MB when unzipped).
+The `index.html` file, itself, is about 15 KB in size. When a web browser loads
+the file and executes the JavaScript code within it, the web browser will fetch
+geolocation data files from GitHub and various CSS/JavaScript assets from a CDN.
 
 ## Technologies
 
@@ -21,6 +22,7 @@ This web page is built upon the following technologies:
 
 - [Bootstrap 5](https://getbootstrap.com/) - to style the web page elements other than the map ([MIT license](https://github.com/twbs/bootstrap/blob/main/LICENSE))
 - [Leaflet](https://leafletjs.com/) - to show the map ([BSD 2-Clause "Simplified" license](https://github.com/Leaflet/Leaflet/blob/main/LICENSE))
+- [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup) - to allow users to toggle the visibility of markers from a given data source while allowing any given cluster to contain markers associated with multiple data sources ([BSD 2-Clause "Simplified" license](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup/blob/master/LICENSE))
 - [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) - to group map markers into clusters ([MIT license](https://github.com/Leaflet/Leaflet.markercluster/blob/master/MIT-LICENCE.txt))
 - [leaflet-geosearch](https://smeijer.github.io/leaflet-geosearch/#using-a-cdn) - to add a geolocation search widget ([MIT license](https://github.com/smeijer/leaflet-geosearch/blob/main/LICENSE))
 - [PapaParse](https://github.com/mholt/PapaParse) - to fetch and parse CSV files ([MIT license](https://github.com/mholt/PapaParse/blob/master/LICENSE))
