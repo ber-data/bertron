@@ -41,6 +41,21 @@
       .full-viewport-height {
         height: 100vh;
       }
+      .bertron-logo {
+        height: 24px;
+
+        /* Align the bottom of the logo with the bottom of the text next to it. */
+        position: relative;
+        bottom: 4.5px;
+        
+        /* Hide the image and configure the eventual animation. */
+        width: 0;
+        transition: width 0.25s ease;
+      }
+      .navbar-brand:hover .bertron-logo{
+        /* When the user hovers over the brand element, restore the logo's natural width. */
+        width: 43.3833px;
+      }
       #map {
         border-top: 1px solid var(--bs-gray);
         border-bottom: 1px solid var(--bs-gray);
@@ -61,7 +76,10 @@
       <!-- Horizontal navigation bar -->
       <nav class="navbar">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">BERtron Map</span>
+          <span class="navbar-brand mb-0 h1">
+            <img src="./img/bertron-logo.png" alt="BERtron logo" class="d-inline-block align-text-top bertron-logo" />
+            <span>BERtron Map</span>
+          </span>
         </div>
       </nav>
 
