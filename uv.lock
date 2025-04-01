@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.12, <3.14"
 
 [[package]]
@@ -515,16 +516,16 @@ wheels = [
 
 [[package]]
 name = "nmdc-api-utilities"
-version = "0.3.1"
+version = "0.3.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "matplotlib" },
     { name = "pandas" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1d/75/ad9cbce9a565bcdc689e6d76e500656e9dece714711393c7d18e7f3ed1e4/nmdc_api_utilities-0.3.1.tar.gz", hash = "sha256:47a5aed660d88dd4e7da5247dc261db44c9b477c4cb0696248b632198ab8050d", size = 12796 }
+sdist = { url = "https://files.pythonhosted.org/packages/46/ee/4e90ec06f43dd441e3242c70dfad4703feb3f0d3a05bc00f38d423f2720a/nmdc_api_utilities-0.3.6.tar.gz", hash = "sha256:7b42752ba79e550bafe172b53b76537f8445675bc17490d045d7ff9d948eaf18", size = 16363 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5e/2d/7ced59995172353660764e24a7cbcc1847d0782cffab6cc91f09910730f2/nmdc_api_utilities-0.3.1-py3-none-any.whl", hash = "sha256:73ac6307c89818d9bdc43e104425a210d716f2aa10dea090fbf4285343bfbae1", size = 22818 },
+    { url = "https://files.pythonhosted.org/packages/eb/b1/a193441b5861007e2e3f02373e794f7e71542d3b3ce1870dc95211ef0af9/nmdc_api_utilities-0.3.6-py3-none-any.whl", hash = "sha256:271a9a0c1c48f031b7418736e55449008cdb4bca36b7b20939172c480f226405", size = 29332 },
 ]
 
 [[package]]
