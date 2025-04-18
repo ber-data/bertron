@@ -334,18 +334,18 @@
         });
         console.debug(`Created ${jgiGoldOrgObjs.length} markers.`);
 
-        // Fetch the EMSL JSON (not CSV) file and create a marker for each element of its top-level array.
-        const response = await fetch(
+        // Fetch the EMSL MONet JSON (not CSV) file and create a marker for each element of its top-level array.
+        const monetResponse = await fetch(
           `${baseUrlForData}/emsl/latlon_project_ids.json`,
         );
-        const emslObjs = await response.json();
-        const emslMarkers = [];
-        console.debug("Fetching and parsing finished.", { data: emslObjs });
-        emslObjs.forEach((obj) => {
+        const monetObjs = await monetResponse.json();
+        const monetMarkers = [];
+        console.debug("Fetching and parsing finished.", { data: monetObjs });
+        monetObjs.forEach((obj) => {
           const latLon = getLatLon(obj);
           const identifier = `Project: ${obj["proposal_id"]}, Sampling set: ${obj["sampling_set"]}`;
           const url = `https://sc-data.emsl.pnnl.gov/?projectId=${obj["proposal_id"]}`;
-          const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL Project<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
+          const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL MONet Sample<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: "./img/emsl-marker.png",
             shadowUrl,
@@ -353,9 +353,32 @@
             popupAnchor,
           });
           const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
-          emslMarkers.push(marker);
+          monetMarkers.push(marker);
         });
-        console.debug(`Created ${emslObjs.length} markers.`);
+        console.debug(`Created ${monetObjs.length} markers.`);
+
+        // Fetch the EMSL JSON (not CSV) file and create a marker for each element of its top-level array.
+        // const response = await fetch(
+        //   `${baseUrlForData}/emsl/all_emsl_samples.json`,
+        // );
+        // const emslObjs = await response.json();
+        // const emslMarkers = [];
+        // console.debug("Fetching and parsing finished.", { data: emslObjs });
+        // emslObjs.forEach((obj) => {
+        //   const latLon = getLatLon(obj);
+        //   const identifier = `${obj["description"]}`;
+        //   const url = `https://sc-data.emsl.pnnl.gov/?projectId=${obj["proposal_id"]}`;
+        //   const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL Project<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
+        //   const icon = L.icon({
+        //     iconUrl: "./img/emsl-marker.png",
+        //     shadowUrl,
+        //     iconAnchor,
+        //     popupAnchor,
+        //   });
+        //   const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
+        //   emslMarkers.push(marker);
+        // });
+        // console.debug(`Created ${emslObjs.length} markers.`);
 
         // Initialize the map.
         const mapEl = document.getElementById("map");
@@ -381,24 +404,26 @@
         // TODO: Consider using `Number.prototype.toLocaleString()` to format `12345` as `12,345` (etc.).
         //
         const overlayMaps = {};
-        overlayMaps[`NMDC (${nmdcMarkers.length})`] = L.featureGroup
-          .subGroup(markerClusterGroup, nmdcMarkers)
+        // overlayMaps[`NMDC (${nmdcMarkers.length})`] = L.featureGroup
+        //   .subGroup(markerClusterGroup, nmdcMarkers)
+        //   .addTo(map);
+        // overlayMaps[`ESS-Dive (${essDiveMarkers.length})`] = L.featureGroup
+        //   .subGroup(markerClusterGroup, essDiveMarkers)
+        //   .addTo(map);
+        // overlayMaps[`JGI GOLD Biosamples (${jgiGoldBsmMarkers.length})`] =
+        //   L.featureGroup
+        //     .subGroup(markerClusterGroup, jgiGoldBsmMarkers)
+        //     .addTo(map);
+        // overlayMaps[`JGI GOLD Organisms (${jgiGoldOrgMarkers.length})`] =
+        //   L.featureGroup
+        //     .subGroup(markerClusterGroup, jgiGoldOrgMarkers)
+        //     .addTo(map);
+        overlayMaps[`EMSL MONet (${monetMarkers.length})`] = L.featureGroup
+          .subGroup(markerClusterGroup, monetMarkers)
           .addTo(map);
-        overlayMaps[`ESS-Dive (${essDiveMarkers.length})`] = L.featureGroup
-          .subGroup(markerClusterGroup, essDiveMarkers)
-          .addTo(map);
-        overlayMaps[`JGI GOLD Biosamples (${jgiGoldBsmMarkers.length})`] =
-          L.featureGroup
-            .subGroup(markerClusterGroup, jgiGoldBsmMarkers)
-            .addTo(map);
-        overlayMaps[`JGI GOLD Organisms (${jgiGoldOrgMarkers.length})`] =
-          L.featureGroup
-            .subGroup(markerClusterGroup, jgiGoldOrgMarkers)
-            .addTo(map);
-        overlayMaps[`EMSL (${emslMarkers.length})`] = L.featureGroup
-          .subGroup(markerClusterGroup, emslMarkers)
-          .addTo(map);
-
+        // overlayMaps[`EMSL (${emslMarkers.length})`] = L.featureGroup
+        //   .subGroup(markerClusterGroup, emslMarkers)
+        //   .addTo(map);
         // Add a layer visibility toggler widget to the upper right corner of the map.
         L.control.layers(undefined, overlayMaps).addTo(map);
 
