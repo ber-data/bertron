@@ -404,20 +404,20 @@
         // TODO: Consider using `Number.prototype.toLocaleString()` to format `12345` as `12,345` (etc.).
         //
         const overlayMaps = {};
-        // overlayMaps[`NMDC (${nmdcMarkers.length})`] = L.featureGroup
-        //   .subGroup(markerClusterGroup, nmdcMarkers)
-        //   .addTo(map);
-        // overlayMaps[`ESS-Dive (${essDiveMarkers.length})`] = L.featureGroup
-        //   .subGroup(markerClusterGroup, essDiveMarkers)
-        //   .addTo(map);
-        // overlayMaps[`JGI GOLD Biosamples (${jgiGoldBsmMarkers.length})`] =
-        //   L.featureGroup
-        //     .subGroup(markerClusterGroup, jgiGoldBsmMarkers)
-        //     .addTo(map);
-        // overlayMaps[`JGI GOLD Organisms (${jgiGoldOrgMarkers.length})`] =
-        //   L.featureGroup
-        //     .subGroup(markerClusterGroup, jgiGoldOrgMarkers)
-        //     .addTo(map);
+        overlayMaps[`NMDC (${nmdcMarkers.length})`] = L.featureGroup
+          .subGroup(markerClusterGroup, nmdcMarkers)
+          .addTo(map);
+        overlayMaps[`ESS-Dive (${essDiveMarkers.length})`] = L.featureGroup
+          .subGroup(markerClusterGroup, essDiveMarkers)
+          .addTo(map);
+        overlayMaps[`JGI GOLD Biosamples (${jgiGoldBsmMarkers.length})`] =
+          L.featureGroup
+            .subGroup(markerClusterGroup, jgiGoldBsmMarkers)
+            .addTo(map);
+        overlayMaps[`JGI GOLD Organisms (${jgiGoldOrgMarkers.length})`] =
+          L.featureGroup
+            .subGroup(markerClusterGroup, jgiGoldOrgMarkers)
+            .addTo(map);
         overlayMaps[`EMSL MONet (${monetMarkers.length})`] = L.featureGroup
           .subGroup(markerClusterGroup, monetMarkers)
           .addTo(map);
