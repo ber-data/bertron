@@ -358,27 +358,27 @@
         console.debug(`Created ${monetObjs.length} markers.`);
 
         // Fetch the EMSL JSON (not CSV) file and create a marker for each element of its top-level array.
-        // const response = await fetch(
-        //   `${baseUrlForData}/emsl/all_emsl_samples.json`,
-        // );
-        // const emslObjs = await response.json();
-        // const emslMarkers = [];
-        // console.debug("Fetching and parsing finished.", { data: emslObjs });
-        // emslObjs.forEach((obj) => {
-        //   const latLon = getLatLon(obj);
-        //   const identifier = `${obj["description"]}`;
-        //   const url = `https://sc-data.emsl.pnnl.gov/?projectId=${obj["proposal_id"]}`;
-        //   const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL Project<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
-        //   const icon = L.icon({
-        //     iconUrl: "./img/emsl-marker.png",
-        //     shadowUrl,
-        //     iconAnchor,
-        //     popupAnchor,
-        //   });
-        //   const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
-        //   emslMarkers.push(marker);
-        // });
-        // console.debug(`Created ${emslObjs.length} markers.`);
+        const response = await fetch(
+          `${baseUrlForData}/emsl/all_emsl_samples.json`,
+        );
+        const emslObjs = await response.json();
+        const emslMarkers = [];
+        console.debug("Fetching and parsing finished.", { data: emslObjs });
+        emslObjs.forEach((obj) => {
+          const latLon = getLatLon(obj);
+          const identifier = `${obj["description"]}`;
+          const url = `https://sc-data.emsl.pnnl.gov/?projectId=${obj["proposal_id"]}`;
+          const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL Project<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
+          const icon = L.icon({
+            iconUrl: "./img/emsl-marker.png",
+            shadowUrl,
+            iconAnchor,
+            popupAnchor,
+          });
+          const marker = L.marker(latLon, { icon: icon }).bindPopup(popupHtml);
+          emslMarkers.push(marker);
+        });
+        console.debug(`Created ${emslObjs.length} markers.`);
 
         // Initialize the map.
         const mapEl = document.getElementById("map");
@@ -421,9 +421,9 @@
         overlayMaps[`EMSL MONet (${monetMarkers.length})`] = L.featureGroup
           .subGroup(markerClusterGroup, monetMarkers)
           .addTo(map);
-        // overlayMaps[`EMSL (${emslMarkers.length})`] = L.featureGroup
-        //   .subGroup(markerClusterGroup, emslMarkers)
-        //   .addTo(map);
+        overlayMaps[`EMSL (${emslMarkers.length})`] = L.featureGroup
+          .subGroup(markerClusterGroup, emslMarkers)
+          .addTo(map);
         // Add a layer visibility toggler widget to the upper right corner of the map.
         L.control.layers(undefined, overlayMaps).addTo(map);
 
