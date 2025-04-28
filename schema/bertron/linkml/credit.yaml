@@ -1,0 +1,1274 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: https://github.com/ber-data/bertron/schema/linkml
+name: ber_data
+description: Schema for BERtron common object model.
+version: 0.0.1
+prefixes:
+  bioportal: https://bioportal.bioontology.org/ontologies/
+  biolink: https://w3id.org/biolink/vocab/
+  kbcms: https://kbase.github.io/credit_engine/
+  crcr: https://credit.niso.org/contributor-roles/
+  Crossref: https://crossref.org/
+  DataCite: https://purl.org/datacite/v4.4/
+  DOI: http://identifiers.org/doi/
+  gdmt: http://vocab.fairdatacollective.org/fdc-gdmt/en/page/
+  JGI: https://data.jgi.doe.gov/search/
+  linkml: https://w3id.org/linkml/
+  ORCID: http://identifiers.org/orcid/
+  OSTI.ARTICLE: https://www.osti.gov/biblio/
+  ROR: http://identifiers.org/ror/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
+imports:
+  - linkml:types
+default_range: string
+default_curi_maps:
+  - semweb_context
+default_prefix: bertron
+
+classes:
+
+  Contributor:
+    description: |
+      Represents a contributor to the resource.
+
+      Contributors must have a 'contributor_type', either 'Person' or 'Organization', and
+      one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).
+
+      The 'contributor_role' field takes values from the DataCite and CRediT contributor
+      roles vocabularies. For more information on these resources and choosing
+      appropriate roles, please see the following links:
+
+      DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype
+
+      CRediT contributor role taxonomy: https://credit.niso.org
+
+    attributes:
+      contributor_type:
+        slot_uri: schema:@type
+        description: Must be either 'Person' or 'Organization'.
+        range: ContributorType
+        examples:
+        - value: Person
+        - value: Organization
+        exact_mappings:
+        - DataCite:attributes.contributors.name_type
+        - DataCite:attributes.creators.name_type
+
+      id:
+        slot_uri: schema:identifier
+        description: Persistent unique identifier for the contributor; this might be an ORCID for an individual, or a ROR ID for an organization.
+        range: uriorcurie
+        pattern: "^[a-zA-Z0-9.-_]+:\\S"
+        examples:
+        - value: ORCID:0000-0001-9557-7715
+        - value: ROR:01znn6x10
+        exact_mappings:
+        - DataCite:attributes.contributors.name_identifiers.name_identifier
+        - DataCite:attributes.creators.name_identifiers.name_identifier
+          # from: DataCite:attributes.contributors[].name_identifiers[].name_identifier_scheme == 'ORCID'
+          # via: f"ORCID:{src.attributes.contributors[].name_identifiers[].name_identifier.replace('https://orcid.org/', '')}"
+        narrow_mappings:
+        - ORCID:contributor.orcidId
+        - OSTI.ARTICLE:author.orcid_id
+        - OSTI.ARTICLE:contributor.orcid_id
+        - Crossref:message.project.funding.funder.name
+
+      name:
+        slot_uri: schema:name
+        description: Contributor name. For organizations, this should be the full (unabbreviated) name; can also be used for a person if the given name/family name format is not applicable.
+        examples:
+          - value: National Institute of Mental Health
+          - value: Madonna
+          - value: Ransome the Clown
+        related_mappings:
+        # these have the names comma-separated and inverted
+        - DataCite:attributes.creators.name
+        - DataCite:attributes.contributors.name
+        exact_mappings:
+        - JGI:organisms.pi.name
+        - ORCID:name
+        close_mappings:
+          - OSTI.ARTICLE:author
+          # from OSTI.ARTICLE:author
+          # via: f"{src.author.first_name} {src.author.last_name}"
+          - OSTI.ARTICLE:contributor
+          # from OSTI.ARTICLE:contributor
+          # via: f"{src.contributor.first_name} {src.contributor.last_name}"
+
+      given_name:
+        description: The given name(s) of the contributor.
+        examples:
+          - value: Marionetta Cecille de la
+          - value: Helena
+          - value: Hubert George
+        related_mappings:
+          - DataCite:attributes.contributors.givenName
+          - DataCite:attributes.creators.givenName
+
+      family_name:
+        description: The family name(s) of the contributor.
+        examples:
+          - value: Carte-Postale
+          - value: Bonham Carter
+          - value: Wells
+        related_mappings:
+          - DataCite:attributes.contributors.familyName
+          - DataCite:attributes.creators.familyName
+
+      affiliations:
+        slot_uri: schema:affiliation
+        description: List of organizations with which the contributor is affiliated. For contributors that represent an organization, this may be a parent organization (e.g. KBase, US DOE; Arkin lab, LBNL).
+        multivalued: true
+        range: Organization
+        inlined_as_list: true
+        inlined: true
+        related_mappings:
+        - DataCite:attributes.contributors.affiliation
+          # from: DataCite:attributes.contributors[].affiliation[]
+          # via: {
+          #   organization_name: src.attributes.contributors[].affiliation[].name
+          # }
+        - DataCite:attributes.creators.affiliation
+          # from: DataCite:attributes.creators[].affiliation[]
+          # via: {
+          #   organization_name: src.attributes.creators[].affiliation[].name
+          # }
+        - JGI:organisms.pi.institution
+          # from: JGI:organisms[].pi.institution
+          # via: {
+          #   organization_name: src.organisms[].pi.institution
+          #}
+        narrow_mappings:
+          - OSTI.ARTICLE:contributor.affiliation_name
+          # via { organization_name: src.contributor.affiliation_name }
+
+      contributor_roles:
+        slot_uri: schema:Role
+        description: List of roles played by the contributor when working on the resource.
+        multivalued: true
+        range: ContributorRole
+        exact_mappings:
+        - DataCite:attributes.contributors.contributor_type
+        - DataCite:attributes.creators.contributor_type
+        related_mappings:
+        - JGI:organisms.pi
+        # from: JGI:organisms[].pi
+        # via: "DataCite:ProjectLeader"
+        close_mappings:
+          # TODO: mappings to CRediT/DataCite roles
+          - ORCID:contributor.role
+          - OSTI.ARTICLE:contributor.contributorType
+
+    any_of:
+      - slot_conditions:
+          given_name:
+            required: true
+          family_name:
+            required: true
+
+      - slot_conditions:
+          name:
+            required: true
+
+
+  CreditMetadata:
+    description: |
+      Represents the credit metadata associated with an object.
+
+      In the following documentation, 'Resource' is used to refer to the object
+      that the CM pertains to, for example, a KBase Workspace object or a
+      sample from the KBase Sample Service.
+
+      The 'resource_type' field should be filled using values from the DataCite
+      resourceTypeGeneral field:
+
+      https://support.datacite.org/docs/datacite-metadata-schema-v44-mandatory-properties#10a-resourcetypegeneral
+
+      Currently KBase only supports credit metadata for objects of type
+      'dataset'; anything else will return an error.
+
+      The license may be supplied either as an URL pointing to licensing information for
+      the resource, or using an SPDX license identifier from the list maintained at https://spdx.org/licenses/.
+
+      Required fields are:
+      - identifier
+      - resource_type
+      - versioning information: if the resource does not have an explicit version number,
+      one or more dates should be supplied: ideally the date of resource publication and
+      the last update (if applicable).
+      - contributors (one or more required)
+      - titles (one or more required)
+      - meta
+
+      The resource_type field is required, but as there is currently only a single valid
+      value, 'dataset', it is automatically populated if no value is supplied.
+
+    attributes:
+
+      comment:
+        slot_uri: schema:comment
+        description: List of strings of freeform text providing extra information about this credit metadata.
+        multivalued: true
+        # inlined: true
+        examples:
+        - value: "This comment adds a lot of extra value!"
+
+      content_url:
+        description: The URL of the content of the resource.
+        multivalued: true
+        # inlined: true
+        range: uri
+
+      contributors:
+        slot_uri: schema:creator
+        description: A list of people and/or organizations who contributed to the resource.
+        required: true
+        multivalued: true
+        range: Contributor
+        inlined_as_list: true
+        inlined: true
+        narrow_mappings:
+        - DataCite:attributes.contributors
+        - DataCite:attributes.creators
+        - ORCID:contributors
+        - OSTI.ARTICLE:contributors
+        - OSTI.ARTICLE:authors
+        - JGI:organisms.pi
+
+      credit_metadata_source:
+        description: A list of CURIEs, URIs, or free text entries denoting the source of the credit metadata.
+        multivalued: true
+        # inlined: true
+        examples:
+        - value: "https://figshare.com/articles/dataset/Blue_Hole_Metagenome-assembled_Genomes/12644081"
+        - value: "DataCite"
+        - value: DOI:10.13039/100000015
+
+      dates:
+        description: A list of relevant lifecycle events for the resource. Note that these dates apply only to the resource itself, and not to the creation or update of the credit metadata record for the resource.
+        multivalued: true
+        range: EventDate
+        inlined: true
+        inlined_as_list: true
+        # examples:
+        # - value: { date: 2022-05-10, event: available }
+        close_mappings:
+        - DataCite:attributes.published
+          # from DataCite:attributes.published
+          # via { date: src.attributes.published, event: 'available' }
+        - DataCite:attributes.updated
+          # from DataCite:attributes.updated
+          # via { date: src.attributes.updated, event: 'updated' }
+        - DataCite:attributes.dates
+          # from DataCite:attributes.dates[]
+          # via { date: src.attributes.dates[].date, event: src.attributes.dates[].dateType }
+        - ORCID:publicationDate
+          # from: ORCID:publicationDate
+          # via { date: src.publicationDate, event: 'available' }
+        - OSTI.ARTICLE:publication_date
+          # from: OSTI.ARTICLE:publication_date
+          # via { date: src.publication_date, event: 'available' }
+        - Crossref:message.deposited
+          # from: Crossref:message.deposited
+          # via { date: src.message.deposited.date-time, event: 'available' }
+
+      descriptions:
+        slot_uri: schema:description
+        description: A brief description or abstract for the resource being represented.
+        multivalued: true
+        range: Description
+        inlined: true
+        inlined_as_list: true
+
+      funding:
+        slot_uri: schema:funding
+        description: Funding sources for the resource.
+        multivalued: true
+        range: FundingReference
+        inlined: true
+        inlined_as_list: true
+        close_mappings:
+        - DataCite:attributes.funding_references
+        - Crossref:Message.project.funding
+        - OSTI.ARTICLE:awards
+
+      identifier:
+        identifier: true
+        slot_uri: schema:identifier
+        # can generate schema:url from this ID
+        description: Resolvable persistent unique identifier for the resource. Should be in the format <database name>:<identifier within database>.
+        range: uriorcurie
+        required: true
+        pattern: "^[a-zA-Z0-9.-_]+:\\S"
+        examples:
+        - value: RefSeq:GCF_004214875.1
+        - value: GenBank:CP035949.1
+        - value: img.taxon:648028003
+        exact_mappings:
+        - DataCite:id
+          # from: DataCite:id
+          # via: f"DOI:{src.id}"
+        - JGI:organisms.grouped_by
+          # from src.organisms[].grouped_by
+          # via: src.organisms[].files[][src.organisms[].grouped_by]
+        narrow_mappings:
+          - OSTI.ARTICLE:osti_id
+            # from: OSTI.ARTICLE:osti_id
+            # via: f"OSTI.ARTICLE:{src.osti_id}"
+          - OSTI.ARTICLE:doi
+          - ORCID:doi
+          # it should be possible to generate an URL from a curie
+          - ORCID:url
+
+      license:
+        slot_uri: schema:license
+        # also slot_uri:isAccessibleForFree
+        range: License
+        description: |
+          Usage license for the resource. Use one of the SPDX license identifiers or provide a link to the license text if no SPDX ID is available.
+
+          All data published at KBase is done so under a Creative Commons 0 or Creative Commons 4.0 license.
+
+        # examples:
+        # - value: { id: "CC-BY-NC-ND-4.0" }
+        # - value: { id: "MIT OR Apache-2.0" }
+        # - value: { url: "https://jgi.doe.gov/user-programs/pmo-overview/policies/" }
+        exact_mappings:
+          - biolink:license
+        related_mappings:
+        - DataCite:attributes.rights_list
+
+      meta:
+        description: Metadata for this credit information, including submitter, schema version, and timestamp.
+        range: Metadata
+        required: true
+
+      publisher:
+        description: The publisher of the resource. For a dataset, this is the repository where it is stored.
+        # CHECK ME!
+        slot_uri: schema:provider
+        range: Organization
+        narrow_mappings:
+          - ORCID:url
+          - OSTI.ARTICLE:site_url
+
+      related_identifiers:
+        description: Other resolvable persistent unique IDs related to the resource.
+        multivalued: true
+        range: PermanentID
+        inlined_as_list: true
+        inlined: true
+        close_mappings:
+        - DataCite:attributes.identifiers
+        - DataCite:attributes.related_identifiers
+        - DataCite:attributes.alternate_identifiers
+        - ORCID:externalIds
+        - OSTI.ARTICLE:related_identifiers
+        narrow_mappings:
+        - ORCID:doi
+        # from ORCID:doi
+        # via: { id: f"DOI:{src.doi}" }
+        - OSTI.ARTICLE:doi
+        # from: OSTI.ARTICLE:doi
+        # via: { id: f"DOI:{src.doi}"}
+
+      resource_type:
+        slot_uri: schema:@type
+        description: The broad type of the source data for this object. 'dataset' is currently the only valid value for KBase DOIs.
+        range: ResourceType
+        required: true
+        exact_mappings:
+        # OSTI.ARTICLE:DA is used for dataset
+        - OSTI.ARTICLE:product_type
+        # ORCID:data-set
+        - OSTI.ARTICLE:workType
+        # see DataCite:attributes.types
+        - DataCite:attributes.types.schema_org
+        narrow_mappings:
+          - OSTI.ARTICLE:dataset_type
+        examples:
+        - value: dataset
+
+      titles:
+        description: One or more titles for the resource.
+        required: true
+        multivalued: true
+        range: Title
+        inlined_as_list: true
+        inlined: true
+        exact_mappings:
+        - DataCite:attributes.titles
+        - ORCID:title
+          # from: ORCID:title
+          # via: [{ title: src.title }]
+        - OSTI.ARTICLE:title
+          # from: OSTI.ARTICLE:title
+          # via: [{ title: src.title }]
+        # examples:
+        # - value:
+        #   - title: Amaranthus hypochondriacus genome
+        # - value:
+        #   - title: Геном амаранта ипохондрического
+        #     title_type: translated_title
+        # - value:
+        #   - title: I know what genome you sequenced last summer
+        #     title_type: alternative_title
+
+      url:
+        description: The URL of the resource.
+        range: uri
+
+      version:
+        slot_uri: schema:version
+        description: The version of the resource. This must be an absolute version, not a relative version like 'latest'.
+        exact_mappings:
+        - DataCite:attributes.version
+        examples:
+        - value: '5'
+        - value: 1.2.1
+        - value: '20220405'
+
+    any_of:
+      - slot_conditions:
+          dates:
+            required: true
+
+      - slot_conditions:
+          version:
+            required: true
+
+
+  Description:
+    description: Textual information about the resource being represented.
+    attributes:
+      description_text:
+        description: The text content of the informational element.
+        required: true
+        examples:
+        - value: This is the most interesting dataset ever to earn a DOI.
+
+      description_type:
+        description: The type of text being represented.
+        range: DescriptionType
+        examples:
+        - value: abstract
+        - value: description
+        - value: summary
+
+      language:
+        description: The language in which the description is written, using the appropriate IETF BCP-47 notation.
+        examples:
+        - value: ru-Cyrl
+        - value: fr
+
+
+  EventDate:
+    description: |
+      Represents an event in the lifecycle of a resource and the date it occurred on.
+
+      See https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#8-date for more information on the events.
+    attributes:
+      date:
+        description: The date associated with the event. The date may be in the format YYYY, YYYY-MM, or YYYY-MM-DD.
+        pattern: \d{4}(-\d{2}){0,2}
+        required: true
+        examples:
+        - value: '2001'
+        - value: '2021-05'
+        - value: '1998-02-15'
+
+      event:
+        description: The nature of the resource-related event that occurred on that date.
+        range: EventType
+        required: true
+        examples:
+        - value: available
+        - value: updated
+
+
+  FundingReference:
+    class_uri: schema:MonetaryGrant
+    description: |
+      Represents a funding source for a resource, including the funding body and the grant awarded.
+
+      One (or more) of the fields 'grant_id', 'grant_url', or 'funder.organization_name' is required; others are optional.
+
+      Recommended resources for organization identifiers include:
+        - Research Organization Registry, http://ror.org
+        - International Standard Name Identifier, https://isni.org
+        - Crossref Funder Registry, https://www.crossref.org/services/funder-registry/ (to be subsumed into ROR)
+
+      Some organizations may have a digital object identifier (DOI).
+    attributes:
+
+      funder:
+        slot_uri: schema:funder
+        description: The funder for the grant or award.
+        range: Organization
+
+      grant_id:
+        slot_uri: schema:identifier
+        description: Code for the grant, assigned by the funder.
+        exact_mappings:
+        - DataCite:attributes.funding_references.award_number
+        - Crossref:message.award
+        narrow_mappings:
+        - OSTI.ARTICLE:award_doi
+        - OSTI.ARTICLE:award_number
+        examples:
+        - value: '1296'
+        - value: CBET-0756451
+        - value: DOI:10.46936/10.25585/60000745
+
+      grant_title:
+        slot_uri: schema:name
+        description: Title for the grant.
+        exact_mappings:
+        - DataCite:attributes.funding_references.award_title
+        examples:
+        - value: Metagenomic analysis of the rhizosphere of three biofuel crops at the KBS intensive site
+
+      grant_url:
+        slot_uri: schema:url
+        description: URL for the grant.
+        exact_mappings:
+        - DataCite:attributes.funding_references.award_url
+        close_mappings:
+        - OSTI.ARTICLE:award_doi
+        range: uriorcurie
+        pattern: "^[a-zA-Z0-9.-_]+:\\S"
+        examples:
+        - value: https://genome.jgi.doe.gov/portal/Metanaintenssite/Metanaintenssite.info.html
+
+    any_of:
+      - slot_conditions:
+          grant_id:
+            required: true
+
+      - slot_conditions:
+          grant_url:
+            required: true
+
+      - slot_conditions:
+          funder:
+            required: true
+
+
+  License:
+    description: License information for the resource.
+    attributes:
+      id:
+        description: String representing the license, from the SPDX license identifiers at https://spdx.org/licenses/.
+        examples:
+        - value: CC-BY-NC-ND-4.0
+        - value: Apache-2.0
+
+      url:
+        description: URL for the license.
+        range: uri
+        examples:
+        - value: https://jgi.doe.gov/user-programs/pmo-overview/policies/
+
+    any_of:
+      - slot_conditions:
+          id:
+            required: true
+
+      - slot_conditions:
+          url:
+            required: true
+
+
+  Metadata:
+    description: Metadata for the credit metadata, including the schema version used, who submitted it, and the date of submission. When the credit metadata for a resource is added or updated, this additional metadata must be provided along with the credit information.
+
+    attributes:
+
+      credit_metadata_schema_version:
+        slot_uri: schema:schemaVersion
+        description: The version of the credit metadata schema used.
+        required: true
+        examples:
+          - value: 1.1.0
+
+      saved_by:
+        slot_uri: schema:sdPublisher
+        description: KBase workspace ID of the user who added this entry.
+        required: true
+
+      timestamp:
+        slot_uri: schema:sdDatePublished
+        description: Unix timestamp for the addition of this set of credit metadata.
+        required: true
+        range: integer
+
+
+  Organization:
+    class_uri: schema:Organization
+    description: |
+      Represents an organization.
+
+      Recommended resources for organization identifiers and canonical organization names include:
+        - Research Organization Registry, http://ror.org
+        - International Standard Name Identifier, https://isni.org
+        - Crossref Funder Registry, https://www.crossref.org/services/funder-registry/
+
+      For example, the US DOE would be entered as:
+        organization_name: United States Department of Energy
+        organization_id:   ROR:01bj3aw27
+
+    attributes:
+      organization_id:
+        slot_uri: schema:identifier
+        description: Persistent unique identifier for the organization in the format <database name>:<identifier within database>.
+        examples:
+        - value: ROR:01bj3aw27
+        - value: ISNI:0000000123423717
+        - value: CrossrefFunder:100000015
+        exact_mappings:
+        - DataCite:attributes.contributors.affiliation.affiliation_identifier
+        - DataCite:attributes.creators.affiliation.affiliation_identifier
+        range: uriorcurie
+        pattern: "^[a-zA-Z0-9.-_]+:\\S"
+
+      organization_name:
+        slot_uri: schema:name
+        description: Common name of the organization; use the name recommended by ROR if possible.
+        required: true
+        exact_mappings:
+        - DataCite:attributes.contributors.affiliation.name
+        - DataCite:attributes.creators.affiliation.name
+        - OSTI.ARTICLE:research_organization
+        - JGI:organisms.pi.institution
+        examples:
+        - value: KBase
+        - value: Lawrence Berkeley National Laboratory
+        - value: The Ohio State University
+
+
+  PermanentID:
+    description: |
+      Represents a persistent unique identifier for an entity and its relationship to some other entity.
+
+      The 'id' field and 'relationship_type' fields are required.
+
+      The values in the 'relationship_type' field come from controlled vocabularies maintained by DataCite and Crossref. See the documentation links below for more details.
+
+      DataCite relation types: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#12b-relationtype
+
+      Crossref relation types: https://www.crossref.org/documentation/schema-library/markup-guide-metadata-segments/relationships/
+
+    attributes:
+      id:
+        slot_uri: schema:identifier
+        description: Persistent unique ID for an entity. Should be in the format <database name>:<identifier within database>.
+        required: true
+        examples:
+        - value: DOI:10.46936/10.25585/60000745
+        - value: GO:0005456
+        - value: HGNC:7470
+        exact_mappings:
+        - DataCite:attributes.identifier.value
+        - DataCite:attributes.alternate_identifiers
+          # from: DataCite:attributes.alternate_identifiers[]
+          # via: f"{src.attributes.alternate_identifiers[].alternate_identifier_type}:{src.attributes.alternate_identifiers[].alternate_identifier}"
+        - DataCite:attributes.related_identifiers
+          # from: DataCite:attributes.related_identifiers[]
+          # via: f"{src.attributes.related_identifiers[].related_identifier_type}:{src.attributes.related_identifiers[].related_identifier}"
+        - DataCite:attributes.identifiers
+          # from: DataCite:attributes.identifiers[]
+          # via: f"{src.attributes.identifiers[].identifier_type}:{src.attributes.identifiers[].identifier}"
+        related_mappings:
+        - OSTI.ARTICLE:site_url
+        range: uriorcurie
+        pattern: "^[a-zA-Z0-9.-_]+:\\S"
+
+      description:
+        slot_uri: schema:description
+        description: Description of that entity.
+        exact_mappings:
+        - OSTI.ARTICLE:description
+        examples:
+        - value: Amaranthus hypochondriacus genome
+        - value: This data analysis workflow demonstrates how to process a metagenome to identify viruses using VirSorter. Then, provides taxonomic classification using vConTACT2.
+
+      relationship_type:
+        description: |
+          The relationship between the ID and some other entity.
+          For example, when a PermanentID class is used to represent objects in the CreditMetadata field 'related_identifiers', the 'relationship_type' field captures the relationship between the resource being registered and this ID.
+        range: RelationshipType
+        exact_mappings:
+        - DataCite:attributes.related_identifiers.relation_type
+
+  Title:
+    description: |
+      Represents the title or name of a resource, the type of that title, and the language used (if appropriate).
+
+      The 'title' field is required; 'title_type' is only necessary if the text is not the primary title.
+
+    attributes:
+      language:
+        description: The language in which the title is written, using the appropriate IETF BCP-47 notation.
+        examples:
+        - value: ru-Cyrl
+        - value: fr
+
+      title:
+        slot_uri: schema:name
+        # could also be schema:headline if title type is 'title'
+        # subtitle/alternative title: schema:alternativeHeadline
+        description: A string used as a title for a resource.
+        required: true
+        examples:
+        - value: Amaranthus hypochondriacus genome
+        - value: Геном амаранта ипохондрического
+        exact_mappings:
+        - DataCite:attributes.titles.title
+        - Crossref:message.project.project-title.title
+
+      title_type:
+        description: A descriptor for the title for cases where the contents of the 'title' field is not the primary name or title.
+        range: TitleType
+        examples:
+        - value: subtitle
+        - value: alternative_title
+        - value: translated_title
+        - value: other
+        exact_mappings:
+        - DataCite:attributes.title.titleType
+
+enums:
+
+  ContributorRole:
+    enum_uri: roleName
+    description: The type of contribution made by a contributor.
+    permissible_values:
+      DataCite:ContactPerson:
+        meaning: DataCite:ContactPerson
+        title: contact person
+        description: Person with knowledge of how to access, troubleshoot, or otherwise field issues related to the resource. May also be "Point of Contact" in organisation that controls access to the resource, if that organisation is different from Publisher, Distributor, Data Manager.
+      DataCite:DataCollector:
+        meaning: DataCite:DataCollector
+        title: data collector
+        description: Person/institution responsible for finding, gathering/collecting data under the guidelines of the author(s) or Principal Investigator (PI). May also use when crediting survey conductors, interviewers, event or condition observers, person responsible for monitoring key instrument data.
+      DataCite:DataCurator:
+        meaning: DataCite:DataCurator
+        title: data curator
+        description: Person tasked with reviewing, enhancing, cleaning, or standardizing metadata and the associated data submitted for storage, use, and maintenance within a data centre or repository. While the "DataManager" is concerned with digital maintenance, the DataCurator's role encompasses quality assurance focused on content and metadata. This includes checking whether the submitted dataset is complete, with all files and components as described by submitter, whether the metadata is standardized to appropriate systems and schema, whether specialized metadata is needed to add value and ensure access across disciplines, and determining how the metadata might map to search engines, database products, and automated feeds.
+      DataCite:DataManager:
+        meaning: DataCite:DataManager
+        title: data manager
+        description: Person (or organisation with a staff of data managers, such as a data centre) responsible for maintaining the finished resource. The work done by this person or organisation ensures that the resource is periodically "refreshed" in terms of software/hardware support, is kept available or is protected from unauthorized access, is stored in accordance with industry standards, and is handled in accordance with the records management requirements applicable to it.
+      DataCite:Distributor:
+        meaning: DataCite:Distributor
+        title: distributor
+        description: Institution tasked with responsibility to generate/disseminate copies of the resource in either electronic or print form. Works stored in more than one archive/repository may credit each as a distributor.
+      DataCite:Editor:
+        meaning: DataCite:Editor
+        title: editor
+        description: A person who oversees the details related to the publication format of the resource. N.b. if the Editor is to be credited in place of multiple creators, the Editor's name may be supplied as Creator, with "(Ed.)" appended to the name.
+      DataCite:HostingInstitution:
+        meaning: DataCite:HostingInstitution
+        title: hosting institution
+        description: Typically, the organisation allowing the resource to be available on the internet through the provision of its hardware/software/operating support. May also be used for an organisation that stores the data offline. Often a data centre (if that data centre is not the "publisher" of the resource).
+      DataCite:Producer:
+        meaning: DataCite:Producer
+        title: producer
+        description: Typically a person or organisation responsible for the artistry and form of a media product. In the data industry, this may be a company "producing" DVDs that package data for future dissemination by a distributor.
+      DataCite:ProjectLeader:
+        meaning: DataCite:ProjectLeader
+        title: project leader
+        description: Person officially designated as head of project team or sub- project team instrumental in the work necessary to development of the resource. The Project Leader is not "removed" from the work that resulted in the resource; he or she remains intimately involved throughout the life of the particular project team.
+      DataCite:ProjectManager:
+        meaning: DataCite:ProjectManager
+        title: project manager
+        description: Person officially designated as manager of a project. Project may consist of one or many project teams and sub-teams. The manager of a project normally has more administrative responsibility than actual work involvement.
+      DataCite:ProjectMember:
+        meaning: DataCite:ProjectMember
+        title: project member
+        description: Person on the membership list of a designated project/project team. This vocabulary may or may not indicate the quality, quantity, or substance of the person's involvement.
+      DataCite:RegistrationAgency:
+        meaning: DataCite:RegistrationAgency
+        title: registration agency
+        description: Institution/organisation officially appointed by a Registration Authority to handle specific tasks within a defined area of responsibility. DataCite is a Registration Agency for the International DOI Foundation (IDF). One of DataCite's tasks is to assign DOI prefixes to the allocating agents who then assign the full, specific character string to data clients, provide metadata back to the DataCite registry, etc.
+      DataCite:RegistrationAuthority:
+        meaning: DataCite:RegistrationAuthority
+        title: registration authority
+        description: A standards-setting body from which Registration Agencies obtain official recognition and guidance. The IDF serves as the Registration Authority for the International Standards Organisation (ISO) in the area/domain of Digital Object Identifiers.
+      DataCite:RelatedPerson:
+        meaning: DataCite:RelatedPerson
+        title: related person
+        description: A person without a specifically defined role in the development of the resource, but who is someone the author wishes to recognize. This person could be an author's intellectual mentor, a person providing intellectual leadership in the discipline or subject domain, etc.
+      DataCite:Researcher:
+        meaning: DataCite:Researcher
+        title: researcher
+        description: A person involved in analyzing data or the results of an experiment or formal study. May indicate an intern or assistant to one of the authors who helped with research but who was not so "key" as to be listed as an author. Should be a person, not an institution. Note that a person involved in the gathering of data would fall under the contributorType "DataCollector." The researcher may find additional data online and correlate it to the data collected for the experiment or study, for example.
+      DataCite:ResearchGroup:
+        meaning: DataCite:ResearchGroup
+        title: research group
+        description: Typically refers to a group of individuals with a lab, department, or division; the group has a particular, defined focus of activity. May operate at a narrower level of scope; may or may not hold less administrative responsibility than a project team.
+      DataCite:RightsHolder:
+        meaning: DataCite:RightsHolder
+        title: rights holder
+        description: Person or institution owning or managing property rights, including intellectual property rights over the resource.
+      DataCite:Sponsor:
+        meaning: DataCite:Sponsor
+        title: sponsor
+        description: Person or organisation that issued a contract or under the auspices of which a work has been written, printed, published, developed, etc. Includes organisations that provide in-kind support, through donation, provision of people or a facility or instrumentation necessary for the development of the resource, etc.
+      DataCite:Supervisor:
+        meaning: DataCite:Supervisor
+        title: supervisor
+        description: Designated administrator over one or more groups/teams working to produce a resource or over one or more steps of a development process.
+      DataCite:WorkPackageLeader:
+        meaning: DataCite:WorkPackageLeader
+        title: work package leader
+        description: A Work Package is a recognized data product, not all of which is included in publication. The package, instead, may include notes, discarded documents, etc. The Work Package Leader is responsible for ensuring the comprehensive contents, versioning, and availability of the Work Package during the development of the resource.
+      DataCite:Other:
+        meaning: DataCite:Other
+        title: other
+        description: Any person or institution making a significant contribution to the development and/or maintenance of the resource, but whose contribution does not "fit" other controlled vocabulary for contributorType. Could be a photographer, artist, or writer whose contribution helped to publicize the resource (as opposed to creating it), a reviewer of the resource, someone providing administrative services to the author (such as depositing updates into an online repository, analysing usage, etc.), or one of many other roles.
+      crcr:conceptualization:
+        meaning: crcr:conceptualization
+        title: conceptualization
+        description: Ideas; formulation or evolution of overarching research goals and aims.
+      crcr:data-curation:
+        meaning: crcr:data-curation
+        title: data curation
+        description: Management activities to annotate (produce metadata), scrub data and maintain research data (including software code, where it is necessary for interpreting the data itself) for initial use and later re-use.
+      crcr:formal-analysis:
+        meaning: crcr:formal-analysis
+        title: formal analysis
+        description: Application of statistical, mathematical, computational, or other formal techniques to analyze or synthesize study data.
+      crcr:funding-acquisition:
+        meaning: crcr:funding-acquisition
+        title: funding acquisition
+        description: Acquisition of the financial support for the project leading to this publication.
+      crcr:investigation:
+        meaning: crcr:investigation
+        title: investigation
+        description: Conducting a research and investigation process, specifically performing the experiments, or data/evidence collection.
+      crcr:methodology:
+        meaning: crcr:methodology
+        title: methodology
+        description: Development or design of methodology; creation of models.
+      crcr:project-administration:
+        meaning: crcr:project-administration
+        title: project administration
+        description: Management and coordination responsibility for the research activity planning and execution.
+      crcr:resources:
+        meaning: crcr:resources
+        title: resources
+        description: Provision of study materials, reagents, materials, patients, laboratory samples, animals, instrumentation, computing resources, or other analysis tools.
+      crcr:software:
+        meaning: crcr:software
+        title: software
+        description: Programming, software development; designing computer programs; implementation of the computer code and supporting algorithms; testing of existing code components.
+      crcr:supervision:
+        meaning: crcr:supervision
+        title: supervision
+        description: Oversight and leadership responsibility for the research activity planning and execution, including mentorship external to the core team.
+      crcr:validation:
+        meaning: crcr:validation
+        title: validation
+        description: Verification, whether as a part of the activity or separate, of the overall replication/reproducibility of results/experiments and other research outputs.
+      crcr:visualization:
+        meaning: crcr:visualization
+        title: visualization
+        description: Preparation, creation and/or presentation of the published work, specifically visualization/data presentation.
+      crcr:writing-original-draft:
+        meaning: crcr:writing-original-draft
+        title: writing, original draft
+        description: Preparation, creation and/or presentation of the published work, specifically writing the initial draft (including substantive translation).
+      crcr:writing-review-editing:
+        meaning: crcr:writing-review-editing
+        title: writing, review and/or editing
+        description: Preparation, creation and/or presentation of the published work by those from the original research group, specifically critical review, commentary or revision -- including pre- or post-publication stages.
+    reachable_from:
+      source_ontology: bioportal:DATACITE-VOCAB
+      source_nodes:
+      - DataCite:ContributorRole
+      include_self: false
+      relationship_types:
+        - RDFS:subClassOf
+
+  ContributorType:
+    description: The type of contributor being represented.
+    permissible_values:
+      Person:
+        description: A person.
+        meaning: schema:Person
+      Organization:
+        description: An organization.
+        meaning: schema:Organization
+    reachable_from:
+      source_ontology: bioportal:DATACITE-VOCAB
+      source_nodes:
+        - DataCite:ResourceCreatorType
+      include_self: false
+      relationship_types:
+        - RDFS:subClassOf
+
+  DescriptionType:
+    description: The type of text being represented.
+    permissible_values:
+      abstract:
+        meaning: DataCite:abstract
+        description: A brief description of the resource and the context in which the resource was created.
+      description:
+        meaning: DataCite:descriptions.description.descriptionType
+      summary:
+        meaning: DataCite:summary
+
+  EventType:
+    description: The type of date being represented.
+    permissible_values:
+      accepted:
+        meaning: DataCite:accepted
+        description: |
+          The date that the publisher accepted the resource into their system. To indicate the start of an embargo period, use Submitted or Accepted, as appropriate.
+      available:
+        # schema:datePublished
+        meaning: DataCite:available
+        description: |
+          The date the resource is made publicly available. To indicate the end of an embargo period, use Available.
+      copyrighted:
+        meaning: DataCite:copyrighted
+        description: |
+          The specific, documented date at which the resource receives a copyrighted status, if applicable.
+      collected:
+        meaning: DataCite:collected
+        description: |
+          The date or date range in which the resource content was collected. To indicate precise or particular timeframes in which research was conducted.
+      created:
+        meaning: DataCite:created
+        description: |
+          The date the resource itself was put together; this could refer to a timeframe in ancient history, be a date range or a single date for a final component, e.g., the finalized file with all of the data.
+      issued:
+        meaning: DataCite:issued
+        description: |
+          The date that the resource is published or distributed e.g. to a data centre
+      submitted:
+        meaning: DataCite:submitted
+        description: |
+          The date the creator submits the resource to the publisher. This could be different from Accepted if the publisher then applies a selection process. To indicate the start of an embargo period, use Submitted or Accepted, as appropriate.
+      updated:
+        meaning: DataCite:updated
+        description: |
+          The date of the last update to the resource, when the resource is being added to.
+      valid:
+        meaning: DataCite:valid
+        description: |
+          The date (or date range) during which the dataset or resource is accurate.
+      withdrawn:
+        meaning: DataCite:withdrawn
+        description: |
+          The date the resource is removed.
+      other:
+        meaning: DataCite:other
+    reachable_from:
+      source_ontology: bioportal:DATACITE-VOCAB
+      source_nodes:
+        - DataCite:DateType
+      include_self: false
+      relationship_types:
+        - RDFS:subClassOf
+
+  RelationshipType:
+    description: The relationship between two entities. For example, when a PermanentID class is used to represent objects in the CreditMetadata field 'related_identifiers', the 'relationship_type' field captures the relationship between the resource being registered (A) and this ID (B).
+    permissible_values:
+      based_on_data:
+        title: based on data
+        meaning: Crossref:BasedOnData
+      cites:
+        meaning: DataCite:Cites
+        description: |
+          Indicates that A includes B in a citation.
+      compiles:
+        meaning: DataCite:Compiles
+        description: |
+          Indicates B is the result of a compile or creation event using A. Note: May be used for software and text, as a compiler can be a computer program or a person.
+      continues:
+        meaning: DataCite:Continues
+        description: |
+          Indicates A is a continuation of the work B.
+      describes:
+        meaning: DataCite:Describes
+        description: |
+          Indicates A describes B.
+      documents:
+        meaning: DataCite:Documents
+        description: |
+          Indicates A is documentation about B; e.g. points to software documentation.
+      finances:
+        meaning: Crossref:Finances
+      has_comment:
+        title: has comment
+        meaning: Crossref:HasComment
+      has_derivation:
+        title: has derivation
+        meaning: Crossref:HasDerivation
+      has_expression:
+        title: has expression
+        meaning: Crossref:HasExpression
+      has_format:
+        title: has format
+        meaning: Crossref:HasFormat
+      has_manifestation:
+        title: has manifestation
+        meaning: Crossref:HasManifestation
+      has_manuscript:
+        title: has manuscript
+        meaning: Crossref:HasManuscript
+      has_metadata:
+        title: has metadata
+        meaning: DataCite:HasMetadata
+        description: |
+          Indicates resource A has additional metadata B.
+      has_part:
+        title: has part
+        meaning: DataCite:HasPart
+        description: |
+          Indicates A includes the part B.
+          Primarily this relation is applied to container-contained type relationships.
+          Note: May be used for individual software modules; note that code repository-to-version relationships should be modeled using IsVersionOf and HasVersion.
+      has_preprint:
+        title: has preprint
+        meaning: Crossref:HasPreprint
+      has_related_material:
+        title: has related material
+        meaning: Crossref:HasRelatedMaterial
+      has_reply:
+        title: has reply
+        meaning: Crossref:HasReply
+      has_review:
+        title: has review
+        meaning: Crossref:HasReview
+      has_translation:
+        title: has translation
+        meaning: Crossref:HasTranslation
+      has_version:
+        title: has version
+        meaning: DataCite:HasVersion
+        description: |
+          Indicates A has a version (B).
+          The registered resource such as a software package or code repository has a versioned instance (indicates A has the instance B) e.g. it may be used to relate an un-versioned code repository to one of its specific software versions.
+      is_based_on:
+        title: is based on
+        meaning: Crossref:IsBasedOn
+      is_basis_for:
+        title: is basis for
+        meaning: Crossref:IsBasisFor
+      is_cited_by:
+        title: is cited by
+        meaning: DataCite:IsCitedBy
+        description: |
+          Indicates that B includes A in a citation.
+      is_comment_on:
+        title: is comment on
+        meaning: Crossref:IsCommentOn
+      is_compiled_by:
+        title: is compiled by
+        meaning: DataCite:IsCompiledBy
+        description: |
+          Indicates B is used to compile or create A. Note: May be used for software and text, as a compiler can be a computer program or a person.
+      is_continued_by:
+        title: is continued by
+        meaning: DataCite:IsContinuedBy
+        description: |
+          Indicates A is continued by the work B.
+      is_data_basis_for:
+        title: is data basis for
+        meaning: Crossref:IsDataBasisFor
+      is_derived_from:
+        title: is derived from
+        meaning: DataCite:IsDerivedFrom
+        description: |
+          Indicates B is a source upon which A is based.
+          IsDerivedFrom should be used for a resource that is a derivative of an original resource.
+          For example, 'A isDerivedFrom B' could describe a dataset (A) derived from a larger dataset (B) where data values have been manipulated from their original state.
+      is_described_by:
+        title: is described by
+        meaning: DataCite:IsDescribedBy
+        description: |
+          Indicates A is described by B.
+      is_documented_by:
+        title: is documented by
+        meaning: DataCite:IsDocumentedBy
+        description: |
+          Indicates B is documentation about/explaining A; e.g. points to software documentation.
+      is_expression_of:
+        title: is expression of
+        meaning: Crossref:IsExpressionOf
+      is_financed_by:
+        title: is financed by
+        meaning: Crossref:IsFinancedBy
+      is_format_of:
+        title: is format of
+        meaning: Crossref:IsFormatOf
+      is_identical_to:
+        title: is identical to
+        meaning: DataCite:IsIdenticalTo
+        description: |
+          Indicates that A is identical to B, for use when there is a need to register two separate instances of the same resource.
+          IsIdenticalTo should be used for a resource that is the same as the registered resource but is saved in another location, maybe another institution.
+      is_manifestation_of:
+        title: is manifestation of
+        meaning: Crossref:IsManifestationOf
+      is_manuscript_of:
+        title: is manuscript of
+        meaning: Crossref:IsManuscriptOf
+      is_metadata_for:
+        title: is metadata for
+        meaning: DataCite:IsMetadataFor
+        description: |
+          Indicates additional metadata A for a resource B.
+      is_new_version_of:
+        title: is new version of
+        meaning: DataCite:IsNewVersionOf
+        description: |
+          Indicates A is a new edition of B, where the new edition has been modified or updated.
+      is_obsoleted_by:
+        title: is obsoleted by
+        meaning: DataCite:IsObsoletedBy
+        description: |
+          Indicates A is replaced by B.
+      is_original_form_of:
+        title: is original form of
+        meaning: DataCite:IsOriginalFormOf
+        description: |
+          Indicates A is the original form of B.
+          May be used for different software operating systems or compiler formats, for example.
+      is_part_of:
+        title: is part of
+        meaning: DataCite:IsPartOf
+        description: |
+          Indicates A is a portion of B; may be used for elements of a series.
+          Primarily this relation is applied to container-contained type relationships.
+          Note: May be used for individual software modules; note that code repository-to-version relationships should be modeled using IsVersionOf and HasVersion.
+      is_preprint_of:
+        title: is preprint of
+        meaning: Crossref:IsPreprintOf
+      is_previous_version_of:
+        title: is previous version of
+        meaning: DataCite:IsPreviousVersionOf
+        description: |
+          Indicates A is a previous edition of B.
+      is_published_in:
+        title: is published in
+        meaning: DataCite:IsPublishedIn
+        description: |
+          indicates A is published inside B, but is independent of other things published inside of B.
+      is_referenced_by:
+        title: is referenced by
+        meaning: DataCite:IsReferencedBy
+        description: |
+          Indicates A is used as a source of information by B.
+      is_related_material:
+        title: is related material
+        meaning: Crossref:IsRelatedMaterial
+      is_replaced_by:
+        title: is replaced by
+        meaning: Crossref:IsReplacedBy
+      is_reply_to:
+        title: is reply to
+        meaning: Crossref:IsReplyTo
+      is_required_by:
+        title: is required by
+        meaning: DataCite:IsRequiredBy
+        description: |
+          Indicates A is required by B.
+          Note: May be used to indicate software dependencies.
+      is_review_of:
+        title: is review of
+        meaning: Crossref:IsReviewOf
+      is_reviewed_by:
+        title: is reviewed by
+        meaning: DataCite:IsReviewedBy
+        description: |
+          Indicates that A is reviewed by B.
+      is_same_as:
+        title: is same as
+        meaning: Crossref:IsSameAs
+      is_source_of:
+        title: is source of
+        meaning: DataCite:IsSourceOf
+        description: |
+          Indicates A is a source upon which B is based.
+          IsSourceOf is the original resource from which a derivative resource was created.
+          For example, 'A isSourceOf B' could describe a dataset (A) which acts as the source of a derived dataset (B) where the values have been manipulated.
+      is_supplement_to:
+        title: is supplement to
+        meaning: DataCite:IsSupplementTo
+        description: |
+          Indicates that A is a supplement to B.
+      is_supplemented_by:
+        title: is supplemented by
+        meaning: DataCite:IsSupplementedBy
+        description: |
+          Indicates that B is a supplement to A.
+      is_translation_of:
+        title: is translation of
+        meaning: Crossref:IsTranslationOf
+      is_variant_form_of:
+        title: is variant form of
+        meaning: DataCite:IsVariantFormOf
+        description: |
+          Indicates A is a variant or different form of B.
+          Use for a different form of one thing.
+          May be used for different software operating systems or compiler formats, for example.
+      is_version_of:
+        title: is version of
+        meaning: DataCite:IsVersionOf
+        description: |
+          Indicates A is a version of B.
+          The registered resource is an instance of a target resource (indicates that A is an instance of B) e.g. it may be used to relate a specific version of a software package to its software code repository.
+      obsoletes:
+        meaning: DataCite:Obsoletes
+        description: |
+          Indicates A replaces B.
+      references:
+        meaning: DataCite:References
+        description: |
+          Indicates B is used as a source of information for A.
+      replaces:
+        meaning: Crossref:Replaces
+      requires:
+        meaning: DataCite:Requires
+        description: |
+          Indicates A requires B.
+          Note: May be used to indicate software dependencies.
+      reviews:
+        meaning: DataCite:Reviews
+        description: |
+          Indicates that A is a review of B.
+      unknown:
+        title: unknown
+        description: The relationship between subject and object is unknown.
+    reachable_from:
+      source_ontology: bioportal:DATACITE-VOCAB
+      source_nodes:
+        - DataCite:RelationType
+      include_self: false
+      relationship_types:
+        - RDFS:subClassOf
+
+  ResourceType:
+    description: The type of resource being represented.
+    permissible_values:
+      dataset:
+        description: A dataset.
+        meaning: schema:Dataset
+
+  TitleType:
+    description: The type of title being represented.
+    permissible_values:
+      subtitle:
+        description: Any subtitle for the resource.
+      alternative_title:
+        description: Other title(s) or names for the resource.
+      translated_title:
+        description: Translation of the title into another language.
+      other:
+        description: Anything that doesn't fit into the above categories.
