@@ -40,7 +40,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "dtspy", url = "https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz" },
-    { name = "nmdc-api-utilities", specifier = ">=0.3.1" },
+    { name = "nmdc-api-utilities", specifier = ">=0.3.8" },
 ]
 
 [package.metadata.requires-dev]
