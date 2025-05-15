@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+import logging
+import os
+import sys
+from datetime import datetime
+from typing import Dict, List, Any, Optional
+
+import pymongo
+from pymongo.errors import ConnectionFailure, PyMongoError
+from jsonschema import validate, ValidationError
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler()]
+)
+logger = logging.getLogger('bertron-ingest')
+
+
+class BertronMongoDBIngestor:
+    """Class to handle ingestion of BERtron data into MongoDB."""
+    
+    def __init__(self, mongo_uri: str, db_name: str, schema_path: str):
+        """Initialize the ingestor with connection and schema details."""
+        self.mongo_uri = mongo_uri
+        self.db_name = db_name
+        self.schema_path = schema_path
+        self.client = None
+        self.db = None
+        self.schema = None
+        
+    def connect(self) -> None:
+        """Connect to MongoDB."""
+        try:
+            logger.info(f"Connecting to MongoDB at {self.mongo_uri}")
+            self.client = pymongo.MongoClient(self.mongo_uri)
+            self.db = self.client[self.db_name]
+        except ConnectionFailure as e:
+            logger.error(f"Failed to connect to MongoDB: {e}")
+            sys.exit(1)
+    
+    def load_schema(self) -> Dict:
+        """Load the JSON schema from file."""
+        try:
+            logger.info(f"Loading schema from {self.schema_path}")
+            with open(self.schema_path, 'r') as f:
+                self.schema = json.load(f)
+            return self.schema
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            logger.error(f"Failed to load schema: {e}")
+            sys.exit(1)
+    
+    def validate_data(self, data: Dict) -> bool:
+        """Validate data against the loaded schema."""
+        try:
+            validate(instance=data, schema=self.schema)
+            return True
+        except ValidationError as e:
+            logger.error(f"Validation error: {e}")
+            return False
+    
+    def insert_entity(self, entity: Dict) -> Optional[str]:
+        """Insert an entity into the 'entities' collection."""
+        try:
+            # Add metadata
+            entity['_metadata'] = {
+                'ingested_at': datetime.utcnow(),
+                'schema_version': self.schema.get('version', 'unknown')
+            }
+            
+            # convert latitude and longitude to mongoDB GeoJSON format
+            if 'coordinates' in entity:
+                coordinates = entity['coordinates']
+                if isinstance(coordinates, dict) and 'latitude' in coordinates and 'longitude' in coordinates:
+                    entity['coordinates'] = {
+                        'type': 'Point',
+                        'coordinates': [coordinates['longitude'], coordinates['latitude']]
+                    }
+                else:
+                    logger.error(f"Invalid coordinates format for entity: {entity.get('name', entity.get('id', 'unnamed'))}")
+                    return None
+
+
+            # Create indexes for common query patterns
+            self.db.entities.create_index('uri', unique=True)
+            self.db.entities.create_index('ber_data_source')
+            self.db.entities.create_index('data_type')
+    
+            # Create 2dsphere index for geospatial queries on coordinates
+            self.db.entities.create_index([('coordinates', pymongo.GEOSPHERE)])
+            
+            # Insert with upsert to handle potential duplicates based on URI
+            result = self.db.entities.update_one(
+                {'uri': entity['uri']},
+                {'$set': entity},
+                upsert=True
+            )
+            
+            if result.upserted_id:
+                logger.info(f"Inserted entity: {entity.get('name', entity.get('id', 'unnamed'))}")
+                return str(result.upserted_id)
+            else:
+                logger.info(f"Updated entity: {entity.get('name', entity.get('id', 'unnamed'))}")
+                return None
+        except PyMongoError as e:
+            logger.error(f"Error inserting entity: {e}")
+            return None
+    
+    def ingest_file(self, filepath: str) -> Dict[str, int]:
+        """Ingest entities from a JSON file."""
+        stats = {
+            'processed': 0,
+            'valid': 0,
+            'invalid': 0,
+            'inserted': 0,
+            'error': 0
+        }
+        
+        try:
+            with open(filepath, 'r') as f:
+                data = json.load(f)
+            
+            # Handle both single entity and array of entities
+            entities = data if isinstance(data, list) else [data]
+            stats['processed'] = len(entities)
+            
+            for entity in entities:
+                if self.validate_data(entity):
+                    stats['valid'] += 1
+                    if self.insert_entity(entity):
+                        stats['inserted'] += 1
+                else:
+                    stats['invalid'] += 1
+                    
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            logger.error(f"Error processing file {filepath}: {e}")
+            stats['error'] += 1
+            
+        return stats
+    
+    def close(self) -> None:
+        """Close the MongoDB connection."""
+        if self.client:
+            self.client.close()
+            logger.info("MongoDB connection closed")
+            
+
+def main():
+    """Main function to run the ingestor."""
+    parser = argparse.ArgumentParser(description='Ingest data into MongoDB based on BERtron schema')
+    parser.add_argument('--mongo-uri', default='mongodb://localhost:27017', 
+                        help='MongoDB connection URI')
+    parser.add_argument('--db-name', default='bertron', 
+                        help='MongoDB database name')
+    parser.add_argument('--schema-path', 
+                        default='/Users/shreyas/Dev/git/bertron/mongodb/bertron_schema.json',
+                        help='Path to the BERtron schema JSON file')
+    parser.add_argument('--input', required=True, 
+                        help='Path to the input JSON file or directory')
+    
+    args = parser.parse_args()
+    
+    ingestor = BertronMongoDBIngestor(
+        mongo_uri=args.mongo_uri,
+        db_name=args.db_name,
+        schema_path=args.schema_path
+    )
+    
+    try:
+        ingestor.connect()
+        ingestor.load_schema()
+        
+        total_stats = {
+            'processed': 0,
+            'valid': 0,
+            'invalid': 0,
+            'inserted': 0,
+            'error': 0
+        }
+        
+        # Process a single file or all JSON files in a directory
+        if os.path.isdir(args.input):
+            for filename in os.listdir(args.input):
+                if filename.endswith('.json'):
+                    file_path = os.path.join(args.input, filename)
+                    logger.info(f"Processing file: {file_path}")
+                    stats = ingestor.ingest_file(file_path)
+                    for key in total_stats:
+                        total_stats[key] += stats[key]
+        else:
+            # Process a single file
+            logger.info(f"Processing file: {args.input}")
+            total_stats = ingestor.ingest_file(args.input)
+        
+        # Report results
+        logger.info("Ingestion completed")
+        logger.info(f"Total processed: {total_stats['processed']}")
+        logger.info(f"Valid entities: {total_stats['valid']}")
+        logger.info(f"Invalid entities: {total_stats['invalid']}")
+        logger.info(f"Inserted entities: {total_stats['inserted']}")
+        logger.info(f"Errors: {total_stats['error']}")
+        
+    finally:
+        ingestor.close()
+
+
+if __name__ == "__main__":
+    main()

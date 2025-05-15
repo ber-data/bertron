@@ -139,3 +139,58 @@ python geo_query.py --action map --limit 1000 --output all_points
   python geo_query.py --action system --system-name NMDC --format csv --output nmdc_data
   ```
 
+# BERtron MongoDB Ingestor
+
+This tool ingests BERtron-formatted data into MongoDB.
+
+## Setup
+
+1. Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. Make sure your MongoDB instance is running.
+
+## Usage
+
+Run the ingest script with your data file:
+
+```bash
+python ingest_data.py --input your_data_file.json
+```
+
+### Command-line arguments
+
+- `--mongo-uri`: MongoDB connection URI (default: mongodb://localhost:27017)
+- `--db-name`: MongoDB database name (default: bertron)
+- `--schema-path`: Path to the schema JSON file (default: bertron_schema.json in the current directory)
+- `--input`: Path to input JSON file or directory containing JSON files (required)
+
+## Data Format
+
+The input data should conform to the bertron_schema.json schema. It can be either:
+
+- A single entity object
+- An array of entity objects
+
+## MongoDB Collections
+
+The script will create and populate the following collection:
+
+- `entities`: Contains all the BERtron entities
+
+## Example
+
+```bash
+# Ingest a single file
+python ingest_data.py --input sample_data.json
+
+# Ingest all JSON files in a directory
+python ingest_data.py --input ./data_directory/
+
+# Use custom MongoDB connection
+python ingest_data.py --mongo-uri mongodb://username:password@localhost:27017 --db-name bertron_dev --input sample_data.json
+```
+

@@ -1,0 +1,302 @@
+{
+    "$defs": {
+        "BERSourceType": {
+            "description": "The BER data source from whence the entity originated.",
+            "enum": [
+                "EMSL",
+                "ESS-DIVE",
+                "JGI",
+                "MONET",
+                "NMDC"
+            ],
+            "title": "BERSourceType",
+            "type": "string"
+        },
+        "Coordinates": {
+            "additionalProperties": false,
+            "description": "The coordinates defining the position associated with the entity.",
+            "properties": {
+                "altitude": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air"
+                },
+                "depth": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples."
+                },
+                "elevation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit."
+                },
+                "latitude": {
+                    "description": "latitude",
+                    "type": "number"
+                },
+                "longitude": {
+                    "description": "longitude",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "latitude",
+                "longitude"
+            ],
+            "title": "Coordinates",
+            "type": "object"
+        },
+        "DataCollection": {
+            "additionalProperties": false,
+            "description": "Administrative unit (e.g. project, proposal, etc.) in which one or more entities is collected.",
+            "properties": {
+                "alt_ids": {
+                    "description": "Fully-qualified URI or CURIE used as an identifier for a project.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "alt_titles": {
+                    "description": "Alternative versions of the title/name of a project.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "Textual description of the project.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "The unique ID used for the project within the BER resource. It may not necessarily be resolvable outside the resource.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "Human-readable string representing the project.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "url": {
+                    "description": "Permanent resolvable URI for the collection at the data source.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "url"
+            ],
+            "title": "DataCollection",
+            "type": "object"
+        },
+        "DataTypeTagType": {
+            "description": "Tags used to describe an entity.",
+            "enum": [
+                "biodata",
+                "jgi_biosample",
+                "sample",
+                "sequence",
+                "taxon"
+            ],
+            "title": "DataTypeTagType",
+            "type": "string"
+        },
+        "Entity": {
+            "additionalProperties": false,
+            "description": "An object retrieved by BERtron from a BER data API.",
+            "properties": {
+                "alt_ids": {
+                    "description": "Fully-qualified URI or CURIE used as an identifier for an entity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "alt_names": {
+                    "description": "Textual identifiers for an entity.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "ber_data_source": {
+                    "$ref": "#/$defs/BERSourceType",
+                    "description": "The BER member from whence the entity originated."
+                },
+                "coordinates": {
+                    "$ref": "#/$defs/Coordinates",
+                    "description": "The geographic coordinates associated with an entity. For entities with a bounding box, the centroid is used as the geographic reference."
+                },
+                "data_type": {
+                    "description": "What kind of data this entity is -- e.g. sequence data; a soil core; a well; etc.",
+                    "items": {
+                        "$ref": "#/$defs/DataTypeTagType"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "Textual description of the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "The unique ID used for the entity within the BER resource. It may not necessarily be resolvable outside the resource.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Human-readable string representing an entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "part_of_collection": {
+                    "description": "Administrative collection (e.g. project, campaign, whatever) that the entity was generated as part of. May also be called a project.",
+                    "items": {
+                        "$ref": "#/$defs/DataCollection"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "uri": {
+                    "description": "Permanent resolvable URI for the entity at the data source.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ber_data_source",
+                "coordinates",
+                "data_type",
+                "uri"
+            ],
+            "title": "Entity",
+            "type": "object"
+        },
+        "Name": {
+            "additionalProperties": false,
+            "description": "The name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.",
+            "properties": {
+                "name": {
+                    "description": "The string used as a name.",
+                    "type": "string"
+                },
+                "name_type": {
+                    "$ref": "#/$defs/NameType",
+                    "description": "Brief description of the name and/or its relationship to the entity."
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "Name",
+            "type": "object"
+        },
+        "NameType": {
+            "description": "The relationship between a name and a synonym of that name.",
+            "enum": [
+                "broad_synonym",
+                "exact_synonym",
+                "narrow_synonym",
+                "related_synonym",
+                "acronym"
+            ],
+            "title": "NameType",
+            "type": "string"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "A simple quantity, e.g. 2cm",
+            "properties": {
+                "has_maximum_numeric_value": {
+                    "description": "The maximum value part, expressed as number, of the quantity value when the value covers a range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_minimum_numeric_value": {
+                    "description": "The minimum value part, expressed as number, of the quantity value when the value covers a range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_numeric_value": {
+                    "description": "The number part of the quantity",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "has_raw_value": {
+                    "description": "Unnormalized atomic string representation, should in syntax {number} {unit}",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_unit": {
+                    "description": "The unit of the quantity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "QuantityValue",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/ber-data/bertron-schema",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "bertron-schema",
+    "type": "object",
+    "version": "0.0.2"
+}
