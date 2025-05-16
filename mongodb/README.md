@@ -194,3 +194,4 @@ python ingest_data.py --input ./data_directory/
 python ingest_data.py --mongo-uri mongodb://username:password@localhost:27017 --db-name bertron_dev --input sample_data.json
 ```
 
+## TODO: Adjust schema for GeoJSON compatibility
