@@ -8,6 +8,9 @@
 # Ignore unrelated files created by Finder on macOS.
 .DS_Store
 
+# Jupter Notebook checkpoints.
+**/.ipynb_checkpoints/
+
 # TODO: Document these.
 .venv
 **/*.egg-info/
