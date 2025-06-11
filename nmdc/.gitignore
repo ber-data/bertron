@@ -1,3 +1,0 @@
-# Ignore directories commonly used to store Python virtual environments.
-/venv
-/.venv
