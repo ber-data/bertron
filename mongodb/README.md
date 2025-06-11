@@ -27,7 +27,7 @@ python ingest_data.py --input your_data_file.json
 
 ## Data Format
 
-The input data should conform to the bertron_schema.json schema. It can be either:
+The input data should conform to the `bertron_schema.json` schema. It can be either:
 
 - A single entity object
 - An array of entity objects
