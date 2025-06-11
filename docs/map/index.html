@@ -130,14 +130,7 @@
     <!-- Custom JS -->
     <script>
       (async function () {
-        // Detect whether this web page is being served at our special local development address.
-        // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Location
-        const IS_DEV =
-          window.location.hostname === "localhost" &&
-          window.location.port === "4000";
-        const baseUrlForData = IS_DEV
-          ? "http://localhost:4000"
-          : "https://raw.githubusercontent.com/ber-data/bertron/refs/heads/main";
+        const baseUrlForData = "https://raw.githubusercontent.com/ber-data/data/refs/heads/main";
 
         // Specify the URL of the image we want to use as our marker shadow. In this case,
         // it's our local copy of the default Leaflet marker shadow image.
