@@ -53,3 +53,17 @@ run
 uv sync --all-extras --dev
 ```
 to make sure the dev environment has the updated dependencies.
+
+---
+
+## Spin up container-based development environment
+
+This repository includes a container-based development environment. If you have Docker installed, you can spin up that development environment by running:
+
+```sh
+docker compose up --detach
+```
+
+Once that's up and running, you can access the API at: http://localhost:8000
+
+Also, you can access the MongoDB server at: `localhost:27017` (its admin credentials are in `docker-compose.yml`)

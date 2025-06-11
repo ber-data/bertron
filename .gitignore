@@ -14,3 +14,6 @@
 # TODO: Document these.
 .venv
 **/*.egg-info/
+
+# Ignore Python bytecode files.
+__pycache__
