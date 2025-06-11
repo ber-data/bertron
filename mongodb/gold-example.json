@@ -1,0 +1,34 @@
+{
+    "ber_data_source": "JGI",
+    "coordinates": {
+        "latitude": 44.7523206,
+        "longitude": -110.7253926,
+        "altitude": null,
+        "depth": null,
+        "elevation": {
+            "has_numeric_value": 2280,
+            "has_unit": "meter (UO:0000008)"
+        }
+    },
+    "data_type": [
+        "jgi_biosample"
+    ],
+    "description": "Small acidic pool on hillside north of Nymph Lake.",
+    "id": "Gb0051341",
+    "name": "Hot spring microbial communities from Yellowstone National Park, Wyoming, USA - YNP2   Nymph Lake 10",
+    "alt_ids": [
+        "NCBITaxon:433727"
+    ],
+    "alt_names": [
+        {
+            "name": "GOLD biosample ID Gb0051341",
+            "name_type": "exact_synonym"
+        },
+        {
+            "name": "hot springs metagenome",
+            "name_type": "broad_synonym"
+        }
+    ],
+    "part_of_collection": [],
+    "uri": "https://gold.jgi.doe.gov/biosample?id=Gb0051341"
+}
