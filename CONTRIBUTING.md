@@ -65,3 +65,5 @@ docker compose up --detach
 ```
 
 Once that's up and running, you can access the API at: http://localhost:8000
+
+Also, you can access the MongoDB server at: `localhost:27017` (its admin credentials are in `docker-compose.yml`)
