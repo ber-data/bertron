@@ -11,10 +11,31 @@ services:
       # The environment variable can be specified either via an `.env` file,
       # or by defining it when invoking `docker compose`, like this:
       # ```
-      # $ PORT=1234 docker compose up
+      # $ WEB_PORT=1234 docker compose up
       # ```
       #
-      - "${PORT:-8000}:8000"
+      - "${WEB_PORT:-8000}:8000"
     volumes:
       # Mount the root directory of the repository, at `/app` within the container.
       - ".:/app"
+  mongo:
+    image: mongo:8.0.10
+    ports:
+      # The environment variable can be specified either via an `.env` file,
+      # or by defining it when invoking `docker compose`, like this:
+      # ```
+      # $ MONGO_PORT=12345 docker compose up
+      # ```
+      - "${MONGO_PORT:-27017}:27017"
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongo_data:/data/db
+
+
+volumes:
+  # Define a named volume that will contain MongoDB data.
+  # Note: We use this to persist data across container restarts.
+  mongo_data: {}
