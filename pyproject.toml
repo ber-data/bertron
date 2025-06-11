@@ -16,7 +16,7 @@ requires-python = ">=3.12,<3.14"
 dependencies = [
   "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
   "jsonschema>=4.0.0",
-  "nmdc-api-utilities>=0.3.1",
+  "nmdc-api-utilities>=0.3.9",
   "pymongo>=4.0.0",
 ]
 

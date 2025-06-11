@@ -434,6 +434,14 @@
           style: "button", // other option is: "bar"
         });
         map.addControl(search);
+
+        // Hide the behind-the-map spinner, now that the map is visible.
+        //
+        // Note: This makes it so that, even if the user pans/zooms the map content
+        //       "out from in front of the spinner," they will not see the spinner.
+        //
+        const mapSpinnerEl = mapEl.querySelector(".spinner");
+        mapSpinnerEl.style.setProperty("display", "none", "important");
       })();
     </script>
   </body>
