@@ -22,7 +22,7 @@ python ingest_data.py --input your_data_file.json
 
 - `--mongo-uri`: MongoDB connection URI (default: mongodb://localhost:27017)
 - `--db-name`: MongoDB database name (default: bertron)
-- `--schema-path`: Path or URL to the schema JSON file (default: bertron_schema.json in the current directory)
+- `--schema-path`: Path or URL to the schema JSON file (default: `bertron_schema.json` in the current directory)
 - `--input`: Path to input JSON file or directory containing JSON files (required)
 
 ## Data Format
