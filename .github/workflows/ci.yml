@@ -31,3 +31,12 @@ jobs:
 
 #      - name: Run tests
 #        run: uv run pytest tests
+
+      - name: Run docker compose
+        uses: hoverkraft-tech/compose-action@v2.2.0
+        with:
+          compose-file: "docker-compose.yml"
+
+#      - name: Run tests in Docker environment
+#        run: |
+#          docker compose exec test-app pytest
