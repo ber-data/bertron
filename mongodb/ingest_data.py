@@ -11,6 +11,7 @@ from typing import Dict, List, Any, Optional
 import pymongo
 from pymongo.errors import ConnectionFailure, PyMongoError
 from jsonschema import validate, ValidationError
+import requests
 
 # Set up logging
 logging.basicConfig(
@@ -47,8 +48,13 @@ class BertronMongoDBIngestor:
         """Load the JSON schema from file."""
         try:
             logger.info(f"Loading schema from {self.schema_path}")
-            with open(self.schema_path, 'r') as f:
-                self.schema = json.load(f)
+            if self.schema_path.startswith('http://') or self.schema_path.startswith('https://'):
+                response = requests.get(self.schema_path)
+                response.raise_for_status()
+                self.schema = response.json()
+            else:
+                with open(self.schema_path, 'r') as f:
+                    self.schema = json.load(f)
             return self.schema
         except (FileNotFoundError, json.JSONDecodeError) as e:
             logger.error(f"Failed to load schema: {e}")
@@ -157,8 +163,8 @@ def main():
     parser.add_argument('--db-name', default='bertron', 
                         help='MongoDB database name')
     parser.add_argument('--schema-path', 
-                        default='/Users/shreyas/Dev/git/bertron/mongodb/bertron_schema.json',
-                        help='Path to the BERtron schema JSON file')
+                        default='https://raw.githubusercontent.com/ber-data/bertron-schema/refs/heads/main/src/schema/jsonschema/bertron_schema.json',
+                        help='Path or URL to the BERtron schema JSON file')
     parser.add_argument('--input', required=True, 
                         help='Path to the input JSON file or directory')
     
