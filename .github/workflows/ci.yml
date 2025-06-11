@@ -37,6 +37,6 @@ jobs:
         with:
           compose-file: "docker-compose.yml"
 
-#      - name: Run tests in Docker environment
-#        run: |
-#          docker compose exec test-app pytest
+      - name: Run tests in Docker environment
+        run: |
+          docker compose exec app pytest
