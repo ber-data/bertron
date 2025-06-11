@@ -1,0 +1,20 @@
+services:
+  app:
+    # Use the container image built in the "development" stage of the Dockerfile.
+    build: { context: ".", dockerfile: Dockerfile, target: development }
+    restart: unless-stopped
+    ports:
+      # Map a host port (by default, 8000, but it can be overridden via an
+      # environment variable) to port 8000 of the container; the latter being
+      # the port on which the FastAPI development server listens by default.
+      #
+      # The environment variable can be specified either via an `.env` file,
+      # or by defining it when invoking `docker compose`, like this:
+      # ```
+      # $ PORT=1234 docker compose up
+      # ```
+      #
+      - "${PORT:-8000}:8000"
+    volumes:
+      # Mount the root directory of the repository, at `/app` within the container.
+      - ".:/app"

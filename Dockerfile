@@ -6,7 +6,9 @@ WORKDIR /app
 
 # Install uv.
 # Docs: https://docs.astral.sh/uv/#installation
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+ENV PATH="/root/.local/bin/:$PATH"
 
 # Copy only the files necessary for installing Python packages.
 COPY pyproject.toml /app
