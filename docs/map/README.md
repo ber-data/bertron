@@ -65,6 +65,8 @@ npx vite serve --port 4000 ../../
 That web server will serve the entire contents of the repository, which includes the assets
 (i.e. CSV/JSON data files) that the web page fetches.
 
+Once the web server is up and running, you can visit the web page at: http://localhost:4000/docs/map/index.html
+
 ### Code format
 
 We use Prettier to format the code in this directory. You can format it by running:
