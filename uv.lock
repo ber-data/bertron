@@ -40,7 +40,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "dtspy", url = "https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz" },
-    { name = "nmdc-api-utilities", specifier = ">=0.3.8" },
+    { name = "nmdc-api-utilities", specifier = ">=0.3.9" },
 ]
 
 [package.metadata.requires-dev]
@@ -516,16 +516,16 @@ wheels = [
 
 [[package]]
 name = "nmdc-api-utilities"
-version = "0.3.8"
+version = "0.3.9"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "matplotlib" },
     { name = "pandas" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/0d/fe/ee24054578894c6d1122d061ec6111943439ba883732cb92845517bb6309/nmdc_api_utilities-0.3.8.tar.gz", hash = "sha256:e876adafba17aa32f8a4579d898aef09350cb879470ea139232224546ccbe41b", size = 17048, upload-time = "2025-04-30T16:09:05.007Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7a/21/f16b23289649959956170f8cdae21ffe29958d117269cf738d1fc33ba94a/nmdc_api_utilities-0.3.9.tar.gz", hash = "sha256:67a086b72144940b01e0d9de451028361dd019557712d65eff672e45c241c3de", size = 17209, upload-time = "2025-05-27T15:07:42.392Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6b/94/a4a737748c52cd9392f31ab3cf385d1751728e2cb5cec156c8b08b8082e0/nmdc_api_utilities-0.3.8-py3-none-any.whl", hash = "sha256:69f6d08f47e54437bae27dd392a4954e24d69b4bd6b2bcabe2078d3e5b2a3144", size = 31079, upload-time = "2025-04-30T16:09:03.928Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/6c/198074213f8c6c6bb50df12f9e91ba1c0a60773b0f9ba5485fb8826080ce/nmdc_api_utilities-0.3.9-py3-none-any.whl", hash = "sha256:4f35782bc03d4cc746a97d2a7935b9259d390b5628de4a892bc53f9d7b9640a2", size = 31233, upload-time = "2025-05-27T15:07:41.362Z" },
 ]
 
 [[package]]
