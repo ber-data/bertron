@@ -44,7 +44,7 @@ The script will create and populate the following collection:
 # Ingest a single file
 python ingest_data.py --input sample_data.json
 
-# Ingest all JSON files in a directory
+# Ingest all JSON files residing in a directory
 python ingest_data.py --input ./data_directory/
 
 # Use custom MongoDB connection
