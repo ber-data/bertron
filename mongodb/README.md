@@ -12,6 +12,8 @@ This tool ingests BERtron-formatted data into MongoDB.
 
 ## Usage
 
+### Local Python Usage
+
 Run the ingest script with your data file:
 
 ```bash
@@ -24,6 +26,19 @@ python ingest_data.py --input your_data_file.json
 - `--db-name`: MongoDB database name (default: bertron)
 - `--schema-path`: Path or URL to the schema JSON file (default: `bertron_schema.json` in the current directory)
 - `--input`: Path to input JSON file or directory containing JSON files (required)
+
+### Using Docker Compose
+
+We have a ingester script in docker-compose that lets you run an ingest against a data directory
+
+```bash
+# Start MongoDB and FASTAPI service
+docker compose up 
+
+# Pass in an ingest dir and run ingester
+docker compose run --rm --volume /path/to/data:/data ingest 
+```
+
 
 ## Data Format
 
