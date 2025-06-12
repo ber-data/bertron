@@ -21,6 +21,15 @@ jobs:
   build-and-push-image:
     name: Build and push container image
     runs-on: ubuntu-latest
+
+    # Make it so this GitHub Actions workflow can push container images to GHCR.
+    # Docs: https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-docker-images#publishing-images-to-github-packages
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    
     steps:
     - name: Check out commit  # docs: https://github.com/actions/checkout
       uses: actions/checkout@v4
