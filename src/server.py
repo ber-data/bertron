@@ -35,11 +35,11 @@ def get_database_names():
 def get_collection_data(db_name: str, collection_name: str):
     r"""Get all documents from a specified collection in a specified database."""
     db = mongo_client[db_name]
-    collection = db[collection_name]
-    # Fetch all documents from the collection
-    if collection is None:
+    # Check if the collection exists in the database
+    if collection_name not in db.list_collection_names():
         return {"error": "Collection not found"}
 
+    collection = db[collection_name]
     documents = list(collection.find({}))
 
     # Remove the MongoDB '_id' field from each document for JSON serialization
