@@ -50,8 +50,6 @@ services:
       - mongo
     # Run ingest with data dir mounted to /data
     command: ["uv", "run", "python", "/app/mongodb/ingest_data.py", "--mongo-uri", "mongodb://admin:root@mongo:27017", "--input", "/data"]
-<<<<<<< HEAD
-=======
 
   test:
     # Use the same container image as the app service for consistency
@@ -62,7 +60,6 @@ services:
       - app
       - mongo
     command: ["uv", "run", "pytest", "-v"]
->>>>>>> main
 
 volumes:
   # Define a named volume that will contain MongoDB data.
