@@ -35,7 +35,7 @@ We have a ingester script in docker-compose that lets you run an ingest against 
 # Start MongoDB and FASTAPI service
 docker compose up 
 
-# Pass in an ingest dir and run ingester
+# Mount the directory whose contents you want to ingest, and run the ingester
 docker compose run --rm --volume /path/to/data:/data ingest 
 ```
 
