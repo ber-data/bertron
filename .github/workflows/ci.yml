@@ -29,14 +29,11 @@ jobs:
       - name: Linting
         run: uv run ruff check -- src/
 
-#      - name: Run tests
-#        run: uv run pytest tests
+      - name: Run tests locally
+        run: uv run pytest tests
 
-      - name: Run docker compose
+      - name: Run tests in container environment
         uses: hoverkraft-tech/compose-action@v2.2.0
         with:
           compose-file: "docker-compose.yml"
-
-      - name: Run tests in Docker environment
-        run: |
-          docker compose exec app pytest
+          services: "test"
