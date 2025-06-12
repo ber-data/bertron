@@ -34,6 +34,21 @@ services:
     volumes:
       - mongo_data:/data/db
 
+  ingest:
+    # Use the same container image as the app service for consistency
+    build: { context: ".", dockerfile: Dockerfile, target: development }
+    # This service should not start automatically - only run on demand
+    profiles: ["tools"]
+    environment:
+      # Set the MongoDB connection string to connect to the mongo service
+      MONGO_URI: "mongodb://admin:root@mongo:27017"
+    volumes:
+      # Mount the root directory to access the ingest script and data files
+      - ".:/app"
+    depends_on:
+      - mongo
+    # Run ingest with data dir mounted to /data
+    command: ["uv", "run", "python", "/app/mongodb/ingest_data.py", "--mongo-uri", "mongodb://admin:root@mongo:27017", "--input", "/data"]
 
 volumes:
   # Define a named volume that will contain MongoDB data.

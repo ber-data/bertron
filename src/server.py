@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import uvicorn
 from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
@@ -29,6 +29,24 @@ def get_database_names():
     r"""Get the names of all databases in the MongoDB server."""
     db_names = mongo_client.list_database_names()
     return {"database_names": db_names}
+
+
+@app.get("/database/{db_name}/{collection_name}")
+def get_collection_data(db_name: str, collection_name: str):
+    r"""Get all documents from a specified collection in a specified database."""
+    db = mongo_client[db_name]
+    # Check if the collection exists in the database
+    if collection_name not in db.list_collection_names():
+        raise HTTPException(status_code=404, detail="Collection not found")
+
+    collection = db[collection_name]
+    documents = list(collection.find({}))
+
+    # Remove the MongoDB '_id' field from each document for JSON serialization
+    for doc in documents:
+        doc.pop("_id", None)
+
+    return {"documents": documents}
 
 
 if __name__ == "__main__":
