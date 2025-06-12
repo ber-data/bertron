@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import uvicorn
 from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
@@ -37,7 +37,7 @@ def get_collection_data(db_name: str, collection_name: str):
     db = mongo_client[db_name]
     # Check if the collection exists in the database
     if collection_name not in db.list_collection_names():
-        return {"error": "Collection not found"}
+        raise HTTPException(status_code=404, detail="Collection not found")
 
     collection = db[collection_name]
     documents = list(collection.find({}))
