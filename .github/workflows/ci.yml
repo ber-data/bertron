@@ -29,5 +29,13 @@ jobs:
       - name: Linting
         run: uv run ruff check -- src/
 
-#      - name: Run tests
-#        run: uv run pytest tests
+      - name: Run tests locally
+        run: uv run pytest tests
+
+      - name: Run tests in container environment
+        uses: hoverkraft-tech/compose-action@v2.2.0
+        env:
+          ACTIONS_RUNNER_DEBUG: true
+        with:
+          compose-file: "docker-compose.yml"
+          services: "test"
