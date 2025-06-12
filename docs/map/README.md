@@ -37,19 +37,11 @@ This web page is built upon the following technologies:
 
 ### Development server
 
-This web page uses assets that reside in this repository.
+This web page uses assets that reside in the `ber-data/data` repository.
 
 When this web page is being served by GitHub Pages, the web page fetches
 those assets from the GitHub repository—meaning it is subject to any rate
 limiting GitHub might have in place (I don't know whether it has any).
-
-In order to eliminate the possibility of hitting any rate limits while
-developing the web page locally, you can put the web page into its
-"development mode," in which it will fetch those assets from a local
-web server serving the contents of this repository.
-
-You can activate "development mode" by running the following commands,
-then visiting: http://localhost:4000/docs/map/index.html
 
 ```shell
 # Go to the directory containing this file.
@@ -59,11 +51,9 @@ cd docs/map/
 npx vite serve --port 4000 ../../
 ```
 
-> Note: Although the port number that the server listens on can be customized, the web page,
-> itself, will only go into "development mode" when the port number is `4000`.
-
-That web server will serve the entire contents of the repository, which includes the assets
-(i.e. CSV/JSON data files) that the web page fetches.
+That web server will serve the entire contents of this repository.
+Once the web server is up and running, you can visit the web page at:
+http://localhost:4000/docs/map/index.html
 
 ### Code format
 

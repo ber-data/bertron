@@ -44,6 +44,7 @@ dependencies = [
     { name = "jsonschema" },
     { name = "nmdc-api-utilities" },
     { name = "pymongo" },
+    { name = "pytest" },
     { name = "uvicorn" },
 ]
 
@@ -62,6 +63,7 @@ requires-dist = [
     { name = "jsonschema", specifier = ">=4.0.0" },
     { name = "nmdc-api-utilities", specifier = ">=0.3.9" },
     { name = "pymongo", specifier = ">=4.13.1" },
+    { name = "pytest", specifier = ">=8.4.0" },
     { name = "uvicorn", specifier = ">=0.34.3" },
 ]
 
