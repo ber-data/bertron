@@ -7,9 +7,9 @@ BERtron is the cross-BER Data Integration initiative involving JGI, EMSL, NMDC, 
 The ultimate goal is to develop a common method for querying data from our respective APIs.
 
 ## Contributing
-Any member of the BERtron Systems Engineering Team may contribute to this project. The scratch project has no particular requirements for organization, so feel free to create new folders as needed to organize your content as makes sense to you. Eventually, we will have a separate project in this repository for a shared code base that will have a set of guidelines for contributions (TBD).
+Any member of the BERtron Systems Engineering Team may contribute to this project. 
 
-For this project, simply commit to the main branch for now. We'll develop commit rules and processes if/when needed.
+Here's a link to the repository's [contribution guide](./CONTRIBUTING.md), which covers setting up a development environment.
 
 ## Other Project Resources
 
