@@ -28,7 +28,7 @@ RUN uv sync --all-extras
 COPY . /app
 
 # Use Uvicorn to serve the FastAPI application on port 8000, accepting HTTP requests from any host.
-CMD [ "uv", "run", "uvicorn", "/app/src.server:app", "--host", "0.0.0.0", "--port", "8000" ]
+CMD [ "uv", "run", "uvicorn", "--app-dir", "/app/src", "server:app", "--host", "0.0.0.0", "--port", "8000" ]
 
 # ────────────────────────────────────────────────────────────────────────────┐
 FROM base AS development
