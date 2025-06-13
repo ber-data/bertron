@@ -217,7 +217,7 @@ class BertronClient:
         metadata = {
             "bounding_box": {
                 "southwest": {"latitude": southwest_lat, "longitude": southwest_lng},
-                "northeast": {"latitude": northeast_lat, "longitude": northeast_lng}
+                "northeast": {"latitude": northeast_lat, "longitude": northeast_lng},
             }
         }
 
