@@ -103,7 +103,7 @@ def find_entities(query: MongoDBQuery):
         documents = list(cursor)
         entities = []
         for doc in documents:
-           entities.append(convert_document_to_entity(doc))
+            entities.append(convert_document_to_entity(doc))
 
         return {"documents": entities, "count": len(entities)}
 
@@ -162,10 +162,7 @@ def find_nearby_entities(
         for doc in documents:
             entities.append(convert_document_to_entity(doc))
 
-        return {
-            "documents": entities,
-            "count": len(entities)
-        }
+        return {"documents": entities, "count": len(entities)}
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Nearby query error: {str(e)}")
@@ -238,10 +235,7 @@ def find_entities_in_bounding_box(
         for doc in documents:
             entities.append(convert_document_to_entity(doc))
 
-        return {
-            "documents": entities,
-            "count": len(entities)
-        }
+        return {"documents": entities, "count": len(entities)}
 
     except Exception as e:
         raise HTTPException(
@@ -265,9 +259,7 @@ def get_entity_by_id(id: str):
 
     try:
         # Find the entity by ID - get all fields for proper validation
-        document = collection.find_one(
-            filter={"id": id}
-        )
+        document = collection.find_one(filter={"id": id})
 
         if not document:
             raise HTTPException(
@@ -283,8 +275,8 @@ def get_entity_by_id(id: str):
         except Exception as validation_error:
             logger.error(f"Entity validation failed for id '{id}': {validation_error}")
             raise HTTPException(
-                status_code=500, 
-                detail=f"Entity data validation failed: {str(validation_error)}"
+                status_code=500,
+                detail=f"Entity data validation failed: {str(validation_error)}",
             )
 
     except HTTPException:
@@ -294,17 +286,17 @@ def get_entity_by_id(id: str):
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
 
 
-def convert_document_to_entity(document: Dict[str, Any]) -> Optional[bertron_schema_pydantic.Entity]:
+def convert_document_to_entity(
+    document: Dict[str, Any],
+) -> Optional[bertron_schema_pydantic.Entity]:
     """Convert a MongoDB document to an Entity object."""
     # Remove MongoDB _id and metadata
     document.pop("_id", None)
     document.pop("_metadata", None)
-    
+
     document.pop("geojson", None)
 
-    
     return bertron_schema_pydantic.Entity(**document)
-
 
 
 if __name__ == "__main__":
