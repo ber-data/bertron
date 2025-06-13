@@ -340,8 +340,8 @@ if __name__ == "__main__":
 
         # Geographic search near Seattle
         print("\nSearching near Florida (10km radius)...")
-        seattle_entities = client.get_entities_in_region(28.1, -81.4, 100)
-        print(f"Found {seattle_entities.count} entities near Florida")
+        florida_entities = client.get_entities_in_region(28.1, -81.4, 100)
+        print(f"Found {florida_entities.count} entities near Florida")
 
         # Bounding box search for Yellowstone region
         print("\nSearching Yellowstone region region...")
