@@ -4,6 +4,11 @@ from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
 from typing import Optional, Dict, Any
 from pydantic import BaseModel, Field
+import bertron_schema_pydantic
+import logging
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 # Connect to MongoDB.
 # TODO: Get these values from environment variables instead of hard-coding them.
@@ -132,7 +137,7 @@ def find_nearby_entities(
     try:
         # Build the $near geospatial query
         geo_filter = {
-            "coordinates": {
+            "geojson": {
                 "$near": {
                     "$geometry": {
                         "type": "Point",
@@ -220,7 +225,7 @@ def find_entities_in_bounding_box(
 
         # Build the $geoWithin bounding box query
         geo_filter = {
-            "coordinates": {
+            "geojson": {
                 "$geoWithin": {
                     "$box": [
                         [
@@ -266,7 +271,7 @@ def find_entities_in_bounding_box(
         )
 
 
-@app.get("/bertron/{id}")
+@app.get("/bertron/{id}", response_model=bertron_schema_pydantic.Entity)
 def get_entity_by_id(id: str):
     r"""Get a single entity by its ID.
 
@@ -281,9 +286,9 @@ def get_entity_by_id(id: str):
     collection = db["entities"]
 
     try:
-        # Find the entity by ID with fixed projection
+        # Find the entity by ID - get all fields for proper validation
         document = collection.find_one(
-            filter={"id": id},
+            filter={"id": id}
         )
 
         if not document:
@@ -293,8 +298,22 @@ def get_entity_by_id(id: str):
 
         # Remove MongoDB _id
         document.pop("_id", None)
+        
+        # Remove metadata added during ingestion if present
+        document.pop("_metadata", None)
+        document.pop("geojson", None)
 
-        return document
+
+        # Validate and create Entity instance
+        try:
+            entity = bertron_schema_pydantic.Entity(**document)
+            return entity
+        except Exception as validation_error:
+            logger.error(f"Entity validation failed for id '{id}': {validation_error}")
+            raise HTTPException(
+                status_code=500, 
+                detail=f"Entity data validation failed: {str(validation_error)}"
+            )
 
     except HTTPException:
         # Re-raise HTTP exceptions
