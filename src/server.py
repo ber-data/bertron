@@ -42,11 +42,12 @@ def get_all_entities():
     collection = db["entities"]
     documents = list(collection.find({}))
 
-    # Remove the MongoDB '_id' field from each document for JSON serialization
+    # Convert documents to Entity objects
+    entities = []
     for doc in documents:
-        doc.pop("_id", None)
+        entities.append(convert_document_to_entity(doc))
 
-    return {"documents": documents}
+    return {"documents": entities, "count": len(entities)}
 
 
 class MongoDBQuery(BaseModel):
@@ -98,12 +99,13 @@ def find_entities(query: MongoDBQuery):
         if query.limit:
             cursor = cursor.limit(query.limit)
 
-        # Convert cursor to list and remove MongoDB _id
+        # Convert cursor to list and convert to Entity objects
         documents = list(cursor)
+        entities = []
         for doc in documents:
-            doc.pop("_id", None)
+           entities.append(convert_document_to_entity(doc))
 
-        return {"documents": documents, "count": len(documents)}
+        return {"documents": entities, "count": len(entities)}
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
@@ -151,29 +153,18 @@ def find_nearby_entities(
             }
         }
 
-        # Execute find with geospatial filter and fixed projection
-        cursor = collection.find(
-            filter=geo_filter,
-            projection={
-                "id": 1,
-                "name": 1,
-                "uri": 1,
-                "ber_data_source": 1,
-                "coordinates": 1,
-            },
-        )
+        # Execute find with geospatial filter
+        cursor = collection.find(filter=geo_filter)
 
-        # Convert cursor to list and remove MongoDB _id
+        # Convert cursor to list and convert to Entity objects
         documents = list(cursor)
+        entities = []
         for doc in documents:
-            doc.pop("_id", None)
+            entities.append(convert_document_to_entity(doc))
 
         return {
-            "documents": documents,
-            "count": len(documents),
-            "query_type": "nearby",
-            "center": {"latitude": latitude, "longitude": longitude},
-            "radius_meters": radius_meters,
+            "documents": entities,
+            "count": len(entities)
         }
 
     except Exception as e:
@@ -238,31 +229,18 @@ def find_entities_in_bounding_box(
             }
         }
 
-        # Execute find with geospatial filter and fixed projection
-        cursor = collection.find(
-            filter=geo_filter,
-            projection={
-                "id": 1,
-                "name": 1,
-                "uri": 1,
-                "ber_data_source": 1,
-                "coordinates": 1,
-            },
-        )
+        # Execute find with geospatial filter
+        cursor = collection.find(filter=geo_filter)
 
-        # Convert cursor to list and remove MongoDB _id
+        # Convert cursor to list and convert to Entity objects
         documents = list(cursor)
+        entities = []
         for doc in documents:
-            doc.pop("_id", None)
+            entities.append(convert_document_to_entity(doc))
 
         return {
-            "documents": documents,
-            "count": len(documents),
-            "query_type": "bounding_box",
-            "bounding_box": {
-                "southwest": {"latitude": southwest_lat, "longitude": southwest_lng},
-                "northeast": {"latitude": northeast_lat, "longitude": northeast_lng},
-            },
+            "documents": entities,
+            "count": len(entities)
         }
 
     except Exception as e:
@@ -296,13 +274,7 @@ def get_entity_by_id(id: str):
                 status_code=404, detail=f"Entity with id '{id}' not found"
             )
 
-        # Remove MongoDB _id
-        document.pop("_id", None)
-        
-        # Remove metadata added during ingestion if present
-        document.pop("_metadata", None)
-        document.pop("geojson", None)
-
+        entity = convert_document_to_entity(document)
 
         # Validate and create Entity instance
         try:
@@ -320,6 +292,19 @@ def get_entity_by_id(id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
+
+
+def convert_document_to_entity(document: Dict[str, Any]) -> Optional[bertron_schema_pydantic.Entity]:
+    """Convert a MongoDB document to an Entity object."""
+    # Remove MongoDB _id and metadata
+    document.pop("_id", None)
+    document.pop("_metadata", None)
+    
+    document.pop("geojson", None)
+
+    
+    return bertron_schema_pydantic.Entity(**document)
+
 
 
 if __name__ == "__main__":
