@@ -266,11 +266,9 @@ def get_entity_by_id(id: str):
                 status_code=404, detail=f"Entity with id '{id}' not found"
             )
 
-        entity = convert_document_to_entity(document)
-
         # Validate and create Entity instance
         try:
-            entity = bertron_schema_pydantic.Entity(**document)
+            entity = convert_document_to_entity(document)
             return entity
         except Exception as validation_error:
             logger.error(f"Entity validation failed for id '{id}': {validation_error}")
@@ -290,10 +288,9 @@ def convert_document_to_entity(
     document: Dict[str, Any],
 ) -> Optional[bertron_schema_pydantic.Entity]:
     """Convert a MongoDB document to an Entity object."""
-    # Remove MongoDB _id and metadata
+    # Remove MongoDB _id, metadata, geojson
     document.pop("_id", None)
     document.pop("_metadata", None)
-
     document.pop("geojson", None)
 
     return bertron_schema_pydantic.Entity(**document)
