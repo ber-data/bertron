@@ -7,10 +7,10 @@ Provides methods to query and retrieve entity data from the BER data sources.
 """
 
 import requests
-from typing import List, Dict, Any, Optional, Union
+from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 import logging
-from urllib.parse import urljoin, urlencode
+from urllib.parse import urljoin
 
 # Import pydantic Entity from bertron_schema_pydantic
 from bertron_schema_pydantic import Entity
