@@ -105,6 +105,7 @@ class EntityType(str, Enum):
     sample = "sample"
     sequence = "sequence"
     taxon = "taxon"
+    unspecified = "unspecified"
 
 
 class NameType(str, Enum):
