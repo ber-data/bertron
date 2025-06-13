@@ -13,7 +13,7 @@ import logging
 from urllib.parse import urljoin
 
 # Import pydantic Entity from bertron_schema_pydantic
-from bertron_schema_pydantic import Entity
+from schema.datamodel.bertron_schema_pydantic import Entity
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)

@@ -4,7 +4,7 @@ from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
 from typing import Optional, Dict, Any
 from pydantic import BaseModel, Field
-import bertron_schema_pydantic
+from schema.datamodel import bertron_schema_pydantic
 import logging
 
 # Set up logging
