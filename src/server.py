@@ -4,6 +4,11 @@ from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
 from typing import Optional, Dict, Any
 from pydantic import BaseModel, Field
+from schema.datamodel import bertron_schema_pydantic
+import logging
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 # Connect to MongoDB.
 # TODO: Get these values from environment variables instead of hard-coding them.
@@ -37,11 +42,12 @@ def get_all_entities():
     collection = db["entities"]
     documents = list(collection.find({}))
 
-    # Remove the MongoDB '_id' field from each document for JSON serialization
+    # Convert documents to Entity objects
+    entities = []
     for doc in documents:
-        doc.pop("_id", None)
+        entities.append(convert_document_to_entity(doc))
 
-    return {"documents": documents}
+    return {"documents": entities, "count": len(entities)}
 
 
 class MongoDBQuery(BaseModel):
@@ -93,12 +99,13 @@ def find_entities(query: MongoDBQuery):
         if query.limit:
             cursor = cursor.limit(query.limit)
 
-        # Convert cursor to list and remove MongoDB _id
+        # Convert cursor to list and convert to Entity objects
         documents = list(cursor)
+        entities = []
         for doc in documents:
-            doc.pop("_id", None)
+            entities.append(convert_document_to_entity(doc))
 
-        return {"documents": documents, "count": len(documents)}
+        return {"documents": entities, "count": len(entities)}
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
@@ -132,7 +139,7 @@ def find_nearby_entities(
     try:
         # Build the $near geospatial query
         geo_filter = {
-            "coordinates": {
+            "geojson": {
                 "$near": {
                     "$geometry": {
                         "type": "Point",
@@ -146,30 +153,16 @@ def find_nearby_entities(
             }
         }
 
-        # Execute find with geospatial filter and fixed projection
-        cursor = collection.find(
-            filter=geo_filter,
-            projection={
-                "id": 1,
-                "name": 1,
-                "uri": 1,
-                "ber_data_source": 1,
-                "coordinates": 1,
-            },
-        )
+        # Execute find with geospatial filter
+        cursor = collection.find(filter=geo_filter)
 
-        # Convert cursor to list and remove MongoDB _id
+        # Convert cursor to list and convert to Entity objects
         documents = list(cursor)
+        entities = []
         for doc in documents:
-            doc.pop("_id", None)
+            entities.append(convert_document_to_entity(doc))
 
-        return {
-            "documents": documents,
-            "count": len(documents),
-            "query_type": "nearby",
-            "center": {"latitude": latitude, "longitude": longitude},
-            "radius_meters": radius_meters,
-        }
+        return {"documents": entities, "count": len(entities)}
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Nearby query error: {str(e)}")
@@ -220,7 +213,7 @@ def find_entities_in_bounding_box(
 
         # Build the $geoWithin bounding box query
         geo_filter = {
-            "coordinates": {
+            "geojson": {
                 "$geoWithin": {
                     "$box": [
                         [
@@ -233,32 +226,16 @@ def find_entities_in_bounding_box(
             }
         }
 
-        # Execute find with geospatial filter and fixed projection
-        cursor = collection.find(
-            filter=geo_filter,
-            projection={
-                "id": 1,
-                "name": 1,
-                "uri": 1,
-                "ber_data_source": 1,
-                "coordinates": 1,
-            },
-        )
+        # Execute find with geospatial filter
+        cursor = collection.find(filter=geo_filter)
 
-        # Convert cursor to list and remove MongoDB _id
+        # Convert cursor to list and convert to Entity objects
         documents = list(cursor)
+        entities = []
         for doc in documents:
-            doc.pop("_id", None)
+            entities.append(convert_document_to_entity(doc))
 
-        return {
-            "documents": documents,
-            "count": len(documents),
-            "query_type": "bounding_box",
-            "bounding_box": {
-                "southwest": {"latitude": southwest_lat, "longitude": southwest_lng},
-                "northeast": {"latitude": northeast_lat, "longitude": northeast_lng},
-            },
-        }
+        return {"documents": entities, "count": len(entities)}
 
     except Exception as e:
         raise HTTPException(
@@ -266,7 +243,7 @@ def find_entities_in_bounding_box(
         )
 
 
-@app.get("/bertron/{id}")
+@app.get("/bertron/{id}", response_model=bertron_schema_pydantic.Entity)
 def get_entity_by_id(id: str):
     r"""Get a single entity by its ID.
 
@@ -281,26 +258,42 @@ def get_entity_by_id(id: str):
     collection = db["entities"]
 
     try:
-        # Find the entity by ID with fixed projection
-        document = collection.find_one(
-            filter={"id": id},
-        )
+        # Find the entity by ID - get all fields for proper validation
+        document = collection.find_one(filter={"id": id})
 
         if not document:
             raise HTTPException(
                 status_code=404, detail=f"Entity with id '{id}' not found"
             )
 
-        # Remove MongoDB _id
-        document.pop("_id", None)
-
-        return document
+        # Validate and create Entity instance
+        try:
+            entity = convert_document_to_entity(document)
+            return entity
+        except Exception as validation_error:
+            logger.error(f"Entity validation failed for id '{id}': {validation_error}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Entity data validation failed: {str(validation_error)}",
+            )
 
     except HTTPException:
         # Re-raise HTTP exceptions
         raise
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
+
+
+def convert_document_to_entity(
+    document: Dict[str, Any],
+) -> Optional[bertron_schema_pydantic.Entity]:
+    """Convert a MongoDB document to an Entity object."""
+    # Remove MongoDB _id, metadata, geojson
+    document.pop("_id", None)
+    document.pop("_metadata", None)
+    document.pop("geojson", None)
+
+    return bertron_schema_pydantic.Entity(**document)
 
 
 if __name__ == "__main__":

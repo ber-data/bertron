@@ -44,6 +44,20 @@ class BertronMongoDBIngestor:
             logger.error(f"Failed to connect to MongoDB: {e}")
             sys.exit(1)
     
+    def clean_collections(self) -> None:
+        """Delete existing collections to start fresh."""
+        try:
+            collection_names = self.db.list_collection_names()
+            if 'entities' in collection_names:
+                logger.info("Dropping existing 'entities' collection")
+                self.db.entities.drop()
+                logger.info("Successfully dropped 'entities' collection")
+            else:
+                logger.info("No existing 'entities' collection found")
+        except PyMongoError as e:
+            logger.error(f"Error dropping collections: {e}")
+            sys.exit(1)
+    
     def load_schema(self) -> Dict:
         """Load the JSON schema from file."""
         try:
@@ -82,7 +96,7 @@ class BertronMongoDBIngestor:
             if 'coordinates' in entity:
                 coordinates = entity['coordinates']
                 if isinstance(coordinates, dict) and 'latitude' in coordinates and 'longitude' in coordinates:
-                    entity['coordinates'] = {
+                    entity['geojson'] = {
                         'type': 'Point',
                         'coordinates': [coordinates['longitude'], coordinates['latitude']]
                     }
@@ -97,7 +111,7 @@ class BertronMongoDBIngestor:
             self.db.entities.create_index('data_type')
     
             # Create 2dsphere index for geospatial queries on coordinates
-            self.db.entities.create_index([('coordinates', pymongo.GEOSPHERE)])
+            self.db.entities.create_index([('geojson', pymongo.GEOSPHERE)])
             
             # Insert with upsert to handle potential duplicates based on URI
             result = self.db.entities.update_one(
@@ -167,6 +181,8 @@ def main():
                         help='Path or URL to the BERtron schema JSON file')
     parser.add_argument('--input', required=True, 
                         help='Path to the input JSON file or directory')
+    parser.add_argument('--clean', action='store_true',
+                        help='Delete existing collections before ingesting new data')
     
     args = parser.parse_args()
     
@@ -179,6 +195,11 @@ def main():
     try:
         ingestor.connect()
         ingestor.load_schema()
+        
+        # Clean collections if requested
+        if args.clean:
+            logger.info("Clean flag enabled - removing existing collections")
+            ingestor.clean_collections()
         
         total_stats = {
             'processed': 0,

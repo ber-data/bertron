@@ -49,7 +49,7 @@ services:
     depends_on:
       - mongo
     # Run ingest with data dir mounted to /data
-    command: ["uv", "run", "python", "/app/mongodb/ingest_data.py", "--mongo-uri", "mongodb://admin:root@mongo:27017", "--input", "/data"]
+    command: ["uv", "run", "python", "/app/mongodb/ingest_data.py", "--mongo-uri", "mongodb://admin:root@mongo:27017", "--input", "/data", "--clean"]
 
   test:
     # Use the same container image as the app service for consistency
