@@ -17,7 +17,7 @@ This tool ingests BERtron-formatted data into MongoDB.
 Run the ingest script with your data file:
 
 ```bash
-python ingest_data.py --input your_data_file.json
+uv run python ingest_data.py --input your_data_file.json
 ```
 
 ### Command-line arguments
@@ -57,13 +57,13 @@ The script will create and populate the following collection:
 
 ```bash
 # Ingest a single file
-python ingest_data.py --input sample_data.json
+uv run python ingest_data.py --input sample_data.json
 
 # Ingest all JSON files residing in a directory
-python ingest_data.py --input ./data_directory/
+uv run python ingest_data.py --input ./data_directory/
 
 # Use custom MongoDB connection
-python ingest_data.py --mongo-uri mongodb://username:password@localhost:27017 --db-name bertron_dev --input sample_data.json
+uv run python ingest_data.py --mongo-uri mongodb://username:password@localhost:27017 --db-name bertron_dev --input sample_data.json
 ```
 
 ## TODO: Adjust schema for GeoJSON compatibility
