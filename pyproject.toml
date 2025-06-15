@@ -17,7 +17,6 @@ dependencies = [
   "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git",
   "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
   "fastapi[standard]>=0.115.12",
-  "jsonschema>=4.0.0",
   # Note: The ingestor script uses `linkml` to validate Python objects against a LinkML schema.
   # Docs: https://pypi.org/project/linkml/
   "linkml>=1.9.2",
