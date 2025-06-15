@@ -9,6 +9,7 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 
 import pymongo
+from pymongo.database import Database
 from pymongo.errors import ConnectionFailure, PyMongoError
 from jsonschema import validate, ValidationError
 import requests
@@ -27,12 +28,12 @@ class BertronMongoDBIngestor:
     
     def __init__(self, mongo_uri: str, db_name: str, schema_path: str):
         """Initialize the ingestor with connection and schema details."""
-        self.mongo_uri = mongo_uri
-        self.db_name = db_name
-        self.schema_path = schema_path
-        self.client = None
-        self.db = None
-        self.schema = None
+        self.mongo_uri: str = mongo_uri
+        self.db_name: str = db_name
+        self.schema_path: str = schema_path
+        self.client: Optional[pymongo.MongoClient] = None
+        self.db: Optional[Database] = None
+        self.schema: Optional[dict] = None
         
     def connect(self) -> None:
         """Connect to MongoDB."""
