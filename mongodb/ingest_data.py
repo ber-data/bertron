@@ -75,8 +75,12 @@ class BertronMongoDBIngestor:
             logger.error(f"Failed to load schema: {e}")
             sys.exit(1)
     
-    def validate_data(self, data: Dict) -> bool:
-        """Validate data against the loaded schema."""
+    def validate_data(self, data: Dict, schema_class_name: str = "Entity") -> bool:
+        """
+        Validates data against the loaded schema.
+
+        Returns `True` if the value passed in represents a valid instance of the specified schema class.
+        """
         
         # Raise an exception if the schema has not been loaded yet.
         if self.schema is None:
@@ -84,7 +88,11 @@ class BertronMongoDBIngestor:
         
         # Validate the value that was passed in.
         # Reference: https://linkml.io/linkml/data/validating-data.html
-        validation_report = validate(data, self.schema, "Entity")
+        validation_report = validate(
+            instance=data,
+            schema=self.schema,
+            target_class=schema_class_name
+        )
         if len(validation_report.results) == 0:
             return True
         else:
