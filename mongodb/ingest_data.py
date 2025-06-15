@@ -11,7 +11,7 @@ from typing import Dict, List, Any, Optional
 import pymongo
 from pymongo.database import Database
 from pymongo.errors import ConnectionFailure, PyMongoError
-from jsonschema import validate, ValidationError
+from linkml.validator import validate
 import requests
 
 # Set up logging
@@ -77,11 +77,19 @@ class BertronMongoDBIngestor:
     
     def validate_data(self, data: Dict) -> bool:
         """Validate data against the loaded schema."""
-        try:
-            validate(instance=data, schema=self.schema)
+        
+        # Raise an exception if the schema has not been loaded yet.
+        if self.schema is None:
+            raise ValueError("Schema not loaded yet. Cannot validate data.")
+        
+        # Validate the value that was passed in.
+        # Reference: https://linkml.io/linkml/data/validating-data.html
+        validation_report = validate(data, self.schema, "Entity")
+        if len(validation_report.results) == 0:
             return True
-        except ValidationError as e:
-            logger.error(f"Validation error: {e}")
+        else:
+            error_messages = [r.message for r in validation_report.results]
+            logger.error(f"Validation errors: {'\n'.join(error_messages)}")
             return False
     
     def insert_entity(self, entity: Dict) -> Optional[str]:
