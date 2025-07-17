@@ -19,6 +19,9 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
+          # Note: We added this `version: "latest"` to work around the following bug in this GHA:
+          #       https://github.com/astral-sh/setup-uv/issues/489
+          version: "latest"
 
       - name: Install the project
         run: uv sync --all-extras --dev
