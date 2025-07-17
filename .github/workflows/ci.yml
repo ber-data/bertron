@@ -19,6 +19,9 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: "uv.lock"
+          # Note: We added this `version: "latest"` to work around the following bug in this GHA:
+          #       https://github.com/astral-sh/setup-uv/issues/489
+          version: "latest"
 
       - name: Install the project
         run: uv sync --all-extras --dev
@@ -32,10 +35,14 @@ jobs:
       - name: Run tests locally
         run: uv run pytest tests
 
-      - name: Run tests in container environment
-        uses: hoverkraft-tech/compose-action@v2.2.0
-        env:
-          ACTIONS_RUNNER_DEBUG: true
-        with:
-          compose-file: "docker-compose.yml"
-          services: "test"
+      # Note: This spins up containers running the default services.
+      - name: Spin up Docker Compose stack in background
+        run: docker compose up --detach
+
+      # Note: This spins up the "test" container.
+      - name: Spin up `test` container
+        run: docker compose up test
+
+      # Note: This spins everything down.
+      - name: Spin down Docker Compose stack
+        run: docker compose down

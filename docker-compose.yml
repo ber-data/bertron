@@ -20,7 +20,7 @@ services:
       - ".:/app"
 
   mongo:
-    image: mongo:8.0.10
+    image: mongo:8.0.11
     ports:
       # The environment variable can be specified either via an `.env` file,
       # or by defining it when invoking `docker compose`, like this:
