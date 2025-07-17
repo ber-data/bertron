@@ -35,10 +35,7 @@ jobs:
       - name: Run tests locally
         run: uv run pytest tests
 
-      - name: Run tests in container environment
-        uses: hoverkraft-tech/compose-action@v2.3.0
-        env:
-          ACTIONS_RUNNER_DEBUG: true
-        with:
-          compose-file: "docker-compose.yml"
-          services: "test"
+      # Note: This spins up containers running the default services,
+      #       and the services whose profile is "tools".
+      - name: Spin up Docker Compose stack
+        run: docker compose --profile tools up
