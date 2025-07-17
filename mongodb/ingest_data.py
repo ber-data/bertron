@@ -9,8 +9,9 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 
 import pymongo
+from pymongo.database import Database
 from pymongo.errors import ConnectionFailure, PyMongoError
-from jsonschema import validate, ValidationError
+from linkml.validator import validate
 import requests
 
 # Set up logging
@@ -27,12 +28,12 @@ class BertronMongoDBIngestor:
     
     def __init__(self, mongo_uri: str, db_name: str, schema_path: str):
         """Initialize the ingestor with connection and schema details."""
-        self.mongo_uri = mongo_uri
-        self.db_name = db_name
-        self.schema_path = schema_path
-        self.client = None
-        self.db = None
-        self.schema = None
+        self.mongo_uri: str = mongo_uri
+        self.db_name: str = db_name
+        self.schema_path: str = schema_path
+        self.client: Optional[pymongo.MongoClient] = None
+        self.db: Optional[Database] = None
+        self.schema: Optional[dict] = None
         
     def connect(self) -> None:
         """Connect to MongoDB."""
@@ -74,13 +75,29 @@ class BertronMongoDBIngestor:
             logger.error(f"Failed to load schema: {e}")
             sys.exit(1)
     
-    def validate_data(self, data: Dict) -> bool:
-        """Validate data against the loaded schema."""
-        try:
-            validate(instance=data, schema=self.schema)
+    def validate_data(self, data: Dict, schema_class_name: str = "Entity") -> bool:
+        """
+        Validates data against the loaded schema.
+
+        Returns `True` if the value passed in represents a valid instance of the specified schema class.
+        """
+        
+        # Raise an exception if the schema has not been loaded yet.
+        if self.schema is None:
+            raise ValueError("Schema not loaded yet. Cannot validate data.")
+        
+        # Validate the value that was passed in.
+        # Reference: https://linkml.io/linkml/data/validating-data.html
+        validation_report = validate(
+            instance=data,
+            schema=self.schema,
+            target_class=schema_class_name
+        )
+        if len(validation_report.results) == 0:
             return True
-        except ValidationError as e:
-            logger.error(f"Validation error: {e}")
+        else:
+            error_messages = [r.message for r in validation_report.results]
+            logger.error(f"Validation errors: {'\n'.join(error_messages)}")
             return False
     
     def insert_entity(self, entity: Dict) -> Optional[str]:
