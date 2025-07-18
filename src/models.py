@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import Optional
 
 
 class HealthResponse(BaseModel):
@@ -19,12 +20,12 @@ class HealthResponse(BaseModel):
 class VersionResponse(BaseModel):
     r"""A response containing system version information."""
 
-    api: str = Field(
+    api: Optional[str] = Field(
         ...,
         title="API version",
         description="The version identifier of the API",
     )
-    bertron_schema: str = Field(
+    bertron_schema: Optional[str] = Field(
         ...,
         title="BERtron schema version",
         description="The version identifier of the BERtron schema",
