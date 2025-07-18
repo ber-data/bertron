@@ -34,6 +34,32 @@ jobs:
     - name: Check out commit  # docs: https://github.com/actions/checkout
       uses: actions/checkout@v4
     
+    # Extract the version number from the GitHub release tag and write it into
+    # the `pyproject.toml` file that will be included in the container image.
+    #
+    # References:
+    # - https://jcgoran.github.io/2021/02/07/bash-string-trimming.html#h-string-removal (for stripping leading 'v')
+    # - https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter
+    #
+    - name: Derive version identifier from Git tag or commit hash
+      id: extract_version
+      run: |
+        if [ "${{ github.event_name }}" = "release" ]; then
+          VERSION_RAW="${{ github.event.release.tag_name }}"  # e.g. "v1.2.3"
+          VERSION_SANITIZED="${VERSION_RAW#v}"  # strips leading 'v' if present
+        else
+          COMMIT_HASH="${{ github.sha }}"
+          COMMIT_HASH_SHORT=$(echo "${COMMIT_HASH}" | cut -c1-8)  # e.g. "abcd1234"
+          VERSION_SANITIZED="0.dev-${COMMIT_HASH_SHORT}"  # e.g. "0.dev-abcd1234"
+        fi
+        echo "Version: ${VERSION_SANITIZED}"
+        echo "version=${VERSION_SANITIZED}" >> "${GITHUB_OUTPUT}"  # makes it available to subsequent steps
+    - name: Update version in `pyproject.toml`
+      run: |
+        echo "Version: ${{ steps.extract_version.outputs.version }}"
+        sed -i 's/^version = "0.0.0"/version = "${{ steps.extract_version.outputs.version }}"/' ./pyproject.toml
+        cat ./pyproject.toml | grep '^version = '  # sanity check
+    
     # Note: These steps are about building and publishing the container image.
     - name: Authenticate with container registry
       uses: docker/login-action@v3
