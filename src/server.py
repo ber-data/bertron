@@ -31,7 +31,10 @@ def get_root():
 def get_health() -> HealthResponse:
     r"""Get system health information."""
     is_database_healthy = len(mongo_client.list_database_names()) > 0
-    return HealthResponse(web_server=True, database=is_database_healthy)
+    return HealthResponse(
+        web_server=True,
+        database=is_database_healthy,
+    )
 
 
 @app.get("/version")
@@ -41,7 +44,7 @@ def get_version() -> VersionResponse:
     bertron_schema_package_name = "bertron-schema"
     return VersionResponse(
         api=version(api_package_name),
-        bertron_schema=version(bertron_schema_package_name)
+        bertron_schema=version(bertron_schema_package_name),
     )
 
 
