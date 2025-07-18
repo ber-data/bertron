@@ -19,7 +19,7 @@ authors = [
 ]
 description = " Cross-BER Data Integration"
 readme = "README.md"
-requires-python = ">=3.12.9,<3.14"
+requires-python = ">=3.10.0,<3.14"
 dependencies = [
   "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git",
   "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
