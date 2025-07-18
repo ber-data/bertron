@@ -9,7 +9,7 @@ from schema.datamodel import bertron_schema_pydantic
 import uvicorn
 
 from lib.helpers import get_package_version
-from models import HealthResponse, VersionResponse
+from models import HealthResponse, VersionResponse, EntitiesResponse
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -55,7 +55,7 @@ def get_version() -> VersionResponse:
     )
 
 
-@app.get("/bertron")
+@app.get("/bertron", response_model=EntitiesResponse)
 def get_all_entities():
     r"""Get all documents from the entities collection."""
     db = mongo_client["bertron"]
@@ -91,7 +91,7 @@ class MongoDBQuery(BaseModel):
     )
 
 
-@app.post("/bertron/find")
+@app.post("/bertron/find", response_model=EntitiesResponse)
 def find_entities(query: MongoDBQuery):
     r"""Execute a MongoDB find operation on the entities collection with filter, projection, skip, limit, and sort options.
 
@@ -136,7 +136,7 @@ def find_entities(query: MongoDBQuery):
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
 
 
-@app.get("/bertron/geo/nearby")
+@app.get("/bertron/geo/nearby", response_model=EntitiesResponse)
 def find_nearby_entities(
     latitude: float = Query(
         ..., ge=-90, le=90, description="Center latitude in degrees"
@@ -193,7 +193,7 @@ def find_nearby_entities(
         raise HTTPException(status_code=400, detail=f"Nearby query error: {str(e)}")
 
 
-@app.get("/bertron/geo/bbox")
+@app.get("/bertron/geo/bbox", response_model=EntitiesResponse)
 def find_entities_in_bounding_box(
     southwest_lat: float = Query(
         ..., ge=-90, le=90, description="Southwest corner latitude"
