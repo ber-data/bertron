@@ -1,13 +1,15 @@
+from importlib.metadata import version
+import logging
+from typing import Optional, Dict, Any
+
 from fastapi import FastAPI, HTTPException, Query
-import uvicorn
 from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
-from typing import Optional, Dict, Any
 from pydantic import BaseModel, Field
 from schema.datamodel import bertron_schema_pydantic
-import logging
+import uvicorn
 
-from models import HealthResponse
+from models import HealthResponse, VersionResponse
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -30,6 +32,17 @@ def get_health() -> HealthResponse:
     r"""Get system health information."""
     is_database_healthy = len(mongo_client.list_database_names()) > 0
     return HealthResponse(web_server=True, database=is_database_healthy)
+
+
+@app.get("/version")
+def get_version() -> VersionResponse:
+    r"""Get system version information."""
+    api_package_name = "bertron"
+    bertron_schema_package_name = "bertron-schema"
+    return VersionResponse(
+        api=version(api_package_name),
+        bertron_schema=version(bertron_schema_package_name)
+    )
 
 
 @app.get("/bertron")
