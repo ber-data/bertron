@@ -7,6 +7,8 @@ from pydantic import BaseModel, Field
 from schema.datamodel import bertron_schema_pydantic
 import logging
 
+from models import HealthResponse
+
 # Set up logging
 logger = logging.getLogger(__name__)
 
@@ -24,10 +26,10 @@ def get_root():
 
 
 @app.get("/health")
-def get_health():
-    r"""Get API health information."""
+def get_health() -> HealthResponse:
+    r"""Get system health information."""
     is_database_healthy = len(mongo_client.list_database_names()) > 0
-    return {"web_server": "ok", "database": is_database_healthy}
+    return HealthResponse(web_server=True, database=is_database_healthy)
 
 
 @app.get("/bertron")
