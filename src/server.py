@@ -20,7 +20,10 @@ mongo_client = MongoClient("mongo:27017", username="admin", password="root")
 
 app = FastAPI(
     title="BERtron API",
-    description="[View source](https://github.com/ber-data/bertron/blob/main/src/server.py)",
+    description=(
+        "[View source](https://github.com/ber-data/bertron/blob/main/src/server.py)\n\n"
+        f"[BERtron schema](https://ber-data.github.io/bertron-schema/) version: `{get_package_version('bertron-schema')}`"
+    ),
     version=get_package_version("bertron"),
 )
 
