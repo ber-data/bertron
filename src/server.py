@@ -1,4 +1,3 @@
-from importlib.metadata import version
 import logging
 from typing import Optional, Dict, Any
 
@@ -9,6 +8,7 @@ from pydantic import BaseModel, Field
 from schema.datamodel import bertron_schema_pydantic
 import uvicorn
 
+from lib.helpers import get_package_version
 from models import HealthResponse, VersionResponse
 
 # Set up logging
@@ -43,8 +43,8 @@ def get_version() -> VersionResponse:
     api_package_name = "bertron"
     bertron_schema_package_name = "bertron-schema"
     return VersionResponse(
-        api=version(api_package_name),
-        bertron_schema=version(bertron_schema_package_name),
+        api=get_package_version(api_package_name),
+        bertron_schema=get_package_version(bertron_schema_package_name),
     )
 
 
