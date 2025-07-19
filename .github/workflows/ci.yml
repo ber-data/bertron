@@ -39,9 +39,11 @@ jobs:
       - name: Spin up Docker Compose stack in background
         run: docker compose up --detach
 
-      # Note: This spins up the "test" container.
+      # Note: The `--exit-code-from test` option applies the exit code of the `test` container
+      #       to the `docker compose` process, so that the GHA step fails if tests fail.
+      #       Reference: https://docs.docker.com/reference/cli/docker/compose/up/
       - name: Spin up `test` container
-        run: docker compose up test
+        run: docker compose up --exit-code-from test test
 
       # Note: This spins everything down.
       - name: Spin down Docker Compose stack
