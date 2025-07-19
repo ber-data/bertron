@@ -9,3 +9,4 @@
 - `lib/`: Library of helper functions, constants, etc.
 - `README.md`: This document
 - `server.py`: The BERtron API
+- `tests/`: Tests targeting things implemented in this directory
