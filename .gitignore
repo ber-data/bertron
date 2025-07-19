@@ -11,8 +11,10 @@
 # Jupyter Notebook checkpoints.
 **/.ipynb_checkpoints/
 
-# TODO: Document these.
-.venv
+# Ignore Python virtual environments.
+.venv/
+
+# TODO: Document this.
 **/*.egg-info/
 
 # Ignore Python bytecode files.
