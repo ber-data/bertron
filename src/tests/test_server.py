@@ -28,7 +28,7 @@ def test_root_endpoint_redirects_to_api_docs(test_client: TestClient):
 def test_version_endpoint_returns_version_response(test_client: TestClient):
     response = test_client.get("/version")
     assert response.status_code == status.HTTP_200_OK
-    json_response = response.json()
-    expected_fields = set(VersionResponse.model_fields.keys())
-    actual_fields = set(json_response.keys())
-    assert actual_fields == expected_fields
+    # Note: This will raise a `ValidationError` if the response is not
+    #       a valid `VersionResponse` (e.g. if it has extra fields or
+    #       its fields' values are of an incompatible data type).
+    _ = VersionResponse(**response.json())
