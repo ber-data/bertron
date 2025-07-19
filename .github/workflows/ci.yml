@@ -12,6 +12,14 @@ jobs:
     name: PR checks
     runs-on: ubuntu-latest
 
+    # Define environment variables that will be available to all steps within this job.
+    env:
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
+      MONGO_USERNAME: admin
+      MONGO_PASSWORD: root
+      MONGO_DATABASE: bertron
+
     steps:
       - uses: actions/checkout@v4
 
@@ -37,24 +45,12 @@ jobs:
       #       This does not include the `ingest` or `test` services,
       #       which aren't part of the default profile.
       - name: Spin up Docker Compose stack in background
-        env:
-          MONGO_HOST: mongo
-          MONGO_PORT: 27017
-          MONGO_USERNAME: admin
-          MONGO_PASSWORD: root
-          MONGO_DATABASE: bertron
         run: docker compose up --detach
 
       # Note: The `--exit-code-from test` option applies the exit code of the `test` container
       #       to the `docker compose` process, so that the GHA step fails if tests fail.
       #       Reference: https://docs.docker.com/reference/cli/docker/compose/up/
       - name: Spin up `test` container
-        env:
-          MONGO_HOST: mongo
-          MONGO_PORT: 27017
-          MONGO_USERNAME: admin
-          MONGO_PASSWORD: root
-          MONGO_DATABASE: bertron  # the test suite will disregard this
         run: docker compose up --exit-code-from test test
 
       # Note: This spins everything down.
