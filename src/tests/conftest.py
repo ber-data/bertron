@@ -23,7 +23,7 @@ def patched_cfg():
     A `pytest` fixture that temporarily patches the application configuration
     so it references a test database.
     """
-    
+
     test_database_name = "bertron_test"
     main_database_name = cfg.mongo_database
     assert main_database_name != test_database_name, (
