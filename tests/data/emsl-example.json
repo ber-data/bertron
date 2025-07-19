@@ -1,0 +1,20 @@
+{
+    "ber_data_source": "EMSL",
+    "coordinates": {
+        "latitude": 34,
+        "longitude": 118.0,
+        "altitude": null,
+        "depth": null,
+        "elevation": null
+    },
+    "entity_type": [
+        "sample"
+    ],
+    "description": "Clostridium thermocellum protein extracts",
+    "id": "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488",
+    "name": "EMSL Sample c9405190-e962-4ba5-93f0-e3ff499f4488",
+    "alt_ids": null,
+    "alt_names": null,
+    "part_of_collection": null,
+    "uri": "https://sc-data.emsl.pnnl.gov/?projectId=61815"
+}
