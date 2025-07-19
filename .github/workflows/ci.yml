@@ -39,7 +39,7 @@ jobs:
       - name: Spin up Docker Compose stack in background
         run: docker compose up --detach
 
-      # Note: The `--env MONGO_HOST=mongo` sets the `MONGO_HOST` environment variable
+      # Note: The `MONGO_HOST=mongo` sets the `MONGO_HOST` environment variable
       #       within the `test` container, so that the `test` container accesses the
       #       MongoDB server whose hostname is `mongo` (instead of `localhost`).
       #
@@ -47,7 +47,7 @@ jobs:
       #       to the `docker compose` process, so that the GHA step fails if tests fail.
       #       Reference: https://docs.docker.com/reference/cli/docker/compose/up/
       - name: Spin up `test` container
-        run: docker compose up --env MONGO_HOST=mongo --exit-code-from test test
+        run: MONGO_HOST=mongo docker compose up --exit-code-from test test
 
       # Note: This spins everything down.
       - name: Spin down Docker Compose stack
