@@ -40,7 +40,9 @@ jobs:
       #       which aren't part of the default profile.
       - name: Spin up Docker Compose stack in background
         env:
-          # Customize `MONGO_HOST` for all containers in the stack.
+          # Customize MongoDB connection parameters for all containers in the stack.
+          MONGO_USERNAME: admin
+          MONGO_PASSWORD: root
           MONGO_HOST: mongo
         run: docker compose up --detach
 
@@ -49,7 +51,9 @@ jobs:
       #       Reference: https://docs.docker.com/reference/cli/docker/compose/up/
       - name: Spin up `test` container
         env:
-          # Customize `MONGO_HOST` for the `test` container.
+          # Customize MongoDB connection parameters for the `test` container.
+          MONGO_USERNAME: admin
+          MONGO_PASSWORD: root
           MONGO_HOST: mongo
         run: docker compose up --exit-code-from test test
 
