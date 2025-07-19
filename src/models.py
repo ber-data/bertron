@@ -4,7 +4,7 @@ from typing import Optional
 
 class HealthResponse(BaseModel):
     r"""A response containing system health information."""
-    
+
     # Raise a `ValidationError` if extra parameters are passed in when instantiating this class.
     # Note: This facilitates having our tests confirm API responses don't include extra fields.
     # Docs: https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.extra
