@@ -8,7 +8,7 @@
 # Ignore unrelated files created by Finder on macOS.
 .DS_Store
 
-# Jupter Notebook checkpoints.
+# Jupyter Notebook checkpoints.
 **/.ipynb_checkpoints/
 
 # TODO: Document these.
@@ -17,3 +17,6 @@
 
 # Ignore Python bytecode files.
 __pycache__
+
+# Top-level environment configuration file.
+/.env

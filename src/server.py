@@ -10,13 +10,17 @@ import uvicorn
 
 from lib.helpers import get_package_version
 from models import HealthResponse, VersionResponse
+from config import settings as cfg
 
 # Set up logging
 logger = logging.getLogger(__name__)
 
-# Connect to MongoDB.
-# TODO: Get these values from environment variables instead of hard-coding them.
-mongo_client = MongoClient("mongo:27017", username="admin", password="root")
+# Connect to the MongoDB server.
+mongo_client = MongoClient(
+    f"{cfg.mongo_host}:{cfg.mongo_port}",
+    username=cfg.mongo_username,
+    password=cfg.mongo_password,
+)
 
 app = FastAPI(
     title="BERtron API",
@@ -58,7 +62,7 @@ def get_version() -> VersionResponse:
 @app.get("/bertron")
 def get_all_entities():
     r"""Get all documents from the entities collection."""
-    db = mongo_client["bertron"]
+    db = mongo_client[cfg.mongo_database]
 
     # Check if the collection exists
     if "entities" not in db.list_collection_names():
@@ -104,7 +108,7 @@ def find_entities(query: MongoDBQuery):
         "sort": {"field1": 1, "field2": -1}
     }
     """
-    db = mongo_client["bertron"]
+    db = mongo_client[cfg.mongo_database]
 
     # Check if the collection exists
     if "entities" not in db.list_collection_names():
@@ -153,7 +157,7 @@ def find_nearby_entities(
 
     Example: /bertron/geo/nearby?latitude=47.6062&longitude=-122.3321&radius_meters=10000
     """
-    db = mongo_client["bertron"]
+    db = mongo_client[cfg.mongo_database]
 
     # Check if the collection exists
     if "entities" not in db.list_collection_names():
@@ -215,7 +219,7 @@ def find_entities_in_bounding_box(
 
     Example: /bertron/geo/bbox?southwest_lat=47.5&southwest_lng=-122.4&northeast_lat=47.7&northeast_lng=-122.2
     """
-    db = mongo_client["bertron"]
+    db = mongo_client[cfg.mongo_database]
 
     # Check if the collection exists
     if "entities" not in db.list_collection_names():
@@ -274,7 +278,7 @@ def get_entity_by_id(id: str):
 
     Example: /bertron/emsl:12345
     """
-    db = mongo_client["bertron"]
+    db = mongo_client[cfg.mongo_database]
 
     # Check if the collection exists
     if "entities" not in db.list_collection_names():
