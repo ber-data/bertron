@@ -1,10 +1,11 @@
 name: CI
 
+# Configure GHA to run this workflow whenever either:
+# (a) a pull request is opened or updated, or
+# (b) a commit(s) is pushed into the `main` branch.
 on:
-  push:
-#    branches:
-#      - main
-  pull_request:
+  pull_request: { }
+  push: { branches: [ main ] }
 
 jobs:
   pr-check:
