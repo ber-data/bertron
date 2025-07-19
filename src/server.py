@@ -24,7 +24,7 @@ app = FastAPI(
         "[View source](https://github.com/ber-data/bertron/blob/main/src/server.py)\n\n"
         f"[BERtron schema](https://ber-data.github.io/bertron-schema/) version: `{get_package_version('bertron-schema')}`"
     ),
-    version=get_package_version("bertron"),
+    version=f"{get_package_version('bertron')}",
 )
 
 
