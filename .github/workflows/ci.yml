@@ -45,16 +45,6 @@ jobs:
       - name: Spin up `test` container
         run: docker compose up --exit-code-from test test
 
-      # Delete the Python virtual environment created by the container. Otherwise,
-      # it will conflict with the one created locally in the next step.
-      - name: Delete leftover Python virtual environment
-        run: sudo rm -rf ./.venv
-
-      # Run the tests outside of the Docker Compose stack, to ensure they'll pass for developers
-      # running them locally (e.g. via `uv run pytest`).
-      - name: Run tests locally
-        run: uv run pytest -v
-
       # Note: This spins everything down.
       - name: Spin down Docker Compose stack
         run: docker compose down
