@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional, List
 from schema.datamodel import bertron_schema_pydantic
 
@@ -21,6 +21,11 @@ class EntitiesResponse(BaseModel):
 class HealthResponse(BaseModel):
     r"""A response containing system health information."""
 
+    # Raise a `ValidationError` if extra parameters are passed in when instantiating this class.
+    # Note: This facilitates having our tests confirm API responses don't include extra fields.
+    # Docs: https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.extra
+    model_config = ConfigDict(extra="forbid")
+
     web_server: bool = Field(
         ...,
         title="Web server health",
@@ -35,6 +40,8 @@ class HealthResponse(BaseModel):
 
 class VersionResponse(BaseModel):
     r"""A response containing system version information."""
+
+    model_config = ConfigDict(extra="forbid")
 
     api: Optional[str] = Field(
         ...,

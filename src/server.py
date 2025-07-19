@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 from schema.datamodel import bertron_schema_pydantic
 import uvicorn
 
-from .lib.helpers import get_package_version
+from lib.helpers import get_package_version
 from models import HealthResponse, VersionResponse, EntitiesResponse
 
 # Set up logging
@@ -24,7 +24,7 @@ app = FastAPI(
         "[View source](https://github.com/ber-data/bertron/blob/main/src/server.py)\n\n"
         f"[BERtron schema](https://ber-data.github.io/bertron-schema/) version: `{get_package_version('bertron-schema')}`"
     ),
-    version=get_package_version("bertron"),
+    version=f"{get_package_version('bertron')}",
 )
 
 
