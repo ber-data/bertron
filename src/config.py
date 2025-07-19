@@ -25,9 +25,9 @@ class Settings(BaseSettings):
     # MongoDB connection settings.
     mongo_host: str = "localhost"
     mongo_port: int = 27017  # note: value in `.env` will be coerced into int
-    mongo_database: str = "bertron"
     mongo_username: Optional[str] = None
     mongo_password: Optional[str] = None
+    mongo_database: str = "bertron"
 
 
 # Instantiate a settings object that can be imported into other modules.

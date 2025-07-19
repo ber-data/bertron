@@ -33,30 +33,22 @@ jobs:
       - name: Linting
         run: uv run ruff check -- src/
 
-      - name: Run tests locally
-        run: uv run pytest tests
-
       # Note: This spins up containers running the default services.
       #       This does not include the `ingest` or `test` services,
       #       which aren't part of the default profile.
       - name: Spin up Docker Compose stack in background
-        env:
-          # Customize MongoDB connection parameters for all containers in the stack.
-          MONGO_USERNAME: admin
-          MONGO_PASSWORD: root
-          MONGO_HOST: mongo
         run: docker compose up --detach
 
       # Note: The `--exit-code-from test` option applies the exit code of the `test` container
       #       to the `docker compose` process, so that the GHA step fails if tests fail.
       #       Reference: https://docs.docker.com/reference/cli/docker/compose/up/
       - name: Spin up `test` container
-        env:
-          # Customize MongoDB connection parameters for the `test` container.
-          MONGO_USERNAME: admin
-          MONGO_PASSWORD: root
-          MONGO_HOST: mongo
         run: docker compose up --exit-code-from test test
+
+      # Run the tests outside of the Docker Compose stack, to ensure they'll pass for developers
+      # running them locally (e.g. via `uv run pytest`).
+      - name: Run tests locally
+        run: uv run pytest -v
 
       # Note: This spins everything down.
       - name: Spin down Docker Compose stack

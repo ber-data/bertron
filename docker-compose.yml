@@ -3,6 +3,15 @@ services:
     # Use the container image built in the "development" stage of the Dockerfile.
     build: { context: ".", dockerfile: Dockerfile, target: development }
     restart: unless-stopped
+    # Propagate environment variables from the host into the container, falling
+    # back to default values for variables not defined on the host.
+    # Docs: https://docs.docker.com/compose/how-tos/environment-variables/set-environment-variables/#use-the-environment-attribute
+    environment:
+      MONGO_HOST: ${MONGO_HOST:-mongo}
+      MONGO_PORT: ${MONGO_PORT:-27017}
+      MONGO_USERNAME: ${MONGO_USERNAME:-admin}
+      MONGO_PASSWORD: ${MONGO_PASSWORD:-root}
+      MONGO_DATABASE: ${MONGO_DATABASE:-bertron}
     ports:
       # Map a host port (by default, 8000, but it can be overridden via an
       # environment variable) to port 8000 of the container; the latter being
@@ -53,6 +62,12 @@ services:
     build: { context: ".", dockerfile: Dockerfile, target: development }
     # This service should not start automatically - only run on demand
     profiles: ["tools"]
+    environment:
+      MONGO_HOST: ${MONGO_HOST:-mongo}
+      MONGO_PORT: ${MONGO_PORT:-27017}
+      MONGO_USERNAME: ${MONGO_USERNAME:-admin}
+      MONGO_PASSWORD: ${MONGO_PASSWORD:-root}
+      MONGO_DATABASE: ${MONGO_DATABASE:-bertron}  # the test suite will disregard this
     depends_on:
       - app
       - mongo
