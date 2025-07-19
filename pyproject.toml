@@ -33,6 +33,9 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    # `httpx` is a dependency of FastAPI's `TestClient` class.
+    # Docs: https://fastapi.tiangolo.com/tutorial/testing/#using-testclient
+    "httpx>=0.28.1",
     "pre-commit>=4.1.0",
     "pyright>=1.1.386",
     "pytest>=8.3.5",
