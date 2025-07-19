@@ -3,6 +3,17 @@ services:
     # Use the container image built in the "development" stage of the Dockerfile.
     build: { context: ".", dockerfile: Dockerfile, target: development }
     restart: unless-stopped
+    # Propagate environment variables from the host into the container.
+    # Note: The `:?` suffix makes it so Docker Compose displays an error if the
+    #       environment variable is either (a) undefined, or (b) empty, in the
+    #       host environment.
+    # Docs: https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#additional-information
+    environment:
+      MONGO_HOST: ${MONGO_HOST:?}
+      MONGO_PORT: ${MONGO_PORT:?}
+      MONGO_USERNAME: ${MONGO_USERNAME:?}
+      MONGO_PASSWORD: ${MONGO_PASSWORD:?}
+      MONGO_DATABASE: ${MONGO_DATABASE:?}
     ports:
       # Map a host port (by default, 8000, but it can be overridden via an
       # environment variable) to port 8000 of the container; the latter being
@@ -30,8 +41,8 @@ services:
       - "${MONGO_PORT:-27017}:27017"
     restart: unless-stopped
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_USERNAME: "${MONGO_USERNAME:?}"
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_PASSWORD:?}"
     volumes:
       - mongo_data:/data/db
 
@@ -40,9 +51,6 @@ services:
     build: { context: ".", dockerfile: Dockerfile, target: development }
     # This service should not start automatically - only run on demand
     profiles: ["tools"]
-    environment:
-      # Set the MongoDB connection string to connect to the mongo service
-      MONGO_URI: "mongodb://admin:root@mongo:27017"
     volumes:
       # Mount the root directory to access the ingest script and data files
       - ".:/app"
@@ -56,6 +64,12 @@ services:
     build: { context: ".", dockerfile: Dockerfile, target: development }
     # This service should not start automatically - only run on demand
     profiles: ["tools"]
+    environment:
+      MONGO_HOST: ${MONGO_HOST:?}
+      MONGO_PORT: ${MONGO_PORT:?}
+      MONGO_USERNAME: ${MONGO_USERNAME:?}
+      MONGO_PASSWORD: ${MONGO_PASSWORD:?}
+      MONGO_DATABASE: ${MONGO_DATABASE:?}  # the test suite will disregard this
     depends_on:
       - app
       - mongo

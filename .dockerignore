@@ -1,0 +1,8 @@
+# This file specifies directories/files we want Docker to omit from the Docker build context.
+# Docs: https://docs.docker.com/build/concepts/context/#dockerignore-files
+
+# Omit Python virtual environments.
+.venv/
+
+# Omit Python cache files.
+__pycache__/
