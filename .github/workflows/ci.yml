@@ -32,16 +32,20 @@ jobs:
       - name: Linting
         run: uv run ruff check -- src/
 
-      - name: Run tests locally
-        run: uv run pytest tests
+      # - name: Run tests locally
+      #   run: uv run pytest tests
 
       # Note: This spins up containers running the default services.
       - name: Spin up Docker Compose stack in background
         run: docker compose up --detach
 
       # Note: This spins up the "test" container.
+      - name: Run ingest script
+        run: docker compose --profile=tools run ingest  
+
+      # Note: Runs the "test" container.
       - name: Spin up `test` container
-        run: docker compose up test
+        run: docker compose --profile=tools up test
 
       # Note: This spins everything down.
       - name: Spin down Docker Compose stack
