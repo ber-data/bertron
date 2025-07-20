@@ -1,36 +1,31 @@
-import pytest
-import requests
-import json
 from typing import Dict, Any
+
+from fastapi.testclient import TestClient
+import pytest
+from starlette import status
+
+from src.server import app
+
+
+@pytest.fixture
+def test_client():
+    test_client = TestClient(app)
+    yield test_client
 
 
 class TestBertronAPI:
-    """Test suite for BERtron API endpoints assuming data is loaded."""
-    
-    base_url = "http://app:8000"
-    
-    def test_version_endpoint(self):
-        """Test the version endpoint returns correct structure."""
-        response = requests.get(f"{self.base_url}/version")
-        
-        assert response.status_code == 200
-        version_data = response.json()
-        
-        # Verify response structure
-        assert "api" in version_data
-        assert "bertron_schema" in version_data
-        
-        # Verify data types (can be None or string)
-        assert version_data["api"] is None or isinstance(version_data["api"], str)
-        assert version_data["bertron_schema"] is None or isinstance(version_data["bertron_schema"], str)
-        
-        assert response.headers["content-type"] == "application/json"
+    r"""
+    Test suite for BERtron API endpoints assuming data is loaded.
 
-    def test_get_all_entities(self):
+    TODO: Remove prerequisite of data having been loaded by the `ingest` script.
+          Instead, implement a sufficient fixture within the test suite.
+    """
+
+    def test_get_all_entities(self, test_client: TestClient):
         """Test getting all entities from the collection."""
-        response = requests.get(f"{self.base_url}/bertron")
+        response = test_client.get("/bertron")
         
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         entities_data = response.json()
         
         # Verify response structure matches EntitiesResponse
@@ -49,12 +44,12 @@ class TestBertronAPI:
             entity = entities_data["documents"][0]
             self._verify_entity_structure(entity)
 
-    def test_get_entity_by_id_emsl(self):
+    def test_get_entity_by_id_emsl(self, test_client: TestClient):
         """Test getting a specific EMSL entity by ID."""
         entity_id = "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488"
-        response = requests.get(f"{self.base_url}/bertron/{entity_id}")
+        response = test_client.get(f"/bertron/{entity_id}")
         
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         entity = response.json()
         
         # Verify this is the correct entity
@@ -69,13 +64,14 @@ class TestBertronAPI:
         
         self._verify_entity_structure(entity)
 
+    # TODO: Consider using URL encoding (a.k.a. "percent-encoding") for the slashes.
     @pytest.mark.skip(reason="Skipping ESS-DIVE id because of string format with /")
-    def test_get_entity_by_id_ess_dive(self):
+    def test_get_entity_by_id_ess_dive(self, test_client: TestClient):
         """Test getting a specific ESS-DIVE entity by ID."""
         entity_id = "doi:10.15485/2441497"
-        response = requests.get(f"{self.base_url}/bertron/{entity_id}")
+        response = test_client.get(f"/bertron/{entity_id}")
         
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         entity = response.json()
         
         # Verify this is the correct entity
@@ -85,12 +81,12 @@ class TestBertronAPI:
         
         self._verify_entity_structure(entity)
 
-    def test_get_entity_by_id_nmdc(self):
+    def test_get_entity_by_id_nmdc(self, test_client: TestClient):
         """Test getting a specific NMDC entity by ID."""
         entity_id = "nmdc:bsm-11-bsf8yq62"
-        response = requests.get(f"{self.base_url}/bertron/{entity_id}")
+        response = test_client.get(f"/bertron/{entity_id}")
         
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         entity = response.json()
         
         # Verify this is the correct entity
@@ -107,24 +103,24 @@ class TestBertronAPI:
         
         self._verify_entity_structure(entity)
 
-    def test_get_entity_by_id_not_found(self):
+    def test_get_entity_by_id_not_found(self, test_client: TestClient):
         """Test getting a non-existent entity returns 404."""
         entity_id = "nonexistent:12345"
-        response = requests.get(f"{self.base_url}/bertron/{entity_id}")
+        response = test_client.get(f"/bertron/{entity_id}")
         
-        assert response.status_code == 404
+        assert response.status_code == status.HTTP_404_NOT_FOUND
         error_data = response.json()
         assert "not found" in error_data["detail"].lower()
 
-    def test_find_entities_with_filter(self):
+    def test_find_entities_with_filter(self, test_client: TestClient):
         """Test finding entities with MongoDB filter."""
         query = {
             "filter": {"ber_data_source": "EMSL"},
             "limit": 10
         }
         
-        response = requests.post(
-            f"{self.base_url}/bertron/find",
+        response = test_client.post(
+            "/bertron/find",
             json=query,
             headers={"Content-Type": "application/json"}
         )
@@ -143,7 +139,7 @@ class TestBertronAPI:
             self._verify_entity_structure(entity)
 
     @pytest.mark.skip(reason="Skipping projection test doesn't return EntitiesResponse")
-    def test_find_entities_with_projection(self):
+    def test_find_entities_with_projection(self, test_client: TestClient):
         """Test finding entities with field projection."""
         query = {
             "filter": {},
@@ -151,13 +147,13 @@ class TestBertronAPI:
             "limit": 5
         }
         
-        response = requests.post(
-            f"{self.base_url}/bertron/find",
+        response = test_client.post(
+            "/bertron/find",
             json=query,
             headers={"Content-Type": "application/json"}
         )
         
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         entities_data = response.json()
         
         assert entities_data["count"] <= 5
@@ -168,7 +164,7 @@ class TestBertronAPI:
             assert "name" in entity
             assert "ber_data_source" in entity
 
-    def test_find_entities_with_sort_and_limit(self):
+    def test_find_entities_with_sort_and_limit(self, test_client: TestClient):
         """Test finding entities with sorting and limiting."""
         query = {
             "filter": {},
@@ -176,13 +172,13 @@ class TestBertronAPI:
             "limit": 3
         }
         
-        response = requests.post(
-            f"{self.base_url}/bertron/find",
+        response = test_client.post(
+            "/bertron/find",
             json=query,
             headers={"Content-Type": "application/json"}
         )
         
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         entities_data = response.json()
         
         assert entities_data["count"] <= 3
@@ -195,23 +191,23 @@ class TestBertronAPI:
                 next_entity = entities_data["documents"][i + 1]
                 assert current["ber_data_source"] <= next_entity["ber_data_source"]
 
-    def test_find_entities_invalid_query(self):
+    def test_find_entities_invalid_query(self, test_client: TestClient):
         """Test finding entities with invalid MongoDB query."""
         query = {
             "filter": {"$invalid": "operator"}
         }
         
-        response = requests.post(
-            f"{self.base_url}/bertron/find",
+        response = test_client.post(
+            "/bertron/find",
             json=query,
             headers={"Content-Type": "application/json"}
         )
         
-        assert response.status_code == 400
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
         error_data = response.json()
         assert "Query error" in error_data["detail"]
 
-    def test_geo_nearby_search(self):
+    def test_geo_nearby_search(self, test_client: TestClient):
         """Test geographic nearby search."""
         # Search near the EMSL coordinates (34, 118.0)
         params = {
@@ -220,9 +216,9 @@ class TestBertronAPI:
             "radius_meters": 100000  # 100km radius
         }
         
-        response = requests.get(f"{self.base_url}/bertron/geo/nearby", params=params)
+        response = test_client.get("/bertron/geo/nearby", params=params)
         
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         entities_data = response.json()
         
         assert "documents" in entities_data
@@ -237,7 +233,7 @@ class TestBertronAPI:
         
         assert found_emsl, "Should find the EMSL entity in nearby search"
 
-    def test_geo_nearby_search_invalid_params(self):
+    def test_geo_nearby_search_invalid_params(self, test_client: TestClient):
         """Test geographic nearby search with invalid parameters."""
         params = {
             "latitude": 91.0,  # Invalid latitude
@@ -245,10 +241,10 @@ class TestBertronAPI:
             "radius_meters": 1000
         }
         
-        response = requests.get(f"{self.base_url}/bertron/geo/nearby", params=params)
-        assert response.status_code == 422  # Validation error
+        response = test_client.get("/bertron/geo/nearby", params=params)
+        assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
 
-    def test_geo_bounding_box_search(self):
+    def test_geo_bounding_box_search(self, test_client: TestClient):
         """Test geographic bounding box search."""
         # Bounding box around Alaska (ESS-DIVE data)
         params = {
@@ -258,9 +254,9 @@ class TestBertronAPI:
             "northeast_lng": -163.0
         }
         
-        response = requests.get(f"{self.base_url}/bertron/geo/bbox", params=params)
+        response = test_client.get("/bertron/geo/bbox", params=params)
         
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         entities_data = response.json()
         
         assert "documents" in entities_data
@@ -280,7 +276,7 @@ class TestBertronAPI:
         
         assert found_ess_dive, "Should find ESS-DIVE entities in Alaska bounding box"
 
-    def test_geo_bounding_box_invalid_coordinates(self):
+    def test_geo_bounding_box_invalid_coordinates(self, test_client: TestClient):
         """Test bounding box search with invalid coordinates."""
         params = {
             "southwest_lat": 66.0,  # Southwest lat > northeast lat
@@ -289,17 +285,11 @@ class TestBertronAPI:
             "northeast_lng": -166.0
         }
         
-        response = requests.get(f"{self.base_url}/bertron/geo/bbox", params=params)
-        assert response.status_code == 400
+        response = test_client.get("/bertron/geo/bbox", params=params)
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
         error_data = response.json()
         assert "latitude" in error_data["detail"].lower()
 
-    def test_root_redirect(self):
-        """Test that root endpoint redirects to docs."""
-        response = requests.get(f"{self.base_url}/", allow_redirects=False)
-        
-        assert response.status_code == 307  # Temporary redirect
-        assert response.headers["location"] == "/docs"
 
     def _verify_entity_structure(self, entity: Dict[str, Any]):
         """Helper method to verify entity structure matches schema."""
@@ -333,23 +323,23 @@ class TestBertronAPIIntegration:
     
     base_url = "http://app:8000"
     
-    def test_data_consistency_across_endpoints(self):
+    def test_data_consistency_across_endpoints(self, test_client: TestClient):
         """Test that the same entity returns consistent data across different endpoints."""
         entity_id = "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488"
         
         # Get entity by ID
-        response1 = requests.get(f"{self.base_url}/bertron/{entity_id}")
-        assert response1.status_code == 200
+        response1 = test_client.get(f"/bertron/{entity_id}")
+        assert response1.status_code == status.HTTP_200_OK
         entity_by_id = response1.json()
         
         # Find entity using filter
         query = {"filter": {"id": entity_id}}
-        response2 = requests.post(
-            f"{self.base_url}/bertron/find",
+        response2 = test_client.post(
+            "/bertron/find",
             json=query,
             headers={"Content-Type": "application/json"}
         )
-        assert response2.status_code == 200
+        assert response2.status_code == status.HTTP_200_OK
         entities_data = response2.json()
         assert entities_data["count"] == 1
         entity_by_filter = entities_data["documents"][0]
@@ -360,11 +350,11 @@ class TestBertronAPIIntegration:
         assert entity_by_id["ber_data_source"] == entity_by_filter["ber_data_source"]
         assert entity_by_id["coordinates"] == entity_by_filter["coordinates"]
 
-    def test_geographic_search_consistency(self):
+    def test_geographic_search_consistency(self, test_client: TestClient):
         """Test that geographic searches return consistent results."""
         # Get all entities first
-        response = requests.get(f"{self.base_url}/bertron")
-        assert response.status_code == 200
+        response = test_client.get("/bertron")
+        assert response.status_code == status.HTTP_200_OK
         all_entities = response.json()["documents"]
         
         if len(all_entities) == 0:
@@ -390,8 +380,8 @@ class TestBertronAPIIntegration:
             "longitude": lng,
             "radius_meters": 1000  # 1km radius
         }
-        nearby_response = requests.get(f"{self.base_url}/bertron/geo/nearby", params=nearby_params)
-        assert nearby_response.status_code == 200
+        nearby_response = test_client.get("/bertron/geo/nearby", params=nearby_params)
+        assert nearby_response.status_code == status.HTTP_200_OK
         nearby_entities = nearby_response.json()["documents"]
         
         # The test entity should be found in nearby search

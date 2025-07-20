@@ -52,8 +52,6 @@ services:
     # This service should not start automatically - only run on demand
     profiles: ["tools"]
     environment:
-      # Set the MongoDB connection string to connect to the mongo service
-      MONGO_URI: "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017"
       # Note: We use `VIRTUAL_ENV` to customize the path at which `uv` looks for and,
       #       if necessary, creates a Python virtual environment. By using a path
       #       outside of `/app`, we avoid interfering with—and using—any Python
@@ -61,13 +59,12 @@ services:
       #       Reference: https://docs.astral.sh/uv/pip/environments/#using-arbitrary-python-environments
       VIRTUAL_ENV: /app_venv
     volumes:
-      # Access the ingest script
-      - ".:/app"
-      - "./tests/data:/data"
+      - "./mongodb/ingest_data.py:/ingest_data.py"
+      - "./tests/data:/test_data"  # to access the test data files
     depends_on:
       - mongo
     # Run ingest with data dir mounted to /data
-    command: ["uv", "run", "--active", "python", "/app/mongodb/ingest_data.py", "--mongo-uri", "${MONGO_URI}", "--input", "/data", "--clean"]
+    command: ["uv", "run", "--active", "python", "/ingest_data.py", "--mongo-uri", "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017", "--input", "/test_data", "--clean"]
 
   test:
     # Use the same container image as the app service for consistency

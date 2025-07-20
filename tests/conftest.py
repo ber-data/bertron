@@ -11,7 +11,7 @@ Source: https://docs.pytest.org/en/stable/reference/fixtures.html#conftest-py-sh
 
 import pytest
 
-from config import settings as cfg
+from src.config import settings as cfg
 
 
 # Note: We use `autouse=True` so that this fixture is automatically applied to each test

@@ -81,6 +81,7 @@ def get_all_entities():
 
 
 class MongoDBQuery(BaseModel):
+    # TODO: Relocate this class definition.
     filter: Dict[str, Any] = Field(default={}, description="MongoDB find query filter")
     projection: Optional[Dict[str, Any]] = Field(
         default=None, description="Fields to include or exclude"

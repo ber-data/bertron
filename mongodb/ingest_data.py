@@ -6,12 +6,13 @@ import logging
 import os
 import sys
 from datetime import datetime
-from typing import Dict, List, Any, Optional
+from typing import Dict, Optional
 
 import pymongo
 from pymongo.errors import ConnectionFailure, PyMongoError
 from jsonschema import validate, ValidationError
-import requests
+import httpx
+
 
 # Set up logging
 logging.basicConfig(
@@ -63,7 +64,7 @@ class BertronMongoDBIngestor:
         try:
             logger.info(f"Loading schema from {self.schema_path}")
             if self.schema_path.startswith('http://') or self.schema_path.startswith('https://'):
-                response = requests.get(self.schema_path)
+                response = httpx.get(self.schema_path)
                 response.raise_for_status()
                 self.schema = response.json()
             else:
