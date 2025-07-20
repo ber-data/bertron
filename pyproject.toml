@@ -24,6 +24,10 @@ dependencies = [
   "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git",
   # "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
   "fastapi[standard]>=0.115.12",
+  # `httpx` is a dependency of FastAPI's `TestClient` class, which we use
+  # in the server test suite. It is also a dependency of `mongodb/ingest_data.py`,
+  # which is why we currently list it as a non-dev dependency.
+  "httpx>=0.28.1",
   "jsonschema>=4.0.0",
   "nmdc-api-utilities>=0.3.9",
   "pydantic-settings>=2.10.1",
@@ -33,9 +37,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    # `httpx` is a dependency of FastAPI's `TestClient` class.
-    # Docs: https://fastapi.tiangolo.com/tutorial/testing/#using-testclient
-    "httpx>=0.28.1",
     "pre-commit>=4.1.0",
     "pyright>=1.1.386",
     "pytest>=8.4.1",
