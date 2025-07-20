@@ -40,6 +40,7 @@ class BertronMongoDBIngestor:
         try:
             logger.info(f"Connecting to MongoDB at {self.mongo_uri}")
             self.client = pymongo.MongoClient(self.mongo_uri)
+            logger.info(f"Using MongoDB database: {self.db_name}")
             self.db = self.client[self.db_name]
         except ConnectionFailure as e:
             logger.error(f"Failed to connect to MongoDB: {e}")
