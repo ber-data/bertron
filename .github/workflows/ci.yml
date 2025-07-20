@@ -47,8 +47,10 @@ jobs:
       - name: Spin up Docker Compose stack in background
         run: docker compose up --detach
 
-      - name: Spin up `ingest` container
-        run: docker compose run --rm ingest
+      # Note: Some of the tests currently depend upon data having been ingested into the test database.
+      # TODO: Redesign tests to remove this dependency.
+      - name: Ingest test data into the test database
+        run: docker compose run --rm -it ingest uv run --active python /ingest_data.py --mongo-uri "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}" --db-name "bertron_test" --input /test_data --clean
 
       # Note: The `--exit-code-from test` option applies the exit code of the `ingest` container
       #       to the `docker compose` process, so that the GHA step fails if ingest fails.
