@@ -21,6 +21,14 @@ class TestBertronAPI:
           Instead, implement a sufficient fixture within the test suite.
     """
 
+    def test_version_endpoint_returns_version_response(self, test_client: TestClient):
+        """
+        TODO: Remove this duplicate test after debugging the GitHub Actions issue.
+              This test is already implemented in `tests/test_server.py`.
+        """
+        response = test_client.get("/version")
+        assert response.status_code == status.HTTP_200_OK
+
     def test_get_all_entities(self, test_client: TestClient):
         """Test getting all entities from the collection."""
         response = test_client.get("/bertron")
