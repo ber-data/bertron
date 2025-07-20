@@ -79,7 +79,7 @@ services:
       MONGO_PORT: 27017
       MONGO_USERNAME: ${MONGO_USERNAME:?}
       MONGO_PASSWORD: ${MONGO_PASSWORD:?}
-      MONGO_DATABASE: ${MONGO_DATABASE:?}  # the test suite will disregard this
+      MONGO_DATABASE: ${MONGO_DATABASE:?}  # reminder: the test suite patches this value
       VIRTUAL_ENV: /app_venv
     depends_on:
       - app
