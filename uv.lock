@@ -110,7 +110,7 @@ source = { editable = "." }
 dependencies = [
     { name = "bertron-schema" },
     { name = "fastapi", extra = ["standard"] },
-    { name = "jsonschema" },
+    { name = "linkml" },
     { name = "nmdc-api-utilities" },
     { name = "pydantic-settings" },
     { name = "pymongo" },
@@ -131,7 +131,7 @@ dev = [
 requires-dist = [
     { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.12" },
-    { name = "jsonschema", specifier = ">=4.0.0" },
+    { name = "linkml", specifier = ">=1.9.2" },
     { name = "nmdc-api-utilities", specifier = ">=0.3.9" },
     { name = "pydantic-settings", specifier = ">=2.10.1" },
     { name = "pymongo", specifier = ">=4.13.1" },
