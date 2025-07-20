@@ -114,7 +114,6 @@ dependencies = [
     { name = "nmdc-api-utilities" },
     { name = "pydantic-settings" },
     { name = "pymongo" },
-    { name = "pytest" },
     { name = "uvicorn" },
 ]
 
@@ -123,6 +122,7 @@ dev = [
     { name = "httpx" },
     { name = "pre-commit" },
     { name = "pyright" },
+    { name = "pytest" },
     { name = "ruff" },
 ]
 
@@ -134,7 +134,6 @@ requires-dist = [
     { name = "nmdc-api-utilities", specifier = ">=0.3.9" },
     { name = "pydantic-settings", specifier = ">=2.10.1" },
     { name = "pymongo", specifier = ">=4.13.1" },
-    { name = "pytest", specifier = ">=8.4.0" },
     { name = "uvicorn", specifier = ">=0.34.3" },
 ]
 
@@ -143,6 +142,7 @@ dev = [
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "pre-commit", specifier = ">=4.1.0" },
     { name = "pyright", specifier = ">=1.1.386" },
+    { name = "pytest", specifier = ">=8.4.1" },
     { name = "ruff", specifier = ">=0.9.9" },
 ]
 

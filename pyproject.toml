@@ -28,7 +28,6 @@ dependencies = [
   "nmdc-api-utilities>=0.3.9",
   "pydantic-settings>=2.10.1",
   "pymongo>=4.13.1",
-  "pytest>=8.4.0",
   "uvicorn>=0.34.3",
 ]
 
@@ -39,6 +38,7 @@ dev = [
     "httpx>=0.28.1",
     "pre-commit>=4.1.0",
     "pyright>=1.1.386",
+    "pytest>=8.4.1",
     "ruff>=0.9.9",
 ]
 
