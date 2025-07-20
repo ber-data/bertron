@@ -26,6 +26,7 @@ dependencies = [
   "fastapi[standard]>=0.115.12",
   "jsonschema>=4.0.0",
   "nmdc-api-utilities>=0.3.9",
+  "pydantic-settings>=2.10.1",
   "pymongo>=4.13.1",
   "pytest>=8.4.0",
   "uvicorn>=0.34.3",
