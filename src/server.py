@@ -60,8 +60,8 @@ def get_version() -> VersionResponse:
     )
 
 
-@app.get("/bertron", response_model=EntitiesResponse)
-def get_all_entities():
+@app.get("/bertron")
+def get_all_entities() -> EntitiesResponse:
     r"""Get all documents from the entities collection."""
     db = mongo_client[cfg.mongo_database]
 
@@ -77,7 +77,7 @@ def get_all_entities():
     for doc in documents:
         entities.append(convert_document_to_entity(doc))
 
-    return {"documents": entities, "count": len(entities)}
+    return EntitiesResponse(documents=entities, count=len(entities))
 
 
 class MongoDBQuery(BaseModel):
@@ -97,8 +97,8 @@ class MongoDBQuery(BaseModel):
     )
 
 
-@app.post("/bertron/find", response_model=EntitiesResponse)
-def find_entities(query: MongoDBQuery):
+@app.post("/bertron/find")
+def find_entities(query: MongoDBQuery) -> EntitiesResponse:
     r"""Execute a MongoDB find operation on the entities collection with filter, projection, skip, limit, and sort options.
 
     Example query body:
@@ -136,13 +136,13 @@ def find_entities(query: MongoDBQuery):
         for doc in documents:
             entities.append(convert_document_to_entity(doc))
 
-        return {"documents": entities, "count": len(entities)}
+        return EntitiesResponse(documents=entities, count=len(entities))
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
 
 
-@app.get("/bertron/geo/nearby", response_model=EntitiesResponse)
+@app.get("/bertron/geo/nearby")
 def find_nearby_entities(
     latitude: float = Query(
         ..., ge=-90, le=90, description="Center latitude in degrees"
@@ -151,7 +151,7 @@ def find_nearby_entities(
         ..., ge=-180, le=180, description="Center longitude in degrees"
     ),
     radius_meters: float = Query(..., gt=0, description="Search radius in meters"),
-):
+) -> EntitiesResponse:
     r"""Find entities within a specified radius of a geographic point using MongoDB's $near operator.
 
     This endpoint uses MongoDB's geospatial $near query which requires a 2dsphere index
@@ -193,13 +193,13 @@ def find_nearby_entities(
         for doc in documents:
             entities.append(convert_document_to_entity(doc))
 
-        return {"documents": entities, "count": len(entities)}
+        return EntitiesResponse(documents=entities, count=len(entities))
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Nearby query error: {str(e)}")
 
 
-@app.get("/bertron/geo/bbox", response_model=EntitiesResponse)
+@app.get("/bertron/geo/bbox")
 def find_entities_in_bounding_box(
     southwest_lat: float = Query(
         ..., ge=-90, le=90, description="Southwest corner latitude"
@@ -213,7 +213,7 @@ def find_entities_in_bounding_box(
     northeast_lng: float = Query(
         ..., ge=-180, le=180, description="Northeast corner longitude"
     ),
-):
+) -> EntitiesResponse:
     r"""Find entities within a bounding box using MongoDB's $geoWithin operator.
 
     This endpoint finds all entities whose coordinates fall within the specified
@@ -266,7 +266,7 @@ def find_entities_in_bounding_box(
         for doc in documents:
             entities.append(convert_document_to_entity(doc))
 
-        return {"documents": entities, "count": len(entities)}
+        return EntitiesResponse(documents=entities, count=len(entities))
 
     except Exception as e:
         raise HTTPException(
@@ -274,8 +274,8 @@ def find_entities_in_bounding_box(
         )
 
 
-@app.get("/bertron/{id}", response_model=bertron_schema_pydantic.Entity)
-def get_entity_by_id(id: str):
+@app.get("/bertron/{id}")
+def get_entity_by_id(id: str) -> Optional[bertron_schema_pydantic.Entity]:
     r"""Get a single entity by its ID.
 
     Example: /bertron/emsl:12345
