@@ -11,25 +11,41 @@ Source: https://docs.pytest.org/en/stable/reference/fixtures.html#conftest-py-sh
 
 import pytest
 
-from src.config import settings as cfg
+from src.config import settings
 
 
 # Note: We use `autouse=True` so that this fixture is automatically applied to each test
 #       within its scope (since we are in a `conftest.py` file, its scope consists of
 #       the current directory and all descendant directories).
 @pytest.fixture(autouse=True)
-def patched_cfg():
+def patched_config(monkeypatch):
     r"""
     A `pytest` fixture that temporarily patches the application configuration
     so it references a test database.
+
+    From the pytest documentation:
+    > `monkeypatch.setattr` works by (temporarily) changing the object that a name points to
+    > with another one. There can be many names pointing to any individual object, so for
+    > patching to work you must ensure that you patch the name used by the system under test.
+    Source: https://docs.pytest.org/en/stable/reference/reference.html#pytest.MonkeyPatch.setattr
+
+    Also from the pytest documentation:
+    > All modifications will be undone after the requesting test function or fixture has finished.
     """
 
+    # First, we do a safety check to ensure that the test database is distinct from the main one.
+    main_database_name = settings.mongo_database
     test_database_name = "bertron_test"
-    main_database_name = cfg.mongo_database
     assert main_database_name != test_database_name, (
         "The main database name matches the test database name. "
         "Reconfigure your environment to ensure they differ."
     )
-    cfg.mongo_database = test_database_name
-    yield cfg
-    cfg.mongo_database = main_database_name
+
+    # Then, we patch the config object so it references the test database.
+    # Note: Different modules import the config object using different `import` paths.
+    monkeypatch.setattr("config.settings.mongo_database", test_database_name)
+    monkeypatch.setattr("src.config.settings.mongo_database", test_database_name)
+
+    # Finally, we yield control to the test that depends on this fixture.
+    # Note: After the test completes, `monkeypatch` will automatically un-patch things.
+    yield
