@@ -3,8 +3,11 @@ services:
     # Use the container image built in the "development" stage of the Dockerfile.
     build: { context: ".", dockerfile: Dockerfile, target: development }
     restart: unless-stopped
-    # Use constant values for MongoDB connection within the Docker Compose stack.
-    # The MongoDB service is accessible at hostname 'mongo' (service name) on port 27017.
+    # Propagate environment variables from the host into the container.
+    # Note: The `:?` suffix makes it so Docker Compose displays an error if the
+    #       environment variable is either (a) undefined, or (b) empty, in the
+    #       host environment.
+    # Docs: https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#additional-information
     environment:
       MONGO_HOST: mongo
       MONGO_PORT: 27017
