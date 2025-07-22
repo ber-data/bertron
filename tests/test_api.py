@@ -319,7 +319,9 @@ class TestBertronAPI:
 class TestBertronAPIIntegration:
     """Integration tests that combine multiple API operations."""
     
-    base_url = "http://app:8000"
+    # No need for live server since we're using TestClient
+    # Uncomment the line below if you want to run against a test server
+    # base_url = "http://app:8000"
     
     def test_data_consistency_across_endpoints(self, test_client: TestClient):
         """Test that the same entity returns consistent data across different endpoints."""
