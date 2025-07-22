@@ -9,7 +9,7 @@ class MongoFindQueryDescriptor(BaseModel):
     r"""
     A model representing a MongoDB find query, including the filter, the projection,
     and some additional options.
-    
+
     Reference: https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
     """
 
