@@ -68,9 +68,7 @@ class BertronMongoDBIngestor:
         assert isinstance(self.schema_path, str), "Schema path has not been set"
         try:
             logger.info(f"Loading schema from {self.schema_path}")
-            if self.schema_path.startswith("http://") or self.schema_path.startswith(
-                "https://"
-            ):
+            if self.schema_path.startswith(("http://", "https://")):
                 response = httpx.get(self.schema_path)
                 response.raise_for_status()
                 self.schema = response.json()
