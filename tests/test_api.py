@@ -1,16 +1,71 @@
+import sys
 from typing import Dict, Any
+from unittest.mock import patch
 
 from fastapi.testclient import TestClient
+from pymongo import MongoClient
+from pymongo.database import Database
 import pytest
 from starlette import status
 
+from src.config import settings as cfg
 from src.server import app
+from mongodb.ingest_data import main as ingest_main
 
 
 @pytest.fixture
 def test_client():
     test_client = TestClient(app)
     yield test_client
+
+
+@pytest.fixture
+def seeded_db():
+    r"""Yields a database seeded using (effectively) the `ingest` script."""
+
+    # Get a reference to the test database.
+    mongo_client = MongoClient(
+        host=cfg.mongo_host,
+        port=cfg.mongo_port,
+        username=cfg.mongo_username,
+        password=cfg.mongo_password,
+    )
+    db = mongo_client[cfg.mongo_database]
+
+    # Drop the test database.
+    mongo_client.drop_database(cfg.mongo_database)
+
+    # Invoke the standard `ingest` script to populate the test database.
+    #
+    # Note: We patch `sys.argv` so that the script can run as if it
+    #       were invoked from the command line.
+    #
+    #       TODO: Update the ingest script so its core functionality
+    #             can be invoked directly (e.g. as a function) without
+    #             needing to patch `sys.argv`.
+    #
+    ingest_cli_args = [
+        "ingest_data.py",
+        "--mongo-uri",
+        f"mongodb://{cfg.mongo_username}:{cfg.mongo_password}@{cfg.mongo_host}:{cfg.mongo_port}",
+        "--db-name",
+        cfg.mongo_database,
+        "--input",
+        "tests/data",
+        "--clean",
+    ]
+    with patch.object(sys, "argv", ingest_cli_args):
+        ingest_main()
+    assert len(db.list_collection_names()) > 0
+
+    # Yield a reference to the now-seeded test database.
+    yield db
+
+    # Drop the test database.
+    mongo_client.drop_database(cfg.mongo_database)
+
+    # Close the Mongo connection.
+    mongo_client.close()
 
 
 class TestBertronAPI:
@@ -21,7 +76,7 @@ class TestBertronAPI:
           Instead, implement a sufficient fixture within the test suite.
     """
 
-    def test_get_all_entities(self, test_client: TestClient):
+    def test_get_all_entities(self, test_client: TestClient, seeded_db: Database):
         """Test getting all entities from the collection."""
         response = test_client.get("/bertron")
 
@@ -44,7 +99,7 @@ class TestBertronAPI:
             entity = entities_data["documents"][0]
             self._verify_entity_structure(entity)
 
-    def test_get_entity_by_id_emsl(self, test_client: TestClient):
+    def test_get_entity_by_id_emsl(self, test_client: TestClient, seeded_db: Database):
         """Test getting a specific EMSL entity by ID."""
         entity_id = "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488"
         response = test_client.get(f"/bertron/{entity_id}")
@@ -65,7 +120,9 @@ class TestBertronAPI:
         self._verify_entity_structure(entity)
 
     # TODO: Consider using URL encoding (a.k.a. "percent-encoding") for the slashes.
-    def test_get_entity_by_id_ess_dive(self, test_client: TestClient):
+    def test_get_entity_by_id_ess_dive(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test getting a specific ESS-DIVE entity by ID."""
         entity_id = "doi:10.15485/2441497"
         response = test_client.get(f"/bertron/{entity_id}")
@@ -80,7 +137,7 @@ class TestBertronAPI:
 
         self._verify_entity_structure(entity)
 
-    def test_get_entity_by_id_nmdc(self, test_client: TestClient):
+    def test_get_entity_by_id_nmdc(self, test_client: TestClient, seeded_db: Database):
         """Test getting a specific NMDC entity by ID."""
         entity_id = "nmdc:bsm-11-bsf8yq62"
         response = test_client.get(f"/bertron/{entity_id}")
@@ -102,7 +159,9 @@ class TestBertronAPI:
 
         self._verify_entity_structure(entity)
 
-    def test_get_entity_by_id_not_found(self, test_client: TestClient):
+    def test_get_entity_by_id_not_found(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test getting a non-existent entity returns 404."""
         entity_id = "nonexistent:12345"
         response = test_client.get(f"/bertron/{entity_id}")
@@ -111,7 +170,9 @@ class TestBertronAPI:
         error_data = response.json()
         assert "not found" in error_data["detail"].lower()
 
-    def test_find_entities_with_filter(self, test_client: TestClient):
+    def test_find_entities_with_filter(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test finding entities with MongoDB filter."""
         query = {"filter": {"ber_data_source": "EMSL"}, "limit": 10}
 
@@ -132,7 +193,9 @@ class TestBertronAPI:
             assert entity["ber_data_source"] == "EMSL"
             self._verify_entity_structure(entity)
 
-    def test_find_entities_with_projection(self, test_client: TestClient):
+    def test_find_entities_with_projection(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test finding entities with field projection."""
         query = {
             "filter": {},
@@ -155,7 +218,9 @@ class TestBertronAPI:
             assert "name" in entity
             assert "ber_data_source" in entity
 
-    def test_find_entities_with_sort_and_limit(self, test_client: TestClient):
+    def test_find_entities_with_sort_and_limit(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test finding entities with sorting and limiting."""
         query = {"filter": {}, "sort": {"ber_data_source": 1, "id": 1}, "limit": 3}
 
@@ -176,7 +241,9 @@ class TestBertronAPI:
                 next_entity = entities_data["documents"][i + 1]
                 assert current["ber_data_source"] <= next_entity["ber_data_source"]
 
-    def test_find_entities_invalid_query(self, test_client: TestClient):
+    def test_find_entities_invalid_query(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test finding entities with invalid MongoDB query."""
         query = {"filter": {"$invalid": "operator"}}
 
@@ -188,7 +255,7 @@ class TestBertronAPI:
         error_data = response.json()
         assert "Query error" in error_data["detail"]
 
-    def test_geo_nearby_search(self, test_client: TestClient):
+    def test_geo_nearby_search(self, test_client: TestClient, seeded_db: Database):
         """Test geographic nearby search."""
         # Search near the EMSL coordinates (34, 118.0)
         params = {
@@ -214,7 +281,9 @@ class TestBertronAPI:
 
         assert found_emsl, "Should find the EMSL entity in nearby search"
 
-    def test_geo_nearby_search_invalid_params(self, test_client: TestClient):
+    def test_geo_nearby_search_invalid_params(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test geographic nearby search with invalid parameters."""
         params = {
             "latitude": 91.0,  # Invalid latitude
@@ -225,7 +294,9 @@ class TestBertronAPI:
         response = test_client.get("/bertron/geo/nearby", params=params)
         assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
 
-    def test_geo_bounding_box_search(self, test_client: TestClient):
+    def test_geo_bounding_box_search(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test geographic bounding box search."""
         # Bounding box around Alaska (ESS-DIVE data)
         params = {
@@ -257,7 +328,9 @@ class TestBertronAPI:
 
         assert found_ess_dive, "Should find ESS-DIVE entities in Alaska bounding box"
 
-    def test_geo_bounding_box_invalid_coordinates(self, test_client: TestClient):
+    def test_geo_bounding_box_invalid_coordinates(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test bounding box search with invalid coordinates."""
         params = {
             "southwest_lat": 66.0,  # Southwest lat > northeast lat
@@ -309,7 +382,9 @@ class TestBertronAPIIntegration:
     # Uncomment the line below if you want to run against a test server
     # base_url = "http://app:8000"
 
-    def test_data_consistency_across_endpoints(self, test_client: TestClient):
+    def test_data_consistency_across_endpoints(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test that the same entity returns consistent data across different endpoints."""
         entity_id = "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488"
 
@@ -334,7 +409,9 @@ class TestBertronAPIIntegration:
         assert entity_by_id["ber_data_source"] == entity_by_filter["ber_data_source"]
         assert entity_by_id["coordinates"] == entity_by_filter["coordinates"]
 
-    def test_geographic_search_consistency(self, test_client: TestClient):
+    def test_geographic_search_consistency(
+        self, test_client: TestClient, seeded_db: Database
+    ):
         """Test that geographic searches return consistent results."""
         # Get all entities first
         response = test_client.get("/bertron")

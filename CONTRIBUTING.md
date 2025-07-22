@@ -97,12 +97,25 @@ docker compose up ingest
 
 ### Run Tests
 
-Ingest the test DB
-```sh
-docker compose up ingest-test
-```
+Run the tests:
 
-Run the tests
 ```sh
 docker compose up test
 ```
+
+<details>
+<summary>Show/hide FAQ about the ingest script's role in testing</summary>
+
+Note: The test suite includes a fixture, named `seeded_db`, that will invoke the ingest script automatically before each test that specifies that fixture as a dependency.
+
+```py
+def test_foo(seeded_db):
+    # The ingest script will be invoked automatically before this test runs.
+    pass
+
+def test_foo()
+    # The ingest script will _not_ be invoked automatically before this test runs.
+    pass
+```
+
+</details>
