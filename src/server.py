@@ -325,11 +325,25 @@ def get_entity_by_id(id: str) -> Optional[Entity]:
 def clean_document(
     document: Dict[str, Any],
 ) -> Dict[str, Any]:
-    """Removes fields from the MongoDB document, that don't exist on the Entity model."""
-    # Remove MongoDB _id, metadata, geojson
-    document.pop("_id", None)
-    document.pop("_metadata", None)
-    document.pop("geojson", None)
+    """
+    Removes fields from the MongoDB document, that don't exist on the `Entity` model.
+    
+    This function was designed to remove the `_id`, `_metadata`, and `geojson` fields
+    from the document.
+
+    >>> clean_document({"_id": "123", "_metadata": {}, "geojson": {}, "name": "Test"})
+    {'name': 'Test'}
+    >>> clean_document({})
+    {}
+    """
+
+    # Determine the names of the fields that the Entity model has.
+    model_field_names = Entity.model_fields.keys()
+
+    # Remove all _other_ fields from the document.
+    for key in list(document.keys()):
+        if key not in model_field_names:
+            document.pop(key)
 
     return document
 

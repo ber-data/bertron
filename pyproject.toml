@@ -46,3 +46,9 @@ dev = [
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
+
+# Configure pytest.
+# Docs: https://docs.pytest.org/en/stable/reference/customize.html#pyproject-toml
+[tool.pytest.ini_options]
+# Configure pytest to run doctests, and to ignore directories that contain currently-broken modules.
+addopts = "--doctest-modules --ignore='src/bertron/' --ignore='mongodb/legacy/'"
