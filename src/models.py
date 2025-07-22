@@ -1,6 +1,41 @@
+from typing import Any, Dict, Optional, List
+
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Optional, List
+
 from schema.datamodel.bertron_schema_pydantic import Entity
+
+
+class MongoFindQueryDescriptor(BaseModel):
+    r"""
+    A model representing a MongoDB find query, including the filter, the projection,
+    and some additional options.
+    
+    Reference: https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
+    """
+
+    filter: Dict[str, Any] = Field(
+        default={},
+        description="MongoDB find query filter",
+    )
+    projection: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="Fields to include or exclude",
+    )
+    skip: Optional[int] = Field(
+        default=0,
+        ge=0,
+        description="Number of documents to skip",
+    )
+    limit: Optional[int] = Field(
+        default=100,
+        ge=1,
+        le=1000,  # TODO: Was this chosen arbitrarily?
+        description="Maximum number of documents to return",
+    )
+    sort: Optional[Dict[str, int]] = Field(
+        default=None,
+        description="Sort criteria (1 for ascending, -1 for descending)",
+    )
 
 
 class EntitiesResponse(BaseModel):

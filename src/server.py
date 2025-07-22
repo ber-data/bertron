@@ -4,13 +4,18 @@ from typing import Optional, Dict, Any, Union
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
-from pydantic import BaseModel, Field
 from schema.datamodel.bertron_schema_pydantic import Entity
 import uvicorn
 
-from lib.helpers import get_package_version
-from models import HealthResponse, VersionResponse, EntitiesResponse, FindResponse
 from config import settings as cfg
+from lib.helpers import get_package_version
+from src.models import (
+    EntitiesResponse,
+    FindResponse,
+    HealthResponse,
+    MongoFindQueryDescriptor,
+    VersionResponse,
+)
 
 
 # Set up logging
@@ -80,25 +85,10 @@ def get_all_entities() -> EntitiesResponse:
     return EntitiesResponse(documents=entities, count=len(entities))
 
 
-class MongoDBQuery(BaseModel):
-    # TODO: Relocate this class definition.
-    filter: Dict[str, Any] = Field(default={}, description="MongoDB find query filter")
-    projection: Optional[Dict[str, Any]] = Field(
-        default=None, description="Fields to include or exclude"
-    )
-    skip: Optional[int] = Field(
-        default=0, ge=0, description="Number of documents to skip"
-    )
-    limit: Optional[int] = Field(
-        default=100, ge=1, le=1000, description="Maximum number of documents to return"
-    )
-    sort: Optional[Dict[str, int]] = Field(
-        default=None, description="Sort criteria (1 for ascending, -1 for descending)"
-    )
-
-
 @app.post("/bertron/find")
-def find_entities(query: MongoDBQuery) -> Union[EntitiesResponse, FindResponse]:
+def find_entities(
+    query: MongoFindQueryDescriptor,
+) -> Union[EntitiesResponse, FindResponse]:
     r"""Execute a MongoDB find operation on the entities collection with filter, projection, skip, limit, and sort options.
 
     Returns EntitiesResponse (validated Entity objects) when no projection is specified,
