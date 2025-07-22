@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Optional, List, Dict
+from typing import Optional, List
 from schema.datamodel.bertron_schema_pydantic import Entity
 
 
