@@ -91,7 +91,7 @@ uv run --active python /app/mongodb/ingest_data.py \
 ```
 (See docker-compose.yml for details)
 
-Or if you want to use daat in tests/data simply use:
+Or if you want to use data in tests/data simply use:
 ```sh
 docker compose up ingest
 ```
