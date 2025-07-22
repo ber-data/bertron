@@ -5,7 +5,7 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
 from pydantic import BaseModel, Field
-from schema.datamodel import bertron_schema_pydantic
+from schema.datamodel.bertron_schema_pydantic import Entity
 import uvicorn
 
 from lib.helpers import get_package_version
@@ -275,7 +275,7 @@ def find_entities_in_bounding_box(
 
 
 @app.get("/bertron/{id:path}")
-def get_entity_by_id(id: str) -> Optional[bertron_schema_pydantic.Entity]:
+def get_entity_by_id(id: str) -> Optional[Entity]:
     r"""Get a single entity by its ID.
 
     Example: /bertron/emsl:12345
@@ -317,14 +317,14 @@ def get_entity_by_id(id: str) -> Optional[bertron_schema_pydantic.Entity]:
 
 def convert_document_to_entity(
     document: Dict[str, Any],
-) -> Optional[bertron_schema_pydantic.Entity]:
+) -> Optional[Entity]:
     """Convert a MongoDB document to an Entity object."""
     # Remove MongoDB _id, metadata, geojson
     document.pop("_id", None)
     document.pop("_metadata", None)
     document.pop("geojson", None)
 
-    return bertron_schema_pydantic.Entity(**document)
+    return Entity(**document)
 
 
 if __name__ == "__main__":

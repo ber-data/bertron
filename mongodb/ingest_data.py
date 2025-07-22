@@ -7,6 +7,7 @@ import os
 import sys
 from datetime import datetime
 from typing import Dict, Optional
+from schema.datamodel.bertron_schema_pydantic import Entity
 
 import pymongo
 from pymongo.errors import ConnectionFailure, PyMongoError
@@ -80,6 +81,7 @@ class BertronMongoDBIngestor:
         """Validate data against the loaded schema."""
         try:
             validate(instance=data, schema=self.schema)
+            entity = Entity(**data)  # Validate against Pydantic model
             return True
         except ValidationError as e:
             logger.error(f"Validation error: {e}")
