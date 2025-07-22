@@ -325,7 +325,7 @@ def get_entity_by_id(id: str) -> Optional[Entity]:
 def clean_document(
     document: Dict[str, Any],
 ) -> Dict[str, Any]:
-    """Convert a MongoDB document to an Entity object."""
+    """Removes fields from the MongoDB document, that don't exist on the Entity model."""
     # Remove MongoDB _id, metadata, geojson
     document.pop("_id", None)
     document.pop("_metadata", None)
