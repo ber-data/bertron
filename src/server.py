@@ -327,7 +327,7 @@ def clean_document(
 ) -> Dict[str, Any]:
     """
     Removes fields from the MongoDB document, that don't exist on the `Entity` model.
-    
+
     This function was designed to remove the `_id`, `_metadata`, and `geojson` fields
     from the document.
 
