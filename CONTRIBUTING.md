@@ -81,15 +81,14 @@ Also, you can access the MongoDB server at: `localhost:27017` (its admin credent
 
 ### Run Ingest
 To populate the database with data run
+```sh
+docker compose run --volume /path/to/data:/data --rm ingest \
+    uv run --active \
+        python /app/mongodb/ingest_data.py \
+        --mongo-uri "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}" \
+        --input /data --clean
 ```
-docker compose run \
---volume /path/to/data:/data \ 
---rm ingest \
-uv run --active python /app/mongodb/ingest_data.py \
---mongo-uri "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}" \
---input /data --clean
-```
-(See docker-compose.yml for details)
+(See `docker-compose.yml` for details)
 
 Or if you want to use data in tests/data simply use:
 ```sh
