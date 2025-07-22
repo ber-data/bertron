@@ -1,12 +1,12 @@
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional, List
-from schema.datamodel import bertron_schema_pydantic
+from schema.datamodel.bertron_schema_pydantic import Entity
 
 
 class EntitiesResponse(BaseModel):
     r"""A response containing a list of entities and count."""
 
-    documents: List[bertron_schema_pydantic.Entity] = Field(
+    documents: List[Entity] = Field(
         ...,
         title="Entity documents",
         description="List of entities returned by the query",
