@@ -68,6 +68,7 @@ to make sure the Python virtual environment has the updated dependencies.
 
 ## Spin up container-based development environment
 
+### Start the server
 This repository includes a container-based development environment. If you have Docker installed, you can spin up that development environment by running:
 
 ```sh
@@ -77,3 +78,32 @@ docker compose up --detach
 Once that's up and running, you can access the API at: http://localhost:8000
 
 Also, you can access the MongoDB server at: `localhost:27017` (its admin credentials are in `docker-compose.yml`)
+
+### Run Ingest
+To populate the database with data run
+```
+docker compose run \
+--volume /path/to/data:/data \ 
+--rm ingest \
+uv run --active python /app/mongodb/ingest_data.py \
+--mongo-uri "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}" \
+--input /data --clean
+```
+(See docker-compose.yml for details)
+
+Or if you want to use daat in tests/data simply use:
+```sh
+docker compose up ingest
+```
+
+### Run Tests
+
+Ingest the test DB
+```sh
+docker compose up ingest-test
+```
+
+Run the tests
+```sh
+docker compose up test
+```
