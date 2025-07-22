@@ -17,6 +17,7 @@ class EntitiesResponse(BaseModel):
         description="Total number of entities returned",
     )
 
+
 class FindResponse(BaseModel):
     r"""A response containing a list of dicts and count."""
 

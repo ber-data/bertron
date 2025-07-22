@@ -135,7 +135,7 @@ def find_entities(query: MongoDBQuery) -> Union[EntitiesResponse, FindResponse]:
 
         # Convert cursor to list
         documents = list(cursor)
-        
+
         # Return different response types based on whether projection is used
         if query.projection:
             # When projection is used, return raw documents as FindResponse
@@ -143,8 +143,10 @@ def find_entities(query: MongoDBQuery) -> Union[EntitiesResponse, FindResponse]:
             cleaned_documents = []
             for doc in documents:
                 cleaned_documents.append(clean_document(doc))
-            
-            return FindResponse(documents=cleaned_documents, count=len(cleaned_documents))
+
+            return FindResponse(
+                documents=cleaned_documents, count=len(cleaned_documents)
+            )
         else:
             # When no projection, return validated Entity objects as EntitiesResponse
             entities = []
