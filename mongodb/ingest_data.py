@@ -9,7 +9,8 @@ from datetime import datetime
 from typing import Dict, Optional
 from schema.datamodel.bertron_schema_pydantic import Entity
 
-import pymongo
+from pymongo import MongoClient, GEOSPHERE
+from pymongo.database import Database
 from pymongo.errors import ConnectionFailure, PyMongoError
 from jsonschema import validate, ValidationError
 import httpx
@@ -29,18 +30,18 @@ class BertronMongoDBIngestor:
 
     def __init__(self, mongo_uri: str, db_name: str, schema_path: str):
         """Initialize the ingestor with connection and schema details."""
-        self.mongo_uri = mongo_uri
-        self.db_name = db_name
-        self.schema_path = schema_path
-        self.client = None
-        self.db = None
-        self.schema = None
+        self.mongo_uri: str = mongo_uri
+        self.db_name: str = db_name
+        self.schema_path: Optional[str] = schema_path
+        self.client: Optional[MongoClient] = None
+        self.db: Optional[Database] = None
+        self.schema: Optional[dict] = None
 
     def connect(self) -> None:
         """Connect to MongoDB."""
         try:
             logger.info(f"Connecting to MongoDB at {self.mongo_uri}")
-            self.client = pymongo.MongoClient(self.mongo_uri)
+            self.client = MongoClient(self.mongo_uri)
             logger.info(f"Using MongoDB database: {self.db_name}")
             self.db = self.client[self.db_name]
         except ConnectionFailure as e:
@@ -49,6 +50,7 @@ class BertronMongoDBIngestor:
 
     def clean_collections(self) -> None:
         """Delete existing collections to start fresh."""
+        assert self.db is not None, "Connection to database has not been established"
         try:
             collection_names = self.db.list_collection_names()
             if "entities" in collection_names:
@@ -63,6 +65,7 @@ class BertronMongoDBIngestor:
 
     def load_schema(self) -> Dict:
         """Load the JSON schema from file."""
+        assert isinstance(self.schema_path, str), "Schema path has not been set"
         try:
             logger.info(f"Loading schema from {self.schema_path}")
             if self.schema_path.startswith("http://") or self.schema_path.startswith(
@@ -74,6 +77,8 @@ class BertronMongoDBIngestor:
             else:
                 with open(self.schema_path, "r") as f:
                     self.schema = json.load(f)
+            if not isinstance(self.schema, dict):
+                raise ValueError("Failed to parse schema into a Python dictionary")
             return self.schema
         except (FileNotFoundError, json.JSONDecodeError) as e:
             logger.error(f"Failed to load schema: {e}")
@@ -81,9 +86,10 @@ class BertronMongoDBIngestor:
 
     def validate_data(self, data: Dict) -> bool:
         """Validate data against the loaded schema."""
+        assert isinstance(self.schema, dict), "Schema has not been loaded"
         try:
             validate(instance=data, schema=self.schema)
-            entity = Entity(**data)  # Validate against Pydantic model
+            _ = Entity(**data)  # Validate against Pydantic model
             return True
         except ValidationError as e:
             logger.error(f"Validation error: {e}")
@@ -91,6 +97,8 @@ class BertronMongoDBIngestor:
 
     def insert_entity(self, entity: Dict) -> Optional[str]:
         """Insert an entity into the 'entities' collection."""
+        assert isinstance(self.schema, dict), "Schema has not been loaded"
+        assert self.db is not None, "Connection to database has not been established"
         try:
             # Add metadata
             entity["_metadata"] = {
@@ -125,7 +133,7 @@ class BertronMongoDBIngestor:
             self.db.entities.create_index("data_type")
 
             # Create 2dsphere index for geospatial queries on coordinates
-            self.db.entities.create_index([("geojson", pymongo.GEOSPHERE)])
+            self.db.entities.create_index([("geojson", GEOSPHERE)])
 
             # Insert with upsert to handle potential duplicates based on URI
             result = self.db.entities.update_one(
