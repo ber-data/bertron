@@ -29,6 +29,12 @@ services:
     volumes:
       # Mount the root directory of the repository, at `/app` within the container.
       - ".:/app"
+      # Create an anonymous volume to mask the host's Python virtual environment when mounting.
+      # That way, the host's Python virtual environment does not interfere with the container's
+      # and vice versa, and the container does not have to customize `VIRTUAL_ENV`.
+      # TODO: Consider using this approach for others services that use a Python virtual environment.
+      #       Sharing the `.venv` directory between host and container can be problematic.
+      - "/app/.venv"
 
   mongo:
     image: mongo:8.0.11
