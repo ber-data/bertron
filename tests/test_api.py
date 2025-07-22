@@ -65,7 +65,6 @@ class TestBertronAPI:
         self._verify_entity_structure(entity)
 
     # TODO: Consider using URL encoding (a.k.a. "percent-encoding") for the slashes.
-    @pytest.mark.skip(reason="Skipping ESS-DIVE id because of string format with /")
     def test_get_entity_by_id_ess_dive(self, test_client: TestClient):
         """Test getting a specific ESS-DIVE entity by ID."""
         entity_id = "doi:10.15485/2441497"

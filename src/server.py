@@ -274,7 +274,7 @@ def find_entities_in_bounding_box(
         )
 
 
-@app.get("/bertron/{id}")
+@app.get("/bertron/{id:path}")
 def get_entity_by_id(id: str) -> Optional[bertron_schema_pydantic.Entity]:
     r"""Get a single entity by its ID.
 
