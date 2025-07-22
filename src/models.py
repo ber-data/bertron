@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Optional, List
+from typing import Optional, List, Dict
 from schema.datamodel.bertron_schema_pydantic import Entity
 
 
@@ -15,6 +15,20 @@ class EntitiesResponse(BaseModel):
         ...,
         title="Entity count",
         description="Total number of entities returned",
+    )
+
+class FindResponse(BaseModel):
+    r"""A response containing a list of dicts and count."""
+
+    documents: List = Field(
+        ...,
+        title="Documents",
+        description="List of Documents returned by the query",
+    )
+    count: int = Field(
+        ...,
+        title="Document count",
+        description="Total number of documents returned",
     )
 
 

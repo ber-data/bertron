@@ -137,7 +137,6 @@ class TestBertronAPI:
             assert entity["ber_data_source"] == "EMSL"
             self._verify_entity_structure(entity)
 
-    @pytest.mark.skip(reason="Skipping projection test doesn't return EntitiesResponse")
     def test_find_entities_with_projection(self, test_client: TestClient):
         """Test finding entities with field projection."""
         query = {

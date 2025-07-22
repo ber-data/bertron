@@ -1,5 +1,5 @@
 import logging
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Union
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import RedirectResponse
@@ -9,7 +9,7 @@ from schema.datamodel.bertron_schema_pydantic import Entity
 import uvicorn
 
 from lib.helpers import get_package_version
-from models import HealthResponse, VersionResponse, EntitiesResponse
+from models import HealthResponse, VersionResponse, EntitiesResponse, FindResponse
 from config import settings as cfg
 
 
@@ -75,7 +75,7 @@ def get_all_entities() -> EntitiesResponse:
     # Convert documents to Entity objects
     entities = []
     for doc in documents:
-        entities.append(convert_document_to_entity(doc))
+        entities.append(Entity(**clean_document(doc)))
 
     return EntitiesResponse(documents=entities, count=len(entities))
 
@@ -98,8 +98,11 @@ class MongoDBQuery(BaseModel):
 
 
 @app.post("/bertron/find")
-def find_entities(query: MongoDBQuery) -> EntitiesResponse:
+def find_entities(query: MongoDBQuery) -> Union[EntitiesResponse, FindResponse]:
     r"""Execute a MongoDB find operation on the entities collection with filter, projection, skip, limit, and sort options.
+
+    Returns EntitiesResponse (validated Entity objects) when no projection is specified,
+    or FindResponse (raw documents) when projection is used.
 
     Example query body:
     {
@@ -130,13 +133,25 @@ def find_entities(query: MongoDBQuery) -> EntitiesResponse:
         if query.limit:
             cursor = cursor.limit(query.limit)
 
-        # Convert cursor to list and convert to Entity objects
+        # Convert cursor to list
         documents = list(cursor)
-        entities = []
-        for doc in documents:
-            entities.append(convert_document_to_entity(doc))
+        
+        # Return different response types based on whether projection is used
+        if query.projection:
+            # When projection is used, return raw documents as FindResponse
+            # Remove MongoDB internal fields
+            cleaned_documents = []
+            for doc in documents:
+                cleaned_documents.append(clean_document(doc))
+            
+            return FindResponse(documents=cleaned_documents, count=len(cleaned_documents))
+        else:
+            # When no projection, return validated Entity objects as EntitiesResponse
+            entities = []
+            for doc in documents:
+                entities.append(Entity(**clean_document(doc)))
 
-        return EntitiesResponse(documents=entities, count=len(entities))
+            return EntitiesResponse(documents=entities, count=len(entities))
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
@@ -191,7 +206,7 @@ def find_nearby_entities(
         documents = list(cursor)
         entities = []
         for doc in documents:
-            entities.append(convert_document_to_entity(doc))
+            entities.append(Entity(**clean_document(doc)))
 
         return EntitiesResponse(documents=entities, count=len(entities))
 
@@ -264,7 +279,7 @@ def find_entities_in_bounding_box(
         documents = list(cursor)
         entities = []
         for doc in documents:
-            entities.append(convert_document_to_entity(doc))
+            entities.append(Entity(**clean_document(doc)))
 
         return EntitiesResponse(documents=entities, count=len(entities))
 
@@ -299,7 +314,7 @@ def get_entity_by_id(id: str) -> Optional[Entity]:
 
         # Validate and create Entity instance
         try:
-            entity = convert_document_to_entity(document)
+            entity = Entity(**clean_document(document))
             return entity
         except Exception as validation_error:
             logger.error(f"Entity validation failed for id '{id}': {validation_error}")
@@ -315,16 +330,16 @@ def get_entity_by_id(id: str) -> Optional[Entity]:
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
 
 
-def convert_document_to_entity(
+def clean_document(
     document: Dict[str, Any],
-) -> Optional[Entity]:
+) -> Dict[str, Any]:
     """Convert a MongoDB document to an Entity object."""
     # Remove MongoDB _id, metadata, geojson
     document.pop("_id", None)
     document.pop("_metadata", None)
     document.pop("geojson", None)
 
-    return Entity(**document)
+    return document
 
 
 if __name__ == "__main__":
