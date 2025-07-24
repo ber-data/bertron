@@ -9,8 +9,8 @@ services:
     #       host environment.
     # Docs: https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#additional-information
     environment:
-      MONGO_HOST: ${MONGO_HOST:?}
-      MONGO_PORT: ${MONGO_PORT:?}
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
       MONGO_USERNAME: ${MONGO_USERNAME:?}
       MONGO_PASSWORD: ${MONGO_PASSWORD:?}
       MONGO_DATABASE: ${MONGO_DATABASE:?}
@@ -29,6 +29,12 @@ services:
     volumes:
       # Mount the root directory of the repository, at `/app` within the container.
       - ".:/app"
+      # Create an anonymous volume to mask the host's Python virtual environment when mounting.
+      # That way, the host's Python virtual environment does not interfere with the container's
+      # and vice versa, and the container does not have to customize `VIRTUAL_ENV`.
+      # TODO: Consider using this approach for others services that use a Python virtual environment.
+      #       Sharing the `.venv` directory between host and container can be problematic.
+      - "/app/.venv"
 
   mongo:
     image: mongo:8.0.11
@@ -48,32 +54,44 @@ services:
 
   ingest:
     # Use the same container image as the app service for consistency
-    build: { context: ".", dockerfile: Dockerfile, target: development }
+    build: { context: ".", dockerfile: Dockerfile, target: test }
+    # This service should not start automatically - only run on demand
+    profiles: ["tools"]
+    environment:
+      # Note: We use `VIRTUAL_ENV` to customize the path at which `uv` looks for and,
+      #       if necessary, creates a Python virtual environment. By using a path
+      #       outside of `/app`, we avoid interfering with—and using—any Python
+      #       virtual environment the host might have created at `/app/.venv`.
+      #       Reference: https://docs.astral.sh/uv/pip/environments/#using-arbitrary-python-environments
+      VIRTUAL_ENV: /app_venv
+    volumes:
+      - ".:/app"  # Need to mount current directory to pick up uv install files
+      - "./tests/data:/test_data"  # to access the test data files
+    depends_on:
+      - mongo
+    # Run ingest with data dir mounted to /test_data
+    command: ["uv", "run", "--active", "python", "/app/mongodb/ingest_data.py", "--mongo-uri", "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017", "--input", "/test_data", "--clean"]
+
+  test:
+    # Use the same container image as the app service for consistency
+    build: { context: ".", dockerfile: Dockerfile, target: test }
     # This service should not start automatically - only run on demand
     profiles: ["tools"]
     volumes:
       # Mount the root directory to access the ingest script and data files
       - ".:/app"
-    depends_on:
-      - mongo
-    # Run ingest with data dir mounted to /data
-    command: ["uv", "run", "python", "/app/mongodb/ingest_data.py", "--mongo-uri", "mongodb://admin:root@mongo:27017", "--input", "/data", "--clean"]
-
-  test:
-    # Use the same container image as the app service for consistency
-    build: { context: ".", dockerfile: Dockerfile, target: development }
-    # This service should not start automatically - only run on demand
-    profiles: ["tools"]
     environment:
-      MONGO_HOST: ${MONGO_HOST:?}
-      MONGO_PORT: ${MONGO_PORT:?}
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
       MONGO_USERNAME: ${MONGO_USERNAME:?}
       MONGO_PASSWORD: ${MONGO_PASSWORD:?}
-      MONGO_DATABASE: ${MONGO_DATABASE:?}  # the test suite will disregard this
+      MONGO_DATABASE: ${MONGO_DATABASE:?}  # reminder: the test suite patches this value
+      VIRTUAL_ENV: /app_venv
     depends_on:
       - app
       - mongo
-    command: ["uv", "run", "pytest", "-v"]
+    command: ["uv", "run", "--active", "pytest", "-v"]
+
 
 volumes:
   # Define a named volume that will contain MongoDB data.

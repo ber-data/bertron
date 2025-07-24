@@ -44,3 +44,18 @@ COPY . /app
 # Run the FastAPI development server on port 8000, accepting HTTP requests from any host.
 # Reference: https://fastapi.tiangolo.com/deployment/manually/
 CMD [ "uv", "run", "fastapi", "dev", "--host", "0.0.0.0", "/app/src/server.py" ]
+
+# ────────────────────────────────────────────────────────────────────────────┐
+FROM development AS test
+# ────────────────────────────────────────────────────────────────────────────┘
+
+# Create a local virtual environment directory 
+# This is necessary for keeping the test environment isolated from
+# running server environment in /app/.venv
+RUN mkdir -p /app_venv
+ENV VIRTUAL_ENV="/app_venv"
+
+# This target inherits from development and is used for running tests
+# No additional setup needed as development already has dev dependencies
+# --active flag ensures that the local virtual environment is used
+CMD [ "uv", "run", "--active", "pytest", "-v" ]

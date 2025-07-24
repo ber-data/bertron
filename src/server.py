@@ -1,16 +1,22 @@
 import logging
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Union
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
-from pydantic import BaseModel, Field
-from schema.datamodel import bertron_schema_pydantic
+from schema.datamodel.bertron_schema_pydantic import Entity
 import uvicorn
 
-from lib.helpers import get_package_version
-from models import HealthResponse, VersionResponse
 from config import settings as cfg
+from lib.helpers import get_package_version
+from src.models import (
+    EntitiesResponse,
+    FindResponse,
+    HealthResponse,
+    MongoFindQueryDescriptor,
+    VersionResponse,
+)
+
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -60,7 +66,7 @@ def get_version() -> VersionResponse:
 
 
 @app.get("/bertron")
-def get_all_entities():
+def get_all_entities() -> EntitiesResponse:
     r"""Get all documents from the entities collection."""
     db = mongo_client[cfg.mongo_database]
 
@@ -74,30 +80,19 @@ def get_all_entities():
     # Convert documents to Entity objects
     entities = []
     for doc in documents:
-        entities.append(convert_document_to_entity(doc))
+        entities.append(Entity(**clean_document(doc)))
 
-    return {"documents": entities, "count": len(entities)}
-
-
-class MongoDBQuery(BaseModel):
-    filter: Dict[str, Any] = Field(default={}, description="MongoDB find query filter")
-    projection: Optional[Dict[str, Any]] = Field(
-        default=None, description="Fields to include or exclude"
-    )
-    skip: Optional[int] = Field(
-        default=0, ge=0, description="Number of documents to skip"
-    )
-    limit: Optional[int] = Field(
-        default=100, ge=1, le=1000, description="Maximum number of documents to return"
-    )
-    sort: Optional[Dict[str, int]] = Field(
-        default=None, description="Sort criteria (1 for ascending, -1 for descending)"
-    )
+    return EntitiesResponse(documents=entities, count=len(entities))
 
 
 @app.post("/bertron/find")
-def find_entities(query: MongoDBQuery):
+def find_entities(
+    query: MongoFindQueryDescriptor,
+) -> Union[EntitiesResponse, FindResponse]:
     r"""Execute a MongoDB find operation on the entities collection with filter, projection, skip, limit, and sort options.
+
+    Returns EntitiesResponse (validated Entity objects) when no projection is specified,
+    or FindResponse (raw documents) when projection is used.
 
     Example query body:
     {
@@ -128,13 +123,27 @@ def find_entities(query: MongoDBQuery):
         if query.limit:
             cursor = cursor.limit(query.limit)
 
-        # Convert cursor to list and convert to Entity objects
+        # Convert cursor to list
         documents = list(cursor)
-        entities = []
-        for doc in documents:
-            entities.append(convert_document_to_entity(doc))
 
-        return {"documents": entities, "count": len(entities)}
+        # Return different response types based on whether projection is used
+        if query.projection:
+            # When projection is used, return raw documents as FindResponse
+            # Remove MongoDB internal fields
+            cleaned_documents = []
+            for doc in documents:
+                cleaned_documents.append(clean_document(doc))
+
+            return FindResponse(
+                documents=cleaned_documents, count=len(cleaned_documents)
+            )
+        else:
+            # When no projection, return validated Entity objects as EntitiesResponse
+            entities = []
+            for doc in documents:
+                entities.append(Entity(**clean_document(doc)))
+
+            return EntitiesResponse(documents=entities, count=len(entities))
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
@@ -149,7 +158,7 @@ def find_nearby_entities(
         ..., ge=-180, le=180, description="Center longitude in degrees"
     ),
     radius_meters: float = Query(..., gt=0, description="Search radius in meters"),
-):
+) -> EntitiesResponse:
     r"""Find entities within a specified radius of a geographic point using MongoDB's $near operator.
 
     This endpoint uses MongoDB's geospatial $near query which requires a 2dsphere index
@@ -189,9 +198,9 @@ def find_nearby_entities(
         documents = list(cursor)
         entities = []
         for doc in documents:
-            entities.append(convert_document_to_entity(doc))
+            entities.append(Entity(**clean_document(doc)))
 
-        return {"documents": entities, "count": len(entities)}
+        return EntitiesResponse(documents=entities, count=len(entities))
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Nearby query error: {str(e)}")
@@ -211,7 +220,7 @@ def find_entities_in_bounding_box(
     northeast_lng: float = Query(
         ..., ge=-180, le=180, description="Northeast corner longitude"
     ),
-):
+) -> EntitiesResponse:
     r"""Find entities within a bounding box using MongoDB's $geoWithin operator.
 
     This endpoint finds all entities whose coordinates fall within the specified
@@ -262,9 +271,9 @@ def find_entities_in_bounding_box(
         documents = list(cursor)
         entities = []
         for doc in documents:
-            entities.append(convert_document_to_entity(doc))
+            entities.append(Entity(**clean_document(doc)))
 
-        return {"documents": entities, "count": len(entities)}
+        return EntitiesResponse(documents=entities, count=len(entities))
 
     except Exception as e:
         raise HTTPException(
@@ -272,8 +281,8 @@ def find_entities_in_bounding_box(
         )
 
 
-@app.get("/bertron/{id}", response_model=bertron_schema_pydantic.Entity)
-def get_entity_by_id(id: str):
+@app.get("/bertron/{id:path}")
+def get_entity_by_id(id: str) -> Optional[Entity]:
     r"""Get a single entity by its ID.
 
     Example: /bertron/emsl:12345
@@ -297,7 +306,7 @@ def get_entity_by_id(id: str):
 
         # Validate and create Entity instance
         try:
-            entity = convert_document_to_entity(document)
+            entity = Entity(**clean_document(document))
             return entity
         except Exception as validation_error:
             logger.error(f"Entity validation failed for id '{id}': {validation_error}")
@@ -313,16 +322,30 @@ def get_entity_by_id(id: str):
         raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
 
 
-def convert_document_to_entity(
+def clean_document(
     document: Dict[str, Any],
-) -> Optional[bertron_schema_pydantic.Entity]:
-    """Convert a MongoDB document to an Entity object."""
-    # Remove MongoDB _id, metadata, geojson
-    document.pop("_id", None)
-    document.pop("_metadata", None)
-    document.pop("geojson", None)
+) -> Dict[str, Any]:
+    """
+    Removes fields from the MongoDB document, that don't exist on the `Entity` model.
 
-    return bertron_schema_pydantic.Entity(**document)
+    This function was designed to remove the `_id`, `_metadata`, and `geojson` fields
+    from the document.
+
+    >>> clean_document({"_id": "123", "_metadata": {}, "geojson": {}, "name": "Test"})
+    {'name': 'Test'}
+    >>> clean_document({})
+    {}
+    """
+
+    # Determine the names of the fields that the Entity model has.
+    model_field_names = Entity.model_fields.keys()
+
+    # Remove all _other_ fields from the document.
+    for key in list(document.keys()):
+        if key not in model_field_names:
+            document.pop(key)
+
+    return document
 
 
 if __name__ == "__main__":

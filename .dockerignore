@@ -6,3 +6,9 @@
 
 # Omit Python cache files.
 __pycache__/
+
+# Ignore pytest cache files.
+.pytest_cache/
+
+# Ignore ruff cache files.
+.ruff_cache/

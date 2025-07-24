@@ -110,17 +110,16 @@ source = { editable = "." }
 dependencies = [
     { name = "bertron-schema" },
     { name = "fastapi", extra = ["standard"] },
+    { name = "httpx" },
     { name = "jsonschema" },
     { name = "nmdc-api-utilities" },
     { name = "pydantic-settings" },
     { name = "pymongo" },
-    { name = "pytest" },
     { name = "uvicorn" },
 ]
 
 [package.dev-dependencies]
 dev = [
-    { name = "httpx" },
     { name = "pre-commit" },
     { name = "pyright" },
     { name = "pytest" },
@@ -131,20 +130,19 @@ dev = [
 requires-dist = [
     { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.12" },
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "jsonschema", specifier = ">=4.0.0" },
     { name = "nmdc-api-utilities", specifier = ">=0.3.9" },
     { name = "pydantic-settings", specifier = ">=2.10.1" },
     { name = "pymongo", specifier = ">=4.13.1" },
-    { name = "pytest", specifier = ">=8.4.0" },
     { name = "uvicorn", specifier = ">=0.34.3" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "httpx", specifier = ">=0.28.1" },
     { name = "pre-commit", specifier = ">=4.1.0" },
     { name = "pyright", specifier = ">=1.1.386" },
-    { name = "pytest", specifier = ">=8.3.5" },
+    { name = "pytest", specifier = ">=8.4.1" },
     { name = "ruff", specifier = ">=0.9.9" },
 ]
 

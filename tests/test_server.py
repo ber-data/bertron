@@ -9,8 +9,8 @@ import pytest
 from fastapi.testclient import TestClient
 from starlette import status
 
-from models import HealthResponse, VersionResponse
-from server import app
+from src.models import HealthResponse, VersionResponse
+from src.server import app
 
 
 @pytest.fixture

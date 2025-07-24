@@ -6,7 +6,7 @@ A Python client for interacting with the BERtron API server.
 Provides methods to query and retrieve entity data from the BER data sources.
 """
 
-import requests
+import requests  # FIXME: `requests` is not listed as a dependency in `pyproject.toml`
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 import logging

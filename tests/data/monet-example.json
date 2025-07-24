@@ -1,0 +1,23 @@
+{
+    "ber_data_source": "MONET",
+    "coordinates": {
+        "latitude": 68.633578,
+        "longitude": -149.632826,
+        "altitude": null,
+        "depth": null,
+        "elevation": {
+            "has_numeric_value": 722.613,
+            "has_unit": "unknown"
+        }
+    },
+    "entity_type": [
+        "sample"
+    ],
+    "description": null,
+    "id": "MONET:072e85bf-4a43-4212-83dc-108bb262620c",
+    "name": "MONet Core 60920_7",
+    "alt_ids": null,
+    "alt_names": null,
+    "part_of_collection": null,
+    "uri": "https://sc-data.emsl.pnnl.gov/monet"
+}

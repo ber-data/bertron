@@ -22,3 +22,12 @@ __pycache__
 
 # Top-level environment configuration file.
 /.env
+
+# Ignore pytest cache files.
+/.pytest_cache/
+
+# Ignore ruff cache files.
+/.ruff_cache/
+
+# Ignore Vite files.
+/.vite/
