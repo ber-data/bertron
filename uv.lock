@@ -115,6 +115,7 @@ dependencies = [
     { name = "nmdc-api-utilities" },
     { name = "pydantic-settings" },
     { name = "pymongo" },
+    { name = "scalar-fastapi" },
     { name = "uvicorn" },
 ]
 
@@ -135,6 +136,7 @@ requires-dist = [
     { name = "nmdc-api-utilities", specifier = ">=0.3.9" },
     { name = "pydantic-settings", specifier = ">=2.10.1" },
     { name = "pymongo", specifier = ">=4.13.1" },
+    { name = "scalar-fastapi", git = "https://github.com/scalar/scalar/?subdirectory=integrations%2Ffastapi" },
     { name = "uvicorn", specifier = ">=0.34.3" },
 ]
 
@@ -2396,6 +2398,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/b4/71/26d45a5042bc71db22ddd8252ca9d01e9ca454f230e2996bb04f16d72799/ruff-0.12.7-py3-none-win_amd64.whl", hash = "sha256:9c18f3d707ee9edf89da76131956aba1270c6348bfee8f6c647de841eac7194f", size = 12912365, upload-time = "2025-07-29T22:32:31.517Z" },
     { url = "https://files.pythonhosted.org/packages/4c/9b/0b8aa09817b63e78d94b4977f18b1fcaead3165a5ee49251c5d5c245bb2d/ruff-0.12.7-py3-none-win_arm64.whl", hash = "sha256:dfce05101dbd11833a0776716d5d1578641b7fddb537fe7fa956ab85d1769b69", size = 11982083, upload-time = "2025-07-29T22:32:33.881Z" },
 ]
+
+[[package]]
+name = "scalar-fastapi"
+version = "1.2.3"
+source = { git = "https://github.com/scalar/scalar/?subdirectory=integrations%2Ffastapi#1c82763b50fd5f39323e8babc0877c8886ac2eb1" }
 
 [[package]]
 name = "sentry-sdk"
