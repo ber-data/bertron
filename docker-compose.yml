@@ -32,7 +32,7 @@ services:
       # Create an anonymous volume to mask the host's Python virtual environment when mounting.
       # That way, the host's Python virtual environment does not interfere with the container's
       # and vice versa, and the container does not have to customize `VIRTUAL_ENV`.
-      # TODO: Consider using this approach for others services that use a Python virtual environment.
+      # TODO: Consider using this approach for other services that use a Python virtual environment.
       #       Sharing the `.venv` directory between host and container can be problematic.
       - "/app/.venv"
 
@@ -67,6 +67,8 @@ services:
     volumes:
       - ".:/app"  # Need to mount current directory to pick up uv install files
       - "./tests/data:/test_data"  # to access the test data files
+      # Ignore the host's `.venv` directory, in an attempt to avoid conflicts.
+      - "/app/.venv"
     depends_on:
       - mongo
     # Run ingest with data dir mounted to /test_data
@@ -80,6 +82,8 @@ services:
     volumes:
       # Mount the root directory to access the ingest script and data files
       - ".:/app"
+      # Ignore the host's `.venv` directory, in an attempt to avoid conflicts.
+      - "/app/.venv"
     environment:
       MONGO_HOST: mongo
       MONGO_PORT: 27017
