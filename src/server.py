@@ -43,7 +43,7 @@ app = FastAPI(
 async def get_scalar_html():
     r"""
     Returns the HTML markup for an interactive API docs web page powered by Scalar.
-    
+
     Note: This can coexist with FastAPI's built-in Swagger UI page.
     """
     return get_scalar_api_reference(
