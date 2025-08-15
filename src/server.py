@@ -4,6 +4,7 @@ from typing import Optional, Dict, Any, Union
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import RedirectResponse
 from pymongo import MongoClient
+from scalar_fastapi import get_scalar_api_reference
 from schema.datamodel.bertron_schema_pydantic import Entity
 import uvicorn
 
@@ -36,6 +37,19 @@ app = FastAPI(
     ),
     version=f"{get_package_version('bertron')}",
 )
+
+
+@app.get("/scalar", include_in_schema=False)
+async def get_scalar_html():
+    r"""
+    Returns the HTML markup for an interactive API docs web page powered by Scalar.
+
+    Note: This can coexist with FastAPI's built-in Swagger UI page.
+    """
+    return get_scalar_api_reference(
+        openapi_url=app.openapi_url,
+        title="BERtron API",
+    )
 
 
 @app.get("/", include_in_schema=False)
