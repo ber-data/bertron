@@ -8,8 +8,8 @@ from pymongo.database import Database
 import pytest
 from starlette import status
 
-from src.config import settings as cfg
-from src.server import app
+from config import settings as cfg
+from server import app
 from mongodb.ingest_data import main as ingest_main
 
 

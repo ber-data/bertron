@@ -10,7 +10,7 @@ import uvicorn
 
 from config import settings as cfg
 from lib.helpers import get_package_version
-from src.models import (
+from models import (
     EntitiesResponse,
     FindResponse,
     HealthResponse,
