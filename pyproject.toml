@@ -17,7 +17,7 @@ version = "0.0.0"
 authors = [
   {name = "Chuck Parker", email = "ctparker@lbl.gov"},
 ]
-description = " Cross-BER Data Integration"
+description = "Cross-BER Data Integration"
 readme = "README.md"
 requires-python = ">=3.10.0,<3.14"
 dependencies = [
