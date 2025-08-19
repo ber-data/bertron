@@ -17,11 +17,23 @@ version = "0.0.0"
 authors = [
   {name = "Chuck Parker", email = "ctparker@lbl.gov"},
 ]
-description = " Cross-BER Data Integration"
+description = "Cross-BER Data Integration"
 readme = "README.md"
 requires-python = ">=3.10.0,<3.14"
 dependencies = [
-  "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git",
+  # Note: To depend upon the package built from the contents of the _latest commit_
+  #       on the _default branch_ in the `bertron-schema` repository, use:
+  #       ```
+  #       "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git"
+  #       ```
+  #       To depend upon the package built from the contents of a _specific commit_
+  #       in the `bertron-schema` repository, use:
+  #       ```
+  #       "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@{COMMIT_HASH}"
+  #       ```
+  #       Reference: https://pip.pypa.io/en/stable/topics/vcs-support/
+  #
+  "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@82498f5f5cbc71ed7abf71b8e2c01d15c003f8d8",
   # "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
   "fastapi[standard]>=0.115.12",
   # `httpx` is a dependency of FastAPI's `TestClient` class, which we use

@@ -103,6 +103,15 @@ Run the tests:
 docker compose up test
 ```
 
+If you plan to run the tests multiple times, we'd recommend running a shell within the `test` container and—from there—running the tests (as many times as you want). That will also enable syntax highlighting of the test results.
+
+```sh
+docker compose run --rm -it test bash
+
+# In the container:
+uv run --active pytest -v
+```
+
 <details>
 <summary>Show/hide FAQ about the ingest script's role in testing</summary>
 

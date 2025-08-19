@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.10.0, <3.14"
 resolution-markers = [
     "python_full_version >= '3.12'",
@@ -129,7 +129,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git" },
+    { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git?rev=82498f5f5cbc71ed7abf71b8e2c01d15c003f8d8" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.12" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "jsonschema", specifier = ">=4.0.0" },
@@ -151,7 +151,7 @@ dev = [
 [[package]]
 name = "bertron-schema"
 version = "0.1.0"
-source = { git = "https://github.com/ber-data/bertron-schema.git#96cbe257717d44137440be369a8414d153579926" }
+source = { git = "https://github.com/ber-data/bertron-schema.git?rev=82498f5f5cbc71ed7abf71b8e2c01d15c003f8d8#82498f5f5cbc71ed7abf71b8e2c01d15c003f8d8" }
 dependencies = [
     { name = "linkml" },
     { name = "linkml-runtime" },
@@ -971,7 +971,7 @@ wheels = [
 
 [[package]]
 name = "linkml"
-version = "1.9.2"
+version = "1.9.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "antlr4-python3-runtime" },
@@ -1000,14 +1000,14 @@ dependencies = [
     { name = "typing-extensions", marker = "python_full_version < '3.12'" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/77/e2/23136b7e063159dc25cb865ef10f1ceca5606136bbed469efe7a061cf707/linkml-1.9.2.tar.gz", hash = "sha256:2f9141d2bc8a93bfe1d4b86a015ad0acbb94c2af099177f5687a50d3331d2b34", size = 260216, upload-time = "2025-05-15T22:21:52.251Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a3/cf/ab84deb8130d63d9a7baa52cd88b134ea9ad2186eeb4df6cdd3b837e6058/linkml-1.9.3.tar.gz", hash = "sha256:96de208001dae5bde43092ce0f3fab61df4c85231939476dc3f93d0b5b0d4590", size = 263725, upload-time = "2025-07-30T19:58:33.837Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/33/19/430f4907cdad687af4c14e495c7027ed96d1bbb1901609838d55b2b32c4e/linkml-1.9.2-py3-none-any.whl", hash = "sha256:4c9cf217948367df8a20cdf68e8f6da24ba23ab97a551f8ae32e9d4264e702cc", size = 333519, upload-time = "2025-05-15T22:21:50.067Z" },
+    { url = "https://files.pythonhosted.org/packages/91/54/5bb8f9fd0fbdd076a631bcae7c5aa3f8c1447e04650b79e45f77fab661e4/linkml-1.9.3-py3-none-any.whl", hash = "sha256:77f2e566ce03f897bc0a9dc49d4d933a859d2a78ef56f080c9a0f8415becb884", size = 336474, upload-time = "2025-07-30T19:58:30.483Z" },
 ]
 
 [[package]]
 name = "linkml-runtime"
-version = "1.9.3"
+version = "1.9.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
@@ -1025,9 +1025,9 @@ dependencies = [
     { name = "rdflib" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/24/3c/d0ec2b9b2472a06fb43784f67c89ebcaa6dfb69f9c9bc19c8ed358c88045/linkml_runtime-1.9.3.tar.gz", hash = "sha256:1b65358bf91868b7607675abb98c26597873bb45f73ab309b7d4c31a84e58e1b", size = 479939, upload-time = "2025-06-02T16:52:42.878Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/38/38ac19a5b81982f03709cda0a008327dc775d11f008d0cbdc0f2a5389e24/linkml_runtime-1.9.5.tar.gz", hash = "sha256:78dc1383adf11ad5f20bb11b6adde56ed566fbd2429a292d57699ad4596c738a", size = 480288, upload-time = "2025-08-15T22:22:51.098Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ce/64/93e53462fc222d6cbf6094781e55a6b3d129184f89dc533237beb544d62b/linkml_runtime-1.9.3-py3-none-any.whl", hash = "sha256:39a8aa51b40decd58fd04f4c02a213aad06b971df4c042aa7764f4b75cc09aa8", size = 577670, upload-time = "2025-06-02T16:52:40.853Z" },
+    { url = "https://files.pythonhosted.org/packages/34/28/cdcbe1f0521a98b891dd30249513eef1ddcc7bb406be953b4a8d7825e68f/linkml_runtime-1.9.5-py3-none-any.whl", hash = "sha256:fece3e8aa25a4246165c6528b6a7fe83a929b985d2ce1951cc8a0f4da1a30b90", size = 576405, upload-time = "2025-08-15T22:22:49.264Z" },
 ]
 
 [[package]]
