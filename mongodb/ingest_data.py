@@ -5,7 +5,7 @@ import json
 import logging
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, UTC
 from typing import Dict, Optional
 from schema.datamodel.bertron_schema_pydantic import Entity
 
@@ -100,7 +100,7 @@ class BertronMongoDBIngestor:
         try:
             # Add metadata
             entity["_metadata"] = {
-                "ingested_at": datetime.utcnow(),
+                "ingested_at": datetime.now(UTC),
                 "schema_version": self.schema.get("version", "unknown"),
             }
 
