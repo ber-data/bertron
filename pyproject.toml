@@ -21,6 +21,12 @@ description = " Cross-BER Data Integration"
 readme = "README.md"
 requires-python = ">=3.10.0,<3.14"
 dependencies = [
+  # Note: To depend upon the package built from the contents of the latest commit on the default branch in the `bertron-schema` repository, use:
+  #       "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git"
+  #
+  # Note: To depend upon the package built from the contents of a specific commit in the `bertron-schema` repository, use:
+  #       "bertron-schema @ https://raw.githubusercontent.com/ber-data/bertron-schema/{COMMIT_HASH}/src/schema/jsonschema/bertron_schema.json"
+  #
   "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git",
   # "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
   "fastapi[standard]>=0.115.12",
