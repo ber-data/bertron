@@ -6,8 +6,8 @@
         "altitude": null,
         "depth": null,
         "elevation": {
-            "has_numeric_value": 2280,
-            "has_unit": "meter (UO:0000008)"
+            "numeric_value": 2280,
+            "unit": "meter (UO:0000008)"
         }
     },
     "entity_type": [
