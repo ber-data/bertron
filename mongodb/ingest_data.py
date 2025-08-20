@@ -198,7 +198,7 @@ def main():
     parser.add_argument("--db-name", default="bertron", help="MongoDB database name")
     parser.add_argument(
         "--schema-path",
-        default="https://raw.githubusercontent.com/ber-data/bertron-schema/v0.1.0-alpha.10/src/schema/jsonschema/bertron_schema.json",
+        default="https://raw.githubusercontent.com/ber-data/bertron-schema/v0.1.0-alpha.11/src/schema/jsonschema/bertron_schema.json",
         help="Path or URL to the BERtron schema JSON file",
     )
     parser.add_argument(
