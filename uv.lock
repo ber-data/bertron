@@ -129,7 +129,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git?rev=v0.1.0-alpha.10" },
+    { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git?rev=v0.1.0-alpha.11" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.12" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "jsonschema", specifier = ">=4.0.0" },
@@ -151,7 +151,7 @@ dev = [
 [[package]]
 name = "bertron-schema"
 version = "0.1.0"
-source = { git = "https://github.com/ber-data/bertron-schema.git?rev=v0.1.0-alpha.10#82498f5f5cbc71ed7abf71b8e2c01d15c003f8d8" }
+source = { git = "https://github.com/ber-data/bertron-schema.git?rev=v0.1.0-alpha.11#82498f5f5cbc71ed7abf71b8e2c01d15c003f8d8" }
 dependencies = [
     { name = "linkml" },
     { name = "linkml-runtime" },

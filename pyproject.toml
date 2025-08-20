@@ -27,13 +27,14 @@ dependencies = [
   #       "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git"
   #       ```
   #       To depend upon the package built from the contents of a _specific commit_
-  #       in the `bertron-schema` repository, use:
+  #       (identified by either the commit's hash or the name of a tag referencing
+  #       that commit) in the `bertron-schema` repository, use:
   #       ```
-  #       "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@{COMMIT_HASH}"
+  #       "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@{COMMIT_HASH__OR__TAG_NAME}"
   #       ```
   #       Reference: https://pip.pypa.io/en/stable/topics/vcs-support/
   #
-  "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@v0.1.0-alpha.10",
+  "bertron-schema @ git+https://github.com/ber-data/bertron-schema.git@v0.1.0-alpha.11",
   # "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
   "fastapi[standard]>=0.115.12",
   # `httpx` is a dependency of FastAPI's `TestClient` class, which we use
