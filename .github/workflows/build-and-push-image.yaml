@@ -32,7 +32,7 @@ jobs:
     
     steps:
     - name: Check out commit  # docs: https://github.com/actions/checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     
     # Extract the version number from the GitHub release tag and write it into
     # the `pyproject.toml` file that will be included in the container image.
