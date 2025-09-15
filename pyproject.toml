@@ -38,7 +38,7 @@ dependencies = [
   # "dtspy @ https://github.com/kbase/dtspy/archive/730828cff3924fc4b2215fe5c1b67bc04aad377f.tar.gz",
   "fastapi[standard]>=0.115.12",
   # `httpx` is a dependency of FastAPI's `TestClient` class, which we use
-  # in the server test suite. It is also a dependency of `mongodb/ingest_data.py`,
+  # in the server test suite. It is also a dependency of `src/ingest_data.py`,
   # which is why we currently list it as a non-dev dependency.
   "httpx>=0.28.1",
   "jsonschema>=4.0.0",
@@ -69,4 +69,4 @@ venv = ".venv"
 # Docs: https://docs.pytest.org/en/stable/reference/customize.html#pyproject-toml
 [tool.pytest.ini_options]
 # Configure pytest to run doctests, and to ignore directories that contain currently-broken modules.
-addopts = "--doctest-modules --ignore='src/bertron/' --ignore='mongodb/legacy/'"
+addopts = "--doctest-modules"
