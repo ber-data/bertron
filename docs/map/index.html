@@ -329,7 +329,7 @@
 
         // Fetch the EMSL MONet JSON (not CSV) file and create a marker for each element of its top-level array.
         const monetResponse = await fetch(
-          `${baseUrlForData}/emsl/map/latlon_project_ids.json`,
+          `${baseUrlForData}/emsl/map/monet_samples_schema-9-16-2025.json`,
         );
         const monetObjs = await monetResponse.json();
         const monetMarkers = [];

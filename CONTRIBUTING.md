@@ -10,6 +10,23 @@ Check https://docs.astral.sh/uv/#installation for alternative installation metho
 
 ## Preparing dev environment
 
+## Environment Variables
+
+The project uses several environment variables, especially when running with Docker Compose. You can set these in your `.env` file or export them in your shell before running Docker Compose. Below are the main variables:
+
+| Variable            | Description                                                                 | Example / Default                                      |
+|---------------------|-----------------------------------------------------------------------------|--------------------------------------------------------|
+| `MONGO_HOST`        | Hostname for MongoDB (used by app/test services)                            | `mongo`                                                |
+| `MONGO_PORT`        | Port for MongoDB (used by app/test/mongo services)                          | `27017`                                                |
+| `MONGO_USERNAME`    | MongoDB username (required)                                                 | `your_username`                                        |
+| `MONGO_PASSWORD`    | MongoDB password (required)                                                 | `your_password`                                        |
+| `MONGO_DATABASE`    | MongoDB database name (required)                                            | `bertron`                                              |
+| `WEB_PORT`          | Host port to expose the FastAPI server                                      | `8000` (default)                                       |
+| `INGEST_DATA_PATH`  | Path to data directory for ingest service                                   | `./tests/data` (default)                               |
+| `INGEST_SCHEMA_PATH`| Path or URL to schema for ingest service                                    | See docker-compose.yml for default                     |
+| `INGEST_CLEAN`      | Set to `--clean` to clean mongodb (removes existing collections)  | `--clean`                                              |
+| `VIRTUAL_ENV`       | Path for Python virtual environment inside containers                       | `/app_venv` (used internally by containers)            |
+
 Create your `.env` file (if you haven't already) and edit its contents to reflect
 your environment.
 

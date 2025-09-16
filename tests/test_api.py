@@ -133,6 +133,7 @@ class TestBertronAPI:
         # Verify this is the correct entity
         assert entity["id"] == entity_id
         assert entity["ber_data_source"] == "ESS-DIVE"
+        assert "PlanetScope" in entity["name"]
         assert "NGEE Arctic" in entity["description"]
 
         self._verify_entity_structure(entity)
