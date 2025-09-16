@@ -1,35 +1,39 @@
 {
-    "ber_data_source": "JGI",
-    "coordinates": {
-        "latitude": 44.7523206,
-        "longitude": -110.7253926,
-        "altitude": null,
-        "depth": null,
-        "elevation": {
-            "numeric_value": 2280,
-            "unit": "m",
-            "raw_value": "2280m"
-        }
+  "ber_data_source": "JGI",
+  "coordinates": {
+    "latitude": 44.7523206,
+    "longitude": -110.7253926
+  },
+  "entity_type": [
+    "jgi_biosample"
+  ],
+  "description": "Small acidic pool on hillside north of Nymph Lake.",
+  "id": "Gb0051341",
+  "name": "Hot spring microbial communities from Yellowstone National Park, Wyoming, USA - YNP2   Nymph Lake 10",
+  "alt_ids": [
+    "NCBITaxon:433727"
+  ],
+  "alt_names": [
+    {
+      "name": "GOLD biosample ID Gb0051341",
+      "name_type": "exact_synonym"
     },
-    "entity_type": [
-        "jgi_biosample"
-    ],
-    "description": "Small acidic pool on hillside north of Nymph Lake.",
-    "id": "Gb0051341",
-    "name": "Hot spring microbial communities from Yellowstone National Park, Wyoming, USA - YNP2   Nymph Lake 10",
-    "alt_ids": [
-        "NCBITaxon:433727"
-    ],
-    "alt_names": [
-        {
-            "name": "GOLD biosample ID Gb0051341",
-            "name_type": "exact_synonym"
-        },
-        {
-            "name": "hot springs metagenome",
-            "name_type": "broad_synonym"
-        }
-    ],
-    "part_of_collection": [],
-    "uri": "https://gold.jgi.doe.gov/biosample?id=Gb0051341"
+    {
+      "name": "hot springs metagenome",
+      "name_type": "broad_synonym"
+    }
+  ],
+  "properties": [
+    {
+      "attribute": {
+        "label": "elevation",
+        "id": "MIXS:0000093"
+      },
+      "raw_value": "2280m",
+      "numeric_value": 2280,
+      "unit": "UO:0000008"
+    }
+  ],
+  "part_of_collection": [],
+  "uri": "https://gold.jgi.doe.gov/biosample?id=Gb0051341"
 }

@@ -95,10 +95,12 @@ def test_end_to_end_complex_coordinates(setup_mock_collection, sample_data_dir):
         nmdc_data = json.load(f)
 
 
-    # Verify the sample has the complex structure we expect
-    coords = nmdc_data["coordinates"]
-    assert coords["depth"] is not None
-    assert coords["elevation"] is not None
+    # Verify the sample has the complex structure we expect (depth/elevation in properties)
+    props = nmdc_data["properties"]
+    depth_prop = next((p for p in props if p["attribute"]["label"] == "depth"), None)
+    elevation_prop = next((p for p in props if p["attribute"]["label"] == "elevation"), None)
+    assert depth_prop is not None
+    assert elevation_prop is not None
 
     # Process the complex entity
     mock_ingestor.insert_entity(nmdc_data)
@@ -111,6 +113,7 @@ def test_end_to_end_complex_coordinates(setup_mock_collection, sample_data_dir):
     assert entity_data["geojson"]["type"] == "Point"
 
     # Basic lat/lng should still be extracted correctly
+    coords = nmdc_data["coordinates"]
     expected_coords = [coords["longitude"], coords["latitude"]]
     assert entity_data["geojson"]["coordinates"] == expected_coords
 
@@ -157,10 +160,11 @@ def test_end_to_end_directory_processing(mocker, mock_ingestor, sample_data_dir)
     for entity in inserted_entities:
         # Every entity must have these core fields
         assert "id" in entity
-        assert "name" in entity
         assert "ber_data_source" in entity
         assert "coordinates" in entity
         assert "uri" in entity
+        # Name is optional but description should exist
+        assert "name" in entity or "description" in entity
 
         # Track data source diversity
         data_sources.add(entity["ber_data_source"])
