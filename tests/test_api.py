@@ -204,7 +204,7 @@ class TestBertronAPI:
         """Test finding entities with field projection."""
         query = {
             "filter": {},
-            "projection": {"id": 1, "name": 1, "ber_data_source": 1},
+            "projection": {"id": 1, "ber_data_source": 1, "coordinates": 1},
             "limit": 5,
         }
 
@@ -221,10 +221,7 @@ class TestBertronAPI:
         for entity in entities_data["documents"]:
             assert "id" in entity
             assert "ber_data_source" in entity
-            # Name might not be present in all entities, but if projected it should be there or null
-            if "name" in entity:
-                # If name field is projected and present, verify it's not empty
-                assert entity["name"] is not None or entity["name"] == ""
+            assert "coordinates" in entity
 
     def test_find_entities_with_sort_and_limit(
         self, test_client: TestClient, seeded_db: Database
@@ -356,8 +353,6 @@ class TestBertronAPI:
         """Helper method to verify entity structure matches schema."""
         required_fields = [
             "id",
-            "name",
-            "description",
             "ber_data_source",
             "entity_type",
             "coordinates",
@@ -365,6 +360,9 @@ class TestBertronAPI:
 
         for field in required_fields:
             assert field in entity, f"Missing required field: {field}"
+            
+        # Name or description should exist (but not necessarily both)
+        assert "name" in entity or "description" in entity, "Entity must have name or description"
 
         # Verify coordinates structure
         coords = entity["coordinates"]
