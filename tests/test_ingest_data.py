@@ -125,11 +125,8 @@ def test_end_to_end_directory_processing(mocker, mock_ingestor, sample_data_dir)
     # Track all entities that would be inserted
     inserted_entities = []
 
-    def capture_insert(data):
-        inserted_entities.append(data)
-        return "inserted_id"
-
-    mocker.patch.object(mock_ingestor, 'insert_entity', side_effect=capture_insert)
+    capture_side_effect = lambda data: inserted_entities.append(data) or "inserted_id"
+    mocker.patch.object(mock_ingestor, 'insert_entity', side_effect=capture_side_effect)
 
     # Get all sample files
     json_files = [f for f in os.listdir(sample_data_dir) if f.endswith('.json')]
