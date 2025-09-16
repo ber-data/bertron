@@ -7,7 +7,8 @@
         "depth": null,
         "elevation": {
             "numeric_value": 2280,
-            "unit": "meter (UO:0000008)"
+            "unit": "m",
+            "raw_value": "2280m"
         }
     },
     "entity_type": [

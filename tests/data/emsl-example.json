@@ -2,10 +2,18 @@
     "ber_data_source": "EMSL",
     "coordinates": {
         "latitude": 34,
-        "longitude": 118.0,
-        "altitude": null,
+        "longitude": 118,
+        "altitude": {
+            "numeric_value": 2947.3,
+            "unit": "m",
+            "raw_value": "2974.3m"
+        },
         "depth": null,
-        "elevation": null
+        "elevation": {
+            "numeric_value": 2.2,
+            "unit": "cm",
+            "raw_value": "2.2 cm"
+        }
     },
     "entity_type": [
         "sample"

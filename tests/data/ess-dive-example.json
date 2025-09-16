@@ -1,68 +1,22 @@
-[
-  {
+{
     "ber_data_source": "ESS-DIVE",
     "coordinates": {
-      "latitude": 65.162309,
-      "longitude": -164.819851,
-      "altitude": null,
-      "depth": null,
-      "elevation": null
+        "latitude": 65.162309,
+        "longitude": -164.819851,
+        "altitude": null,
+        "depth": null,
+        "elevation": null
     },
     "entity_type": [
-      "unspecified"
+        "site"
     ],
-    "description": "Maps of land surface phenology derived from PlanetScope data, 2018-2022, Teller, Kougarok, and Council, Seward Peninsula",
+    "description": "NGEE Arctic Kougarok Site, Mile Marker 64, Alaska",
     "id": "doi:10.15485/2441497",
-    "name": "NGEE Arctic Kougarok Site, Mile Marker 64, Alaska",
+    "name": "Maps of land surface phenology derived from PlanetScope data, 2018-2022, Teller, Kougarok, and Council, Seward Peninsula",
     "alt_ids": [
-      "NGA547"
+        "NGA547"
     ],
     "alt_names": null,
-    "part_of_collection": [],
+    "part_of_collection": null,
     "uri": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2441497"
-  },
-  {
-    "ber_data_source": "ESS-DIVE",
-    "coordinates": {
-      "latitude": 64.735492,
-      "longitude": -165.95039,
-      "altitude": null,
-      "depth": null,
-      "elevation": null
-    },
-    "entity_type": [
-      "unspecified"
-    ],
-    "description": "Maps of land surface phenology derived from PlanetScope data, 2018-2022, Teller, Kougarok, and Council, Seward Peninsula",
-    "id": "doi:10.15485/2441497",
-    "name": "NGEE Arctic Teller Site, Mile Marker 27, Alaska",
-    "alt_ids": [
-      "NGA547"
-    ],
-    "alt_names": null,
-    "part_of_collection": [],
-    "uri": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2441497"
-  },
-  {
-    "ber_data_source": "ESS-DIVE",
-    "coordinates": {
-      "latitude": 64.847286,
-      "longitude": -163.71993600000002,
-      "altitude": null,
-      "depth": null,
-      "elevation": null
-    },
-    "entity_type": [
-      "unspecified"
-    ],
-    "description": "Maps of land surface phenology derived from PlanetScope data, 2018-2022, Teller, Kougarok, and Council, Seward Peninsula",
-    "id": "doi:10.15485/2441497",
-    "name": "NGEE Arctic Council Site, Mile Marker 71, Alaska",
-    "alt_ids": [
-      "NGA547"
-    ],
-    "alt_names": null,
-    "part_of_collection": [],
-    "uri": "https://data.ess-dive.lbl.gov/view/doi:10.15485/2441497"
-  }
-]
+}

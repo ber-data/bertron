@@ -5,14 +5,15 @@
         "longitude": -81.434174,
         "altitude": null,
         "depth": {
-             "minimum_numeric_value": 0,
-             "maximum_numeric_value": 0.1,
-             "unit": "m",
-             "raw_value": "0 - 0.1m"
-         },
+            "minimum_numeric_value": 0,
+            "maximum_numeric_value": 0.1,
+            "unit": "m",
+            "raw_value": "0 - 0.1m"
+        },
         "elevation": {
             "numeric_value": 24,
-            "unit": "m"
+            "unit": "m",
+            "raw_value": "24m"
         }
     },
     "entity_type": [
