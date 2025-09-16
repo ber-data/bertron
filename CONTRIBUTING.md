@@ -84,7 +84,7 @@ To populate the database with data run
 ```sh
 docker compose run --volume /path/to/data:/data --rm ingest \
     uv run --active \
-        python /app/mongodb/ingest_data.py \
+        python /app/src/ingest_data.py \
         --mongo-uri "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}" \
         --input /data --clean
 ```
@@ -128,3 +128,65 @@ def test_foo()
 ```
 
 </details>
+
+---
+
+## BERtron Data Ingestion
+
+This repository includes a MongoDB data ingestor (`src/ingest_data.py`) that ingests BERtron-formatted data into MongoDB.
+
+### Running the Ingestor
+
+#### Local Python Usage
+
+Run the ingest script with your data file:
+
+```bash
+python src/ingest_data.py --input your_data_file.json
+```
+
+#### Command-line arguments
+
+- `--mongo-uri`: MongoDB connection URI (default: `mongodb://localhost:27017`)
+- `--db-name`: MongoDB database name (default: `bertron`)
+- `--schema-path`: Path or URL to the schema JSON file (default: remote schema URL)
+- `--input`: Path to input JSON file or directory containing JSON files (required)
+- `--clean`: Delete existing collections before ingesting new data
+
+#### Using Docker Compose
+
+The ingester is available as a Docker Compose service:
+
+```bash
+# Start MongoDB and FASTAPI service
+docker compose up 
+
+# Mount the directory whose contents you want to ingest, and run the ingester
+docker compose run --rm --volume /path/to/data:/data ingest 
+```
+
+#### Data Format
+
+The input data should conform to the BERtron schema. It can be either:
+
+- A single entity object
+- An array of entity objects
+
+#### MongoDB Collections
+
+The script will create and populate the following collection:
+
+- `entities`: Contains all the BERtron entities
+
+#### Examples
+
+```bash
+# Ingest a single file
+python src/ingest_data.py --input sample_data.json
+
+# Ingest all JSON files in a directory
+python src/ingest_data.py --input ./data_directory/
+
+# Use custom MongoDB connection
+python src/ingest_data.py --mongo-uri mongodb://username:password@localhost:27017 --db-name bertron_dev --input sample_data.json
+```

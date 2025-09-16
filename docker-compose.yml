@@ -72,7 +72,7 @@ services:
     depends_on:
       - mongo
     # Run ingest with data dir mounted to /test_data
-    command: ["uv", "run", "--active", "python", "/app/mongodb/ingest_data.py", "--mongo-uri", "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017", "--input", "/test_data", "--clean"]
+    command: ["uv", "run", "--active", "python", "/app/src/ingest_data.py", "--mongo-uri", "mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017", "--input", "/test_data", "--clean"]
 
   test:
     # Use the same container image as the app service for consistency
