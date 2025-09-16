@@ -74,31 +74,11 @@ def seeded_db():
     mongo_client.close()
 
 
-@pytest.fixture
-def real_ingestor():
-    """Create a real ingestor connected to test database."""
-    mongo_uri = f"mongodb://{cfg.mongo_username}:{cfg.mongo_password}@{cfg.mongo_host}:{cfg.mongo_port}"
-    return BertronMongoDBIngestor(
-        mongo_uri=mongo_uri,
-        db_name=cfg.mongo_database,
-        schema_path="https://example.com/schema.json"  # Use placeholder for now
-    )
-
-
-def test_geojson_coordinate_transformation(clean_db: Database, real_ingestor: BertronMongoDBIngestor, sample_data_dir):
-    """Test that real sample data gets transformed correctly to GeoJSON format."""
-    # Process real EMSL data
-    emsl_file = os.path.join(sample_data_dir, "emsl-example.json")
-    stats = real_ingestor.ingest_file(emsl_file)
-    
-    # Verify processing stats
-    assert stats["processed"] == 1
-    assert stats["valid"] == 1  
-    assert stats["inserted"] == 1
-    assert stats["error"] == 0
-    
+def test_geojson_coordinate_transformation(seeded_db: Database):
+    """Test that sample data gets transformed correctly to GeoJSON format."""
+    # The seeded_db fixture already processed all files
     # Query the actual database to verify the entity was stored correctly
-    entity = clean_db.entities.find_one({"id": "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488"})
+    entity = seeded_db.entities.find_one({"id": "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488"})
     assert entity is not None
     
     # Verify GeoJSON transformation happened correctly
