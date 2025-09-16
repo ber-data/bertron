@@ -9,9 +9,14 @@ From the `pytest` documentation:
 Source: https://docs.pytest.org/en/stable/reference/fixtures.html#conftest-py-sharing-fixtures-across-multiple-files
 """
 
+import sys
+from unittest.mock import patch
+
 import pytest
+from pymongo import MongoClient
 
 from src.config import settings
+from src.ingest_data import main as ingest_main
 
 
 # Note: We use `autouse=True` so that this fixture is automatically applied to each test
@@ -49,3 +54,52 @@ def patched_config(monkeypatch):
     # Finally, we yield control to the test that depends on this fixture.
     # Note: After the test completes, `monkeypatch` will automatically un-patch things.
     yield
+
+
+@pytest.fixture
+def seeded_db():
+    r"""Yields a database seeded using (effectively) the `ingest` script."""
+
+    # Get a reference to the test database.
+    mongo_client = MongoClient(
+        host=settings.mongo_host,
+        port=settings.mongo_port,
+        username=settings.mongo_username,
+        password=settings.mongo_password,
+    )
+    db = mongo_client[settings.mongo_database]
+
+    # Drop the test database.
+    mongo_client.drop_database(settings.mongo_database)
+
+    # Invoke the standard `ingest` script to populate the test database.
+    #
+    # Note: We patch `sys.argv` so that the script can run as if it
+    #       were invoked from the command line.
+    #
+    #       TODO: Update the ingest script so its core functionality
+    #             can be invoked directly (e.g. as a function) without
+    #             needing to patch `sys.argv`.
+    #
+    ingest_cli_args = [
+        "ingest_data.py",
+        "--mongo-uri",
+        f"mongodb://{settings.mongo_username}:{settings.mongo_password}@{settings.mongo_host}:{settings.mongo_port}",
+        "--db-name",
+        settings.mongo_database,
+        "--input",
+        "tests/data",
+        "--clean",
+    ]
+    with patch.object(sys, "argv", ingest_cli_args):
+        ingest_main()
+    assert len(db.list_collection_names()) > 0
+
+    # Yield a reference to the now-seeded test database.
+    yield db
+
+    # Drop the test database.
+    mongo_client.drop_database(settings.mongo_database)
+
+    # Close the Mongo connection.
+    mongo_client.close()
