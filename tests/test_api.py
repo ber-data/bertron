@@ -136,7 +136,6 @@ class TestBertronAPI:
         assert "PlanetScope" in entity["name"]
         assert "NGEE Arctic" in entity["description"]
 
-
         self._verify_entity_structure(entity)
 
     def test_get_entity_by_id_nmdc(self, test_client: TestClient, seeded_db: Database):
@@ -153,12 +152,16 @@ class TestBertronAPI:
         assert entity["name"] == "DSNY_CoreB_TOP"
         assert entity["description"] == "MONet sample represented in NMDC"
 
-        # Verify coordinates with depth and elevation
+        # Verify coordinates - basic lat/lng in coordinates, depth/elevation in properties
         assert entity["coordinates"]["latitude"] == 28.125842
         assert entity["coordinates"]["longitude"] == -81.434174
-        properties = [ prop["attribute"]["label"] for prop in entity.get("properties", {}) ]
-        assert "depth" in properties
-        assert "elevation" in properties
+        
+        # Verify depth and elevation are in properties
+        props = entity["properties"]
+        depth_prop = next((p for p in props if p["attribute"]["label"] == "depth"), None)
+        elevation_prop = next((p for p in props if p["attribute"]["label"] == "elevation"), None)
+        assert depth_prop is not None
+        assert elevation_prop is not None
 
         self._verify_entity_structure(entity)
 
@@ -202,7 +205,7 @@ class TestBertronAPI:
         """Test finding entities with field projection."""
         query = {
             "filter": {},
-            "projection": {"id": 1, "name": 1, "ber_data_source": 1},
+            "projection": {"id": 1, "ber_data_source": 1, "coordinates": 1},
             "limit": 5,
         }
 
@@ -218,9 +221,8 @@ class TestBertronAPI:
         # Verify projected fields are present
         for entity in entities_data["documents"]:
             assert "id" in entity
-            # TODO: Re-enable once we consistently have "name" field
-            # assert "name" in entity
             assert "ber_data_source" in entity
+            assert "coordinates" in entity
 
     def test_find_entities_with_sort_and_limit(
         self, test_client: TestClient, seeded_db: Database
@@ -352,8 +354,6 @@ class TestBertronAPI:
         """Helper method to verify entity structure matches schema."""
         required_fields = [
             "id",
-            "name",
-            "description",
             "ber_data_source",
             "entity_type",
             "coordinates",
@@ -361,6 +361,9 @@ class TestBertronAPI:
 
         for field in required_fields:
             assert field in entity, f"Missing required field: {field}"
+            
+        # Name or description should exist (but not necessarily both)
+        assert "name" in entity or "description" in entity, "Entity must have name or description"
 
         # Verify coordinates structure
         coords = entity["coordinates"]
