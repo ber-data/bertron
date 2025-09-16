@@ -94,7 +94,6 @@ def test_end_to_end_complex_coordinates(setup_mock_collection, sample_data_dir):
     with open(nmdc_file, 'r') as f:
         nmdc_data = json.load(f)
 
-
     # Verify the sample has the complex structure we expect
     coords = nmdc_data["coordinates"]
     assert coords["depth"] is not None
