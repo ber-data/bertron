@@ -125,14 +125,6 @@ class BertronMongoDBIngestor:
                     )
                     return None
 
-            # Create indexes for common query patterns
-            self.db.entities.create_index("uri", unique=True)
-            self.db.entities.create_index("ber_data_source")
-            self.db.entities.create_index("data_type")
-
-            # Create 2dsphere index for geospatial queries on coordinates
-            self.db.entities.create_index([("geojson", GEOSPHERE)])
-
             # Insert with upsert to handle potential duplicates based on URI
             result = self.db.entities.update_one(
                 {"uri": entity["uri"]}, {"$set": entity}, upsert=True
@@ -151,6 +143,21 @@ class BertronMongoDBIngestor:
         except PyMongoError as e:
             logger.error(f"Error inserting entity: {e}")
             return None
+
+    def create_indexes(self) -> None:
+        """Create indexes for the 'entities' collection."""
+        assert self.db is not None, "Connection to database has not been established"
+        try:
+            logger.info("Creating indexes on 'entities' collection")
+            self.db.entities.create_index("uri")
+            # TODO: enforce unique index on id once ess-dive implements unique ids
+            self.db.entities.create_index("id", unique=True)
+            self.db.entities.create_index("ber_data_source")
+            self.db.entities.create_index("data_type")
+            self.db.entities.create_index([("geojson", GEOSPHERE)])
+            logger.info("Indexes created successfully")
+        except PyMongoError as e:
+            logger.error(f"Error creating indexes: {e}")
 
     def ingest_file(self, filepath: str) -> Dict[str, int]:
         """Ingest entities from a JSON file."""
@@ -232,6 +239,8 @@ def main():
             "inserted": 0,
             "error": 0,
         }
+
+        ingestor.create_indexes()  # Create indexes before ingesting data
 
         # Process a single file or all JSON files in a directory
         if os.path.isdir(args.input):
