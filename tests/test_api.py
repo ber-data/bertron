@@ -1,71 +1,17 @@
-import sys
 from typing import Dict, Any
-from unittest.mock import patch
 
 from fastapi.testclient import TestClient
-from pymongo import MongoClient
 from pymongo.database import Database
 import pytest
 from starlette import status
 
-from config import settings as cfg
 from server import app
-from src.ingest_data import main as ingest_main
 
 
 @pytest.fixture
 def test_client():
     test_client = TestClient(app)
     yield test_client
-
-
-@pytest.fixture
-def seeded_db():
-    r"""Yields a database seeded using (effectively) the `ingest` script."""
-
-    # Get a reference to the test database.
-    mongo_client = MongoClient(
-        host=cfg.mongo_host,
-        port=cfg.mongo_port,
-        username=cfg.mongo_username,
-        password=cfg.mongo_password,
-    )
-    db = mongo_client[cfg.mongo_database]
-
-    # Drop the test database.
-    mongo_client.drop_database(cfg.mongo_database)
-
-    # Invoke the standard `ingest` script to populate the test database.
-    #
-    # Note: We patch `sys.argv` so that the script can run as if it
-    #       were invoked from the command line.
-    #
-    #       TODO: Update the ingest script so its core functionality
-    #             can be invoked directly (e.g. as a function) without
-    #             needing to patch `sys.argv`.
-    #
-    ingest_cli_args = [
-        "ingest_data.py",
-        "--mongo-uri",
-        f"mongodb://{cfg.mongo_username}:{cfg.mongo_password}@{cfg.mongo_host}:{cfg.mongo_port}",
-        "--db-name",
-        cfg.mongo_database,
-        "--input",
-        "tests/data",
-        "--clean",
-    ]
-    with patch.object(sys, "argv", ingest_cli_args):
-        ingest_main()
-    assert len(db.list_collection_names()) > 0
-
-    # Yield a reference to the now-seeded test database.
-    yield db
-
-    # Drop the test database.
-    mongo_client.drop_database(cfg.mongo_database)
-
-    # Close the Mongo connection.
-    mongo_client.close()
 
 
 class TestBertronAPI:
@@ -155,13 +101,9 @@ class TestBertronAPI:
         # Verify coordinates - basic lat/lng in coordinates, depth/elevation in properties
         assert entity["coordinates"]["latitude"] == 28.125842
         assert entity["coordinates"]["longitude"] == -81.434174
-        
-        # Verify depth and elevation are in properties
-        props = entity["properties"]
-        depth_prop = next((p for p in props if p["attribute"]["label"] == "depth"), None)
-        elevation_prop = next((p for p in props if p["attribute"]["label"] == "elevation"), None)
-        assert depth_prop is not None
-        assert elevation_prop is not None
+        properties = [ prop["attribute"]["label"] for prop in entity.get("properties", []) ]
+        assert "depth" in properties
+        assert "elevation" in properties
 
         self._verify_entity_structure(entity)
 
