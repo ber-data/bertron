@@ -94,6 +94,7 @@ def test_end_to_end_complex_coordinates(setup_mock_collection, sample_data_dir):
     with open(nmdc_file, 'r') as f:
         nmdc_data = json.load(f)
 
+
     # Verify the sample has the complex structure we expect (depth/elevation in properties)
     props = nmdc_data["properties"]
     depth_prop = next((p for p in props if p["attribute"]["label"] == "depth"), None)
