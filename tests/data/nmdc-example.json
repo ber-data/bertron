@@ -1,28 +1,59 @@
 {
-    "ber_data_source": "NMDC",
-    "coordinates": {
-        "latitude": 28.125842,
-        "longitude": -81.434174,
-        "altitude": null,
-        "depth": {
-             "minimum_numeric_value": 0,
-             "maximum_numeric_value": 0.1,
-             "unit": "m",
-             "raw_value": "0 - 0.1m"
-         },
-        "elevation": {
-            "numeric_value": 24,
-            "unit": "m"
-        }
+  "ber_data_source": "NMDC",
+  "coordinates": {
+    "latitude": 28.125842,
+    "longitude": -81.434174
+  },
+  "entity_type": [
+    "sample"
+  ],
+  "properties": [
+    {
+      "attribute": {
+        "id": "MIXS:0000018",
+        "label": "depth"
+      },
+      "raw_value": "0 - 0.1m",
+      "unit": "UO:0000008",
+      "minimum_numeric_value": 0,
+      "maximum_numeric_value": 0.1
     },
-    "entity_type": [
-        "sample"
-    ],
-    "description": "MONet sample represented in NMDC",
-    "id": "nmdc:bsm-11-bsf8yq62",
-    "name": "DSNY_CoreB_TOP",
-    "alt_ids": null,
-    "alt_names": null,
-    "part_of_collection": null,
-    "uri": "https://api.microbiomedata.org/biosamples/nmdc%3Absm-11-bsf8yq62"
+    {
+      "attribute": {
+        "id": "MIXS:0000093",
+        "label": "elevation"
+      },
+      "raw_value": "24m",
+      "numeric_value": 24,
+      "unit": "UO:0000008"
+    },
+    {
+      "attribute": {
+        "id": "MIXS:0000117",
+        "label": "total phosphorous"
+      },
+      "raw_value": "2.2 ppm",
+      "unit": "ppm",
+      "numeric_value": 2.2
+    },
+    {
+      "attribute": {
+        "id": "MIXS:0000011",
+        "label": "collection date"
+      },
+      "raw_value": "2025-06-12"
+    },
+    {
+      "attribute": {
+        "id": "MIXS:0000012",
+        "label": "env_broad_scale"
+      },
+      "value": "terrestrial biome",
+      "value_cv_id": "ENVO:00000446"
+    }
+  ],
+  "description": "MONet sample represented in NMDC",
+  "id": "nmdc:bsm-11-bsf8yq62",
+  "name": "DSNY_CoreB_TOP",
+  "uri": "https://api.microbiomedata.org/biosamples/nmdc%3Absm-11-bsf8yq62"
 }

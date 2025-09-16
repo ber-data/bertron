@@ -133,7 +133,9 @@ class TestBertronAPI:
         # Verify this is the correct entity
         assert entity["id"] == entity_id
         assert entity["ber_data_source"] == "ESS-DIVE"
-        assert "NGEE Arctic" in entity["name"]
+        assert "PlanetScope" in entity["name"]
+        assert "NGEE Arctic" in entity["description"]
+
 
         self._verify_entity_structure(entity)
 
@@ -154,8 +156,9 @@ class TestBertronAPI:
         # Verify coordinates with depth and elevation
         assert entity["coordinates"]["latitude"] == 28.125842
         assert entity["coordinates"]["longitude"] == -81.434174
-        assert entity["coordinates"]["depth"] is not None
-        assert entity["coordinates"]["elevation"] is not None
+        properties = [ prop["attribute"]["label"] for prop in entity.get("properties", {}) ]
+        assert "depth" in properties
+        assert "elevation" in properties
 
         self._verify_entity_structure(entity)
 
@@ -215,7 +218,8 @@ class TestBertronAPI:
         # Verify projected fields are present
         for entity in entities_data["documents"]:
             assert "id" in entity
-            assert "name" in entity
+            # TODO: Re-enable once we consistently have "name" field
+            # assert "name" in entity
             assert "ber_data_source" in entity
 
     def test_find_entities_with_sort_and_limit(

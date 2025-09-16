@@ -1,20 +1,34 @@
 {
-    "ber_data_source": "EMSL",
-    "coordinates": {
-        "latitude": 34,
-        "longitude": 118.0,
-        "altitude": null,
-        "depth": null,
-        "elevation": null
+  "ber_data_source": "EMSL",
+  "coordinates": {
+    "latitude": 34,
+    "longitude": 118
+  },
+  "entity_type": [
+    "sample"
+  ],
+  "properties": [
+    {
+      "attribute": {
+        "label": "altitude",
+        "id": "MIXS:0000094"
+      },
+      "numeric_value": 2947.3,
+      "unit": "UO:0000008",
+      "raw_value": "2974.3m"
     },
-    "entity_type": [
-        "sample"
-    ],
-    "description": "Clostridium thermocellum protein extracts",
-    "id": "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488",
-    "name": "EMSL Sample c9405190-e962-4ba5-93f0-e3ff499f4488",
-    "alt_ids": null,
-    "alt_names": null,
-    "part_of_collection": null,
-    "uri": "https://sc-data.emsl.pnnl.gov/?projectId=61815"
+    {
+      "attribute": {
+        "label": "elevation",
+        "id": "MIXS:0000093"
+      },
+      "raw_value": "2.2 cm",
+      "numeric_value": 2.2,
+      "unit": "UO:0000009"
+    }
+  ],
+  "description": "Clostridium thermocellum protein extracts",
+  "id": "EMSL:c9405190-e962-4ba5-93f0-e3ff499f4488",
+  "name": "EMSL Sample c9405190-e962-4ba5-93f0-e3ff499f4488",
+  "uri": "https://sc-data.emsl.pnnl.gov/?projectId=61815"
 }

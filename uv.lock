@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 2
 requires-python = ">=3.10.0, <3.14"
 resolution-markers = [
     "python_full_version >= '3.12'",
@@ -129,7 +129,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git?rev=v0.1.0-alpha.11" },
+    { name = "bertron-schema", git = "https://github.com/ber-data/bertron-schema.git" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.12" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "jsonschema", specifier = ">=4.0.0" },
@@ -151,7 +151,7 @@ dev = [
 [[package]]
 name = "bertron-schema"
 version = "0.1.0"
-source = { git = "https://github.com/ber-data/bertron-schema.git?rev=v0.1.0-alpha.11#82498f5f5cbc71ed7abf71b8e2c01d15c003f8d8" }
+source = { git = "https://github.com/ber-data/bertron-schema.git#4ee7dfda1f53e7c7a668e417bdc921be103e1c8a" }
 dependencies = [
     { name = "linkml" },
     { name = "linkml-runtime" },

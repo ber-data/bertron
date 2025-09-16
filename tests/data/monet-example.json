@@ -1,23 +1,13 @@
 {
-    "ber_data_source": "MONET",
-    "coordinates": {
-        "latitude": 68.633578,
-        "longitude": -149.632826,
-        "altitude": null,
-        "depth": null,
-        "elevation": {
-            "numeric_value": 722.613,
-            "unit": "unknown"
-        }
-    },
-    "entity_type": [
-        "sample"
-    ],
-    "description": null,
-    "id": "MONET:072e85bf-4a43-4212-83dc-108bb262620c",
-    "name": "MONet Core 60920_7",
-    "alt_ids": null,
-    "alt_names": null,
-    "part_of_collection": null,
-    "uri": "https://sc-data.emsl.pnnl.gov/monet"
+  "ber_data_source": "EMSL",
+  "coordinates": {
+    "latitude": 40.0867,
+    "longitude": -83.2392
+  },
+  "entity_type": [
+    "sample"
+  ],
+  "description": "BH_Madison",
+  "id": "EMSL:fcbde351-29e1-40eb-b0c9-ea4e36ac4dc0",
+  "uri": "https://sc-data.emsl.pnnl.gov/emsl?projectId=61875"
 }
