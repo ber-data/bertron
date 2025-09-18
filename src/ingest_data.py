@@ -119,6 +119,10 @@ class BertronMongoDBIngestor:
                             coordinates["latitude"],
                         ],
                     }
+                elif entity["coordinates"] is None:
+                    logger.warning(
+                        f"Coordinates are None for entity: {entity.get('name', entity.get('id', 'unnamed'))}"
+                    )
                 else:
                     logger.error(
                         f"Invalid coordinates format for entity: {entity.get('name', entity.get('id', 'unnamed'))}"
