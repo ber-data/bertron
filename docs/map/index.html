@@ -335,9 +335,21 @@
         const monetMarkers = [];
         console.debug("Fetching and parsing finished.", { data: monetObjs });
         monetObjs.forEach((obj) => {
+          // If the object lacks a `coordinates` field (which the BERtron schema says is possible),
+          // omit it from the map and display a warning on the console.
+          if (!obj.hasOwnProperty("coordinates")) {
+            console.warn("Omitting object lacking coordinates:", obj);
+            return; // skips to the next iteration
+          }
+
+          // If the object lacks an `id` field (which the BERtron schema says is possible),
+          // use a generic value.
+          const identifier = obj.hasOwnProperty("id") ? obj["id"] : "Sample";
+
+          // At this point, we know the object has a `coordinates` field, so we access it.
           const coordinates = obj["coordinates"];
           const latLon = getLatLon(coordinates);
-          const identifier = obj["id"];
+
           const url = obj["uri"];
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL MONet Sample<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
