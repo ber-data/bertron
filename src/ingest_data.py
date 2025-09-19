@@ -129,9 +129,9 @@ class BertronMongoDBIngestor:
                     )
                     return None
 
-            # Insert with upsert to handle potential duplicates based on URI
+            # Insert with upsert to handle potential duplicates based on ID
             result = self.db.entities.update_one(
-                {"uri": entity["uri"]}, {"$set": entity}, upsert=True
+                {"id": entity["id"]}, {"$set": entity}, upsert=True
             )
 
             if result.upserted_id:
