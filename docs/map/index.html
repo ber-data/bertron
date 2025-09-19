@@ -327,7 +327,7 @@
         });
         console.debug(`Created ${jgiGoldOrgObjs.length} markers.`);
 
-        // Fetch the EMSL MONet JSON (not CSV) file and create a marker for each element of its top-level array.
+        // Fetch the EMSL MONet JSON (not CSV) file and create a marker for each BERtron entity represented within it.
         const monetResponse = await fetch(
           `${baseUrlForData}/emsl/map/monet_samples_schema-9-16-2025.json`,
         );
@@ -335,9 +335,10 @@
         const monetMarkers = [];
         console.debug("Fetching and parsing finished.", { data: monetObjs });
         monetObjs.forEach((obj) => {
-          const latLon = getLatLon(obj);
-          const identifier = `Project: ${obj["proposal_id"]}, Sampling set: ${obj["sampling_set"]}`;
-          const url = `https://sc-data.emsl.pnnl.gov/?projectId=${obj["proposal_id"]}`;
+          const coordinates = obj["coordinates"];
+          const latLon = getLatLon(coordinates);
+          const identifier = obj["id"];
+          const url = obj["uri"];
           const popupHtml = `<div class="vstack gap-3 marker-popup"><img src="./img/emsl-100x100.png" alt="Logo"/><div>EMSL MONet Sample<br/><a href="${url}" target="_blank" title="View project" class="identifier">${identifier}</a></div></div>`;
           const icon = L.icon({
             iconUrl: "./img/emsl-marker.png",
