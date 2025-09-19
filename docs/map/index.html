@@ -336,7 +336,7 @@
         console.debug("Fetching and parsing finished.", { data: monetObjs });
         monetObjs.forEach((obj) => {
           // If the object lacks a `coordinates` field (which the BERtron schema says is possible),
-          // omit it from the map and display a warning on the console.
+          // omit the object from the map and display a warning on the JavaScript console.
           if (!obj.hasOwnProperty("coordinates")) {
             console.warn("Omitting object lacking coordinates:", obj);
             return; // skips to the next iteration
