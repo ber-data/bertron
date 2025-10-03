@@ -1,4 +1,5 @@
 from typing import Dict, Any
+import json
 
 from fastapi.testclient import TestClient
 from pymongo.database import Database
@@ -291,6 +292,163 @@ class TestBertronAPI:
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         error_data = response.json()
         assert "latitude" in error_data["detail"].lower()
+
+    def test_geo_nearby_search_with_filter(self, test_client: TestClient, seeded_db: Database):
+        """Test geographic nearby search with additional filter."""
+
+        # Search near the EMSL coordinates with a filter for EMSL data source
+        params = {
+            "latitude": 34.0,
+            "longitude": 118.0,
+            "radius_meters": 100000,  # 100km radius
+            "filter_json": json.dumps({"ber_data_source": "EMSL"})
+        }
+
+        response = test_client.get("/bertron/geo/nearby", params=params)
+
+        assert response.status_code == status.HTTP_200_OK
+        entities_data = response.json()
+
+        assert "documents" in entities_data
+        assert "count" in entities_data
+
+        # All returned entities should be from EMSL
+        for entity in entities_data["documents"]:
+            assert entity["ber_data_source"] == "EMSL"
+            self._verify_entity_structure(entity)
+
+        # Should find at least one entity
+        assert entities_data["count"] > 0
+
+    def test_geo_nearby_search_with_invalid_filter_json(self, test_client: TestClient, seeded_db: Database):
+        """Test geographic nearby search with invalid JSON filter."""
+        params = {
+            "latitude": 34.0,
+            "longitude": 118.0,
+            "radius_meters": 100000,
+            "filter_json": "invalid json {"  # Invalid JSON
+        }
+
+        response = test_client.get("/bertron/geo/nearby", params=params)
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+
+    def test_geo_bbox_search_with_filter(self, test_client: TestClient, seeded_db: Database):
+        """Test geographic bounding box search with additional filter."""
+
+        # Bounding box around Alaska with filter for ESS-DIVE data source
+        params = {
+            "southwest_lat": 64.0,
+            "southwest_lng": -166.0,
+            "northeast_lat": 66.0,
+            "northeast_lng": -163.0,
+            "filter_json": json.dumps({"ber_data_source": "ESS-DIVE"})
+        }
+
+        response = test_client.get("/bertron/geo/bbox", params=params)
+
+        assert response.status_code == status.HTTP_200_OK
+        entities_data = response.json()
+
+        assert "documents" in entities_data
+        assert "count" in entities_data
+
+        # All returned entities should be from ESS-DIVE and within bounding box
+        for entity in entities_data["documents"]:
+            assert entity["ber_data_source"] == "ESS-DIVE"
+            # Verify coordinates are within bounding box
+            lat = entity["coordinates"]["latitude"]
+            lng = entity["coordinates"]["longitude"]
+            assert 64.0 <= lat <= 66.0
+            assert -166.0 <= lng <= -163.0
+            self._verify_entity_structure(entity)
+
+    def test_geo_bbox_search_with_empty_filter(self, test_client: TestClient, seeded_db: Database):
+        """Test geographic bounding box search with empty filter (should work like no filter)."""
+
+        # Bounding box around Alaska with empty filter
+        params = {
+            "southwest_lat": 64.0,
+            "southwest_lng": -166.0,
+            "northeast_lat": 66.0,
+            "northeast_lng": -163.0,
+            "filter_json": json.dumps({})  # Empty filter
+        }
+
+        response = test_client.get("/bertron/geo/bbox", params=params)
+
+        assert response.status_code == status.HTTP_200_OK
+        entities_data = response.json()
+
+        assert "documents" in entities_data
+        assert "count" in entities_data
+
+        # Should find entities regardless of data source (empty filter = no additional restrictions)
+        for entity in entities_data["documents"]:
+            self._verify_entity_structure(entity)
+
+    def test_geo_search_filter_with_complex_query(self, test_client: TestClient, seeded_db: Database):
+        """Test geospatial search with more complex filter query."""
+
+        # Test with a more complex filter using MongoDB operators
+        params = {
+            "latitude": 34.0,
+            "longitude": 118.0,
+            "radius_meters": 500000,  # Larger radius to catch more entities
+            "filter_json": json.dumps({
+                "entity_type": {"$in": ["sample", "study"]},
+                "ber_data_source": {"$ne": "JGI"}  # Exclude JGI data
+            })
+        }
+
+        response = test_client.get("/bertron/geo/nearby", params=params)
+
+        assert response.status_code == status.HTTP_200_OK
+        entities_data = response.json()
+
+        assert "documents" in entities_data
+        assert "count" in entities_data
+
+        # Verify filter conditions are met
+        for entity in entities_data["documents"]:
+            # Should have entity_type containing "sample" or "study"
+            entity_types = entity.get("entity_type", [])
+            assert any(et in ["sample", "study"] for et in entity_types)
+            # Should not be from JGI
+            assert entity["ber_data_source"] != "JGI"
+            self._verify_entity_structure(entity)
+
+    def test_geosearch_with_properties(self, test_client: TestClient, seeded_db: Database):
+        """Test searching entities by properties."""
+
+        # Search for entities with a specific property label
+        params = {
+            "latitude": 28.125842,
+            "longitude": -81.434174,
+            "radius_meters": 1000000,  # 1000km radius to include NMDC entity
+            "filter_json": json.dumps({
+                "properties.attribute.label": "depth",
+                "properties.numeric_value": 24
+            })
+        }
+
+        response = test_client.get("/bertron/geo/nearby", params=params)
+
+        assert response.status_code == status.HTTP_200_OK
+        entities_data = response.json()
+
+        assert "documents" in entities_data
+        assert "count" in entities_data
+
+        # Should find at least the NMDC entity with depth property
+        found_nmdc = False
+        for entity in entities_data["documents"]:
+            properties = [ prop["attribute"]["label"] for prop in entity.get("properties", []) ]
+            if "depth" in properties and entity["id"] == "nmdc:bsm-11-bsf8yq62":
+                found_nmdc = True
+            self._verify_entity_structure(entity)
+
+        assert found_nmdc, "Should find NMDC entity with depth property"
+
 
     def _verify_entity_structure(self, entity: Dict[str, Any]):
         """Helper method to verify entity structure matches schema."""
