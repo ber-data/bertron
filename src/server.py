@@ -174,7 +174,8 @@ def find_nearby_entities(
     ),
     radius_meters: float = Query(..., gt=0, description="Search radius in meters"),
     filter_json: Optional[str] = Query(
-        None, description="Optional JSON string containing MongoDB-style filter criteria to refine search results"
+        None,
+        description="Optional JSON string containing MongoDB-style filter criteria to refine search results",
     ),
 ) -> EntitiesResponse:
     r"""Find entities within a specified radius of a geographic point using MongoDB's $near operator.
@@ -220,8 +221,8 @@ def find_nearby_entities(
                 final_filter = {"$and": [geo_filter, additional_filter]}
             except json.JSONDecodeError:
                 raise HTTPException(
-                    status_code=400, 
-                    detail="Invalid JSON format in filter_json parameter"
+                    status_code=400,
+                    detail="Invalid JSON format in filter_json parameter",
                 )
 
         # Execute find with combined filter
@@ -254,13 +255,14 @@ def find_entities_in_bounding_box(
         ..., ge=-180, le=180, description="Northeast corner longitude"
     ),
     filter_json: Optional[str] = Query(
-        None, description="Optional JSON string containing MongoDB-style filter criteria to refine search results"
+        None,
+        description="Optional JSON string containing MongoDB-style filter criteria to refine search results",
     ),
 ) -> EntitiesResponse:
     r"""Find entities within a bounding box using MongoDB's $geoWithin operator.
 
     This endpoint finds all entities whose coordinates fall within the specified
-    rectangular bounding box defined by southwest and northeast corners. An optional 
+    rectangular bounding box defined by southwest and northeast corners. An optional
     filter_json parameter can be provided as a JSON string to further refine the results.
 
     Example: /bertron/geo/bbox?southwest_lat=47.5&southwest_lng=-122.4&northeast_lat=47.7&northeast_lng=-122.2
@@ -311,8 +313,8 @@ def find_entities_in_bounding_box(
                 final_filter = {"$and": [geo_filter, additional_filter]}
             except json.JSONDecodeError:
                 raise HTTPException(
-                    status_code=400, 
-                    detail="Invalid JSON format in filter_json parameter"
+                    status_code=400,
+                    detail="Invalid JSON format in filter_json parameter",
                 )
 
         # Execute find with combined filter
